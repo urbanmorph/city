@@ -1,0 +1,47 @@
+{
+  "corporation_id": "central",
+  "source": "BBMP Sahaaya (OpenCity.in)",
+  "source_url": "https://data.opencity.in/dataset/bbmp-grievances-data",
+  "date_range": "2020-02 to 2025-06",
+  "mapped_complaints": 43726,
+  "total_complaints": 43726,
+  "closed": 39981,
+  "open": 3745,
+  "resolution_rate": 91.44,
+  "avg_response_time": "21 hours",
+  "by_function": {
+    "street-lighting": {
+      "count": 16520,
+      "share": 0.378,
+      "resolution_rate": 91.44
+    },
+    "solid-waste": {
+      "count": 12757,
+      "share": 0.292,
+      "resolution_rate": 91.44
+    },
+    "roads-bridges": {
+      "count": 6376,
+      "share": 0.146,
+      "resolution_rate": 91.44
+    },
+    "environment": {
+      "count": 2105,
+      "share": 0.048,
+      "resolution_rate": 91.44
+    },
+    "public-health": {
+      "count": 1945,
+      "share": 0.044,
+      "resolution_rate": 91.44
+    }
+  },
+  "top_wards": [
+    "Benniganahalli",
+    "Shanthi Nagar",
+    "Cottonpet",
+    "Sampangiram Nagar",
+    "Ulsoor"
+  ],
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+}

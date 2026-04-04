@@ -1,0 +1,37 @@
+[
+  {
+    "id": "central",
+    "name": "Bengaluru Central City Corporation",
+    "name_local": "ಬೆಂಗಳೂರು ಕೇಂದ್ರ ನಗರ ಪಾಲಿಕೆ",
+    "wards": 63,
+    "budget_year": "2026-27"
+  },
+  {
+    "id": "south",
+    "name": "Bengaluru South City Corporation",
+    "name_local": "ಬೆಂಗಳೂರು ದಕ್ಷಿಣ ನಗರ ಪಾಲಿಕೆ",
+    "wards": 72,
+    "budget_year": "2026-27"
+  },
+  {
+    "id": "east",
+    "name": "Bengaluru East City Corporation",
+    "name_local": "ಬೆಂಗಳೂರು ಪೂರ್ವ ನಗರ ಪಾಲಿಕೆ",
+    "wards": 50,
+    "budget_year": "2026-27"
+  },
+  {
+    "id": "west",
+    "name": "Bengaluru West City Corporation",
+    "name_local": "ಬೆಂಗಳೂರು ಪಶ್ಚಿಮ ನಗರ ಪಾಲಿಕೆ",
+    "wards": 112,
+    "budget_year": "2026-27"
+  },
+  {
+    "id": "north",
+    "name": "Bengaluru North City Corporation",
+    "name_local": "ಬೆಂಗಳೂರು ಉತ್ತರ ನಗರ ಪಾಲಿಕೆ",
+    "wards": 72,
+    "budget_year": "2026-27"
+  }
+]

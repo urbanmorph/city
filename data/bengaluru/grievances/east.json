@@ -1,0 +1,47 @@
+{
+  "corporation_id": "east",
+  "source": "BBMP Sahaaya (OpenCity.in)",
+  "source_url": "https://data.opencity.in/dataset/bbmp-grievances-data",
+  "date_range": "2020-02 to 2025-06",
+  "mapped_complaints": 72731,
+  "total_complaints": 72731,
+  "closed": 66157,
+  "open": 6574,
+  "resolution_rate": 90.96,
+  "avg_response_time": "20 hours",
+  "by_function": {
+    "street-lighting": {
+      "count": 23148,
+      "share": 0.318,
+      "resolution_rate": 90.96
+    },
+    "solid-waste": {
+      "count": 18424,
+      "share": 0.253,
+      "resolution_rate": 90.96
+    },
+    "roads-bridges": {
+      "count": 14383,
+      "share": 0.198,
+      "resolution_rate": 90.96
+    },
+    "cattle-animals": {
+      "count": 3557,
+      "share": 0.049,
+      "resolution_rate": 90.96
+    },
+    "public-health": {
+      "count": 3416,
+      "share": 0.047,
+      "resolution_rate": 90.96
+    }
+  },
+  "top_wards": [
+    "Bellandur",
+    "Hoodi",
+    "Marathahalli",
+    "KR Puram",
+    "Mahadevapura"
+  ],
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+}

@@ -1,0 +1,16 @@
+[
+  {
+    "id": "bengaluru",
+    "name": "Bengaluru",
+    "name_local": "ಬೆಂಗಳೂರು",
+    "state": "Karnataka",
+    "act": {
+      "name": "Greater Bengaluru Governance Act, 2024",
+      "short_name": "GBA Act",
+      "year": 2024
+    },
+    "authority": "Greater Bengaluru Authority (GBA)",
+    "corporation_count": 5,
+    "budget_year": "2026-27"
+  }
+]

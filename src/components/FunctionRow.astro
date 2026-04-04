@@ -1,0 +1,67 @@
+---
+import type { FunctionMapping, FunctionHealth } from "../lib/types";
+import HealthBadge from "./HealthBadge.astro";
+
+interface Props {
+  fn: FunctionMapping;
+  health: FunctionHealth;
+  cityId: string;
+  corpId: string;
+}
+
+const { fn, health, cityId, corpId } = Astro.props;
+
+const budgetBarWidth = Math.min(health.budget_share * 500, 100);
+const complaintBarWidth = Math.min(health.complaint_share * 500, 100);
+
+function formatAmount(lakhs: number): string {
+  if (lakhs >= 1000) return `${(lakhs / 100).toFixed(0)} Cr`;
+  return `${lakhs.toLocaleString("en-IN")} L`;
+}
+
+const devolutionLabel = fn.devolution === "obligatory"
+  ? "Obligatory"
+  : fn.devolution === "discretionary"
+    ? "Discretionary"
+    : "Not Devolved";
+---
+
+<tr>
+  <td>
+    <a href={`/${cityId}/${corpId}/${fn.id}`}>{fn.name}</a>
+    <br />
+    <span class="text-sm text-muted">S. {fn.act_reference.section}</span>
+  </td>
+
+  <td>
+    <div class="bar-chart">
+      <div class="bar-track">
+        <div class="bar-fill bar-fill--budget" style={`width: ${budgetBarWidth}%`}></div>
+      </div>
+      <span class="bar-label">
+        {formatAmount(health.budget_amount)}
+        <span class="text-muted">({(health.budget_share * 100).toFixed(1)}%)</span>
+      </span>
+    </div>
+  </td>
+
+  <td>
+    <div class="bar-chart">
+      <div class="bar-track">
+        <div class="bar-fill bar-fill--complaint" style={`width: ${complaintBarWidth}%`}></div>
+      </div>
+      <span class="bar-label">
+        {health.complaint_count.toLocaleString("en-IN")}
+        <span class="text-muted">({(health.complaint_share * 100).toFixed(1)}%)</span>
+      </span>
+    </div>
+  </td>
+
+  <td>
+    <HealthBadge status={health.status} />
+  </td>
+
+  <td>
+    <span class="text-sm">{devolutionLabel}</span>
+  </td>
+</tr>

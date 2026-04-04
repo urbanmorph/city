@@ -1,0 +1,147 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import CorporationCard from "../components/CorporationCard.astro";
+import { loadCities, loadCorporations, loadBudget, loadGrievances, loadFunctionMapping } from "../lib/data-loader";
+import { computeAllHealth, countByStatus } from "../lib/health-score";
+import { formatINR, formatNumber } from "../lib/format";
+
+const cities = loadCities();
+
+// For each city, load corporations and compute summary stats
+const cityData = cities.map((city) => {
+  const corporations = loadCorporations(city.id);
+  const mapping = loadFunctionMapping(city.id);
+
+  const corpStats = corporations.map((corp) => {
+    const budget = loadBudget(city.id, corp.id, city.budget_year);
+    const grievances = loadGrievances(city.id, corp.id);
+
+    let stressedCount = 0;
+    let totalBudget = 0;
+    let totalComplaints = 0;
+
+    if (budget && grievances) {
+      const healthList = computeAllHealth(corp.id, budget, grievances, mapping);
+      const counts = countByStatus(healthList);
+      stressedCount = counts.stressed + counts.critical + counts.unfunded;
+      totalBudget = budget.summary.total_expenditure;
+      totalComplaints = grievances.total_complaints;
+    }
+
+    return {
+      corporation: corp,
+      stressedCount,
+      totalBudget: formatINR(totalBudget),
+      totalComplaints: formatNumber(totalComplaints),
+    };
+  });
+
+  return { city, corporations, mapping, corpStats };
+});
+---
+
+<BaseLayout title="City Portal">
+  <section class="hero">
+    <h1>Governance Accountability for Indian Cities</h1>
+    <p class="hero__sub">From mandate to money to outcomes — the full story</p>
+  </section>
+
+  {cityData.map(({ city, mapping, corpStats }) => (
+    <section class="city-section mt-2">
+      <div class="city-header">
+        <h2>
+          <a href={`/${city.id}`}>{city.name}</a>
+        </h2>
+        <p class="text-local">{city.name_local}</p>
+        <p class="text-sm text-muted">{city.authority}</p>
+      </div>
+
+      <dl class="city-meta">
+        <div>
+          <dt>Act</dt>
+          <dd>{city.act.short_name} ({city.act.year})</dd>
+        </div>
+        <div>
+          <dt>Functions</dt>
+          <dd>{mapping.length}</dd>
+        </div>
+        <div>
+          <dt>Corporations</dt>
+          <dd>{city.corporation_count}</dd>
+        </div>
+        <div>
+          <dt>Budget Year</dt>
+          <dd>{city.budget_year}</dd>
+        </div>
+      </dl>
+
+      <div class="card-grid mt-1">
+        {corpStats.map(({ corporation, stressedCount, totalBudget, totalComplaints }) => (
+          <CorporationCard
+            cityId={city.id}
+            corporation={corporation}
+            stressedCount={stressedCount}
+            totalBudget={totalBudget}
+            totalComplaints={totalComplaints}
+          />
+        ))}
+      </div>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: 2.5rem 0 1.5rem;
+  }
+  .hero h1 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    letter-spacing: -0.02em;
+  }
+  .hero__sub {
+    font-size: 1rem;
+    color: var(--c-text-muted);
+    margin-top: 0.4rem;
+  }
+  .city-section {
+    margin-bottom: 2rem;
+  }
+  .city-header h2 {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+  .city-header h2 a {
+    color: var(--c-primary);
+  }
+  .city-header h2 a:hover {
+    text-decoration: underline;
+  }
+  .city-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin-top: 0.75rem;
+    padding: 0.75rem 1rem;
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .city-meta dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-text-muted);
+  }
+  .city-meta dd {
+    font-size: 0.95rem;
+    font-weight: 600;
+  }
+
+  @media (max-width: 640px) {
+    .hero h1 { font-size: 1.3rem; }
+    .city-meta { gap: 1rem; }
+  }
+</style>

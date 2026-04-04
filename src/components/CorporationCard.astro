@@ -1,0 +1,83 @@
+---
+import type { Corporation } from "../lib/types";
+import HealthBadge from "./HealthBadge.astro";
+
+interface Props {
+  cityId: string;
+  corporation: Corporation;
+  stressedCount: number;
+  totalBudget: string;
+  totalComplaints: string;
+}
+
+const { cityId, corporation, stressedCount, totalBudget, totalComplaints } = Astro.props;
+
+const healthStatus = stressedCount === 0 ? "good" : stressedCount <= 2 ? "stressed" : "critical";
+---
+
+<a href={`/${cityId}/${corporation.id}`} class="card corp-card">
+  <h3 class="corp-card__name">{corporation.name}</h3>
+  <p class="text-local">{corporation.name_local}</p>
+
+  <dl class="corp-card__stats">
+    <div>
+      <dt>Wards</dt>
+      <dd>{corporation.wards}</dd>
+    </div>
+    <div>
+      <dt>Budget</dt>
+      <dd>{totalBudget}</dd>
+    </div>
+    <div>
+      <dt>Complaints</dt>
+      <dd>{totalComplaints}</dd>
+    </div>
+    <div>
+      <dt>Stressed functions</dt>
+      <dd>
+        {stressedCount}
+        <HealthBadge status={healthStatus} />
+      </dd>
+    </div>
+  </dl>
+</a>
+
+<style>
+  .corp-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+  }
+  .corp-card:hover {
+    border-color: var(--c-primary);
+    box-shadow: 0 2px 8px rgba(63, 95, 122, 0.1);
+    text-decoration: none;
+  }
+  .corp-card__name {
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--c-primary);
+  }
+  .corp-card__stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.6rem;
+    margin-top: 0.85rem;
+  }
+  .corp-card__stats dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-text-muted);
+  }
+  .corp-card__stats dd {
+    font-size: 0.95rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+</style>

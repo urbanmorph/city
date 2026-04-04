@@ -1,0 +1,47 @@
+{
+  "corporation_id": "north",
+  "source": "BBMP Sahaaya (OpenCity.in)",
+  "source_url": "https://data.opencity.in/dataset/bbmp-grievances-data",
+  "date_range": "2020-02 to 2025-06",
+  "mapped_complaints": 122859,
+  "total_complaints": 122859,
+  "closed": 114247,
+  "open": 8612,
+  "resolution_rate": 92.99,
+  "avg_response_time": "18 hours",
+  "by_function": {
+    "street-lighting": {
+      "count": 51025,
+      "share": 0.415,
+      "resolution_rate": 92.99
+    },
+    "solid-waste": {
+      "count": 33112,
+      "share": 0.27,
+      "resolution_rate": 92.99
+    },
+    "roads-bridges": {
+      "count": 17301,
+      "share": 0.141,
+      "resolution_rate": 92.99
+    },
+    "environment": {
+      "count": 4930,
+      "share": 0.04,
+      "resolution_rate": 92.99
+    },
+    "public-health": {
+      "count": 4060,
+      "share": 0.033,
+      "resolution_rate": 92.99
+    }
+  },
+  "top_wards": [
+    "Horamavu",
+    "Thanisandra",
+    "Jakkur",
+    "Someshwara",
+    "Ramamurthy Nagar"
+  ],
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+}

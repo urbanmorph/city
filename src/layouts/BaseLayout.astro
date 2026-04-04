@@ -1,0 +1,56 @@
+---
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = "Civic governance data portal for Indian cities" } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <title>{title} | City Portal</title>
+  </head>
+  <body>
+    <div class="placeholder-banner">
+      Budget figures are illustrative &mdash; pending extraction from corporation budget books. Grievance data: BBMP Sahaaya via <a href="https://data.opencity.in/dataset/bbmp-grievances-data">OpenCity.in</a> (Feb 2020 &ndash; Jun 2025).
+    </div>
+
+    <header class="site-header">
+      <div class="container">
+        <a href="/" class="site-logo">City Portal</a>
+        <nav class="site-nav">
+          <a href="#">About</a>
+        </nav>
+      </div>
+    </header>
+
+    <div class="container">
+      <slot name="breadcrumb" />
+    </div>
+
+    <main class="content">
+      <div class="container">
+        <slot />
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container">
+        <div class="footer-sources">
+          <strong>Data sources</strong>
+          <span>Grievances: <a href="https://data.opencity.in/dataset/bbmp-grievances-data" target="_blank" rel="noopener">BBMP Sahaaya / OpenCity.in</a> (766K+ complaints, 2020&ndash;2025)</span>
+          <span>Act: <a href="https://egazette.karnataka.gov.in" target="_blank" rel="noopener">Greater Bengaluru Governance Act, 2024</a> (Act 36 of 2025)</span>
+          <span>Benchmarks: <a href="https://www.janaagraha.org/asics/" target="_blank" rel="noopener">ASICS 2023</a>, Janaagraha</span>
+          <span>Budget: Corporation budget books 2026&ndash;27 (pending extraction)</span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

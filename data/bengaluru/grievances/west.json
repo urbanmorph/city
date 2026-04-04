@@ -1,0 +1,47 @@
+{
+  "corporation_id": "west",
+  "source": "BBMP Sahaaya (OpenCity.in)",
+  "source_url": "https://data.opencity.in/dataset/bbmp-grievances-data",
+  "date_range": "2020-02 to 2025-06",
+  "mapped_complaints": 97789,
+  "total_complaints": 97789,
+  "closed": 90254,
+  "open": 7535,
+  "resolution_rate": 92.29,
+  "avg_response_time": "19 hours",
+  "by_function": {
+    "street-lighting": {
+      "count": 47670,
+      "share": 0.487,
+      "resolution_rate": 92.29
+    },
+    "solid-waste": {
+      "count": 20029,
+      "share": 0.205,
+      "resolution_rate": 92.29
+    },
+    "roads-bridges": {
+      "count": 11736,
+      "share": 0.12,
+      "resolution_rate": 92.29
+    },
+    "environment": {
+      "count": 5551,
+      "share": 0.057,
+      "resolution_rate": 92.29
+    },
+    "public-health": {
+      "count": 3413,
+      "share": 0.035,
+      "resolution_rate": 92.29
+    }
+  },
+  "top_wards": [
+    "Jnanabharathi Ward",
+    "Rajarajeshwari Nagar",
+    "Hemmigepura",
+    "Ullalu",
+    "Kengeri"
+  ],
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+}

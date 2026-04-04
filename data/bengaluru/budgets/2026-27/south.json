@@ -1,0 +1,30 @@
+{
+  "corporation_id": "south",
+  "fiscal_year": "2026-27",
+  "summary": {
+    "total_revenue": 310000,
+    "total_expenditure": 298000,
+    "unit": "lakhs"
+  },
+  "by_function": {
+    "water-supply": { "amount": 6200, "share": 0.208, "yoy_growth": 0.14 },
+    "sewerage-drainage": { "amount": 3700, "share": 0.124, "yoy_growth": 0.09 },
+    "solid-waste": { "amount": 4500, "share": 0.151, "yoy_growth": 0.16 },
+    "roads-bridges": { "amount": 5400, "share": 0.181, "yoy_growth": 0.11 },
+    "street-lighting": { "amount": 1500, "share": 0.050, "yoy_growth": 0.17 },
+    "fire-services": { "amount": 550, "share": 0.018, "yoy_growth": 0.06 },
+    "public-health": { "amount": 2200, "share": 0.074, "yoy_growth": 0.12 },
+    "parks-recreation": { "amount": 1100, "share": 0.037, "yoy_growth": 0.08 },
+    "urban-planning": { "amount": 750, "share": 0.025, "yoy_growth": 0.04 },
+    "environment": { "amount": 620, "share": 0.021, "yoy_growth": 0.15 },
+    "burial-cremation": { "amount": 180, "share": 0.006, "yoy_growth": 0.03 },
+    "cattle-animals": { "amount": 250, "share": 0.008, "yoy_growth": 0.05 },
+    "slum-improvement": { "amount": 420, "share": 0.014, "yoy_growth": 0.07 },
+    "education": { "amount": 150, "share": 0.005, "yoy_growth": 0.02 },
+    "social-welfare": { "amount": 220, "share": 0.007, "yoy_growth": 0.04 },
+    "markets-trade": { "amount": 500, "share": 0.017, "yoy_growth": 0.06 },
+    "property-tax": { "amount": 620, "share": 0.021, "yoy_growth": 0.09 },
+    "poverty-alleviation": { "amount": 280, "share": 0.009, "yoy_growth": 0.03 }
+  },
+  "note": "Placeholder data — actual values pending PDF extraction from budget books"
+}

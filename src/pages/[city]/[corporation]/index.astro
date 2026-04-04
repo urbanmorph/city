@@ -1,0 +1,288 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import FunctionRow from "../../../components/FunctionRow.astro";
+import HealthBadge from "../../../components/HealthBadge.astro";
+import { loadCity, loadCorporation, loadBudget, loadGrievances, loadFunctionMapping } from "../../../lib/data-loader";
+import { computeAllHealth, countByStatus } from "../../../lib/health-score";
+import { formatINR, formatNumber, formatPercent } from "../../../lib/format";
+import type { FunctionHealth, FunctionMapping, HealthStatus } from "../../../lib/types";
+
+const { city: cityId, corporation: corpId } = Astro.params;
+
+const city = loadCity(cityId!);
+const corporation = loadCorporation(cityId!, corpId!);
+
+if (!city || !corporation) {
+  return Astro.redirect("/404");
+}
+
+const mapping = loadFunctionMapping(city.id);
+const budget = loadBudget(city.id, corporation.id, city.budget_year);
+const grievances = loadGrievances(city.id, corporation.id);
+
+// Compute health for all functions
+let healthList: FunctionHealth[] = [];
+let statusCounts: Record<HealthStatus, number> = { good: 0, stressed: 0, critical: 0, unfunded: 0 };
+
+if (budget && grievances) {
+  healthList = computeAllHealth(corporation.id, budget, grievances, mapping);
+  statusCounts = countByStatus(healthList);
+}
+
+// Sort: critical first, then unfunded, then stressed, then good
+const statusOrder: Record<HealthStatus, number> = { critical: 0, unfunded: 1, stressed: 2, good: 3 };
+
+const sortedFunctions = mapping.map((fn) => {
+  const health = healthList.find((h) => h.function_id === fn.id);
+  return { fn, health };
+}).sort((a, b) => {
+  const aOrder = a.health ? statusOrder[a.health.status] : 3;
+  const bOrder = b.health ? statusOrder[b.health.status] : 3;
+  return aOrder - bOrder;
+});
+
+// Summary stats
+const totalBudgetLakhs = budget?.summary.total_expenditure ?? 0;
+const totalComplaints = grievances?.total_complaints ?? 0;
+const resolutionRate = grievances?.resolution_rate ?? 0;
+
+// Red flags: critical or unfunded functions
+const redFlags = sortedFunctions.filter((item) =>
+  item.health && (item.health.status === "critical" || item.health.status === "unfunded")
+);
+
+// Build a fallback health object for functions that may lack data
+function getHealthOrFallback(fnId: string): FunctionHealth {
+  const found = healthList.find((h) => h.function_id === fnId);
+  if (found) return found;
+  return {
+    function_id: fnId,
+    corporation_id: corporation.id,
+    budget_amount: 0,
+    budget_share: 0,
+    complaint_count: 0,
+    complaint_share: 0,
+    resolution_rate: 0,
+    stress_index: 0,
+    status: "unfunded" as HealthStatus,
+  };
+}
+---
+
+<BaseLayout
+  title={`${corporation.name} — ${city.name}`}
+  description={`Scorecard for ${corporation.name} across ${mapping.length} civic functions`}
+>
+  <Breadcrumb
+    slot="breadcrumb"
+    items={[
+      { label: "Home", href: "/" },
+      { label: city.name, href: `/${city.id}` },
+      { label: corporation.name.replace(`${city.name} `, "").replace(" City Corporation", "") },
+    ]}
+  />
+
+  <section class="corp-header">
+    <h1>{corporation.name}</h1>
+    <p class="text-local">{corporation.name_local}</p>
+    <p class="text-sm text-muted mt-1">{corporation.wards} wards &mdash; Budget year {corporation.budget_year}</p>
+  </section>
+
+  <dl class="stat-row mt-2">
+    <div class="stat-item">
+      <dt>Functions</dt>
+      <dd>{mapping.length}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Total Budget</dt>
+      <dd>{formatINR(totalBudgetLakhs)}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Utilization</dt>
+      <dd class="text-muted">Pending</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Complaints</dt>
+      <dd>{formatNumber(totalComplaints)}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Resolution Rate</dt>
+      <dd>{resolutionRate.toFixed(1)}%</dd>
+    </div>
+  </dl>
+
+  <div class="status-summary mt-2">
+    <span class="status-count status-count--good">{statusCounts.good} Good</span>
+    <span class="status-count status-count--stressed">{statusCounts.stressed} Stressed</span>
+    <span class="status-count status-count--critical">{statusCounts.critical} Critical</span>
+    <span class="status-count status-count--unfunded">{statusCounts.unfunded} Unfunded</span>
+  </div>
+
+  {budget && grievances ? (
+    <div class="table-wrap mt-2">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Function</th>
+            <th>Budget</th>
+            <th>Complaints</th>
+            <th>Health</th>
+            <th>Devolution</th>
+          </tr>
+        </thead>
+        <tbody>
+          {sortedFunctions.map(({ fn }) => (
+            <FunctionRow
+              fn={fn}
+              health={getHealthOrFallback(fn.id)}
+              cityId={city.id}
+              corpId={corporation.id}
+            />
+          ))}
+        </tbody>
+      </table>
+    </div>
+  ) : (
+    <div class="card mt-2">
+      <p class="text-muted">Budget or grievance data not available for this corporation.</p>
+    </div>
+  )}
+
+  {redFlags.length > 0 && (
+    <section class="red-flags mt-2">
+      <h2>Red Flags</h2>
+      <p class="text-sm text-muted mb-1">Functions requiring immediate attention</p>
+      <ul class="red-flags__list">
+        {redFlags.map(({ fn, health }) => (
+          <li class="red-flag-item">
+            <div class="red-flag-item__header">
+              <a href={`/${city.id}/${corporation.id}/${fn.id}`}>{fn.name}</a>
+              <HealthBadge status={health!.status} />
+            </div>
+            <p class="text-sm text-muted">
+              {health!.status === "unfunded"
+                ? `Mandated under S. ${fn.act_reference.section} but receives less than 1% of budget (${formatINR(health!.budget_amount)}).`
+                : `High stress index (${health!.stress_index.toFixed(1)}) with ${formatNumber(health!.complaint_count)} complaints and only ${formatINR(health!.budget_amount)} allocated.`
+              }
+            </p>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )}
+
+  <nav class="page-links mt-2">
+    <a href={`/${city.id}/${corporation.id}/budget`} class="link-btn">Full Budget</a>
+    <a href={`/${city.id}/act`} class="link-btn">{city.act.short_name}</a>
+    <a href={`/${city.id}/compare`} class="link-btn">Compare Corporations</a>
+  </nav>
+</BaseLayout>
+
+<style>
+  .corp-header h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--c-primary);
+  }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .stat-item dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-text-muted);
+  }
+  .stat-item dd {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .status-summary {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .status-count {
+    font-size: 0.88rem;
+    font-weight: 600;
+    padding: 0.3rem 0.75rem;
+    border-radius: var(--radius);
+  }
+  .status-count--good { background: #dcfce7; color: #166534; }
+  .status-count--stressed { background: #fef9c3; color: #854d0e; }
+  .status-count--critical { background: #fee2e2; color: #991b1b; }
+  .status-count--unfunded { background: #f3f4f6; color: #4b5563; }
+
+  .red-flags {
+    background: #fff5f5;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius);
+    padding: 1.25rem;
+  }
+  .red-flags h2 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #991b1b;
+    margin-bottom: 0.25rem;
+  }
+  .red-flags__list {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+  }
+  .red-flag-item {
+    padding: 0.75rem;
+    background: #fff;
+    border: 1px solid #fecaca;
+    border-radius: var(--radius);
+  }
+  .red-flag-item__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  .red-flag-item__header a {
+    font-weight: 600;
+    color: var(--c-primary);
+  }
+
+  .page-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .link-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--c-primary);
+    border: 1px solid var(--c-primary);
+    border-radius: var(--radius);
+    transition: background 0.15s, color 0.15s;
+  }
+  .link-btn:hover {
+    background: var(--c-primary);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .corp-header h1 { font-size: 1.25rem; }
+    .stat-row { gap: 1rem; }
+    .stat-item dd { font-size: 1.05rem; }
+    .status-summary { gap: 0.5rem; }
+    .status-count { font-size: 0.8rem; padding: 0.2rem 0.5rem; }
+  }
+</style>

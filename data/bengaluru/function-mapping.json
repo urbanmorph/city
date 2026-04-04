@@ -1,0 +1,274 @@
+{
+  "functions": [
+    {
+      "id": "water-supply",
+      "name": "Water Supply",
+      "name_local": "ನೀರು ಸರಬರಾಜು",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(b)",
+        "schedule": "I",
+        "text": "Construction, maintenance and cleansing of drains and drainage works and of public latrines, urinals and similar conveniences; water supply"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["water-supply"],
+      "notf_cms_departments": ["water_supply"],
+      "notf_cms_categories": ["water_supply_disruption", "water_quality", "new_connection", "water_leakage", "borewell"]
+    },
+    {
+      "id": "sewerage-drainage",
+      "name": "Sewerage & Drainage",
+      "name_local": "ಒಳಚರಂಡಿ ಮತ್ತು ಒಳಚರಂಡಿ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(a)",
+        "schedule": "I",
+        "text": "Construction, maintenance and cleansing of drains and drainage works"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["drainage", "storm-water"],
+      "notf_cms_departments": ["drainage"],
+      "notf_cms_categories": ["drain_overflow", "drain_blocked", "manhole_open", "flooding"]
+    },
+    {
+      "id": "solid-waste",
+      "name": "Solid Waste Management",
+      "name_local": "ಘನ ತ್ಯಾಜ್ಯ ನಿರ್ವಹಣೆ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(c)",
+        "schedule": "I",
+        "text": "Scavenging, removal and disposal of filth, rubbish and other obnoxious or polluted matters"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["solid-waste", "swm"],
+      "notf_cms_departments": ["waste_management"],
+      "notf_cms_categories": ["garbage_not_collected", "black_spot", "debris_dumping", "waste_burning", "segregation"]
+    },
+    {
+      "id": "roads-bridges",
+      "name": "Roads & Bridges",
+      "name_local": "ರಸ್ತೆಗಳು ಮತ್ತು ಸೇತುವೆಗಳು",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(d)",
+        "schedule": "I",
+        "text": "Construction, maintenance, alteration and improvement of public streets, bridges, culverts, causeways and the like"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["roads", "bridges", "footpaths"],
+      "notf_cms_departments": ["roads_traffic"],
+      "notf_cms_categories": ["pothole", "road_repair", "road_cavein", "footpath_damage", "speed_breaker"]
+    },
+    {
+      "id": "street-lighting",
+      "name": "Street Lighting",
+      "name_local": "ಬೀದಿ ದೀಪ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(h)",
+        "schedule": "I",
+        "text": "Provision for lighting public streets, municipal markets and other public places and buildings vested in the Corporation"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["electrical", "street-lighting", "led-conversion"],
+      "notf_cms_departments": ["street_lighting"],
+      "notf_cms_categories": ["light_not_working", "new_light_request", "pole_damaged", "cable_issue"]
+    },
+    {
+      "id": "fire-services",
+      "name": "Fire Services",
+      "name_local": "ಅಗ್ನಿಶಾಮಕ ಸೇವೆಗಳು",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(i)",
+        "schedule": "I",
+        "text": "Extinguishing fires, protecting life and property when fires occur"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["fire"],
+      "notf_cms_departments": ["fire_safety"],
+      "notf_cms_categories": ["fire_hazard", "fire_noc"]
+    },
+    {
+      "id": "public-health",
+      "name": "Public Health",
+      "name_local": "ಸಾರ್ವಜನಿಕ ಆರೋಗ್ಯ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(e)",
+        "schedule": "I",
+        "text": "Public vaccination, prevention and control of diseases"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["health", "sanitation"],
+      "notf_cms_departments": ["health_sanitation"],
+      "notf_cms_categories": ["mosquito_menace", "stagnant_water", "food_safety", "public_toilet"]
+    },
+    {
+      "id": "parks-recreation",
+      "name": "Parks & Recreation",
+      "name_local": "ಉದ್ಯಾನಗಳು ಮತ್ತು ಮನರಂಜನೆ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(f)",
+        "schedule": "I",
+        "text": "Establishment, maintenance and management of public parks, gardens and playgrounds"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["parks", "horticulture"],
+      "notf_cms_departments": ["parks_playgrounds"],
+      "notf_cms_categories": ["park_maintenance", "playground", "garden"]
+    },
+    {
+      "id": "urban-planning",
+      "name": "Urban Planning",
+      "name_local": "ನಗರ ಯೋಜನೆ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(g)",
+        "schedule": "I",
+        "text": "Regulation of land use; construction of buildings"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["town-planning"],
+      "notf_cms_departments": ["building_plans"],
+      "notf_cms_categories": ["building_plan_approval", "deviation", "completion_certificate"]
+    },
+    {
+      "id": "environment",
+      "name": "Environmental Protection",
+      "name_local": "ಪರಿಸರ ರಕ್ಷಣೆ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(j)",
+        "schedule": "I",
+        "text": "Protection of the environment and promotion of ecological aspects"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["environment", "lakes"],
+      "notf_cms_departments": ["trees_forest", "environment", "lakes"],
+      "notf_cms_categories": ["tree_fall", "tree_cutting", "lake_pollution", "air_quality", "noise_pollution"]
+    },
+    {
+      "id": "burial-cremation",
+      "name": "Burial & Cremation Grounds",
+      "name_local": "ಸ್ಮಶಾನ ಮತ್ತು ದಹನ ಭೂಮಿ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(k)",
+        "schedule": "I",
+        "text": "Construction, maintenance and regulation of burial and burning grounds"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["community"],
+      "notf_cms_departments": ["burial_grounds"],
+      "notf_cms_categories": ["crematorium", "burial_ground"]
+    },
+    {
+      "id": "cattle-animals",
+      "name": "Cattle & Animal Control",
+      "name_local": "ಜಾನುವಾರು ಮತ್ತು ಪ್ರಾಣಿ ನಿಯಂತ್ರಣ",
+      "category": "core",
+      "act_reference": {
+        "section": "111(1)(l)",
+        "schedule": "I",
+        "text": "Regulation of slaughter houses; disposal of carcasses; prevention of cruelty to animals"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["veterinary"],
+      "notf_cms_departments": ["pest_animal_control"],
+      "notf_cms_categories": ["stray_dog", "stray_cattle", "animal_carcass", "dog_bite"]
+    },
+    {
+      "id": "slum-improvement",
+      "name": "Slum Improvement",
+      "name_local": "ಕೊಳೆಗೇರಿ ಸುಧಾರಣೆ",
+      "category": "sector",
+      "act_reference": {
+        "section": "111(C)(1)",
+        "schedule": "I",
+        "text": "Urban poverty alleviation; slum improvement and upgradation"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["housing", "slum"],
+      "notf_cms_departments": [],
+      "notf_cms_categories": []
+    },
+    {
+      "id": "education",
+      "name": "Education & Culture",
+      "name_local": "ಶಿಕ್ಷಣ ಮತ್ತು ಸಂಸ್ಕೃತಿ",
+      "category": "sector",
+      "act_reference": {
+        "section": "111(C)(5)",
+        "schedule": "I",
+        "text": "Promotion of cultural, educational and aesthetic aspects"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["education"],
+      "notf_cms_departments": [],
+      "notf_cms_categories": []
+    },
+    {
+      "id": "social-welfare",
+      "name": "Social Welfare",
+      "name_local": "ಸಮಾಜ ಕಲ್ಯಾಣ",
+      "category": "sector",
+      "act_reference": {
+        "section": "111(C)(3)",
+        "schedule": "I",
+        "text": "Safeguarding the interests of weaker sections of society including the handicapped and mentally retarded"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["welfare"],
+      "notf_cms_departments": [],
+      "notf_cms_categories": []
+    },
+    {
+      "id": "markets-trade",
+      "name": "Markets & Trade Licensing",
+      "name_local": "ಮಾರುಕಟ್ಟೆಗಳು ಮತ್ತು ವ್ಯಾಪಾರ ಪರವಾನಗಿ",
+      "category": "general",
+      "act_reference": {
+        "section": "111(1)(m)",
+        "schedule": "I",
+        "text": "Establishment, maintenance, regulation and management of markets, slaughter houses"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["revenue", "markets"],
+      "notf_cms_departments": ["markets", "trade_license"],
+      "notf_cms_categories": ["market_encroachment", "street_vendor", "license_issue"]
+    },
+    {
+      "id": "property-tax",
+      "name": "Property Tax & Revenue",
+      "name_local": "ಆಸ್ತಿ ತೆರಿಗೆ ಮತ್ತು ಕಂದಾಯ",
+      "category": "general",
+      "act_reference": {
+        "section": "111(2)",
+        "schedule": "I",
+        "text": "Levy and collection of taxes, fees, fines and other moneys"
+      },
+      "devolution": "obligatory",
+      "budget_heads": ["revenue", "property-tax"],
+      "notf_cms_departments": ["property_tax"],
+      "notf_cms_categories": ["tax_assessment", "khata_transfer", "tax_receipt"]
+    },
+    {
+      "id": "poverty-alleviation",
+      "name": "Poverty Alleviation",
+      "name_local": "ಬಡತನ ನಿರ್ಮೂಲನೆ",
+      "category": "sector",
+      "act_reference": {
+        "section": "111(C)(2)",
+        "schedule": "I",
+        "text": "Planning for social and economic development"
+      },
+      "devolution": "discretionary",
+      "budget_heads": ["welfare"],
+      "notf_cms_departments": ["welfare"],
+      "notf_cms_categories": ["welfare_scheme", "pension"]
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "corporation_id": "south",
+  "source": "BBMP Sahaaya (OpenCity.in)",
+  "source_url": "https://data.opencity.in/dataset/bbmp-grievances-data",
+  "date_range": "2020-02 to 2025-06",
+  "mapped_complaints": 140892,
+  "total_complaints": 140892,
+  "closed": 128215,
+  "open": 12677,
+  "resolution_rate": 91.0,
+  "avg_response_time": "22 hours",
+  "by_function": {
+    "street-lighting": {
+      "count": 56339,
+      "share": 0.4,
+      "resolution_rate": 91.0
+    },
+    "solid-waste": {
+      "count": 35144,
+      "share": 0.249,
+      "resolution_rate": 91.0
+    },
+    "roads-bridges": {
+      "count": 21538,
+      "share": 0.153,
+      "resolution_rate": 91.0
+    },
+    "environment": {
+      "count": 6143,
+      "share": 0.044,
+      "resolution_rate": 91.0
+    },
+    "public-health": {
+      "count": 5604,
+      "share": 0.04,
+      "resolution_rate": 91.0
+    }
+  },
+  "top_wards": [
+    "Begur",
+    "Uttarahalli",
+    "HSR Layout",
+    "Vasanthapura",
+    "Gottigere"
+  ],
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+}

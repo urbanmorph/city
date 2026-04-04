@@ -1,0 +1,17 @@
+{
+  "name": "city-portal",
+  "type": "module",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev --port 4321",
+    "build": "astro build",
+    "preview": "astro preview --port 4321"
+  },
+  "dependencies": {
+    "@astrojs/check": "^0.9.8",
+    "@astrojs/vercel": "^10.0.0",
+    "astro": "^6.0.0",
+    "typescript": "^5.9.3"
+  }
+}

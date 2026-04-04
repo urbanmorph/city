@@ -1,0 +1,17 @@
+node_modules/
+dist/
+.astro/
+.vercel/
+.env
+.env.*
+.DS_Store
+
+# Raw source PDFs (large, not for git)
+data/raw/
+
+# Supporting documents (plans, notes)
+supporting-docs/
+
+# Python extraction virtualenv
+scripts/.venv/
+scripts/__pycache__/

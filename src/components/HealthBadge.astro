@@ -1,0 +1,24 @@
+---
+import type { HealthStatus } from "../lib/types";
+
+interface Props {
+  status: HealthStatus;
+  size?: "sm" | "md";
+}
+
+const { status, size = "sm" } = Astro.props;
+
+const labels: Record<HealthStatus, string> = {
+  good: "Good",
+  stressed: "Stressed",
+  critical: "Critical",
+  unfunded: "Unfunded",
+};
+
+const sizeClass = size === "md" ? " badge--md" : "";
+---
+
+<span class={`badge badge--${status}${sizeClass}`}>
+  <span class="badge-dot"></span>
+  {labels[status]}
+</span>

@@ -1,0 +1,162 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import CorporationCard from "../../components/CorporationCard.astro";
+import { loadCity, loadCorporations, loadFunctionMapping, loadBudget, loadGrievances } from "../../lib/data-loader";
+import { computeAllHealth, countByStatus } from "../../lib/health-score";
+import { formatINR, formatNumber } from "../../lib/format";
+
+const { city: cityId } = Astro.params;
+
+const city = loadCity(cityId!);
+
+if (!city) {
+  return Astro.redirect("/404");
+}
+
+const corporations = loadCorporations(city.id);
+const mapping = loadFunctionMapping(city.id);
+
+// Compute aggregate stats
+let totalBudgetLakhs = 0;
+let totalComplaints = 0;
+
+const corpStats = corporations.map((corp) => {
+  const budget = loadBudget(city.id, corp.id, city.budget_year);
+  const grievances = loadGrievances(city.id, corp.id);
+
+  let stressedCount = 0;
+  let corpBudget = 0;
+  let corpComplaints = 0;
+
+  if (budget && grievances) {
+    const healthList = computeAllHealth(corp.id, budget, grievances, mapping);
+    const counts = countByStatus(healthList);
+    stressedCount = counts.stressed + counts.critical + counts.unfunded;
+    corpBudget = budget.summary.total_expenditure;
+    corpComplaints = grievances.total_complaints;
+  }
+
+  totalBudgetLakhs += corpBudget;
+  totalComplaints += corpComplaints;
+
+  return {
+    corporation: corp,
+    stressedCount,
+    totalBudget: formatINR(corpBudget),
+    totalComplaints: formatNumber(corpComplaints),
+  };
+});
+---
+
+<BaseLayout title={city.name} description={`Governance data for ${city.name}`}>
+  <Breadcrumb
+    slot="breadcrumb"
+    items={[
+      { label: "Home", href: "/" },
+      { label: city.name },
+    ]}
+  />
+
+  <section class="city-overview">
+    <h1>{city.name}</h1>
+    <p class="text-local">{city.name_local}</p>
+    <p class="text-sm text-muted mt-1">{city.authority} &mdash; {city.act.name}</p>
+  </section>
+
+  <dl class="stat-row mt-2">
+    <div class="stat-item">
+      <dt>Functions</dt>
+      <dd>{mapping.length}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Total Budget</dt>
+      <dd>{formatINR(totalBudgetLakhs)}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Total Complaints</dt>
+      <dd>{formatNumber(totalComplaints)}</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Staff per Lakh</dt>
+      <dd>317</dd>
+    </div>
+  </dl>
+
+  <h2 class="section-title mt-2">City Corporations ({corporations.length})</h2>
+
+  <div class="card-grid mt-1">
+    {corpStats.map(({ corporation, stressedCount, totalBudget, totalComplaints }) => (
+      <CorporationCard
+        cityId={city.id}
+        corporation={corporation}
+        stressedCount={stressedCount}
+        totalBudget={totalBudget}
+        totalComplaints={totalComplaints}
+      />
+    ))}
+  </div>
+
+  <nav class="page-links mt-2">
+    <a href={`/${city.id}/compare`} class="link-btn">Compare Corporations</a>
+    <a href={`/${city.id}/act`} class="link-btn">View {city.act.short_name}</a>
+  </nav>
+</BaseLayout>
+
+<style>
+  .city-overview h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-primary);
+  }
+  .stat-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    padding: 1rem 1.25rem;
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .stat-item dt {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-text-muted);
+  }
+  .stat-item dd {
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+  .section-title {
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: var(--c-primary);
+  }
+  .page-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .link-btn {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    color: var(--c-primary);
+    border: 1px solid var(--c-primary);
+    border-radius: var(--radius);
+    transition: background 0.15s, color 0.15s;
+  }
+  .link-btn:hover {
+    background: var(--c-primary);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  @media (max-width: 640px) {
+    .city-overview h1 { font-size: 1.3rem; }
+    .stat-row { gap: 1rem; }
+    .stat-item dd { font-size: 1.05rem; }
+  }
+</style>
