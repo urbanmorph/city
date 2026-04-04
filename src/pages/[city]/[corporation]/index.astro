@@ -37,9 +37,12 @@ const sortedFunctions = mapping.map((fn) => {
   const health = healthList.find((h) => h.function_id === fn.id);
   return { fn, health };
 }).sort((a, b) => {
-  const aOrder = a.health ? statusOrder[a.health.status] : 3;
-  const bOrder = b.health ? statusOrder[b.health.status] : 3;
-  return aOrder - bOrder;
+  const aStress = a.health?.stress_index ?? 0;
+  const bStress = b.health?.stress_index ?? 0;
+  // Unfunded (no budget) float to top after critical
+  const aScore = a.health?.status === "unfunded" ? 999 : aStress;
+  const bScore = b.health?.status === "unfunded" ? 999 : bStress;
+  return bScore - aScore;
 });
 
 // Summary stats

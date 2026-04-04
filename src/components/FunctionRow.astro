@@ -12,8 +12,14 @@ interface Props {
 
 const { fn, health, cityId, corpId, staffPct } = Astro.props;
 
-const budgetBarWidth = Math.min(health.budget_share * 500, 100);
-const complaintBarWidth = Math.min(health.complaint_share * 500, 100);
+// SVG bar dimensions
+const barW = 120;
+const barH = 14;
+const budgetFill = Math.min(health.budget_share * 500, 100);
+const complaintFill = Math.min(health.complaint_share * 500, 100);
+
+// People color coding
+const staffColor = staffPct === undefined ? "" : staffPct < 0.05 ? "staff--low" : staffPct < 0.20 ? "staff--mid" : "staff--high";
 
 function formatAmount(lakhs: number): string {
   if (lakhs >= 1000) return `${(lakhs / 100).toFixed(0)} Cr`;
@@ -26,16 +32,17 @@ const devolutionLabel = fn.devolution === "obligatory"
     ? "Discretionary"
     : "Not Devolved";
 
-// Red flag logic
 const isRedFlag = health.status === "critical" || health.status === "unfunded";
 const redFlagReason = health.status === "critical"
   ? `${(health.budget_share * 100).toFixed(1)}% budget, ${(health.complaint_share * 100).toFixed(1)}% complaints`
   : health.status === "unfunded"
     ? "Mandated but <1% budget"
     : "";
+
 ---
 
 <tr class={isRedFlag ? "row--flagged" : ""}>
+  <!-- THE MANDATE -->
   <td>
     <a href={`/${cityId}/${corpId}/${fn.id}`}>{fn.name}</a>
     <br />
@@ -46,21 +53,26 @@ const redFlagReason = health.status === "critical"
     )}
   </td>
 
+  <!-- THE MONEY -->
   <td>
-    <div class="bar-chart">
-      <div class="bar-track">
-        <div class="bar-fill bar-fill--budget" style={`width: ${budgetBarWidth}%`}></div>
-      </div>
-      <span class="bar-label">
+    <div class="svg-bar-cell">
+      <svg width={barW} height={barH} role="img" aria-label={`Budget: ${(health.budget_share * 100).toFixed(1)}%`}>
+        <rect x="0" y="0" width={barW} height={barH} rx="3" fill="#e5e7eb" />
+        {budgetFill > 0 && (
+          <rect x="0" y="0" width={budgetFill * barW / 100} height={barH} rx="3" fill="#3F5F7A" opacity={0.4 + health.budget_share * 3} />
+        )}
+      </svg>
+      <span class="bar-label-text">
         {formatAmount(health.budget_amount)}
         <span class="text-muted">({(health.budget_share * 100).toFixed(1)}%)</span>
       </span>
     </div>
   </td>
 
+  <!-- THE PEOPLE -->
   <td class="people-cell">
-    {staffPct !== undefined ? (
-      <span class={`staff-pct ${staffPct < 0.05 ? "staff-pct--low" : ""}`}>
+    {staffPct !== undefined && staffPct > 0 ? (
+      <span class={`staff-val ${staffColor}`} title={`${(staffPct * 100).toFixed(1)}% of department budget is staff cost`}>
         {(staffPct * 100).toFixed(1)}%
       </span>
     ) : (
@@ -68,24 +80,30 @@ const redFlagReason = health.status === "critical"
     )}
   </td>
 
+  <!-- THE REALITY -->
   <td>
-    <div class="bar-chart">
-      <div class="bar-track">
-        <div class="bar-fill bar-fill--complaint" style={`width: ${complaintBarWidth}%`}></div>
-      </div>
-      <span class="bar-label">
+    <div class="svg-bar-cell">
+      <svg width={barW} height={barH} role="img" aria-label={`Complaints: ${(health.complaint_share * 100).toFixed(1)}%`}>
+        <rect x="0" y="0" width={barW} height={barH} rx="3" fill="#e5e7eb" />
+        {complaintFill > 0 && (
+          <rect x="0" y="0" width={complaintFill * barW / 100} height={barH} rx="3" fill="#F5B82E" opacity={0.5 + health.complaint_share * 2} />
+        )}
+      </svg>
+      <span class="bar-label-text">
         {health.complaint_count.toLocaleString("en-IN")}
         <span class="text-muted">({(health.complaint_share * 100).toFixed(1)}%)</span>
       </span>
     </div>
   </td>
 
+  <!-- THE VERDICT -->
   <td>
     <HealthBadge status={health.status} />
   </td>
 </tr>
 
 <style>
+  /* ── Mandate column ─────────────────────────────────── */
   .dev-tag {
     display: inline-block;
     font-size: 0.65rem;
@@ -97,18 +115,9 @@ const redFlagReason = health.status === "critical"
     text-transform: uppercase;
     letter-spacing: 0.02em;
   }
-  .dev-tag--obligatory {
-    background: #dcfce7;
-    color: #166534;
-  }
-  .dev-tag--discretionary {
-    background: #f3f4f6;
-    color: #6b7280;
-  }
-  .dev-tag--not_devolved {
-    background: #fee2e2;
-    color: #991b1b;
-  }
+  .dev-tag--obligatory { background: #dcfce7; color: #166534; }
+  .dev-tag--discretionary { background: #f3f4f6; color: #6b7280; }
+  .dev-tag--not_devolved { background: #fee2e2; color: #991b1b; }
   .red-flag-tag {
     display: inline-block;
     margin-left: 0.3rem;
@@ -117,20 +126,36 @@ const redFlagReason = health.status === "critical"
     cursor: help;
     vertical-align: middle;
   }
-  .row--flagged {
-    background: #fef2f2 !important;
+  .row--flagged { background: #fef2f2 !important; }
+  .row--flagged:hover { background: #fee2e2 !important; }
+
+  /* ── SVG bar cells (Money & Reality) ────────────────── */
+  .svg-bar-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
   }
-  .row--flagged:hover {
-    background: #fee2e2 !important;
+  .svg-bar-cell svg {
+    display: block;
   }
+  .bar-label-text {
+    font-size: 0.78rem;
+    color: var(--c-text-muted);
+    white-space: nowrap;
+  }
+
+  /* ── People ──────────────────────────────────────────── */
   .people-cell {
     text-align: center;
+    vertical-align: middle;
   }
-  .staff-pct {
+  .staff-val {
     font-size: 0.88rem;
-    font-weight: 600;
+    font-weight: 700;
+    cursor: help;
   }
-  .staff-pct--low {
-    color: var(--c-critical);
-  }
+  .staff--low { color: #ef4444; }
+  .staff--mid { color: #eab308; }
+  .staff--high { color: #22c55e; }
+
 </style>
