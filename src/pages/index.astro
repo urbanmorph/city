@@ -7,7 +7,6 @@ import { formatINR, formatNumber } from "../lib/format";
 
 const cities = loadCities();
 
-// For each city, load corporations and compute summary stats
 const cityData = cities.map((city) => {
   const corporations = loadCorporations(city.id);
   const mapping = loadFunctionMapping(city.id);
@@ -41,26 +40,86 @@ const cityData = cities.map((city) => {
 ---
 
 <BaseLayout title="City Portal">
+  <!-- ── Hero ─────────────────────────────────────────────── -->
   <section class="hero">
     <h1>Governance Accountability for Indian Cities</h1>
-    <p class="hero__sub">From mandate to money to outcomes — the full story</p>
+    <p class="hero__sub">From mandate to money to outcomes &mdash; the full story of how your city works</p>
   </section>
 
+  <!-- ── 6-Layer Narrative ────────────────────────────────── -->
+  <section class="narrative-flow">
+    <h2 class="narrative-flow__title">How we measure governance</h2>
+    <p class="text-sm text-muted">For each civic function, we trace the complete chain from law to lived reality.</p>
+
+    <div class="flow-steps">
+      <div class="flow-step">
+        <span class="flow-step__num">1</span>
+        <div class="flow-step__content">
+          <strong>The Mandate</strong>
+          <span>What does the law require?</span>
+          <span class="flow-step__source">GBA Act, Schedule I</span>
+        </div>
+      </div>
+      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <span class="flow-step__num">2</span>
+        <div class="flow-step__content">
+          <strong>The Money</strong>
+          <span>How much is allocated?</span>
+          <span class="flow-step__source">Budget books 2026-27</span>
+        </div>
+      </div>
+      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <span class="flow-step__num">3</span>
+        <div class="flow-step__content">
+          <strong>The People</strong>
+          <span>Are there enough staff?</span>
+          <span class="flow-step__source">ASICS 2023</span>
+        </div>
+      </div>
+      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <span class="flow-step__num">4</span>
+        <div class="flow-step__content">
+          <strong>The Reality</strong>
+          <span>What do citizens experience?</span>
+          <span class="flow-step__source">BBMP Sahaaya, 766K complaints</span>
+        </div>
+      </div>
+      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
+      <div class="flow-step">
+        <span class="flow-step__num">5</span>
+        <div class="flow-step__content">
+          <strong>Who's Responsible</strong>
+          <span>Your ward, your rep</span>
+          <span class="flow-step__source">kaun.city</span>
+        </div>
+      </div>
+      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
+      <div class="flow-step flow-step--verdict">
+        <span class="flow-step__num">6</span>
+        <div class="flow-step__content">
+          <strong>The Verdict</strong>
+          <span>Is this function healthy?</span>
+          <span class="flow-step__source">Health score</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cities ───────────────────────────────────────────── -->
   {cityData.map(({ city, mapping, corpStats }) => (
-    <section class="city-section mt-2">
+    <section class="city-section">
       <div class="city-header">
         <h2>
           <a href={`/${city.id}`}>{city.name}</a>
         </h2>
         <p class="text-local">{city.name_local}</p>
-        <p class="text-sm text-muted">{city.authority}</p>
+        <p class="text-sm text-muted">{city.authority} &mdash; {city.act.short_name} ({city.act.year})</p>
       </div>
 
       <dl class="city-meta">
-        <div>
-          <dt>Act</dt>
-          <dd>{city.act.short_name} ({city.act.year})</dd>
-        </div>
         <div>
           <dt>Functions</dt>
           <dd>{mapping.length}</dd>
@@ -72,6 +131,14 @@ const cityData = cities.map((city) => {
         <div>
           <dt>Budget Year</dt>
           <dd>{city.budget_year}</dd>
+        </div>
+        <div>
+          <dt>Staff / Lakh</dt>
+          <dd>317</dd>
+        </div>
+        <div>
+          <dt>Vacancy</dt>
+          <dd>52%</dd>
         </div>
       </dl>
 
@@ -86,6 +153,12 @@ const cityData = cities.map((city) => {
           />
         ))}
       </div>
+
+      <nav class="city-links mt-1">
+        <a href={`/${city.id}/act`}>{city.act.short_name} &mdash; 26 chapters, 361 sections</a>
+        <span class="city-links__sep">&middot;</span>
+        <a href={`/${city.id}/compare`}>Compare corporations</a>
+      </nav>
     </section>
   ))}
 </BaseLayout>
@@ -93,7 +166,7 @@ const cityData = cities.map((city) => {
 <style>
   .hero {
     text-align: center;
-    padding: 2.5rem 0 1.5rem;
+    padding: 2.5rem 0 1rem;
   }
   .hero h1 {
     font-size: 1.75rem;
@@ -106,6 +179,88 @@ const cityData = cities.map((city) => {
     color: var(--c-text-muted);
     margin-top: 0.4rem;
   }
+
+  /* ── 6-Layer Flow ───────────────────────────────────────── */
+  .narrative-flow {
+    margin: 1.5rem 0 2rem;
+    padding: 1.25rem;
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .narrative-flow__title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin-bottom: 0.25rem;
+  }
+  .flow-steps {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    margin-top: 1rem;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .flow-step {
+    flex: 1;
+    min-width: 120px;
+    display: flex;
+    gap: 0.5rem;
+    padding: 0.75rem;
+    background: var(--c-bg);
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+  }
+  .flow-step--verdict {
+    background: #f0f4f8;
+    border-color: var(--c-primary);
+  }
+  .flow-step__num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--c-primary);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+  .flow-step--verdict .flow-step__num {
+    background: var(--c-accent);
+    color: var(--c-text);
+  }
+  .flow-step__content {
+    display: flex;
+    flex-direction: column;
+    font-size: 0.82rem;
+    line-height: 1.4;
+  }
+  .flow-step__content strong {
+    font-size: 0.85rem;
+    color: var(--c-text);
+  }
+  .flow-step__content span {
+    color: var(--c-text-muted);
+  }
+  .flow-step__source {
+    font-size: 0.7rem;
+    font-style: italic;
+    margin-top: 0.2rem;
+  }
+  .flow-arrow-h {
+    display: flex;
+    align-items: center;
+    padding: 0 0.25rem;
+    color: var(--c-text-muted);
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  /* ── City Section ───────────────────────────────────────── */
   .city-section {
     margin-bottom: 2rem;
   }
@@ -139,9 +294,23 @@ const cityData = cities.map((city) => {
     font-size: 0.95rem;
     font-weight: 600;
   }
+  .city-links {
+    font-size: 0.88rem;
+  }
+  .city-links a {
+    color: var(--c-primary);
+    font-weight: 500;
+  }
+  .city-links__sep {
+    margin: 0 0.5rem;
+    color: var(--c-text-muted);
+  }
 
   @media (max-width: 640px) {
     .hero h1 { font-size: 1.3rem; }
     .city-meta { gap: 1rem; }
+    .flow-steps { flex-wrap: wrap; gap: 0.5rem; }
+    .flow-arrow-h { display: none; }
+    .flow-step { min-width: calc(50% - 0.25rem); }
   }
 </style>

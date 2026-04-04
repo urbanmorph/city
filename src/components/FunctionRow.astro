@@ -7,9 +7,10 @@ interface Props {
   health: FunctionHealth;
   cityId: string;
   corpId: string;
+  staffPct?: number;
 }
 
-const { fn, health, cityId, corpId } = Astro.props;
+const { fn, health, cityId, corpId, staffPct } = Astro.props;
 
 const budgetBarWidth = Math.min(health.budget_share * 500, 100);
 const complaintBarWidth = Math.min(health.complaint_share * 500, 100);
@@ -24,13 +25,25 @@ const devolutionLabel = fn.devolution === "obligatory"
   : fn.devolution === "discretionary"
     ? "Discretionary"
     : "Not Devolved";
+
+// Red flag logic
+const isRedFlag = health.status === "critical" || health.status === "unfunded";
+const redFlagReason = health.status === "critical"
+  ? `${(health.budget_share * 100).toFixed(1)}% budget, ${(health.complaint_share * 100).toFixed(1)}% complaints`
+  : health.status === "unfunded"
+    ? "Mandated but <1% budget"
+    : "";
 ---
 
-<tr>
+<tr class={isRedFlag ? "row--flagged" : ""}>
   <td>
     <a href={`/${cityId}/${corpId}/${fn.id}`}>{fn.name}</a>
     <br />
     <span class="text-sm text-muted">S. {fn.act_reference.section}</span>
+    <span class={`dev-tag dev-tag--${fn.devolution}`}>{devolutionLabel}</span>
+    {isRedFlag && (
+      <span class="red-flag-tag" title={redFlagReason}>&#9888;</span>
+    )}
   </td>
 
   <td>
@@ -43,6 +56,16 @@ const devolutionLabel = fn.devolution === "obligatory"
         <span class="text-muted">({(health.budget_share * 100).toFixed(1)}%)</span>
       </span>
     </div>
+  </td>
+
+  <td class="people-cell">
+    {staffPct !== undefined ? (
+      <span class={`staff-pct ${staffPct < 0.05 ? "staff-pct--low" : ""}`}>
+        {(staffPct * 100).toFixed(1)}%
+      </span>
+    ) : (
+      <span class="text-sm text-muted">&mdash;</span>
+    )}
   </td>
 
   <td>
@@ -60,8 +83,54 @@ const devolutionLabel = fn.devolution === "obligatory"
   <td>
     <HealthBadge status={health.status} />
   </td>
-
-  <td>
-    <span class="text-sm">{devolutionLabel}</span>
-  </td>
 </tr>
+
+<style>
+  .dev-tag {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 600;
+    padding: 0.05rem 0.4rem;
+    border-radius: 3px;
+    margin-left: 0.3rem;
+    vertical-align: middle;
+    text-transform: uppercase;
+    letter-spacing: 0.02em;
+  }
+  .dev-tag--obligatory {
+    background: #dcfce7;
+    color: #166534;
+  }
+  .dev-tag--discretionary {
+    background: #f3f4f6;
+    color: #6b7280;
+  }
+  .dev-tag--not_devolved {
+    background: #fee2e2;
+    color: #991b1b;
+  }
+  .red-flag-tag {
+    display: inline-block;
+    margin-left: 0.3rem;
+    font-size: 0.85rem;
+    color: var(--c-critical);
+    cursor: help;
+    vertical-align: middle;
+  }
+  .row--flagged {
+    background: #fef2f2 !important;
+  }
+  .row--flagged:hover {
+    background: #fee2e2 !important;
+  }
+  .people-cell {
+    text-align: center;
+  }
+  .staff-pct {
+    font-size: 0.88rem;
+    font-weight: 600;
+  }
+  .staff-pct--low {
+    color: var(--c-critical);
+  }
+</style>

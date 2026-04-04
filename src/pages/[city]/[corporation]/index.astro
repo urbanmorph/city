@@ -110,6 +110,14 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
       <dt>Resolution Rate</dt>
       <dd>{resolutionRate.toFixed(1)}%</dd>
     </div>
+    <div class="stat-item">
+      <dt>Staff / Lakh</dt>
+      <dd>317</dd>
+    </div>
+    <div class="stat-item">
+      <dt>Vacancy</dt>
+      <dd>52%</dd>
+    </div>
   </dl>
 
   <div class="status-summary mt-2">
@@ -124,11 +132,11 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
       <table class="data-table">
         <thead>
           <tr>
-            <th>Function</th>
-            <th>Budget</th>
-            <th>Complaints</th>
-            <th>Health</th>
-            <th>Devolution</th>
+            <th>The Mandate</th>
+            <th>The Money</th>
+            <th>The People</th>
+            <th>The Reality</th>
+            <th>The Verdict</th>
           </tr>
         </thead>
         <tbody>
@@ -138,6 +146,7 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
               health={getHealthOrFallback(fn.id)}
               cityId={city.id}
               corpId={corporation.id}
+              staffPct={budget?.staff_cost?.[fn.id]?.pct_of_dept_budget}
             />
           ))}
         </tbody>
@@ -149,31 +158,8 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
     </div>
   )}
 
-  {redFlags.length > 0 && (
-    <section class="red-flags mt-2">
-      <h2>Red Flags</h2>
-      <p class="text-sm text-muted mb-1">Functions requiring immediate attention</p>
-      <ul class="red-flags__list">
-        {redFlags.map(({ fn, health }) => (
-          <li class="red-flag-item">
-            <div class="red-flag-item__header">
-              <a href={`/${city.id}/${corporation.id}/${fn.id}`}>{fn.name}</a>
-              <HealthBadge status={health!.status} />
-            </div>
-            <p class="text-sm text-muted">
-              {health!.status === "unfunded"
-                ? `Mandated under S. ${fn.act_reference.section} but receives less than 1% of budget (${formatINR(health!.budget_amount)}).`
-                : `High stress index (${health!.stress_index.toFixed(1)}) with ${formatNumber(health!.complaint_count)} complaints and only ${formatINR(health!.budget_amount)} allocated.`
-              }
-            </p>
-          </li>
-        ))}
-      </ul>
-    </section>
-  )}
-
   <nav class="page-links mt-2">
-    <a href={`/${city.id}/${corporation.id}/budget`} class="link-btn">Full Budget</a>
+    <a href={`/${city.id}/${corporation.id}/budget/${corporation.budget_year}`} class="link-btn">Full Budget</a>
     <a href={`/${city.id}/act`} class="link-btn">{city.act.short_name}</a>
     <a href={`/${city.id}/compare`} class="link-btn">Compare Corporations</a>
   </nav>
@@ -219,43 +205,6 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
   .status-count--stressed { background: #fef9c3; color: #854d0e; }
   .status-count--critical { background: #fee2e2; color: #991b1b; }
   .status-count--unfunded { background: #f3f4f6; color: #4b5563; }
-
-  .red-flags {
-    background: #fff5f5;
-    border: 1px solid #fecaca;
-    border-radius: var(--radius);
-    padding: 1.25rem;
-  }
-  .red-flags h2 {
-    font-size: 1.1rem;
-    font-weight: 700;
-    color: #991b1b;
-    margin-bottom: 0.25rem;
-  }
-  .red-flags__list {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.75rem;
-    margin-top: 0.75rem;
-  }
-  .red-flag-item {
-    padding: 0.75rem;
-    background: #fff;
-    border: 1px solid #fecaca;
-    border-radius: var(--radius);
-  }
-  .red-flag-item__header {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin-bottom: 0.25rem;
-  }
-  .red-flag-item__header a {
-    font-weight: 600;
-    color: var(--c-primary);
-  }
 
   .page-links {
     display: flex;

@@ -77,6 +77,18 @@ function getVerdict(status: HealthStatus): string {
 
 const verdictText = getVerdict(health.status);
 
+// Staff & vacancy data (ASICS 2023 — city-level, not per-function)
+const staffData = {
+  staffPerLakh: 317,
+  vacancy: 52,
+  comparisons: [
+    { city: "Mumbai", value: 938 },
+    { city: "Delhi", value: 601 },
+    { city: "Chennai", value: 446 },
+  ],
+  source: "ASICS 2023, Janaagraha",
+};
+
 const pageTitle = `${fnDef.name} — ${corpData.name}`;
 const breadcrumbs = [
   { label: "Home", href: "/" },
@@ -151,13 +163,42 @@ const breadcrumbs = [
       <p class="note-text mt-1">
         Historical budget expenditure variance: -32% (<a href="https://www.janaagraha.org/asics/" target="_blank" rel="noopener">ASICS 2023</a>)
       </p>
-      <p class="source-cite mt-1">Source: Corporation budget book {budget.fiscal_year} (illustrative — pending extraction)</p>
+      <p class="source-cite mt-1">Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" target="_blank" rel="noopener">Corporation budget book {budget.fiscal_year}</a>, OpenCity.in</p>
     </div>
   </section>
 
   <div class="flow-arrow" aria-hidden="true">&darr;</div>
 
-  <!-- ── Section 3: THE REALITY ────────────────────────── -->
+  <!-- ── Section 3: THE PEOPLE ─────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">The People</h2>
+    <div class="section-body">
+      <div class="stat-row">
+        <div class="stat-block">
+          <span class="stat-value">{staffData.staffPerLakh}</span>
+          <span class="stat-label">Staff per lakh population</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-value">{staffData.vacancy}%</span>
+          <span class="stat-label">Vacancy rate</span>
+        </div>
+      </div>
+      <div class="staff-compare mt-1">
+        <span class="text-sm text-muted">Compare (staff per lakh):</span>
+        <span class="text-sm">
+          {staffData.comparisons.map((c) => `${c.city} ${c.value}`).join(" · ")}
+        </span>
+      </div>
+      <p class="note-text mt-1">
+        City-level figures — per-function staffing not available. {staffData.vacancy}% vacancy means roughly half the sanctioned posts are unfilled.
+      </p>
+      <p class="source-cite mt-1">Source: <a href="https://www.janaagraha.org/asics/" target="_blank" rel="noopener">{staffData.source}</a></p>
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── Section 4: THE REALITY ────────────────────────── -->
   <section class="card narrative-section">
     <h2 class="section-label">The Reality</h2>
     <div class="section-body">
@@ -187,7 +228,36 @@ const breadcrumbs = [
 
   <div class="flow-arrow" aria-hidden="true">&darr;</div>
 
-  <!-- ── Section 4: THE VERDICT ────────────────────────── -->
+  <!-- ── Section 5: WHO'S RESPONSIBLE ──────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">Who's Responsible</h2>
+    <div class="section-body">
+      <p class="text-sm">
+        Each of the {corpData.wards} wards in {corpData.name.replace(' City Corporation', '')} has an elected councillor
+        accountable for civic service delivery including {fnDef.name.toLowerCase()}.
+      </p>
+      <div class="action-links mt-1">
+        <a href="https://kaun.city" target="_blank" rel="noopener" class="action-link">
+          <span class="action-link__icon">&#x1F5F3;</span>
+          <span class="action-link__text">
+            <strong>Find your ward representative</strong>
+            <span class="text-sm text-muted">kaun.city — ward-level accountability</span>
+          </span>
+        </a>
+        <a href={`/${cityId}/${corpId}/budget/${budget.fiscal_year}`} class="action-link">
+          <span class="action-link__icon">&#x1F4CA;</span>
+          <span class="action-link__text">
+            <strong>See the full budget</strong>
+            <span class="text-sm text-muted">All departments, {budget.fiscal_year}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── Section 6: THE VERDICT ────────────────────────── -->
   <section class="card narrative-section narrative-section--verdict">
     <h2 class="section-label">The Verdict</h2>
     <div class="section-body verdict-body">
@@ -401,6 +471,49 @@ const breadcrumbs = [
   }
   .fn-nav__center a {
     font-weight: 600;
+    color: var(--c-primary);
+  }
+
+  /* ── Staff Compare ────────────────────────────────────── */
+  .staff-compare {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: baseline;
+  }
+
+  /* ── Action Links (Who's Responsible) ───────────────── */
+  .action-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .action-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+    transition: border-color 0.15s, box-shadow 0.15s;
+  }
+  .action-link:hover {
+    border-color: var(--c-primary);
+    box-shadow: 0 2px 8px rgba(63,95,122,0.1);
+    text-decoration: none;
+  }
+  .action-link__icon {
+    font-size: 1.5rem;
+    flex-shrink: 0;
+  }
+  .action-link__text {
+    display: flex;
+    flex-direction: column;
+  }
+  .action-link__text strong {
+    font-size: 0.9rem;
     color: var(--c-primary);
   }
 

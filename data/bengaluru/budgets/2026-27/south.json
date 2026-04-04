@@ -2,29 +2,145 @@
   "corporation_id": "south",
   "fiscal_year": "2026-27",
   "summary": {
-    "total_revenue": 310000,
-    "total_expenditure": 298000,
+    "total_revenue": 382643.55,
+    "total_expenditure": 382595.33,
     "unit": "lakhs"
   },
   "by_function": {
-    "water-supply": { "amount": 6200, "share": 0.208, "yoy_growth": 0.14 },
-    "sewerage-drainage": { "amount": 3700, "share": 0.124, "yoy_growth": 0.09 },
-    "solid-waste": { "amount": 4500, "share": 0.151, "yoy_growth": 0.16 },
-    "roads-bridges": { "amount": 5400, "share": 0.181, "yoy_growth": 0.11 },
-    "street-lighting": { "amount": 1500, "share": 0.050, "yoy_growth": 0.17 },
-    "fire-services": { "amount": 550, "share": 0.018, "yoy_growth": 0.06 },
-    "public-health": { "amount": 2200, "share": 0.074, "yoy_growth": 0.12 },
-    "parks-recreation": { "amount": 1100, "share": 0.037, "yoy_growth": 0.08 },
-    "urban-planning": { "amount": 750, "share": 0.025, "yoy_growth": 0.04 },
-    "environment": { "amount": 620, "share": 0.021, "yoy_growth": 0.15 },
-    "burial-cremation": { "amount": 180, "share": 0.006, "yoy_growth": 0.03 },
-    "cattle-animals": { "amount": 250, "share": 0.008, "yoy_growth": 0.05 },
-    "slum-improvement": { "amount": 420, "share": 0.014, "yoy_growth": 0.07 },
-    "education": { "amount": 150, "share": 0.005, "yoy_growth": 0.02 },
-    "social-welfare": { "amount": 220, "share": 0.007, "yoy_growth": 0.04 },
-    "markets-trade": { "amount": 500, "share": 0.017, "yoy_growth": 0.06 },
-    "property-tax": { "amount": 620, "share": 0.021, "yoy_growth": 0.09 },
-    "poverty-alleviation": { "amount": 280, "share": 0.009, "yoy_growth": 0.03 }
+    "property-tax": {
+      "amount": 24876.0,
+      "share": 0.065,
+      "yoy_growth": 0
+    },
+    "urban-planning": {
+      "amount": 44823.0,
+      "share": 0.1172,
+      "yoy_growth": 0
+    },
+    "roads-bridges": {
+      "amount": 189671.45,
+      "share": 0.4957,
+      "yoy_growth": 0
+    },
+    "street-lighting": {
+      "amount": 9276.29,
+      "share": 0.0242,
+      "yoy_growth": 0
+    },
+    "water-supply": {
+      "amount": 0.0,
+      "share": 0.0,
+      "yoy_growth": 0
+    },
+    "sewerage-drainage": {
+      "amount": 4414.89,
+      "share": 0.0115,
+      "yoy_growth": 0
+    },
+    "fire-services": {
+      "amount": 0.0,
+      "share": 0.0,
+      "yoy_growth": 0
+    },
+    "solid-waste": {
+      "amount": 46820.0,
+      "share": 0.1224,
+      "yoy_growth": 0
+    },
+    "public-health": {
+      "amount": 9295.0,
+      "share": 0.0243,
+      "yoy_growth": 0
+    },
+    "parks-recreation": {
+      "amount": 5835.0,
+      "share": 0.0153,
+      "yoy_growth": 0
+    },
+    "environment": {
+      "amount": 1315.0,
+      "share": 0.0034,
+      "yoy_growth": 0
+    },
+    "education": {
+      "amount": 1448.5,
+      "share": 0.0038,
+      "yoy_growth": 0
+    },
+    "social-welfare": {
+      "amount": 26586.71,
+      "share": 0.0695,
+      "yoy_growth": 0
+    }
   },
-  "note": "Placeholder data — actual values pending PDF extraction from budget books"
+  "by_department": {
+    "Council": 619.5,
+    "General Administration": 17614.0,
+    "Revenue": 24876.0,
+    "Town Planning and Regulation": 44823.0,
+    "Public Works": 203362.62,
+    "Solid Waste Management": 46820.0,
+    "Public Health-General": 8238.0,
+    "Public Health-Medical": 1057.0,
+    "Horticulture": 5835.0,
+    "Urban Forestry": 1315.0,
+    "Public Education": 1448.5,
+    "Social Welfare": 26586.71
+  },
+  "source": "Corporation Budget Book 2026-27, OpenCity.in",
+  "source_url": "https://data.opencity.in/dataset/gba-corporation-budgets-2026-27",
+  "note": "Public Works split into roads-bridges, street-lighting, water-supply, sewerage-drainage, and fire-services based on line-item extraction from the budget PDF. See public_works_split for methodology.",
+  "public_works_split": {
+    "total_public_works": 203362.62,
+    "extracted_line_items_total": 181948.63,
+    "scale_factor": 1.117693,
+    "breakdown": {
+      "roads-bridges": 189671.45,
+      "street-lighting": 9276.29,
+      "water-supply": 0.0,
+      "sewerage-drainage": 4414.89,
+      "fire-services": 0.0
+    },
+    "line_item_count": 88,
+    "methodology": "Line items extracted from PDF budget book using pdfplumber. Classification by budget code sub-groups (05-22XXXX for R&M, 05-40XXXX for capital works) and English keyword matching. Amounts scaled proportionally to match the official Public Works department total where extraction total differs."
+  },
+  "staff_cost": {
+    "education": {
+      "amount": 350.0,
+      "pct_of_dept_budget": 0.242
+    },
+    "environment": {
+      "amount": 191.0,
+      "pct_of_dept_budget": 0.145
+    },
+    "parks-recreation": {
+      "amount": 801.0,
+      "pct_of_dept_budget": 0.137
+    },
+    "property-tax": {
+      "amount": 3220.0,
+      "pct_of_dept_budget": 0.129
+    },
+    "public-health": {
+      "amount": 1961.0,
+      "pct_of_dept_budget": 0.211
+    },
+    "roads-bridges": {
+      "amount": 3524.0,
+      "pct_of_dept_budget": 0.019
+    },
+    "social-welfare": {
+      "amount": 499.0,
+      "pct_of_dept_budget": 0.019
+    },
+    "solid-waste": {
+      "amount": 15310.0,
+      "pct_of_dept_budget": 0.327
+    },
+    "urban-planning": {
+      "amount": 200.0,
+      "pct_of_dept_budget": 0.004
+    }
+  },
+  "staff_cost_pension_excluded": 8700.0
 }

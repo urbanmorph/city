@@ -34,6 +34,7 @@ export interface BudgetData {
   fiscal_year: string;
   summary: { total_revenue: number; total_expenditure: number; unit: string };
   by_function: Record<string, { amount: number; share: number; yoy_growth: number }>;
+  staff_cost?: Record<string, { amount: number; pct_of_dept_budget: number }>;
 }
 
 export interface GrievanceData {
@@ -46,6 +47,47 @@ export interface GrievanceData {
   avg_response_time: string;
   by_function: Record<string, { count: number; share: number; resolution_rate: number }>;
   top_wards: string[];
+}
+
+export interface ActSection {
+  number: string;
+  title: string;
+}
+
+export interface ActChapter {
+  number: string;
+  title: string;
+  page_start: number;
+  page_end: number;
+  sections: ActSection[];
+}
+
+export interface ActScheduleFunction {
+  number: string;
+  text: string;
+}
+
+export interface ActSectorFunction {
+  number: string;
+  title: string;
+  items: { sub: string; text: string }[];
+}
+
+export interface ActScheduleI {
+  title: string;
+  section_reference: string;
+  core_functions: ActScheduleFunction[];
+  general_functions: ActScheduleFunction[];
+  sector_functions: ActSectorFunction[];
+}
+
+export interface ActData {
+  title: string;
+  act_number: string;
+  pages: number;
+  source: string;
+  chapters: ActChapter[];
+  schedules: { I: ActScheduleI };
 }
 
 export type HealthStatus = "good" | "stressed" | "critical" | "unfunded";
