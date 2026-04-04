@@ -88,12 +88,16 @@ a:hover { text-decoration: underline; }
   border-radius: var(--radius);
   padding: 1.25rem;
 }
-.card + .card { margin-top: 1rem; }
+.card + .card:not(.card-grid > *) { margin-top: 1rem; }
 .card h2, .card h3 { margin-bottom: 0.5rem; }
 .card-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
+}
+.card-grid > * {
+  height: 100%;
+  margin-top: 0;
 }
 @media (max-width: 900px) {
   .card-grid { grid-template-columns: repeat(2, 1fr); }
