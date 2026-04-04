@@ -92,9 +92,14 @@ a:hover { text-decoration: underline; }
 .card h2, .card h3 { margin-bottom: 0.5rem; }
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 1rem;
-  align-items: stretch;
+}
+@media (max-width: 900px) {
+  .card-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .card-grid { grid-template-columns: 1fr; }
 }
 
 /* ── Tables ────────────────────────────────────────────── */
@@ -228,5 +233,4 @@ main.content { padding: 1rem 0 3rem; }
   table.data-table th,
   table.data-table td { padding: 0.4rem 0.5rem; }
   .bar-track { min-width: 40px; }
-  .card-grid { grid-template-columns: 1fr; }
 }
