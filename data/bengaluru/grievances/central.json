@@ -43,5 +43,27 @@
     "Sampangiram Nagar",
     "Ulsoor"
   ],
-  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories.",
+  "by_department": {
+    "engineering": {
+      "count": 22896,
+      "share": 0.524,
+      "resolution_rate": 91.44
+    },
+    "solid-waste": {
+      "count": 12757,
+      "share": 0.292,
+      "resolution_rate": 91.44
+    },
+    "forest-horticulture": {
+      "count": 2105,
+      "share": 0.048,
+      "resolution_rate": 91.44
+    },
+    "health-sanitation": {
+      "count": 1945,
+      "share": 0.044,
+      "resolution_rate": 91.44
+    }
+  }
 }

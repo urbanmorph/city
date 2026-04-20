@@ -1,0 +1,553 @@
+---
+import BaseLayout from "../../../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../../../components/Breadcrumb.astro";
+import HealthBadge from "../../../../components/HealthBadge.astro";
+import {
+  loadCity,
+  loadCorporation,
+  loadFunctionMapping,
+  loadBudget,
+  loadGrievances,
+  loadDepartments,
+} from "../../../../lib/data-loader";
+import { computeDepartmentHealth } from "../../../../lib/health-score";
+import { formatINR, formatPercent, formatNumber } from "../../../../lib/format";
+import type { HealthStatus } from "../../../../lib/types";
+
+const { city: cityId, corporation: corpId, department: deptSlug } = Astro.params;
+
+const city = loadCity(cityId!);
+if (!city) return Astro.redirect("/404");
+
+const corp = loadCorporation(cityId!, corpId!);
+if (!corp) return Astro.redirect("/404");
+
+const { departments, external_entities } = loadDepartments(cityId!);
+const dept = departments.find((d) => d.id === deptSlug);
+if (!dept) {
+  return new Response(null, { status: 404, statusText: "Department not found" });
+}
+
+const mapping = loadFunctionMapping(cityId!);
+const budget = loadBudget(cityId!, corpId!);
+const grievances = loadGrievances(cityId!, corpId!);
+
+if (!budget || !grievances) {
+  return new Response(null, { status: 404, statusText: "Data not available" });
+}
+
+const health = computeDepartmentHealth(dept, corpId!, budget, grievances);
+
+// Functions this dept covers, with their full mapping data
+const deptFunctions = dept.functions
+  .map((f) => ({
+    scope: f.scope,
+    fn: mapping.find((m) => m.id === f.id),
+  }))
+  .filter((x) => x.fn);
+
+// External entities that share these functions
+const sharedExternals = new Map<string, { entity: typeof external_entities[number]; functionIds: string[] }>();
+for (const f of dept.functions) {
+  for (const ent of external_entities) {
+    if (ent.functions.some((ef) => ef.id === f.id)) {
+      const cur = sharedExternals.get(ent.id);
+      if (cur) {
+        cur.functionIds.push(f.id);
+      } else {
+        sharedExternals.set(ent.id, { entity: ent, functionIds: [f.id] });
+      }
+    }
+  }
+}
+
+// Find prev/next dept
+const deptIndex = departments.findIndex((d) => d.id === deptSlug);
+const prevDept = deptIndex > 0 ? departments[deptIndex - 1] : null;
+const nextDept = deptIndex < departments.length - 1 ? departments[deptIndex + 1] : null;
+
+// Budget head info from raw by_department
+const rawBudgetHead = dept.budget_heads.length === 1 ? dept.budget_heads[0] : null;
+const rawBudgetAmount = rawBudgetHead ? budget.by_department?.[rawBudgetHead] : null;
+
+// Verdict text
+function getVerdict(status: HealthStatus): string {
+  const bPct = formatPercent(health.budget_share);
+  const cPct = formatPercent(health.complaint_share);
+  switch (status) {
+    case "critical":
+      return `${bPct} of budget, ${cPct} of complaints. Severely underfunded relative to citizen demand.`;
+    case "stressed":
+      return `Budget-complaint mismatch. ${bPct} budget, ${cPct} complaints (stress index ${health.stress_index.toFixed(1)}).`;
+    case "unfunded":
+      return `No separate budget head — funded under another department. Performance can't be measured directly.`;
+    case "no_data":
+      return `No separate budget allocation and no citizen complaints filed against this department. Performance can't be measured.`;
+    case "good":
+      return `Budget allocation aligns with citizen demand. Resolution rate ${health.resolution_rate.toFixed(1)}%.`;
+  }
+}
+
+const pageTitle = `${dept.name} — ${corp.name}`;
+const breadcrumbs = [
+  { label: "Home", href: "/" },
+  { label: city.name, href: `/${city.id}` },
+  { label: corp.name.replace(`${city.name} `, "").replace(" City Corporation", ""), href: `/${city.id}/${corp.id}` },
+  { label: dept.name },
+];
+---
+
+<BaseLayout title={pageTitle} description={dept.description}>
+  <Breadcrumb slot="breadcrumb" items={breadcrumbs} />
+
+  <header class="dept-header">
+    <h1>{dept.name}</h1>
+    <p class="text-local">{dept.name_local}</p>
+    <p class="dept-desc text-sm">{dept.description}</p>
+    <div class="dept-meta">
+      <HealthBadge status={health.status} size="md" />
+      <span class="dept-meta__tag">{deptFunctions.length} {deptFunctions.length === 1 ? "function" : "functions"}</span>
+      {dept.budget_heads.length > 0 && (
+        <span class="dept-meta__tag">Budget head: {dept.budget_heads.join(", ")}</span>
+      )}
+    </div>
+  </header>
+
+  <!-- ── 1. THE MANDATE ─────────────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">The Mandate</h2>
+    <div class="section-body">
+      {deptFunctions.length > 0 ? (
+        <div class="fn-list">
+          {deptFunctions.map(({ scope, fn }) => (
+            <div class="fn-item">
+              <div class="fn-item__head">
+                <a href={`/${cityId}/${corpId}/${fn!.id}`} class="fn-item__name">{fn!.name}</a>
+                <span class="fn-item__ref">S. {fn!.act_reference.section}, Schedule {fn!.act_reference.schedule}</span>
+              </div>
+              <p class="fn-item__provision">&ldquo;{fn!.act_reference.text}&rdquo;</p>
+              <p class="fn-item__scope text-sm"><strong>This dept's role:</strong> {scope}</p>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p class="text-muted">Administrative function — not directly mapped to a GBA Act Schedule I function.</p>
+      )}
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── 2. THE MONEY ───────────────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">The Money</h2>
+    <div class="section-body">
+      <div class="stat-row">
+        <div class="stat-block">
+          <span class="stat-value">{health.budget_amount > 0 ? formatINR(health.budget_amount) : "—"}</span>
+          <span class="stat-label">Budget allocation ({budget.fiscal_year})</span>
+        </div>
+        <div class="stat-block">
+          <span class="stat-value">{health.budget_share > 0 ? formatPercent(health.budget_share) : "—"}</span>
+          <span class="stat-label">Share of corporation expenditure</span>
+        </div>
+        {rawBudgetAmount && (
+          <div class="stat-block">
+            <span class="stat-value">{formatINR(rawBudgetAmount)}</span>
+            <span class="stat-label">Direct budget head ({rawBudgetHead})</span>
+          </div>
+        )}
+      </div>
+      {dept.budget_note && (
+        <p class="note-text mt-1">{dept.budget_note}</p>
+      )}
+      <p class="source-cite mt-1">
+        Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" target="_blank" rel="noopener">{corp.name} Budget Book {budget.fiscal_year}</a>, OpenCity.in
+      </p>
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── 3. THE PEOPLE ──────────────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">The People</h2>
+    <div class="section-body">
+      {health.staff_amount > 0 ? (
+        <>
+          <div class="stat-row">
+            <div class="stat-block">
+              <span class="stat-value">{formatINR(health.staff_amount)}</span>
+              <span class="stat-label">Salaries & establishment</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-value">{formatPercent(health.staff_pct_of_budget)}</span>
+              <span class="stat-label">% of dept budget on staff</span>
+            </div>
+          </div>
+          <p class="note-text mt-1">
+            {health.staff_pct_of_budget < 0.05
+              ? `Capital-heavy department — most spending goes to works, not staff.`
+              : health.staff_pct_of_budget > 0.30
+                ? `Staff-heavy department — most spending is on people delivering services.`
+                : `Balanced staff-to-works ratio.`}
+            {" "}City-wide staff per lakh: 317 with 52% vacancy (ASICS 2023).
+          </p>
+        </>
+      ) : (
+        <p class="text-muted">No separate establishment line — staff costs likely captured in another department's salary budget.</p>
+      )}
+      <p class="source-cite mt-1">
+        Source: Budget book salary line items (codes 20XX-200XXX); city-level vacancy from <a href="https://www.janaagraha.org/asics/" target="_blank" rel="noopener">ASICS 2023</a>.
+      </p>
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── 4. THE REALITY ─────────────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">The Reality</h2>
+    <div class="section-body">
+      {health.complaint_count > 0 ? (
+        <>
+          <div class="stat-row">
+            <div class="stat-block">
+              <span class="stat-value">{formatNumber(health.complaint_count)}</span>
+              <span class="stat-label">Complaints (BBMP Sahaaya)</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-value">{formatPercent(health.complaint_share)}</span>
+              <span class="stat-label">Share of all complaints in {corp.name.replace(" City Corporation","")}</span>
+            </div>
+            <div class="stat-block">
+              <span class="stat-value">{health.resolution_rate.toFixed(1)}%</span>
+              <span class="stat-label">Resolution rate</span>
+            </div>
+          </div>
+          {dept.grievance_categories.length > 0 && (
+            <p class="note-text mt-1">
+              <strong>BBMP categories rolled up:</strong> {dept.grievance_categories.join(", ")}
+            </p>
+          )}
+        </>
+      ) : (
+        <p class="text-muted">
+          No complaints registered against this department in BBMP Sahaaya
+          {dept.functions.length === 0 ? " (administrative — citizens don't typically file grievances)." : "."}
+        </p>
+      )}
+      <p class="source-cite mt-1">
+        Source: <a href="https://data.opencity.in/dataset/bbmp-grievances-data" target="_blank" rel="noopener">BBMP Sahaaya / OpenCity.in</a> (Feb 2020 &ndash; Jun 2025, 766K+ total complaints)
+      </p>
+    </div>
+  </section>
+
+  {sharedExternals.size > 0 && (
+    <>
+      <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+      <!-- ── 5. SHARED RESPONSIBILITY ──────────────────── -->
+      <section class="card narrative-section">
+        <h2 class="section-label">Shared Responsibility</h2>
+        <div class="section-body">
+          <p class="text-sm">
+            {dept.name} is not the only entity working on these functions. Other parastatals and state departments share the load:
+          </p>
+          <div class="shared-list mt-1">
+            {Array.from(sharedExternals.values()).map(({ entity, functionIds }) => (
+              <div class="shared-item">
+                <a href={entity.url} target="_blank" rel="noopener" class="shared-item__name">
+                  <strong>{entity.abbr}</strong> &mdash; {entity.name}
+                </a>
+                <p class="shared-item__scope text-sm text-muted">
+                  {entity.functions.filter((ef) => functionIds.includes(ef.id)).map((ef) => ef.scope).join(" · ")}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  )}
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── 6. WHO'S RESPONSIBLE ───────────────────────────── -->
+  <section class="card narrative-section">
+    <h2 class="section-label">Who's Responsible</h2>
+    <div class="section-body">
+      <p class="text-sm">
+        {dept.name} operates under {corp.name}, accountable to the Mayor and {corp.wards} elected ward councillors.
+        For ward-level issues, contact your local councillor.
+      </p>
+      <div class="action-links mt-1">
+        <a href="https://kaun.city" target="_blank" rel="noopener" class="action-link">
+          <span class="action-link__icon">&#x1F5F3;</span>
+          <span class="action-link__text">
+            <strong>Find your ward representative</strong>
+            <span class="text-sm text-muted">kaun.city</span>
+          </span>
+        </a>
+        <a href={`/${cityId}/${corpId}/budget/${budget.fiscal_year}`} class="action-link">
+          <span class="action-link__icon">&#x1F4CA;</span>
+          <span class="action-link__text">
+            <strong>See the full budget</strong>
+            <span class="text-sm text-muted">All departments, {budget.fiscal_year}</span>
+          </span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="flow-arrow" aria-hidden="true">&darr;</div>
+
+  <!-- ── 7. THE VERDICT ─────────────────────────────────── -->
+  <section class="card narrative-section narrative-section--verdict">
+    <h2 class="section-label">The Verdict</h2>
+    <div class="section-body verdict-body">
+      <div class="verdict-badge">
+        <HealthBadge status={health.status} size="md" />
+      </div>
+      <p class="verdict-text">{getVerdict(health.status)}</p>
+      <dl class="verdict-stats">
+        <div>
+          <dt>Stress index</dt>
+          <dd>{health.stress_index.toFixed(2)}</dd>
+        </div>
+        <div>
+          <dt>Budget share</dt>
+          <dd>{formatPercent(health.budget_share)}</dd>
+        </div>
+        <div>
+          <dt>Complaint share</dt>
+          <dd>{formatPercent(health.complaint_share)}</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- Navigation -->
+  <nav class="dept-nav">
+    <div class="dept-nav__prev">
+      {prevDept && (
+        <a href={`/${cityId}/${corpId}/dept/${prevDept.id}`}>&larr; {prevDept.name}</a>
+      )}
+    </div>
+    <div class="dept-nav__center">
+      <a href={`/${cityId}/${corpId}`}>Back to {corp.name.replace(' City Corporation','')}</a>
+    </div>
+    <div class="dept-nav__next">
+      {nextDept && (
+        <a href={`/${cityId}/${corpId}/dept/${nextDept.id}`}>{nextDept.name} &rarr;</a>
+      )}
+    </div>
+  </nav>
+</BaseLayout>
+
+<style>
+  .dept-header {
+    margin-bottom: 1.5rem;
+  }
+  .dept-header h1 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--c-primary-dark);
+  }
+  .dept-desc {
+    margin-top: 0.5rem;
+    color: var(--c-text);
+    line-height: 1.5;
+  }
+  .dept-meta {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.75rem;
+  }
+  .dept-meta__tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.15rem 0.55rem;
+    border-radius: 999px;
+    background: #f3f4f6;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.03em;
+  }
+
+  .narrative-section { position: relative; }
+  .section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--c-text-muted);
+    margin-bottom: 0.75rem;
+  }
+
+  /* Function list */
+  .fn-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .fn-item {
+    border-left: 3px solid var(--c-accent);
+    padding-left: 0.85rem;
+  }
+  .fn-item__head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    align-items: baseline;
+  }
+  .fn-item__name {
+    font-weight: 600;
+    color: var(--c-primary);
+  }
+  .fn-item__ref {
+    font-size: 0.78rem;
+    color: var(--c-text-muted);
+  }
+  .fn-item__provision {
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--c-text);
+    margin-top: 0.3rem;
+    line-height: 1.5;
+  }
+  .fn-item__scope {
+    margin-top: 0.4rem;
+  }
+
+  /* Stats */
+  .stat-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 1rem;
+  }
+  .stat-block {
+    display: flex;
+    flex-direction: column;
+  }
+  .stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--c-primary-dark);
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--c-text-muted);
+    margin-top: 0.2rem;
+  }
+
+  .note-text {
+    font-size: 0.85rem;
+    color: var(--c-text);
+    border-left: 3px solid var(--c-border);
+    padding-left: 0.75rem;
+    line-height: 1.5;
+  }
+
+  .flow-arrow {
+    text-align: center;
+    font-size: 1.5rem;
+    color: var(--c-text-muted);
+    margin: 0.5rem 0;
+    line-height: 1;
+  }
+
+  /* Shared responsibility list */
+  .shared-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .shared-item {
+    padding: 0.5rem 0.75rem;
+    background: #fef9c3;
+    border-left: 3px solid var(--c-accent);
+    border-radius: var(--radius);
+  }
+  .shared-item__name {
+    font-size: 0.92rem;
+    color: var(--c-text);
+    text-decoration: none;
+  }
+  .shared-item__name:hover { text-decoration: underline; }
+  .shared-item__scope {
+    margin-top: 0.2rem;
+    line-height: 1.4;
+  }
+
+  /* Action links */
+  .action-links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .action-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+    border: 1px solid var(--c-border);
+    border-radius: var(--radius);
+    text-decoration: none;
+    color: inherit;
+  }
+  .action-link:hover {
+    border-color: var(--c-primary);
+    box-shadow: 0 2px 8px rgba(63,95,122,0.1);
+    text-decoration: none;
+  }
+  .action-link__icon { font-size: 1.5rem; flex-shrink: 0; }
+  .action-link__text { display: flex; flex-direction: column; }
+  .action-link__text strong { font-size: 0.9rem; color: var(--c-primary); }
+
+  /* Verdict */
+  .narrative-section--verdict { border-left: 4px solid var(--c-primary); }
+  .verdict-body { display: flex; flex-direction: column; gap: 0.75rem; }
+  .verdict-text { font-size: 0.95rem; line-height: 1.6; }
+  .verdict-stats {
+    display: flex;
+    gap: 1.5rem;
+    margin-top: 0.25rem;
+  }
+  .verdict-stats dt {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--c-text-muted);
+  }
+  .verdict-stats dd {
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  /* Navigation */
+  .dept-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 2rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid var(--c-border);
+    font-size: 0.88rem;
+    gap: 1rem;
+  }
+  .dept-nav__prev, .dept-nav__next { flex: 1; }
+  .dept-nav__next { text-align: right; }
+  .dept-nav__center { text-align: center; flex-shrink: 0; }
+  .dept-nav__center a { font-weight: 600; color: var(--c-primary); }
+
+  @media (max-width: 640px) {
+    .dept-header h1 { font-size: 1.3rem; }
+    .verdict-stats { flex-direction: column; gap: 0.5rem; }
+    .dept-nav { flex-direction: column; text-align: center; }
+    .dept-nav__prev, .dept-nav__next { text-align: center; }
+  }
+</style>

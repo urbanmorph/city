@@ -43,5 +43,27 @@
     "Ullalu",
     "Kengeri"
   ],
-  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories.",
+  "by_department": {
+    "engineering": {
+      "count": 59406,
+      "share": 0.607,
+      "resolution_rate": 92.29
+    },
+    "solid-waste": {
+      "count": 20029,
+      "share": 0.205,
+      "resolution_rate": 92.29
+    },
+    "forest-horticulture": {
+      "count": 5551,
+      "share": 0.057,
+      "resolution_rate": 92.29
+    },
+    "health-sanitation": {
+      "count": 3413,
+      "share": 0.035,
+      "resolution_rate": 92.29
+    }
+  }
 }

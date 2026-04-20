@@ -43,5 +43,27 @@
     "Someshwara",
     "Ramamurthy Nagar"
   ],
-  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories.",
+  "by_department": {
+    "engineering": {
+      "count": 68326,
+      "share": 0.556,
+      "resolution_rate": 92.99
+    },
+    "solid-waste": {
+      "count": 33112,
+      "share": 0.27,
+      "resolution_rate": 92.99
+    },
+    "forest-horticulture": {
+      "count": 4930,
+      "share": 0.04,
+      "resolution_rate": 92.99
+    },
+    "health-sanitation": {
+      "count": 4060,
+      "share": 0.033,
+      "resolution_rate": 92.99
+    }
+  }
 }

@@ -1,0 +1,278 @@
+{
+  "departments": [
+    {
+      "id": "engineering",
+      "name": "Engineering",
+      "name_local": "ಎಂಜಿನಿಯರಿಂಗ್",
+      "description": "Roads, bridges, buildings, lakes, storm water drains, street lights, traffic engineering works",
+      "budget_heads": ["Public Works"],
+      "functions": [
+        { "id": "roads-bridges", "scope": "ward and arterial roads, bridges" },
+        { "id": "street-lighting", "scope": "lights, poles, LED conversion (BESCOM supplies power)" },
+        { "id": "sewerage-drainage", "scope": "storm water drains only (sewerage by BWSSB)" },
+        { "id": "environment", "scope": "lakes (~167 of 210)" }
+      ],
+      "grievance_categories": ["Road Maintenance(Engg)", "Electrical", "Drain(SWD)"]
+    },
+    {
+      "id": "revenue",
+      "name": "Revenue",
+      "name_local": "ಕಂದಾಯ",
+      "description": "Property tax, khata, betterment charges, advertisement tax",
+      "budget_heads": ["Revenue"],
+      "functions": [
+        { "id": "property-tax", "scope": "SAS property tax, khata, transfer" },
+        { "id": "markets-trade", "scope": "trade licenses under KMC Act Schedule X" }
+      ],
+      "grievance_categories": ["Revenue"]
+    },
+    {
+      "id": "health-sanitation",
+      "name": "Health and Sanitation",
+      "name_local": "ಆರೋಗ್ಯ ಮತ್ತು ನೈರ್ಮಲ್ಯ",
+      "description": "Urban PHCs, vector control, food safety enforcement, births/deaths registration, public toilets",
+      "budget_heads": ["Public Health-General", "Public Health-Medical"],
+      "functions": [
+        { "id": "public-health", "scope": "primary health, vector control, food safety" },
+        { "id": "burial-cremation", "scope": "crematoria and burial grounds" }
+      ],
+      "grievance_categories": ["Health Dept"]
+    },
+    {
+      "id": "animal-husbandry",
+      "name": "Animal Husbandry",
+      "name_local": "ಪಶುಸಂಗೋಪನೆ",
+      "description": "Stray dog ABC programme, cattle pounds, veterinary hospitals",
+      "budget_heads": [],
+      "budget_note": "No separate budget head — funded under Health & Sanitation",
+      "functions": [
+        { "id": "cattle-animals", "scope": "stray dogs, cattle, dog bites, animal carcasses" }
+      ],
+      "grievance_categories": ["veterinary"]
+    },
+    {
+      "id": "forest-horticulture",
+      "name": "Forest and Horticulture",
+      "name_local": "ಅರಣ್ಯ ಮತ್ತು ತೋಟಗಾರಿಕೆ",
+      "description": "Parks, gardens, avenues, tree authority, urban forestry (IFS officers on deputation)",
+      "budget_heads": ["Horticulture", "Urban Forestry"],
+      "functions": [
+        { "id": "parks-recreation", "scope": "smaller parks, medians, avenues" },
+        { "id": "environment", "scope": "trees (Tree Authority under Karnataka Preservation of Trees Act 1976)" }
+      ],
+      "grievance_categories": ["Forest"]
+    },
+    {
+      "id": "administration",
+      "name": "Administration",
+      "name_local": "ಆಡಳಿತ",
+      "description": "General administration, HR, council support, pensions",
+      "budget_heads": ["Council", "General Administration"],
+      "functions": [],
+      "grievance_categories": []
+    },
+    {
+      "id": "finance",
+      "name": "Finance",
+      "name_local": "ಹಣಕಾಸು",
+      "description": "Budget management, accounts, audit",
+      "budget_heads": [],
+      "budget_note": "No separate budget head — funded under General Administration",
+      "functions": [],
+      "grievance_categories": []
+    },
+    {
+      "id": "solid-waste",
+      "name": "Solid Waste Management",
+      "name_local": "ಘನ ತ್ಯಾಜ್ಯ ನಿರ್ವಹಣೆ",
+      "description": "Door-to-door collection, transfer stations, processing plants, landfills (operated through BSWML SPV)",
+      "budget_heads": ["Solid Waste Management"],
+      "functions": [
+        { "id": "solid-waste", "scope": "collection, segregation, processing, disposal" }
+      ],
+      "grievance_categories": ["Solid Waste (Garbage) Related"]
+    },
+    {
+      "id": "advertisement",
+      "name": "Advertisement",
+      "name_local": "ಜಾಹೀರಾತು",
+      "description": "Hoarding regulation, advertisement tax collection, illegal hoarding removal",
+      "budget_heads": [],
+      "budget_note": "No separate budget head — funded under Revenue",
+      "functions": [
+        { "id": "markets-trade", "scope": "outdoor advertising regulation" }
+      ],
+      "grievance_categories": []
+    },
+    {
+      "id": "welfare",
+      "name": "Welfare",
+      "name_local": "ಕಲ್ಯಾಣ",
+      "description": "DAY-NULM implementation, community organising, urban livelihoods",
+      "budget_heads": ["Social Welfare"],
+      "functions": [
+        { "id": "social-welfare", "scope": "limited — most state-run by Karnataka Social Welfare Dept" },
+        { "id": "poverty-alleviation", "scope": "DAY-NULM (centrally sponsored)" }
+      ],
+      "grievance_categories": []
+    },
+    {
+      "id": "public-relations",
+      "name": "Public Relations",
+      "name_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
+      "description": "Communications, media, citizen outreach",
+      "budget_heads": [],
+      "budget_note": "No separate budget head — funded under General Administration",
+      "functions": [],
+      "grievance_categories": []
+    },
+    {
+      "id": "land-acquisition",
+      "name": "Land Acquisition",
+      "name_local": "ಭೂಸ್ವಾಧೀನ",
+      "description": "Land acquisition for road widening, public projects",
+      "budget_heads": [],
+      "budget_note": "No separate budget head — captured in project-specific allocations",
+      "functions": [],
+      "grievance_categories": []
+    },
+    {
+      "id": "town-planning",
+      "name": "Town Planning",
+      "name_local": "ನಗರ ಯೋಜನೆ",
+      "description": "Building plan sanction, occupancy certificates, deviation regulation (master planning by BDA)",
+      "budget_heads": ["Town Planning and Regulation"],
+      "functions": [
+        { "id": "urban-planning", "scope": "building plans only — master plan by BDA" }
+      ],
+      "grievance_categories": []
+    },
+    {
+      "id": "education",
+      "name": "Education",
+      "name_local": "ಶಿಕ್ಷಣ",
+      "description": "Runs ~159 schools/colleges (academic control transferring to Karnataka Education Dept; corp retains buildings/infra)",
+      "budget_heads": ["Public Education"],
+      "functions": [
+        { "id": "education", "scope": "limited — primary by Karnataka School Education Dept; pre-primary by Women & Child Dev (anganwadi)" }
+      ],
+      "grievance_categories": []
+    }
+  ],
+  "external_entities": [
+    {
+      "id": "bwssb",
+      "name": "Bangalore Water Supply and Sewerage Board",
+      "abbr": "BWSSB",
+      "type": "parastatal",
+      "url": "https://bwssb.karnataka.gov.in",
+      "functions": [
+        { "id": "water-supply", "scope": "entire water supply chain — Cauvery, treatment, distribution, billing" },
+        { "id": "sewerage-drainage", "scope": "underground drainage / sewerage (storm water by corp)" }
+      ]
+    },
+    {
+      "id": "ksfes",
+      "name": "Karnataka State Fire & Emergency Services",
+      "abbr": "KSFES",
+      "type": "state_dept",
+      "url": "https://ksfes.karnataka.gov.in",
+      "functions": [
+        { "id": "fire-services", "scope": "all fire services in Bengaluru — corp has no fire function" }
+      ]
+    },
+    {
+      "id": "bda",
+      "name": "Bangalore Development Authority",
+      "abbr": "BDA",
+      "type": "parastatal",
+      "url": "https://bdabangalore.org",
+      "functions": [
+        { "id": "urban-planning", "scope": "Revised Master Plan (RMP 2031/2041), zoning, land-use" },
+        { "id": "environment", "scope": "~33 lakes in BDA layouts" },
+        { "id": "parks-recreation", "scope": "parks in BDA layouts (before handover to BBMP)" }
+      ]
+    },
+    {
+      "id": "bescom",
+      "name": "Bangalore Electricity Supply Company",
+      "abbr": "BESCOM",
+      "type": "parastatal",
+      "url": "https://bescom.karnataka.gov.in",
+      "functions": [
+        { "id": "street-lighting", "scope": "supplies power to street lights (assets owned by corp Engineering)" }
+      ]
+    },
+    {
+      "id": "ksdb",
+      "name": "Karnataka Slum Development Board",
+      "abbr": "KSDB",
+      "type": "parastatal",
+      "url": "https://ksdb.karnataka.gov.in",
+      "functions": [
+        { "id": "slum-improvement", "scope": "in-situ redevelopment, basic amenities in declared slums" }
+      ]
+    },
+    {
+      "id": "kspcb",
+      "name": "Karnataka State Pollution Control Board",
+      "abbr": "KSPCB",
+      "type": "parastatal",
+      "url": "https://kspcb.karnataka.gov.in",
+      "functions": [
+        { "id": "environment", "scope": "air pollution monitoring (CAAQMS), industrial emissions" }
+      ]
+    },
+    {
+      "id": "krdcl-nhai",
+      "name": "KRDCL / NHAI / PWD",
+      "abbr": "KRDCL+",
+      "type": "parastatal",
+      "url": "https://krdcl.in",
+      "functions": [
+        { "id": "roads-bridges", "scope": "peripheral ring roads, elevated corridors (KRDCL); national highways (NHAI); state highways (PWD)" }
+      ]
+    },
+    {
+      "id": "ka-edu",
+      "name": "Karnataka Department of School Education",
+      "abbr": "KSED",
+      "type": "state_dept",
+      "url": "https://schooleducation.karnataka.gov.in",
+      "functions": [
+        { "id": "education", "scope": "primary and secondary education (corp education being transferred to KSED)" }
+      ]
+    },
+    {
+      "id": "ka-wcd",
+      "name": "Karnataka Department of Women & Child Development",
+      "abbr": "KWCD",
+      "type": "state_dept",
+      "url": "https://dwcdkar.gov.in",
+      "functions": [
+        { "id": "education", "scope": "anganwadi / pre-primary (ICDS)" },
+        { "id": "social-welfare", "scope": "widow/disability/senior pensions" }
+      ]
+    },
+    {
+      "id": "ka-sw",
+      "name": "Karnataka Department of Social Welfare",
+      "abbr": "KSW",
+      "type": "state_dept",
+      "url": "https://sw.karnataka.gov.in",
+      "functions": [
+        { "id": "social-welfare", "scope": "SC/ST welfare, BCM, minorities" }
+      ]
+    },
+    {
+      "id": "ktcda",
+      "name": "Karnataka Tank Conservation & Development Authority",
+      "abbr": "KTCDA",
+      "type": "state_dept",
+      "url": "https://ktcda.karnataka.gov.in",
+      "functions": [
+        { "id": "environment", "scope": "lake regulation across all custodians" }
+      ]
+    }
+  ]
+}

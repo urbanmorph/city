@@ -43,5 +43,27 @@
     "KR Puram",
     "Mahadevapura"
   ],
-  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories.",
+  "by_department": {
+    "engineering": {
+      "count": 37531,
+      "share": 0.516,
+      "resolution_rate": 90.96
+    },
+    "solid-waste": {
+      "count": 18424,
+      "share": 0.253,
+      "resolution_rate": 90.96
+    },
+    "animal-husbandry": {
+      "count": 3557,
+      "share": 0.049,
+      "resolution_rate": 90.96
+    },
+    "health-sanitation": {
+      "count": 3416,
+      "share": 0.047,
+      "resolution_rate": 90.96
+    }
+  }
 }

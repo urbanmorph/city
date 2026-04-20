@@ -1,12 +1,11 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../../components/Breadcrumb.astro";
-import FunctionRow from "../../../components/FunctionRow.astro";
-import HealthBadge from "../../../components/HealthBadge.astro";
-import { loadCity, loadCorporation, loadBudget, loadGrievances, loadFunctionMapping } from "../../../lib/data-loader";
-import { computeAllHealth, countByStatus } from "../../../lib/health-score";
-import { formatINR, formatNumber, formatPercent } from "../../../lib/format";
-import type { FunctionHealth, FunctionMapping, HealthStatus } from "../../../lib/types";
+import DepartmentRow from "../../../components/DepartmentRow.astro";
+import { loadCity, loadCorporation, loadBudget, loadGrievances, loadFunctionMapping, loadDepartments } from "../../../lib/data-loader";
+import { computeDepartmentHealth, countByStatus } from "../../../lib/health-score";
+import { formatINR, formatNumber } from "../../../lib/format";
+import type { DepartmentHealth, HealthStatus } from "../../../lib/types";
 
 const { city: cityId, corporation: corpId } = Astro.params;
 
@@ -20,26 +19,24 @@ if (!city || !corporation) {
 const mapping = loadFunctionMapping(city.id);
 const budget = loadBudget(city.id, corporation.id, city.budget_year);
 const grievances = loadGrievances(city.id, corporation.id);
+const { departments, external_entities } = loadDepartments(city.id);
 
-// Compute health for all functions
-let healthList: FunctionHealth[] = [];
+// Compute health for all departments
+let deptHealthList: DepartmentHealth[] = [];
 let statusCounts: Record<HealthStatus, number> = { good: 0, stressed: 0, critical: 0, unfunded: 0 };
 
 if (budget && grievances) {
-  healthList = computeAllHealth(corporation.id, budget, grievances, mapping);
-  statusCounts = countByStatus(healthList);
+  deptHealthList = departments.map((d) => computeDepartmentHealth(d, corporation.id, budget, grievances));
+  statusCounts = countByStatus(deptHealthList);
 }
 
-// Sort: critical first, then unfunded, then stressed, then good
-const statusOrder: Record<HealthStatus, number> = { critical: 0, unfunded: 1, stressed: 2, good: 3 };
-
-const sortedFunctions = mapping.map((fn) => {
-  const health = healthList.find((h) => h.function_id === fn.id);
-  return { fn, health };
+// Sort: stress index descending, then unfunded, then good last
+const sortedDepts = departments.map((dept) => {
+  const health = deptHealthList.find((h) => h.department_id === dept.id);
+  return { dept, health };
 }).sort((a, b) => {
   const aStress = a.health?.stress_index ?? 0;
   const bStress = b.health?.stress_index ?? 0;
-  // Unfunded (no budget) float to top after critical
   const aScore = a.health?.status === "unfunded" ? 999 : aStress;
   const bScore = b.health?.status === "unfunded" ? 999 : bStress;
   return bScore - aScore;
@@ -50,25 +47,27 @@ const totalBudgetLakhs = budget?.summary.total_expenditure ?? 0;
 const totalComplaints = grievances?.total_complaints ?? 0;
 const resolutionRate = grievances?.resolution_rate ?? 0;
 
-// Red flags: critical or unfunded functions
-const redFlags = sortedFunctions.filter((item) =>
-  item.health && (item.health.status === "critical" || item.health.status === "unfunded")
-);
+// Functions delivered by external entities (not by any corp dept)
+const corpFunctionIds = new Set(departments.flatMap((d) => d.functions.map((f) => f.id)));
+const externalFunctions = mapping.filter((fn) => !corpFunctionIds.has(fn.id));
+// Also pull entities that handle these
+function entitiesForFunction(fnId: string) {
+  return external_entities.filter((e) => e.functions.some((f) => f.id === fnId));
+}
 
-// Build a fallback health object for functions that may lack data
-function getHealthOrFallback(fnId: string): FunctionHealth {
-  const found = healthList.find((h) => h.function_id === fnId);
-  if (found) return found;
+function fallbackHealth(deptId: string): DepartmentHealth {
   return {
-    function_id: fnId,
+    department_id: deptId,
     corporation_id: corporation.id,
     budget_amount: 0,
     budget_share: 0,
+    staff_amount: 0,
+    staff_pct_of_budget: 0,
     complaint_count: 0,
     complaint_share: 0,
     resolution_rate: 0,
     stress_index: 0,
-    status: "unfunded" as HealthStatus,
+    status: "good" as HealthStatus,
   };
 }
 ---
@@ -94,16 +93,12 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
 
   <dl class="stat-row mt-2">
     <div class="stat-item">
-      <dt>Functions</dt>
-      <dd>{mapping.length}</dd>
+      <dt>Departments</dt>
+      <dd>{departments.length}</dd>
     </div>
     <div class="stat-item">
       <dt>Total Budget</dt>
       <dd>{formatINR(totalBudgetLakhs)}</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Utilization</dt>
-      <dd class="text-muted">Pending</dd>
     </div>
     <div class="stat-item">
       <dt>Complaints</dt>
@@ -128,33 +123,73 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
     <span class="status-count status-count--stressed">{statusCounts.stressed} Stressed</span>
     <span class="status-count status-count--critical">{statusCounts.critical} Critical</span>
     <span class="status-count status-count--unfunded">{statusCounts.unfunded} Unfunded</span>
+    {statusCounts.no_data > 0 && (
+      <span class="status-count status-count--no_data">{statusCounts.no_data} No Data</span>
+    )}
   </div>
 
   {budget && grievances ? (
-    <div class="table-wrap mt-2">
-      <table class="data-table">
-        <thead>
-          <tr>
-            <th>The Mandate</th>
-            <th>The Money</th>
-            <th>The People</th>
-            <th>The Reality</th>
-            <th>The Verdict</th>
-          </tr>
-        </thead>
-        <tbody>
-          {sortedFunctions.map(({ fn }) => (
-            <FunctionRow
-              fn={fn}
-              health={getHealthOrFallback(fn.id)}
-              cityId={city.id}
-              corpId={corporation.id}
-              staffPct={budget?.staff_cost?.[fn.id]?.pct_of_dept_budget}
-            />
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      <h2 class="section-title mt-2">Departments &mdash; what the corporation does</h2>
+      <p class="text-sm text-muted">
+        {departments.length} departments deliver {Array.from(corpFunctionIds).length} of the {mapping.length} GBA Act-mandated functions.
+      </p>
+      <div class="table-wrap mt-1">
+        <table class="data-table">
+          <thead>
+            <tr>
+              <th>Department</th>
+              <th>Budget</th>
+              <th>Staff</th>
+              <th>Complaints</th>
+              <th>Health</th>
+            </tr>
+          </thead>
+          <tbody>
+            {sortedDepts.map(({ dept, health }) => (
+              <DepartmentRow
+                dept={dept}
+                health={health ?? fallbackHealth(dept.id)}
+                cityId={city.id}
+                corpId={corporation.id}
+                functionMapping={mapping}
+              />
+            ))}
+          </tbody>
+        </table>
+      </div>
+
+      {externalFunctions.length > 0 && (
+        <section class="external-section mt-2">
+          <h2 class="section-title">Outside the corporation &mdash; who actually does this</h2>
+          <p class="text-sm text-muted mb-1">
+            {externalFunctions.length} of the {mapping.length} GBA Act functions are delivered by parastatals or state departments, not the city corporation.
+          </p>
+          <div class="external-grid mt-1">
+            {externalFunctions.map((fn) => {
+              const ents = entitiesForFunction(fn.id);
+              return (
+                <div class="external-item">
+                  <div class="external-fn">
+                    <span class="external-fn__name">{fn.name}</span>
+                    <span class="external-fn__ref">S. {fn.act_reference.section}</span>
+                  </div>
+                  <div class="external-ents">
+                    {ents.length > 0 ? ents.map((e) => (
+                      <a href={e.url} target="_blank" rel="noopener" class="external-ent" title={e.functions.find(f => f.id === fn.id)?.scope}>
+                        <strong>{e.abbr}</strong> <span class="text-sm text-muted">{e.name}</span>
+                      </a>
+                    )) : (
+                      <span class="text-sm text-muted">No external entity mapped</span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </section>
+      )}
+    </>
   ) : (
     <div class="card mt-2">
       <p class="text-muted">Budget or grievance data not available for this corporation.</p>
@@ -208,6 +243,58 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
   .status-count--stressed { background: #fef9c3; color: #854d0e; }
   .status-count--critical { background: #fee2e2; color: #991b1b; }
   .status-count--unfunded { background: #f3f4f6; color: #4b5563; }
+  .status-count--no_data { background: #ffffff; color: #6b7280; border: 1px dashed #d1d5db; }
+
+  .section-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-primary);
+    margin-top: 1.5rem;
+  }
+
+  /* External entities */
+  .external-section {
+    padding-top: 0.5rem;
+  }
+  .external-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+  }
+  .external-item {
+    background: var(--c-card);
+    border: 1px solid var(--c-border);
+    border-left: 3px solid var(--c-accent);
+    border-radius: var(--radius);
+    padding: 0.75rem 1rem;
+  }
+  .external-fn {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+  }
+  .external-fn__name {
+    font-weight: 600;
+    color: var(--c-text);
+  }
+  .external-fn__ref {
+    font-size: 0.7rem;
+    color: var(--c-text-muted);
+  }
+  .external-ents {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .external-ent {
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--c-primary);
+  }
+  .external-ent:hover {
+    text-decoration: underline;
+  }
 
   .page-links {
     display: flex;
@@ -236,5 +323,6 @@ function getHealthOrFallback(fnId: string): FunctionHealth {
     .stat-item dd { font-size: 1.05rem; }
     .status-summary { gap: 0.5rem; }
     .status-count { font-size: 0.8rem; padding: 0.2rem 0.5rem; }
+    .external-grid { grid-template-columns: 1fr; }
   }
 </style>

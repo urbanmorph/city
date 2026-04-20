@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
-import type { City, Corporation, FunctionMapping, BudgetData, GrievanceData, ActData } from "./types";
+import type { City, Corporation, FunctionMapping, BudgetData, GrievanceData, ActData, DepartmentsData } from "./types";
 
 const dataDir = path.join(process.cwd(), "data");
 
@@ -48,4 +48,9 @@ export function loadGrievances(cityId: string, corpId: string): GrievanceData | 
 
 export function loadAct(cityId: string): ActData | null {
   return readJSON<ActData>(path.join(dataDir, cityId, "act", "gba-act.json"));
+}
+
+export function loadDepartments(cityId: string): DepartmentsData {
+  const data = readJSON<DepartmentsData>(path.join(dataDir, cityId, "departments.json"));
+  return data ?? { departments: [], external_entities: [] };
 }

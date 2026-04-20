@@ -43,5 +43,27 @@
     "Vasanthapura",
     "Gottigere"
   ],
-  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories."
+  "note": "Ward-to-corporation mapping from GBA ward delimitation. Top 5 departments shown; remaining complaints spread across smaller categories.",
+  "by_department": {
+    "engineering": {
+      "count": 77877,
+      "share": 0.553,
+      "resolution_rate": 91.0
+    },
+    "solid-waste": {
+      "count": 35144,
+      "share": 0.249,
+      "resolution_rate": 91.0
+    },
+    "forest-horticulture": {
+      "count": 6143,
+      "share": 0.044,
+      "resolution_rate": 91.0
+    },
+    "health-sanitation": {
+      "count": 5604,
+      "share": 0.04,
+      "resolution_rate": 91.0
+    }
+  }
 }

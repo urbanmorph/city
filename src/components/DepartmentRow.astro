@@ -1,0 +1,148 @@
+---
+import type { Department, DepartmentHealth, FunctionMapping } from "../lib/types";
+import HealthBadge from "./HealthBadge.astro";
+
+interface Props {
+  dept: Department;
+  health: DepartmentHealth;
+  cityId: string;
+  corpId: string;
+  functionMapping: FunctionMapping[];
+}
+
+const { dept, health, cityId, corpId, functionMapping } = Astro.props;
+
+const barW = 120;
+const barH = 14;
+const budgetFill = Math.min(health.budget_share * 200, 100); // dept budgets are larger; scale differently
+const complaintFill = Math.min(health.complaint_share * 200, 100);
+
+function formatAmount(lakhs: number): string {
+  if (lakhs >= 1000) return `${(lakhs / 100).toFixed(0)} Cr`;
+  return `${lakhs.toLocaleString("en-IN")} L`;
+}
+
+const staffPct = health.staff_pct_of_budget;
+const staffColor = !health.budget_amount ? "" : staffPct < 0.05 ? "staff--low" : staffPct < 0.20 ? "staff--mid" : "staff--high";
+const isRedFlag = health.status === "critical" || health.status === "unfunded";
+
+// Get function names this dept covers
+const fnNames = dept.functions
+  .map((f) => functionMapping.find((m) => m.id === f.id)?.name)
+  .filter(Boolean) as string[];
+---
+
+<tr class={isRedFlag ? "row--flagged" : ""}>
+  <!-- DEPARTMENT (Mandate roll-up) -->
+  <td>
+    <a href={`/${cityId}/${corpId}/dept/${dept.id}`} class="dept-name">{dept.name}</a>
+    {fnNames.length > 0 && (
+      <div class="fn-list-inline">
+        {fnNames.slice(0, 3).join(" · ")}
+        {fnNames.length > 3 && <span class="text-muted"> +{fnNames.length - 3}</span>}
+      </div>
+    )}
+    {dept.functions.length === 0 && (
+      <div class="fn-list-inline text-muted">Administrative</div>
+    )}
+  </td>
+
+  <!-- BUDGET -->
+  <td>
+    <div class="svg-bar-cell">
+      <svg width={barW} height={barH} role="img" aria-label={`Budget: ${(health.budget_share * 100).toFixed(1)}%`}>
+        <rect x="0" y="0" width={barW} height={barH} rx="3" fill="#e5e7eb" />
+        {budgetFill > 0 && (
+          <rect x="0" y="0" width={budgetFill * barW / 100} height={barH} rx="3" fill="#3F5F7A" opacity={0.4 + Math.min(health.budget_share, 0.5)} />
+        )}
+      </svg>
+      <span class="bar-label-text">
+        {health.budget_amount > 0 ? formatAmount(health.budget_amount) : "—"}
+        {health.budget_share > 0 && (
+          <span class="text-muted"> ({(health.budget_share * 100).toFixed(1)}%)</span>
+        )}
+      </span>
+    </div>
+    {dept.budget_note && health.budget_amount === 0 && (
+      <div class="budget-note">{dept.budget_note}</div>
+    )}
+  </td>
+
+  <!-- STAFF -->
+  <td class="people-cell">
+    {health.budget_amount > 0 && staffPct > 0 ? (
+      <span class={`staff-val ${staffColor}`} title={`${(staffPct * 100).toFixed(1)}% of dept budget is staff cost (excl. pension)`}>
+        {(staffPct * 100).toFixed(1)}%
+      </span>
+    ) : (
+      <span class="text-sm text-muted">—</span>
+    )}
+  </td>
+
+  <!-- COMPLAINTS -->
+  <td>
+    <div class="svg-bar-cell">
+      <svg width={barW} height={barH} role="img" aria-label={`Complaints: ${(health.complaint_share * 100).toFixed(1)}%`}>
+        <rect x="0" y="0" width={barW} height={barH} rx="3" fill="#e5e7eb" />
+        {complaintFill > 0 && (
+          <rect x="0" y="0" width={complaintFill * barW / 100} height={barH} rx="3" fill="#F5B82E" opacity={0.5 + Math.min(health.complaint_share, 0.5)} />
+        )}
+      </svg>
+      <span class="bar-label-text">
+        {health.complaint_count > 0 ? health.complaint_count.toLocaleString("en-IN") : "—"}
+        {health.complaint_share > 0 && (
+          <span class="text-muted"> ({(health.complaint_share * 100).toFixed(1)}%)</span>
+        )}
+      </span>
+    </div>
+  </td>
+
+  <!-- VERDICT -->
+  <td>
+    <HealthBadge status={health.status} />
+  </td>
+</tr>
+
+<style>
+  .dept-name {
+    font-weight: 600;
+    color: var(--c-primary);
+  }
+  .fn-list-inline {
+    font-size: 0.72rem;
+    color: var(--c-text-muted);
+    margin-top: 0.15rem;
+    line-height: 1.3;
+  }
+  .budget-note {
+    font-size: 0.7rem;
+    font-style: italic;
+    color: var(--c-text-muted);
+    margin-top: 0.2rem;
+  }
+  .row--flagged { background: #fef2f2 !important; }
+  .row--flagged:hover { background: #fee2e2 !important; }
+  .svg-bar-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+  .svg-bar-cell svg { display: block; }
+  .bar-label-text {
+    font-size: 0.78rem;
+    color: var(--c-text-muted);
+    white-space: nowrap;
+  }
+  .people-cell {
+    text-align: center;
+    vertical-align: middle;
+  }
+  .staff-val {
+    font-size: 0.88rem;
+    font-weight: 700;
+    cursor: help;
+  }
+  .staff--low { color: #ef4444; }
+  .staff--mid { color: #eab308; }
+  .staff--high { color: #22c55e; }
+</style>

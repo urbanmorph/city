@@ -142,5 +142,79 @@
       "pct_of_dept_budget": 0.009
     }
   },
-  "staff_cost_pension_excluded": 8575.0
+  "staff_cost_pension_excluded": 8575.0,
+  "by_department_aggregated": {
+    "administration": {
+      "amount": 19562.42,
+      "share": 0.0503,
+      "staff_cost": {
+        "amount": 0,
+        "pct_of_dept_budget": 0
+      }
+    },
+    "revenue": {
+      "amount": 27444.52,
+      "share": 0.0706,
+      "staff_cost": {
+        "amount": 1987.5,
+        "pct_of_dept_budget": 0.072
+      }
+    },
+    "town-planning": {
+      "amount": 67377.7,
+      "share": 0.1732,
+      "staff_cost": {
+        "amount": 600.0,
+        "pct_of_dept_budget": 0.009
+      }
+    },
+    "engineering": {
+      "amount": 192783.51,
+      "share": 0.4956,
+      "staff_cost": {
+        "amount": 3496.7,
+        "pct_of_dept_budget": 0.018
+      }
+    },
+    "solid-waste": {
+      "amount": 42879.1,
+      "share": 0.1102,
+      "staff_cost": {
+        "amount": 9737.0,
+        "pct_of_dept_budget": 0.227
+      }
+    },
+    "health-sanitation": {
+      "amount": 7849.1,
+      "share": 0.0202,
+      "staff_cost": {
+        "amount": 340.95,
+        "pct_of_dept_budget": 0.043
+      }
+    },
+    "forest-horticulture": {
+      "amount": 6284.35,
+      "share": 0.0162,
+      "staff_cost": {
+        "amount": 1300.0,
+        "pct_of_dept_budget": 0.207
+      }
+    },
+    "education": {
+      "amount": 60.15,
+      "share": 0.0002,
+      "staff_cost": {
+        "amount": 20.5,
+        "pct_of_dept_budget": 0.341
+      }
+    },
+    "welfare": {
+      "amount": 24757.59,
+      "share": 0.0636,
+      "staff_cost": {
+        "amount": 335.0,
+        "pct_of_dept_budget": 0.014
+      }
+    }
+  }
 }

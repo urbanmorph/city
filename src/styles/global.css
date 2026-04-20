@@ -155,6 +155,8 @@ table.data-table tbody tr:hover { background: #e8ecf0; }
 .badge--critical .badge-dot { background: var(--c-critical); }
 .badge--unfunded { background: #f3f4f6; color: #4b5563; }
 .badge--unfunded .badge-dot { background: var(--c-unfunded); }
+.badge--no_data { background: #ffffff; color: #6b7280; border: 1px dashed #d1d5db; }
+.badge--no_data .badge-dot { background: #d1d5db; border: 1px solid #9ca3af; }
 
 /* ── Bar Charts ────────────────────────────────────────── */
 .bar-chart { display: flex; align-items: center; gap: 0.5rem; }

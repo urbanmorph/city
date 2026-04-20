@@ -35,6 +35,42 @@ export interface BudgetData {
   summary: { total_revenue: number; total_expenditure: number; unit: string };
   by_function: Record<string, { amount: number; share: number; yoy_growth: number }>;
   staff_cost?: Record<string, { amount: number; pct_of_dept_budget: number }>;
+  by_department?: Record<string, number>;
+  by_department_aggregated?: Record<string, {
+    amount: number;
+    share: number;
+    staff_cost: { amount: number; pct_of_dept_budget: number };
+  }>;
+}
+
+export interface DepartmentFunction {
+  id: string;
+  scope: string;
+}
+
+export interface Department {
+  id: string;
+  name: string;
+  name_local: string;
+  description: string;
+  budget_heads: string[];
+  budget_note?: string;
+  functions: DepartmentFunction[];
+  grievance_categories: string[];
+}
+
+export interface ExternalEntity {
+  id: string;
+  name: string;
+  abbr: string;
+  type: "parastatal" | "state_dept" | "central_body" | "private";
+  url: string;
+  functions: DepartmentFunction[];
+}
+
+export interface DepartmentsData {
+  departments: Department[];
+  external_entities: ExternalEntity[];
 }
 
 export interface GrievanceData {
@@ -46,7 +82,22 @@ export interface GrievanceData {
   resolution_rate: number;
   avg_response_time: string;
   by_function: Record<string, { count: number; share: number; resolution_rate: number }>;
+  by_department?: Record<string, { count: number; share: number; resolution_rate: number }>;
   top_wards: string[];
+}
+
+export interface DepartmentHealth {
+  department_id: string;
+  corporation_id: string;
+  budget_amount: number;
+  budget_share: number;
+  staff_amount: number;
+  staff_pct_of_budget: number;
+  complaint_count: number;
+  complaint_share: number;
+  resolution_rate: number;
+  stress_index: number;
+  status: HealthStatus;
 }
 
 export interface ActSection {
@@ -90,7 +141,7 @@ export interface ActData {
   schedules: { I: ActScheduleI };
 }
 
-export type HealthStatus = "good" | "stressed" | "critical" | "unfunded";
+export type HealthStatus = "good" | "stressed" | "critical" | "unfunded" | "no_data";
 
 export interface FunctionHealth {
   function_id: string;
