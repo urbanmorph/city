@@ -154,3 +154,43 @@ export interface FunctionHealth {
   stress_index: number;
   status: HealthStatus;
 }
+
+export interface LineItem {
+  code: string;
+  name: string;
+  revised_2025_26: number | null;
+  pending: number | null;
+  current: number | null;
+  total_2026_27: number;
+  yoy_pct: number | null;
+}
+
+export interface LineItemSubCategory {
+  name: string;
+  total_2026_27: number;
+  revised_2025_26: number;
+  spillover: number;
+  yoy_pct: number | null;
+  items: LineItem[];
+}
+
+export interface LineItemFunction {
+  code: string;
+  name: string;
+  total_2026_27: number;
+  revised_2025_26: number;
+  spillover: number;
+  yoy_pct: number | null;
+  sub_categories: LineItemSubCategory[];
+}
+
+export interface LineItemBudget {
+  corporation_id: string;
+  fiscal_year: string;
+  unit: string;
+  total_2026_27: number;
+  total_revised_2025_26: number;
+  total_spillover: number;
+  yoy_pct: number | null;
+  functions: LineItemFunction[];
+}

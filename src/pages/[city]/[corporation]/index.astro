@@ -1,11 +1,8 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../../components/Breadcrumb.astro";
-import DepartmentRow from "../../../components/DepartmentRow.astro";
-import { loadCity, loadCorporation, loadBudget, loadGrievances, loadFunctionMapping, loadDepartments } from "../../../lib/data-loader";
-import { computeDepartmentHealth, countByStatus } from "../../../lib/health-score";
-import { formatINR, formatNumber } from "../../../lib/format";
-import type { DepartmentHealth, HealthStatus } from "../../../lib/types";
+import { loadCity, loadCorporation, loadLineItemBudget } from "../../../lib/data-loader";
+import { formatINR } from "../../../lib/format";
 
 const { city: cityId, corporation: corpId } = Astro.params;
 
@@ -16,313 +13,591 @@ if (!city || !corporation) {
   return Astro.redirect("/404");
 }
 
-const mapping = loadFunctionMapping(city.id);
-const budget = loadBudget(city.id, corporation.id, city.budget_year);
-const grievances = loadGrievances(city.id, corporation.id);
-const { departments, external_entities } = loadDepartments(city.id);
+const data = loadLineItemBudget(city.id, corporation.id);
 
-// Compute health for all departments
-let deptHealthList: DepartmentHealth[] = [];
-let statusCounts: Record<HealthStatus, number> = { good: 0, stressed: 0, critical: 0, unfunded: 0 };
-
-if (budget && grievances) {
-  deptHealthList = departments.map((d) => computeDepartmentHealth(d, corporation.id, budget, grievances));
-  statusCounts = countByStatus(deptHealthList);
+function fmtYoY(pct: number | null | undefined): string {
+  if (pct === null || pct === undefined) return "";
+  const sign = pct >= 0 ? "+" : "";
+  return `${sign}${pct.toFixed(1)}%`;
 }
 
-// Sort: stress index descending, then unfunded, then good last
-const sortedDepts = departments.map((dept) => {
-  const health = deptHealthList.find((h) => h.department_id === dept.id);
-  return { dept, health };
-}).sort((a, b) => {
-  const aStress = a.health?.stress_index ?? 0;
-  const bStress = b.health?.stress_index ?? 0;
-  const aScore = a.health?.status === "unfunded" ? 999 : aStress;
-  const bScore = b.health?.status === "unfunded" ? 999 : bStress;
-  return bScore - aScore;
-});
-
-// Summary stats
-const totalBudgetLakhs = budget?.summary.total_expenditure ?? 0;
-const totalComplaints = grievances?.total_complaints ?? 0;
-const resolutionRate = grievances?.resolution_rate ?? 0;
-
-// Functions delivered by external entities (not by any corp dept)
-const corpFunctionIds = new Set(departments.flatMap((d) => d.functions.map((f) => f.id)));
-const externalFunctions = mapping.filter((fn) => !corpFunctionIds.has(fn.id));
-// Also pull entities that handle these
-function entitiesForFunction(fnId: string) {
-  return external_entities.filter((e) => e.functions.some((f) => f.id === fnId));
+function yoyClass(pct: number | null | undefined): string {
+  if (pct === null || pct === undefined) return "yoy-none";
+  if (pct > 0) return "yoy-up";
+  if (pct < 0) return "yoy-down";
+  return "yoy-zero";
 }
 
-function fallbackHealth(deptId: string): DepartmentHealth {
-  return {
-    department_id: deptId,
-    corporation_id: corporation.id,
-    budget_amount: 0,
-    budget_share: 0,
-    staff_amount: 0,
-    staff_pct_of_budget: 0,
-    complaint_count: 0,
-    complaint_share: 0,
-    resolution_rate: 0,
-    stress_index: 0,
-    status: "good" as HealthStatus,
-  };
+function cleanName(s: string): string {
+  // Strip stray em-dashes, double-spaces, orphan commas/punctuation
+  return s
+    .replace(/\s[—–]\s/g, ", ")
+    .replace(/\s*,\s*,+/g, ", ")
+    .replace(/\s{2,}/g, " ")
+    .replace(/[,.\s]+$/g, "")
+    .trim();
 }
 ---
 
 <BaseLayout
-  title={`${corporation.name} — ${city.name}`}
-  description={`Scorecard for ${corporation.name} across ${mapping.length} civic functions`}
+  title={`${corporation.name} Budget Detail ${data?.fiscal_year ?? "2026-27"}`}
+  description={`Function, sub-category and line-item budget for ${corporation.name}`}
 >
   <Breadcrumb
     slot="breadcrumb"
     items={[
       { label: "Home", href: "/" },
       { label: city.name, href: `/${city.id}` },
-      { label: corporation.name.replace(`${city.name} `, "").replace(" City Corporation", "") },
+      {
+        label: corporation.name.replace(`${city.name} `, "").replace(" City Corporation", ""),
+      },
     ]}
   />
 
-  <section class="corp-header">
+  <header class="page-head">
+    <div class="eyebrow">Budget Detail, Fiscal Year {data?.fiscal_year ?? "2026-27"}</div>
     <h1>{corporation.name}</h1>
-    <p class="text-local">{corporation.name_local}</p>
-    <p class="text-sm text-muted mt-1">{corporation.wards} wards &mdash; Budget year {corporation.budget_year}</p>
-  </section>
+    <p class="lede">
+      Every rupee, by function, sub-category, and line item. Click any row to drill down. YoY compares Budget {data?.fiscal_year ?? "2026-27"} against Revised {data?.fiscal_year?.split("-")[0] ? `${Number(data.fiscal_year.split("-")[0]) - 1}-${data.fiscal_year.split("-")[0].slice(2)}` : "2025-26"}.
+    </p>
+  </header>
 
-  <dl class="stat-row mt-2">
-    <div class="stat-item">
-      <dt>Departments</dt>
-      <dd>{departments.length}</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Total Budget</dt>
-      <dd>{formatINR(totalBudgetLakhs)}</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Complaints</dt>
-      <dd>{formatNumber(totalComplaints)}</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Resolution Rate</dt>
-      <dd>{resolutionRate.toFixed(1)}%</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Staff / Lakh</dt>
-      <dd>317</dd>
-    </div>
-    <div class="stat-item">
-      <dt>Vacancy</dt>
-      <dd>52%</dd>
-    </div>
-  </dl>
-
-  <div class="status-summary mt-2">
-    <span class="status-count status-count--good">{statusCounts.good} Good</span>
-    <span class="status-count status-count--stressed">{statusCounts.stressed} Stressed</span>
-    <span class="status-count status-count--critical">{statusCounts.critical} Critical</span>
-    <span class="status-count status-count--unfunded">{statusCounts.unfunded} Unfunded</span>
-    {statusCounts.no_data > 0 && (
-      <span class="status-count status-count--no_data">{statusCounts.no_data} No Data</span>
-    )}
-  </div>
-
-  {budget && grievances ? (
+  {data ? (
     <>
-      <h2 class="section-title mt-2">Departments &mdash; what the corporation does</h2>
-      <p class="text-sm text-muted">
-        {departments.length} departments deliver {Array.from(corpFunctionIds).length} of the {mapping.length} GBA Act-mandated functions.
-      </p>
-      <div class="table-wrap mt-1">
-        <table class="data-table">
-          <thead>
-            <tr>
-              <th>Department</th>
-              <th>Budget</th>
-              <th>Staff</th>
-              <th>Complaints</th>
-              <th>Health</th>
-            </tr>
-          </thead>
-          <tbody>
-            {sortedDepts.map(({ dept, health }) => (
-              <DepartmentRow
-                dept={dept}
-                health={health ?? fallbackHealth(dept.id)}
-                cityId={city.id}
-                corpId={corporation.id}
-                functionMapping={mapping}
-              />
-            ))}
-          </tbody>
-        </table>
+      <section class="topline">
+        <div class="tl-cell">
+          <span class="tl-label">Total</span>
+          <span class="tl-value">{formatINR(data.total_2026_27)}</span>
+          <span class="tl-sub">2026 {`\u2013`}27 Budget Estimate</span>
+        </div>
+        <div class="tl-cell">
+          <span class="tl-label">Previous</span>
+          <span class="tl-value tl-value--muted">{formatINR(data.total_revised_2025_26)}</span>
+          <span class="tl-sub">2025 {`\u2013`}26 Revised</span>
+        </div>
+        <div class="tl-cell">
+          <span class="tl-label">YoY</span>
+          <span class={`tl-value tl-yoy ${yoyClass(data.yoy_pct)}`}>{fmtYoY(data.yoy_pct) || "no data"}</span>
+          <span class="tl-sub">Year on year</span>
+        </div>
+        <div class="tl-cell">
+          <span class="tl-label">Spillover</span>
+          <span class="tl-value tl-value--accent">{data.total_spillover > 0 ? formatINR(data.total_spillover) : "nil"}</span>
+          <span class="tl-sub">Pending from earlier years</span>
+        </div>
+      </section>
+
+      <div class="toolbar">
+        <div class="toolbar-left">
+          <button type="button" class="tool-btn" data-action="expand-all">
+            <i class="fa-solid fa-chevrons-down"></i> Expand all
+          </button>
+          <button type="button" class="tool-btn" data-action="collapse-all">
+            <i class="fa-solid fa-chevrons-up"></i> Collapse all
+          </button>
+        </div>
+        <div class="toolbar-right">
+          <span class="legend">
+            <span class="swatch swatch-up"></span> budget grew
+          </span>
+          <span class="legend">
+            <span class="swatch swatch-down"></span> budget shrank
+          </span>
+          <span class="legend">
+            <span class="swatch swatch-spill"></span> spillover
+          </span>
+        </div>
       </div>
 
-      {externalFunctions.length > 0 && (
-        <section class="external-section mt-2">
-          <h2 class="section-title">Outside the corporation &mdash; who actually does this</h2>
-          <p class="text-sm text-muted mb-1">
-            {externalFunctions.length} of the {mapping.length} GBA Act functions are delivered by parastatals or state departments, not the city corporation.
-          </p>
-          <div class="external-grid mt-1">
-            {externalFunctions.map((fn) => {
-              const ents = entitiesForFunction(fn.id);
-              return (
-                <div class="external-item">
-                  <div class="external-fn">
-                    <span class="external-fn__name">{fn.name}</span>
-                    <span class="external-fn__ref">S. {fn.act_reference.section}</span>
-                  </div>
-                  <div class="external-ents">
-                    {ents.length > 0 ? ents.map((e) => (
-                      <a href={e.url} target="_blank" rel="noopener" class="external-ent" title={e.functions.find(f => f.id === fn.id)?.scope}>
-                        <strong>{e.abbr}</strong> <span class="text-sm text-muted">{e.name}</span>
-                      </a>
-                    )) : (
-                      <span class="text-sm text-muted">No external entity mapped</span>
-                    )}
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </section>
-      )}
+      <aside class="note-card">
+        <i class="fa-solid fa-circle-info"></i>
+        <div>
+          <strong>Extraction in progress.</strong> Line items here come from OCR of the OpenCity.in budget PDF. Some sections are not yet captured (Revenue extra-ordinary payments, Public Works capital expenses, SWM BSWML grants). Captured total is {formatINR(data.total_2026_27)} of a book total of {`\u20B9`}3,826 Cr. Backfill is pending.
+        </div>
+      </aside>
+
+      <section class="tree">
+        {data.functions.map((fn) => (
+          <details class="fn-block" open={fn.code === "05"}>
+            <summary class="fn-summary">
+              <span class="fn-lead">
+                <i class="fa-solid fa-chevron-right chev"></i>
+                <span class="fn-code">{fn.code}</span>
+                <span class="fn-name">{cleanName(fn.name)}</span>
+              </span>
+              <span class="fn-meta">
+                {fn.spillover > 0 && (
+                  <span class="pill pill-spill">
+                    <i class="fa-solid fa-clock-rotate-left"></i>
+                    {formatINR(fn.spillover)}
+                  </span>
+                )}
+                <span class={`pill pill-yoy ${yoyClass(fn.yoy_pct)}`}>{fmtYoY(fn.yoy_pct) || "—"}</span>
+                <span class="fn-amount">{formatINR(fn.total_2026_27)}</span>
+              </span>
+            </summary>
+            <div class="sub-list">
+              {fn.sub_categories.length === 0 && (
+                <p class="no-data">No line items captured for this function yet.</p>
+              )}
+              {fn.sub_categories.map((sub) => (
+                <details class="sub-block">
+                  <summary class="sub-summary">
+                    <span class="sub-lead">
+                      <i class="fa-solid fa-chevron-right chev chev-sm"></i>
+                      <span class="sub-name">{cleanName(sub.name)}</span>
+                    </span>
+                    <span class="sub-meta">
+                      {sub.spillover > 0 && (
+                        <span class="pill pill-spill pill-sm">
+                          <i class="fa-solid fa-clock-rotate-left"></i>
+                          {formatINR(sub.spillover)}
+                        </span>
+                      )}
+                      <span class={`pill pill-yoy pill-sm ${yoyClass(sub.yoy_pct)}`}>{fmtYoY(sub.yoy_pct) || "—"}</span>
+                      <span class="sub-amount">{formatINR(sub.total_2026_27)}</span>
+                    </span>
+                  </summary>
+                  <ul class="item-list">
+                    {sub.items.map((it) => (
+                      <li class="item">
+                        <span class="item-main">
+                          <span class="item-code">{it.code}</span>
+                          <span class="item-name">{cleanName(it.name)}</span>
+                        </span>
+                        <span class="item-meta">
+                          {(it.pending ?? 0) > 0 && (
+                            <span class="pill pill-spill pill-xs">
+                              <i class="fa-solid fa-clock-rotate-left"></i>
+                              {formatINR(it.pending!)}
+                            </span>
+                          )}
+                          <span class={`pill pill-yoy pill-xs ${yoyClass(it.yoy_pct)}`}>{fmtYoY(it.yoy_pct) || "—"}</span>
+                          <span class="item-amount">{formatINR(it.total_2026_27)}</span>
+                        </span>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
+            </div>
+          </details>
+        ))}
+      </section>
+
+      <p class="source-line">
+        Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">Corporation Budget Book {data.fiscal_year}</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
+      </p>
     </>
   ) : (
     <div class="card mt-2">
-      <p class="text-muted">Budget or grievance data not available for this corporation.</p>
+      <p class="text-muted">Line-item budget data not available for this corporation.</p>
     </div>
   )}
-
-  <nav class="page-links mt-2">
-    <a href={`/${city.id}/${corporation.id}/budget/${corporation.budget_year}`} class="link-btn">Full Budget</a>
-    <a href={`/${city.id}/act`} class="link-btn">{city.act.short_name}</a>
-    <a href={`/${city.id}/compare`} class="link-btn">Compare Corporations</a>
-  </nav>
 </BaseLayout>
 
+<script is:inline>
+  document.addEventListener("click", (e) => {
+    const t = e.target;
+    if (!(t instanceof HTMLElement)) return;
+    const btn = t.closest("[data-action]");
+    if (!btn) return;
+    const action = btn.getAttribute("data-action");
+    const all = document.querySelectorAll("details.fn-block, details.sub-block");
+    if (action === "expand-all") all.forEach((d) => (d.open = true));
+    if (action === "collapse-all") all.forEach((d) => (d.open = false));
+  });
+</script>
+
 <style>
-  .corp-header h1 {
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: var(--c-primary);
+  :root {
+    --num-font: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --c-ink: #1a202c;
+    --c-ink-soft: #4a5568;
+    --c-rule: #e2e8f0;
+    --c-rule-soft: #edf2f7;
+    --c-good: #137752;
+    --c-good-bg: #e7f5ee;
+    --c-bad: #9b2c2c;
+    --c-bad-bg: #fdeceb;
+    --c-neutral: #718096;
+    --c-neutral-bg: #edf2f7;
+    --c-spill: #9a6700;
+    --c-spill-bg: #fff4cc;
   }
-  .stat-row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    padding: 1rem 1.25rem;
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius);
+
+  .page-head {
+    text-align: left;
+    margin: 2rem 0 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--c-rule);
   }
-  .stat-item dt {
+  .page-head .eyebrow {
     font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--c-text-muted);
-  }
-  .stat-item dd {
-    font-size: 1.25rem;
-    font-weight: 700;
-  }
-  .status-summary {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-  }
-  .status-count {
-    font-size: 0.88rem;
+    letter-spacing: 0.12em;
+    color: var(--c-ink-soft);
     font-weight: 600;
-    padding: 0.3rem 0.75rem;
-    border-radius: var(--radius);
+    margin-bottom: 0.5rem;
   }
-  .status-count--good { background: #dcfce7; color: #166534; }
-  .status-count--stressed { background: #fef9c3; color: #854d0e; }
-  .status-count--critical { background: #fee2e2; color: #991b1b; }
-  .status-count--unfunded { background: #f3f4f6; color: #4b5563; }
-  .status-count--no_data { background: #ffffff; color: #6b7280; border: 1px dashed #d1d5db; }
+  .page-head h1 {
+    text-align: left;
+    font-size: clamp(1.75rem, 3.6vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--c-ink);
+    margin: 0;
+  }
+  .page-head .lede {
+    margin: 0.75rem 0 0;
+    max-width: 68ch;
+    color: var(--c-ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.55;
+  }
 
-  .section-title {
-    font-size: 1.15rem;
-    font-weight: 700;
-    color: var(--c-primary);
+  /* Topline grid */
+  .topline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--c-card);
+    border: 1px solid var(--c-rule);
+    border-radius: 8px;
+    overflow: hidden;
     margin-top: 1.5rem;
   }
-
-  /* External entities */
-  .external-section {
-    padding-top: 0.5rem;
-  }
-  .external-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 0.75rem;
-  }
-  .external-item {
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-left: 3px solid var(--c-accent);
-    border-radius: var(--radius);
-    padding: 0.75rem 1rem;
-  }
-  .external-fn {
-    display: flex;
-    align-items: baseline;
-    gap: 0.5rem;
-    margin-bottom: 0.4rem;
-  }
-  .external-fn__name {
-    font-weight: 600;
-    color: var(--c-text);
-  }
-  .external-fn__ref {
-    font-size: 0.7rem;
-    color: var(--c-text-muted);
-  }
-  .external-ents {
+  .tl-cell {
+    padding: 1.1rem 1.25rem;
+    border-right: 1px solid var(--c-rule);
     display: flex;
     flex-direction: column;
-    gap: 0.25rem;
+    gap: 0.2rem;
+    background: #fff;
   }
-  .external-ent {
-    font-size: 0.85rem;
-    text-decoration: none;
-    color: var(--c-primary);
+  .tl-cell:last-child { border-right: none; }
+  .tl-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-ink-soft);
+    font-weight: 600;
   }
-  .external-ent:hover {
-    text-decoration: underline;
+  .tl-value {
+    font-family: var(--num-font);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+  }
+  .tl-value--muted { color: var(--c-ink-soft); font-weight: 600; }
+  .tl-value--accent { color: var(--c-spill); }
+  .tl-value.yoy-up { color: var(--c-good); }
+  .tl-value.yoy-down { color: var(--c-bad); }
+  .tl-value.yoy-zero, .tl-value.yoy-none { color: var(--c-neutral); }
+  .tl-sub {
+    font-size: 0.74rem;
+    color: var(--c-neutral);
   }
 
-  .page-links {
+  /* Toolbar */
+  .toolbar {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 0.75rem;
+    margin: 1.25rem 0 0.75rem;
   }
-  .link-btn {
-    display: inline-block;
-    padding: 0.5rem 1rem;
-    font-size: 0.88rem;
+  .toolbar-left { display: flex; gap: 0.5rem; }
+  .toolbar-right {
+    display: flex;
+    gap: 0.9rem;
+    font-size: 0.78rem;
+    color: var(--c-ink-soft);
+  }
+  .legend { display: inline-flex; align-items: center; gap: 0.35rem; }
+  .swatch {
+    width: 10px; height: 10px; border-radius: 2px; display: inline-block;
+  }
+  .swatch-up { background: var(--c-good); }
+  .swatch-down { background: var(--c-bad); }
+  .swatch-spill { background: var(--c-spill); }
+
+  .tool-btn {
+    font-family: var(--num-font);
+    font-size: 0.85rem;
     font-weight: 600;
-    color: var(--c-primary);
-    border: 1px solid var(--c-primary);
-    border-radius: var(--radius);
-    transition: background 0.15s, color 0.15s;
+    padding: 0.45rem 0.85rem;
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    border-radius: 6px;
+    color: var(--c-ink);
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.15s ease;
   }
-  .link-btn:hover {
-    background: var(--c-primary);
-    color: #fff;
-    text-decoration: none;
+  .tool-btn:hover {
+    border-color: var(--c-primary);
+    color: var(--c-primary);
+    background: #f7fafc;
+  }
+  .tool-btn i { font-size: 0.75rem; }
+
+  /* Note card */
+  .note-card {
+    display: flex;
+    gap: 0.65rem;
+    padding: 0.8rem 1rem;
+    background: #fffbeb;
+    border: 1px solid #fde68a;
+    border-left: 3px solid var(--c-accent);
+    border-radius: 6px;
+    color: #78350f;
+    font-size: 0.86rem;
+    line-height: 1.55;
+    margin-bottom: 1.25rem;
+  }
+  .note-card i { color: var(--c-spill); margin-top: 0.2rem; }
+
+  /* Tree */
+  .tree {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
   }
 
-  @media (max-width: 640px) {
-    .corp-header h1 { font-size: 1.25rem; }
-    .stat-row { gap: 1rem; }
-    .stat-item dd { font-size: 1.05rem; }
-    .status-summary { gap: 0.5rem; }
-    .status-count { font-size: 0.8rem; padding: 0.2rem 0.5rem; }
-    .external-grid { grid-template-columns: 1fr; }
+  .fn-block {
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.15s ease;
+  }
+  .fn-block[open] {
+    border-color: var(--c-primary);
+    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
+  }
+
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+
+  .fn-summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.9rem 1.1rem;
+  }
+  .fn-summary:hover { background: #f8fafc; }
+  .fn-lead {
+    display: grid;
+    grid-template-columns: auto auto 1fr;
+    align-items: center;
+    gap: 0.85rem;
+    min-width: 0;
+  }
+  .chev {
+    color: var(--c-neutral);
+    transition: transform 0.2s ease;
+    font-size: 0.8rem;
+    width: 0.9rem;
+    flex-shrink: 0;
+  }
+  details[open] > summary .chev { transform: rotate(90deg); }
+  .chev-sm { font-size: 0.7rem; color: var(--c-neutral); }
+
+  .fn-code {
+    font-family: var(--num-font);
+    font-feature-settings: "tnum";
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--c-neutral);
+    background: var(--c-rule-soft);
+    border-radius: 4px;
+    padding: 0.15rem 0.5rem;
+    letter-spacing: 0.04em;
+  }
+  .fn-name {
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.005em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fn-meta, .sub-meta, .item-meta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .fn-amount {
+    font-weight: 800;
+    font-size: 1.05rem;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+    min-width: 6rem;
+    text-align: right;
+  }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    line-height: 1.3;
+    font-feature-settings: "tnum";
+  }
+  .pill-sm { font-size: 0.72rem; padding: 0.15rem 0.5rem; }
+  .pill-xs { font-size: 0.7rem; padding: 0.1rem 0.45rem; }
+
+  .pill-yoy { min-width: 3.8rem; justify-content: center; }
+  .pill-yoy.yoy-up { background: var(--c-good-bg); color: var(--c-good); }
+  .pill-yoy.yoy-down { background: var(--c-bad-bg); color: var(--c-bad); }
+  .pill-yoy.yoy-zero { background: var(--c-neutral-bg); color: var(--c-neutral); }
+  .pill-yoy.yoy-none { background: transparent; color: var(--c-neutral); border: 1px dashed var(--c-rule); }
+
+  .pill-spill {
+    background: var(--c-spill-bg);
+    color: var(--c-spill);
+  }
+  .pill-spill i { font-size: 0.7em; }
+
+  /* Sub level */
+  .sub-list {
+    border-top: 1px solid var(--c-rule);
+    background: #fafbfc;
+    padding: 0.25rem 0;
+  }
+  .no-data {
+    padding: 0.75rem 1.25rem;
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--c-neutral);
+    font-style: italic;
+  }
+
+  .sub-block {
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .sub-block:last-child { border-bottom: none; }
+
+  .sub-summary {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.7rem 1.1rem 0.7rem 2.4rem;
+  }
+  .sub-summary:hover { background: #f1f5f9; }
+  .sub-lead {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    min-width: 0;
+  }
+  .sub-name {
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--c-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .sub-amount {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    min-width: 5.5rem;
+    text-align: right;
+  }
+
+  /* Item level */
+  .item-list {
+    list-style: none;
+    margin: 0;
+    padding: 0.4rem 1.1rem 0.7rem 3.5rem;
+    background: #fff;
+    border-top: 1px solid var(--c-rule-soft);
+  }
+  .item {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 0.75rem;
+    align-items: baseline;
+    padding: 0.4rem 0;
+    font-size: 0.87rem;
+    border-bottom: 1px dashed var(--c-rule-soft);
+  }
+  .item:last-child { border-bottom: none; }
+  .item-main {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.65rem;
+    min-width: 0;
+  }
+  .item-code {
+    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+    font-size: 0.72rem;
+    color: var(--c-neutral);
+    letter-spacing: 0.02em;
+    flex-shrink: 0;
+  }
+  .item-name {
+    color: var(--c-ink);
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .item-amount {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--c-ink);
+    min-width: 5rem;
+    text-align: right;
+  }
+
+  .source-line {
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--c-rule);
+    font-size: 0.82rem;
+    color: var(--c-ink-soft);
+  }
+  .source-line a { color: var(--c-primary); }
+
+  @media (max-width: 720px) {
+    .topline { grid-template-columns: repeat(2, 1fr); }
+    .tl-cell { border-right: none; border-bottom: 1px solid var(--c-rule); }
+    .tl-cell:nth-child(2) { border-right: none; }
+    .tl-cell:nth-child(even) { border-right: none; }
+    .tl-cell:nth-child(odd) { border-right: 1px solid var(--c-rule); }
+    .tl-cell:last-child, .tl-cell:nth-last-child(2) { border-bottom: none; }
+
+    .fn-summary, .sub-summary, .item {
+      grid-template-columns: 1fr;
+    }
+    .fn-meta, .sub-meta, .item-meta {
+      justify-content: flex-start;
+      padding-left: 1.75rem;
+    }
+    .item-meta { padding-left: 0; }
+    .fn-amount, .sub-amount, .item-amount { text-align: left; min-width: 0; }
+    .toolbar-right { display: none; }
+    .sub-summary { padding-left: 1.6rem; }
+    .item-list { padding-left: 1.6rem; }
   }
 </style>
