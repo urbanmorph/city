@@ -1,316 +1,238 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CorporationCard from "../components/CorporationCard.astro";
-import { loadCities, loadCorporations, loadBudget, loadGrievances, loadFunctionMapping } from "../lib/data-loader";
-import { computeAllHealth, countByStatus } from "../lib/health-score";
-import { formatINR, formatNumber } from "../lib/format";
+import { loadCities, loadCorporations, loadBudget, loadLineItemBudget } from "../lib/data-loader";
+import { formatINR } from "../lib/format";
 
 const cities = loadCities();
+const city = cities[0]; // Bengaluru — only city with data
+const corporations = loadCorporations(city.id);
 
-const cityData = cities.map((city) => {
-  const corporations = loadCorporations(city.id);
-  const mapping = loadFunctionMapping(city.id);
+type CardData = {
+  corporation: (typeof corporations)[number];
+  totalBudgetLakhs: number;
+  yoyPct: number | null;
+  spilloverLakhs: number | null;
+  dataStatus: "full" | "partial" | "none";
+};
 
-  const corpStats = corporations.map((corp) => {
-    const budget = loadBudget(city.id, corp.id, city.budget_year);
-    const grievances = loadGrievances(city.id, corp.id);
-
-    let stressedCount = 0;
-    let totalBudget = 0;
-    let totalComplaints = 0;
-
-    if (budget && grievances) {
-      const healthList = computeAllHealth(corp.id, budget, grievances, mapping);
-      const counts = countByStatus(healthList);
-      stressedCount = counts.stressed + counts.critical + counts.unfunded;
-      totalBudget = budget.summary.total_expenditure;
-      totalComplaints = grievances.total_complaints;
-    }
-
+const cardData: CardData[] = corporations.map((corp) => {
+  const lineItems = loadLineItemBudget(city.id, corp.id);
+  if (lineItems) {
     return {
       corporation: corp,
-      stressedCount,
-      totalBudget: formatINR(totalBudget),
-      totalComplaints: formatNumber(totalComplaints),
+      totalBudgetLakhs: lineItems.total_2026_27,
+      yoyPct: lineItems.yoy_pct ?? null,
+      spilloverLakhs: lineItems.total_spillover ?? null,
+      dataStatus: corp.id === "south" ? "partial" : "full",
     };
-  });
-
-  return { city, corporations, mapping, corpStats };
+  }
+  const budget = loadBudget(city.id, corp.id, city.budget_year);
+  return {
+    corporation: corp,
+    totalBudgetLakhs: budget?.summary.total_expenditure ?? 0,
+    yoyPct: null,
+    spilloverLakhs: null,
+    dataStatus: "none",
+  };
 });
+
+const totalBudgetLakhs = cardData.reduce((sum, c) => sum + c.totalBudgetLakhs, 0);
+const totalWards = corporations.reduce((sum, c) => sum + c.wards, 0);
 ---
 
-<BaseLayout title="City Portal">
-  <!-- ── Hero ─────────────────────────────────────────────── -->
-  <section class="hero">
-    <h1>Governance Accountability for Indian Cities</h1>
-    <p class="hero__sub">From mandate to money to outcomes &mdash; the full story of how your city works</p>
-  </section>
+<BaseLayout
+  title={`${city.name} Governance Portal`}
+  description={`Budget, line items and spillover across ${corporations.length} city corporations.`}
+>
+  <header class="page-head">
+    <div class="eyebrow">Governance accountability for Indian cities</div>
+    <h1>{city.name}</h1>
+    <p class="lede">
+      Every rupee, traced by corporation, function and line item. Budget estimates, year on year change and spillover from earlier years for Fiscal Year 2026{`\u2013`}27.
+    </p>
+  </header>
 
-  <!-- ── 6-Layer Narrative ────────────────────────────────── -->
-  <section class="narrative-flow">
-    <h2 class="narrative-flow__title">How we measure governance</h2>
-    <p class="text-sm text-muted">For each civic function, we trace the complete chain from law to lived reality.</p>
-
-    <div class="flow-steps">
-      <div class="flow-step">
-        <span class="flow-step__num">1</span>
-        <div class="flow-step__content">
-          <strong>The Mandate</strong>
-          <span>What does the law require?</span>
-          <span class="flow-step__source">GBA Act, Schedule I</span>
-        </div>
-      </div>
-      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <span class="flow-step__num">2</span>
-        <div class="flow-step__content">
-          <strong>The Money</strong>
-          <span>How much is allocated?</span>
-          <span class="flow-step__source">Budget books 2026-27</span>
-        </div>
-      </div>
-      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <span class="flow-step__num">3</span>
-        <div class="flow-step__content">
-          <strong>The People</strong>
-          <span>Are there enough staff?</span>
-          <span class="flow-step__source">ASICS 2023</span>
-        </div>
-      </div>
-      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <span class="flow-step__num">4</span>
-        <div class="flow-step__content">
-          <strong>The Reality</strong>
-          <span>What do citizens experience?</span>
-          <span class="flow-step__source">BBMP Sahaaya, 766K complaints</span>
-        </div>
-      </div>
-      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
-      <div class="flow-step">
-        <span class="flow-step__num">5</span>
-        <div class="flow-step__content">
-          <strong>Who's Responsible</strong>
-          <span>Your ward, your rep</span>
-          <span class="flow-step__source">kaun.city</span>
-        </div>
-      </div>
-      <div class="flow-arrow-h" aria-hidden="true">&rarr;</div>
-      <div class="flow-step flow-step--verdict">
-        <span class="flow-step__num">6</span>
-        <div class="flow-step__content">
-          <strong>The Verdict</strong>
-          <span>Is this function healthy?</span>
-          <span class="flow-step__source">Health score</span>
-        </div>
-      </div>
+  <section class="topline">
+    <div class="tl-cell">
+      <span class="tl-label">Total Budget</span>
+      <span class="tl-value">{formatINR(totalBudgetLakhs)}</span>
+      <span class="tl-sub">2026 {`\u2013`}27 across {corporations.length} corps</span>
+    </div>
+    <div class="tl-cell">
+      <span class="tl-label">Corporations</span>
+      <span class="tl-value">{corporations.length}</span>
+      <span class="tl-sub">City corporations under GBA</span>
+    </div>
+    <div class="tl-cell">
+      <span class="tl-label">Wards</span>
+      <span class="tl-value">{totalWards}</span>
+      <span class="tl-sub">Elected representatives</span>
+    </div>
+    <div class="tl-cell">
+      <span class="tl-label">Fiscal Year</span>
+      <span class="tl-value">2026{`\u2013`}27</span>
+      <span class="tl-sub">Budget Estimate</span>
     </div>
   </section>
 
-  <!-- ── Cities ───────────────────────────────────────────── -->
-  {cityData.map(({ city, mapping, corpStats }) => (
-    <section class="city-section">
-      <div class="city-header">
-        <h2>
-          <a href={`/${city.id}`}>{city.name}</a>
-        </h2>
-        <p class="text-local">{city.name_local}</p>
-        <p class="text-sm text-muted">{city.authority} &mdash; {city.act.short_name} ({city.act.year})</p>
-      </div>
+  <section class="corps-section">
+    <div class="section-head">
+      <h2>Corporations</h2>
+      <p class="section-sub">Click any corporation to drill into its line-item budget.</p>
+    </div>
 
-      <dl class="city-meta">
-        <div>
-          <dt>Functions</dt>
-          <dd>{mapping.length}</dd>
-        </div>
-        <div>
-          <dt>Corporations</dt>
-          <dd>{city.corporation_count}</dd>
-        </div>
-        <div>
-          <dt>Budget Year</dt>
-          <dd>{city.budget_year}</dd>
-        </div>
-        <div>
-          <dt>Staff / Lakh</dt>
-          <dd>317</dd>
-        </div>
-        <div>
-          <dt>Vacancy</dt>
-          <dd>52%</dd>
-        </div>
-      </dl>
+    <div class="card-grid">
+      {cardData.map((c) => (
+        <CorporationCard
+          cityId={city.id}
+          corporation={c.corporation}
+          totalBudgetLakhs={c.totalBudgetLakhs}
+          yoyPct={c.yoyPct}
+          spilloverLakhs={c.spilloverLakhs}
+          dataStatus={c.dataStatus}
+        />
+      ))}
+    </div>
+  </section>
 
-      <div class="card-grid mt-1">
-        {corpStats.map(({ corporation, stressedCount, totalBudget, totalComplaints }) => (
-          <CorporationCard
-            cityId={city.id}
-            corporation={corporation}
-            stressedCount={stressedCount}
-            totalBudget={totalBudget}
-            totalComplaints={totalComplaints}
-          />
-        ))}
-      </div>
-
-      <nav class="city-links mt-1">
-        <a href={`/${city.id}/act`}>{city.act.short_name} &mdash; 26 chapters, 361 sections</a>
-        <span class="city-links__sep">&middot;</span>
-        <a href={`/${city.id}/compare`}>Compare corporations</a>
-      </nav>
-    </section>
-  ))}
+  <p class="source-line">
+    Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">GBA Corporation Budget Books 2026{`\u2013`}27</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
+  </p>
 </BaseLayout>
 
 <style>
-  .hero {
-    text-align: center;
-    padding: 2.5rem 0 1rem;
-  }
-  .hero h1 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--c-primary);
-    letter-spacing: -0.02em;
-  }
-  .hero__sub {
-    font-size: 1rem;
-    color: var(--c-text-muted);
-    margin-top: 0.4rem;
-  }
-
-  /* ── 6-Layer Flow ───────────────────────────────────────── */
-  .narrative-flow {
-    margin: 1.5rem 0 2rem;
-    padding: 1.25rem;
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius);
-  }
-  .narrative-flow__title {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--c-primary);
-    margin-bottom: 0.25rem;
-  }
-  .flow-steps {
-    display: flex;
-    align-items: stretch;
-    gap: 0;
-    margin-top: 1rem;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-  }
-  .flow-step {
-    flex: 1;
-    min-width: 120px;
-    display: flex;
-    gap: 0.5rem;
-    padding: 0.75rem;
-    background: var(--c-bg);
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius);
-  }
-  .flow-step--verdict {
-    background: #f0f4f8;
-    border-color: var(--c-primary);
-  }
-  .flow-step__num {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 24px;
-    height: 24px;
-    border-radius: 50%;
-    background: var(--c-primary);
-    color: #fff;
-    font-size: 0.72rem;
-    font-weight: 700;
-    flex-shrink: 0;
-  }
-  .flow-step--verdict .flow-step__num {
-    background: var(--c-accent);
-    color: var(--c-text);
-  }
-  .flow-step__content {
-    display: flex;
-    flex-direction: column;
-    font-size: 0.82rem;
-    line-height: 1.4;
-  }
-  .flow-step__content strong {
-    font-size: 0.85rem;
-    color: var(--c-text);
-  }
-  .flow-step__content span {
-    color: var(--c-text-muted);
-  }
-  .flow-step__source {
-    font-size: 0.7rem;
-    font-style: italic;
-    margin-top: 0.2rem;
-  }
-  .flow-arrow-h {
-    display: flex;
-    align-items: center;
-    padding: 0 0.25rem;
-    color: var(--c-text-muted);
-    font-size: 1rem;
-    flex-shrink: 0;
+  :root {
+    --num-font: "Inter", ui-sans-serif, system-ui, sans-serif;
+    --c-ink: #1a202c;
+    --c-ink-soft: #4a5568;
+    --c-rule: #e2e8f0;
+    --c-rule-soft: #edf2f7;
+    --c-good: #137752;
+    --c-good-bg: #e7f5ee;
+    --c-bad: #9b2c2c;
+    --c-bad-bg: #fdeceb;
+    --c-neutral: #718096;
+    --c-neutral-bg: #edf2f7;
+    --c-spill: #9a6700;
+    --c-spill-bg: #fff4cc;
   }
 
-  /* ── City Section ───────────────────────────────────────── */
-  .city-section {
-    margin-bottom: 2rem;
+  .page-head {
+    text-align: left;
+    margin: 2rem 0 1.5rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--c-rule);
   }
-  .city-header h2 {
-    font-size: 1.35rem;
-    font-weight: 700;
-  }
-  .city-header h2 a {
-    color: var(--c-primary);
-  }
-  .city-header h2 a:hover {
-    text-decoration: underline;
-  }
-  .city-meta {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    margin-top: 0.75rem;
-    padding: 0.75rem 1rem;
-    background: var(--c-card);
-    border: 1px solid var(--c-border);
-    border-radius: var(--radius);
-  }
-  .city-meta dt {
+  .page-head .eyebrow {
     font-size: 0.72rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--c-text-muted);
-  }
-  .city-meta dd {
-    font-size: 0.95rem;
+    letter-spacing: 0.12em;
+    color: var(--c-ink-soft);
     font-weight: 600;
+    margin-bottom: 0.5rem;
   }
-  .city-links {
-    font-size: 0.88rem;
+  .page-head h1 {
+    text-align: left;
+    font-size: clamp(1.75rem, 3.6vw, 2.4rem);
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
+    color: var(--c-ink);
+    margin: 0;
   }
-  .city-links a {
-    color: var(--c-primary);
-    font-weight: 500;
-  }
-  .city-links__sep {
-    margin: 0 0.5rem;
-    color: var(--c-text-muted);
+  .page-head .lede {
+    margin: 0.75rem 0 0;
+    max-width: 68ch;
+    color: var(--c-ink-soft);
+    font-size: 0.98rem;
+    line-height: 1.55;
   }
 
-  @media (max-width: 640px) {
-    .hero h1 { font-size: 1.3rem; }
-    .city-meta { gap: 1rem; }
-    .flow-steps { flex-wrap: wrap; gap: 0.5rem; }
-    .flow-arrow-h { display: none; }
-    .flow-step { min-width: calc(50% - 0.25rem); }
+  /* Topline grid */
+  .topline {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0;
+    background: var(--c-card);
+    border: 1px solid var(--c-rule);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-top: 1.5rem;
+  }
+  .tl-cell {
+    padding: 1.1rem 1.25rem;
+    border-right: 1px solid var(--c-rule);
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    background: #fff;
+  }
+  .tl-cell:last-child { border-right: none; }
+  .tl-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--c-ink-soft);
+    font-weight: 600;
+  }
+  .tl-value {
+    font-family: var(--num-font);
+    font-feature-settings: "tnum";
+    font-variant-numeric: tabular-nums;
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+  }
+  .tl-sub {
+    font-size: 0.74rem;
+    color: var(--c-neutral);
+  }
+
+  /* Corps section */
+  .corps-section {
+    margin-top: 2rem;
+  }
+  .section-head {
+    margin-bottom: 1rem;
+  }
+  .section-head h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .section-sub {
+    margin: 0.3rem 0 0;
+    font-size: 0.88rem;
+    color: var(--c-ink-soft);
+  }
+
+  .card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+  }
+
+  .source-line {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--c-rule);
+    font-size: 0.82rem;
+    color: var(--c-ink-soft);
+  }
+  .source-line a { color: var(--c-primary); }
+
+  @media (max-width: 960px) {
+    .card-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .topline { grid-template-columns: repeat(2, 1fr); }
+    .tl-cell { border-right: none; border-bottom: 1px solid var(--c-rule); }
+    .tl-cell:nth-child(odd) { border-right: 1px solid var(--c-rule); }
+    .tl-cell:last-child, .tl-cell:nth-last-child(2) { border-bottom: none; }
+    .card-grid { grid-template-columns: 1fr; }
   }
 </style>

@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadLineItemBudget } from "../../../lib/data-loader";
+import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects } from "../../../lib/data-loader";
 import { formatINR } from "../../../lib/format";
 
 const { city: cityId, corporation: corpId } = Astro.params;
@@ -14,6 +14,32 @@ if (!city || !corporation) {
 }
 
 const data = loadLineItemBudget(city.id, corporation.id);
+const speech = loadSpeechProjects(city.id, corporation.id);
+
+// Group speech projects by function_code
+type SpeechProj = NonNullable<typeof speech>["projects"][number];
+const projectsByFn = new Map<string, SpeechProj[]>();
+for (const p of speech?.projects ?? []) {
+  const code = p.function_code ?? "unmapped";
+  if (!projectsByFn.has(code)) projectsByFn.set(code, []);
+  projectsByFn.get(code)!.push(p);
+}
+
+// Function meta in display order (matches budget functions, plus an "Unmapped" bucket)
+const speechFunctionOrder = [
+  { code: "01", name: "Council" },
+  { code: "02", name: "General Administration" },
+  { code: "03", name: "Revenue" },
+  { code: "04", name: "Town Planning and Regulation" },
+  { code: "05", name: "Public Works" },
+  { code: "06", name: "Solid Waste Management" },
+  { code: "07", name: "Public Health-General" },
+  { code: "08", name: "Public Health-Medical" },
+  { code: "09", name: "Horticulture" },
+  { code: "10", name: "Urban Forestry" },
+  { code: "11", name: "Public Education" },
+  { code: "12", name: "Social Welfare" },
+];
 
 function fmtYoY(pct: number | null | undefined): string {
   if (pct === null || pct === undefined) return "";
@@ -55,10 +81,10 @@ function cleanName(s: string): string {
   />
 
   <header class="page-head">
-    <div class="eyebrow">Budget Detail, Fiscal Year {data?.fiscal_year ?? "2026-27"}</div>
+    <div class="eyebrow">Fiscal Year {data?.fiscal_year ?? "2026-27"}</div>
     <h1>{corporation.name}</h1>
     <p class="lede">
-      Every rupee, by function, sub-category, and line item. Click any row to drill down. YoY compares Budget {data?.fiscal_year ?? "2026-27"} against Revised {data?.fiscal_year?.split("-")[0] ? `${Number(data.fiscal_year.split("-")[0]) - 1}-${data.fiscal_year.split("-")[0].slice(2)}` : "2025-26"}.
+      What was announced in the Commissioner's budget speech, and the line-item budget behind it. Switch tabs to move between the two views.
     </p>
   </header>
 
@@ -87,107 +113,184 @@ function cleanName(s: string): string {
         </div>
       </section>
 
-      <div class="toolbar">
-        <div class="toolbar-left">
-          <button type="button" class="tool-btn" data-action="expand-all">
-            <i class="fa-solid fa-chevrons-down"></i> Expand all
-          </button>
-          <button type="button" class="tool-btn" data-action="collapse-all">
-            <i class="fa-solid fa-chevrons-up"></i> Collapse all
-          </button>
-        </div>
-        <div class="toolbar-right">
-          <span class="legend">
-            <span class="swatch swatch-up"></span> budget grew
-          </span>
-          <span class="legend">
-            <span class="swatch swatch-down"></span> budget shrank
-          </span>
-          <span class="legend">
-            <span class="swatch swatch-spill"></span> spillover
-          </span>
-        </div>
-      </div>
+      <nav class="tabs" role="tablist" aria-label="Budget views">
+        <button type="button" class="tab" role="tab" aria-selected={speech ? "true" : "false"} data-tab-target="speech" disabled={!speech}>
+          <i class="fa-solid fa-microphone-lines"></i>
+          Budget Speech
+          {speech && <span class="tab-count">{speech.projects.length}</span>}
+        </button>
+        <button type="button" class="tab" role="tab" aria-selected={speech ? "false" : "true"} data-tab-target="detail">
+          <i class="fa-solid fa-table-list"></i>
+          Budget Detail
+        </button>
+      </nav>
 
-      <aside class="note-card">
-        <i class="fa-solid fa-circle-info"></i>
-        <div>
-          <strong>Extraction in progress.</strong> Line items here come from OCR of the OpenCity.in budget PDF. Some sections are not yet captured (Revenue extra-ordinary payments, Public Works capital expenses, SWM BSWML grants). Captured total is {formatINR(data.total_2026_27)} of a book total of {`\u20B9`}3,826 Cr. Backfill is pending.
-        </div>
-      </aside>
+      {speech && (
+        <section class="tab-panel" data-tab="speech" aria-hidden="false">
+          <aside class="note-card">
+            <i class="fa-solid fa-circle-info"></i>
+            <div>
+              <strong>From the Commissioner's Budget Speech, {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}.</strong>
+              {` `}{speech.projects.length} projects and initiatives announced by {speech.commissioner}, grouped here against the 12 budget functions using a keyword heuristic. Tagging is provisional and can be refined.
+            </div>
+          </aside>
 
-      <section class="tree">
-        {data.functions.map((fn) => (
-          <details class="fn-block" open={fn.code === "05"}>
-            <summary class="fn-summary">
-              <span class="fn-lead">
-                <i class="fa-solid fa-chevron-right chev"></i>
-                <span class="fn-code">{fn.code}</span>
-                <span class="fn-name">{cleanName(fn.name)}</span>
-              </span>
-              <span class="fn-meta">
-                {fn.spillover > 0 && (
-                  <span class="pill pill-spill">
-                    <i class="fa-solid fa-clock-rotate-left"></i>
-                    {formatINR(fn.spillover)}
-                  </span>
-                )}
-                <span class={`pill pill-yoy ${yoyClass(fn.yoy_pct)}`}>{fmtYoY(fn.yoy_pct) || "—"}</span>
-                <span class="fn-amount">{formatINR(fn.total_2026_27)}</span>
-              </span>
-            </summary>
-            <div class="sub-list">
-              {fn.sub_categories.length === 0 && (
-                <p class="no-data">No line items captured for this function yet.</p>
-              )}
-              {fn.sub_categories.map((sub) => (
-                <details class="sub-block">
-                  <summary class="sub-summary">
-                    <span class="sub-lead">
-                      <i class="fa-solid fa-chevron-right chev chev-sm"></i>
-                      <span class="sub-name">{cleanName(sub.name)}</span>
+          <div class="speech-grid">
+            {speechFunctionOrder.map((fn) => {
+              const items = projectsByFn.get(fn.code) ?? [];
+              if (items.length === 0) return null;
+              const withAmount = items.filter((p) => p.amount_lakhs != null);
+              const totalLakhs = withAmount.reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
+              return (
+                <details class="speech-fn-block" open>
+                  <summary class="fn-summary">
+                    <span class="fn-lead">
+                      <i class="fa-solid fa-chevron-right chev"></i>
+                      <span class="fn-code">{fn.code}</span>
+                      <span class="fn-name">{fn.name}</span>
                     </span>
-                    <span class="sub-meta">
-                      {sub.spillover > 0 && (
-                        <span class="pill pill-spill pill-sm">
-                          <i class="fa-solid fa-clock-rotate-left"></i>
-                          {formatINR(sub.spillover)}
-                        </span>
-                      )}
-                      <span class={`pill pill-yoy pill-sm ${yoyClass(sub.yoy_pct)}`}>{fmtYoY(sub.yoy_pct) || "—"}</span>
-                      <span class="sub-amount">{formatINR(sub.total_2026_27)}</span>
+                    <span class="fn-meta">
+                      <span class="pill pill-count">{items.length} {items.length === 1 ? "project" : "projects"}</span>
+                      {totalLakhs > 0 && <span class="fn-amount">{formatINR(totalLakhs)}</span>}
                     </span>
                   </summary>
-                  <ul class="item-list">
-                    {sub.items.map((it) => (
-                      <li class="item">
-                        <span class="item-main">
-                          <span class="item-code">{it.code}</span>
-                          <span class="item-name">{cleanName(it.name)}</span>
-                        </span>
-                        <span class="item-meta">
-                          {(it.pending ?? 0) > 0 && (
-                            <span class="pill pill-spill pill-xs">
-                              <i class="fa-solid fa-clock-rotate-left"></i>
-                              {formatINR(it.pending!)}
-                            </span>
+                  <ul class="speech-list">
+                    {items.map((p) => (
+                      <li class="speech-item">
+                        <div class="speech-item-main">
+                          <span class="speech-item-name">{p.name}</span>
+                          {p.description && p.description !== p.name && (
+                            <span class="speech-item-desc">{p.description}</span>
                           )}
-                          <span class={`pill pill-yoy pill-xs ${yoyClass(it.yoy_pct)}`}>{fmtYoY(it.yoy_pct) || "—"}</span>
-                          <span class="item-amount">{formatINR(it.total_2026_27)}</span>
-                        </span>
+                          <span class="speech-item-foot">
+                            <span class="speech-page">p.{p.page}</span>
+                            <span class="speech-reason" title={p.tag_reason}>{p.tag_reason}</span>
+                          </span>
+                        </div>
+                        <div class="speech-item-meta">
+                          {p.amount_lakhs != null ? (
+                            <span class="speech-amount">{formatINR(p.amount_lakhs)}</span>
+                          ) : (
+                            <span class="speech-amount speech-amount--none">no amount</span>
+                          )}
+                        </div>
                       </li>
                     ))}
                   </ul>
                 </details>
-              ))}
-            </div>
-          </details>
-        ))}
-      </section>
+              );
+            })}
+          </div>
 
-      <p class="source-line">
-        Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">Corporation Budget Book {data.fiscal_year}</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
-      </p>
+          <p class="source-line">
+            Source: Budget Speech {data.fiscal_year}, {corporation.name}, delivered by {speech.commissioner} on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Function tags are provisional — assigned by keyword heuristic and open to refinement.
+          </p>
+        </section>
+      )}
+
+      <section class="tab-panel" data-tab="detail" aria-hidden={speech ? "true" : "false"}>
+        <div class="toolbar">
+          <div class="toolbar-left">
+            <button type="button" class="tool-btn" data-action="expand-all">
+              <i class="fa-solid fa-chevrons-down"></i> Expand all
+            </button>
+            <button type="button" class="tool-btn" data-action="collapse-all">
+              <i class="fa-solid fa-chevrons-up"></i> Collapse all
+            </button>
+          </div>
+          <div class="toolbar-right">
+            <span class="legend">
+              <span class="swatch swatch-up"></span> budget grew
+            </span>
+            <span class="legend">
+              <span class="swatch swatch-down"></span> budget shrank
+            </span>
+            <span class="legend">
+              <span class="swatch swatch-spill"></span> spillover
+            </span>
+          </div>
+        </div>
+
+        <aside class="note-card">
+          <i class="fa-solid fa-circle-info"></i>
+          <div>
+            <strong>Extracted from the OpenCity.in budget PDF.</strong> Captured {formatINR(data.total_2026_27)} of a book total of {`\u20B9`}3,826 Cr ({(data.total_2026_27 / 382595 * 100).toFixed(1)}% coverage). The remaining {`\u20B9`}{Math.round((382595 - data.total_2026_27) / 100)} Cr sit in rows where codes span columns irregularly on a handful of pages.
+          </div>
+        </aside>
+
+        <section class="tree">
+          {data.functions.map((fn) => (
+            <details class="fn-block" open={fn.code === "05"}>
+              <summary class="fn-summary">
+                <span class="fn-lead">
+                  <i class="fa-solid fa-chevron-right chev"></i>
+                  <span class="fn-code">{fn.code}</span>
+                  <span class="fn-name">{cleanName(fn.name)}</span>
+                </span>
+                <span class="fn-meta">
+                  {fn.spillover > 0 && (
+                    <span class="pill pill-spill">
+                      <i class="fa-solid fa-clock-rotate-left"></i>
+                      {formatINR(fn.spillover)}
+                    </span>
+                  )}
+                  <span class={`pill pill-yoy ${yoyClass(fn.yoy_pct)}`}>{fmtYoY(fn.yoy_pct) || "—"}</span>
+                  <span class="fn-amount">{formatINR(fn.total_2026_27)}</span>
+                </span>
+              </summary>
+              <div class="sub-list">
+                {fn.sub_categories.length === 0 && (
+                  <p class="no-data">No line items captured for this function yet.</p>
+                )}
+                {fn.sub_categories.map((sub) => (
+                  <details class="sub-block">
+                    <summary class="sub-summary">
+                      <span class="sub-lead">
+                        <i class="fa-solid fa-chevron-right chev chev-sm"></i>
+                        <span class="sub-name">{cleanName(sub.name)}</span>
+                      </span>
+                      <span class="sub-meta">
+                        {sub.spillover > 0 && (
+                          <span class="pill pill-spill pill-sm">
+                            <i class="fa-solid fa-clock-rotate-left"></i>
+                            {formatINR(sub.spillover)}
+                          </span>
+                        )}
+                        <span class={`pill pill-yoy pill-sm ${yoyClass(sub.yoy_pct)}`}>{fmtYoY(sub.yoy_pct) || "—"}</span>
+                        <span class="sub-amount">{formatINR(sub.total_2026_27)}</span>
+                      </span>
+                    </summary>
+                    <ul class="item-list">
+                      {sub.items.map((it) => (
+                        <li class="item">
+                          <span class="item-main">
+                            <span class="item-code">{it.code}</span>
+                            <span class="item-name">{cleanName(it.name)}</span>
+                          </span>
+                          <span class="item-meta">
+                            {(it.pending ?? 0) > 0 && (
+                              <span class="pill pill-spill pill-xs">
+                                <i class="fa-solid fa-clock-rotate-left"></i>
+                                {formatINR(it.pending!)}
+                              </span>
+                            )}
+                            <span class={`pill pill-yoy pill-xs ${yoyClass(it.yoy_pct)}`}>{fmtYoY(it.yoy_pct) || "—"}</span>
+                            <span class="item-amount">{formatINR(it.total_2026_27)}</span>
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </details>
+                ))}
+              </div>
+            </details>
+          ))}
+        </section>
+
+        <p class="source-line">
+          Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">Corporation Budget Book {data.fiscal_year}</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
+        </p>
+      </section>
     </>
   ) : (
     <div class="card mt-2">
@@ -200,10 +303,24 @@ function cleanName(s: string): string {
   document.addEventListener("click", (e) => {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
+
+    const tab = t.closest("[data-tab-target]");
+    if (tab) {
+      const target = tab.getAttribute("data-tab-target");
+      document.querySelectorAll("[data-tab-target]").forEach((b) =>
+        b.setAttribute("aria-selected", b.getAttribute("data-tab-target") === target ? "true" : "false")
+      );
+      document.querySelectorAll("[data-tab]").forEach((panel) =>
+        panel.setAttribute("aria-hidden", panel.getAttribute("data-tab") === target ? "false" : "true")
+      );
+      return;
+    }
+
     const btn = t.closest("[data-action]");
     if (!btn) return;
     const action = btn.getAttribute("data-action");
-    const all = document.querySelectorAll("details.fn-block, details.sub-block");
+    const panel = btn.closest("[data-tab]") ?? document;
+    const all = panel.querySelectorAll("details.fn-block, details.sub-block");
     if (action === "expand-all") all.forEach((d) => (d.open = true));
     if (action === "collapse-all") all.forEach((d) => (d.open = false));
   });
@@ -599,5 +716,165 @@ function cleanName(s: string): string {
     .toolbar-right { display: none; }
     .sub-summary { padding-left: 1.6rem; }
     .item-list { padding-left: 1.6rem; }
+  }
+
+  /* Tabs */
+  .tabs {
+    display: flex;
+    gap: 0;
+    margin-top: 1.5rem;
+    border-bottom: 1px solid var(--c-rule);
+  }
+  .tab {
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid transparent;
+    padding: 0.7rem 1.1rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--c-ink-soft);
+    cursor: pointer;
+    font-family: inherit;
+    margin-bottom: -1px;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .tab i { font-size: 0.9em; opacity: 0.85; }
+  .tab:hover:not(:disabled) { color: var(--c-ink); }
+  .tab[aria-selected="true"] {
+    color: var(--c-ink);
+    border-bottom-color: var(--c-primary);
+  }
+  .tab:disabled { opacity: 0.5; cursor: not-allowed; }
+  .tab-count {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.08rem 0.45rem;
+    border-radius: 999px;
+    background: #edf2f7;
+    color: #4a5568;
+    font-variant-numeric: tabular-nums;
+  }
+  .tab[aria-selected="true"] .tab-count {
+    background: var(--c-primary);
+    color: #fff;
+  }
+
+  /* Tab panels */
+  .tab-panel { display: block; }
+  .tab-panel[aria-hidden="true"] { display: none; }
+
+  /* Speech tab */
+  .speech-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    margin-top: 1rem;
+  }
+  .speech-fn-block {
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+  .speech-fn-block > .fn-summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 0.85rem 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.12s ease;
+  }
+  .speech-fn-block > .fn-summary::-webkit-details-marker { display: none; }
+  .speech-fn-block > .fn-summary:hover { background: #f7fafc; }
+  .speech-fn-block[open] > .fn-summary .chev { transform: rotate(90deg); }
+
+  .pill-count {
+    background: #edf2f7;
+    color: #4a5568;
+  }
+
+  .speech-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border-top: 1px solid var(--c-rule-soft);
+  }
+  .speech-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 0.75rem 1rem 0.75rem 2.5rem;
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .speech-item:last-child { border-bottom: none; }
+  .speech-item:hover { background: #fafbfc; }
+  .speech-item-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+    min-width: 0;
+    flex: 1;
+  }
+  .speech-item-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--c-ink);
+    line-height: 1.35;
+  }
+  .speech-item-desc {
+    font-size: 0.82rem;
+    color: var(--c-ink-soft);
+    line-height: 1.4;
+  }
+  .speech-item-foot {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+    margin-top: 0.25rem;
+    font-size: 0.72rem;
+    color: var(--c-neutral);
+  }
+  .speech-page {
+    font-variant-numeric: tabular-nums;
+    padding: 0.05rem 0.4rem;
+    background: #edf2f7;
+    border-radius: 3px;
+    font-weight: 600;
+    color: #4a5568;
+  }
+  .speech-reason {
+    font-style: italic;
+    opacity: 0.8;
+  }
+  .speech-item-meta {
+    flex-shrink: 0;
+    text-align: right;
+  }
+  .speech-amount {
+    font-family: var(--num-font);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    letter-spacing: -0.01em;
+  }
+  .speech-amount--none {
+    font-size: 0.78rem;
+    font-weight: 500;
+    font-style: italic;
+    color: var(--c-neutral);
+  }
+
+  @media (max-width: 640px) {
+    .tab { padding: 0.6rem 0.7rem; font-size: 0.86rem; }
+    .speech-item { padding-left: 1.25rem; }
+    .speech-item-foot { flex-wrap: wrap; gap: 0.35rem; }
   }
 </style>

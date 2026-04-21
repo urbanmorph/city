@@ -1,83 +1,176 @@
 ---
 import type { Corporation } from "../lib/types";
-import HealthBadge from "./HealthBadge.astro";
+import { formatINR } from "../lib/format";
 
 interface Props {
   cityId: string;
   corporation: Corporation;
-  stressedCount: number;
-  totalBudget: string;
-  totalComplaints: string;
+  totalBudgetLakhs: number;
+  yoyPct?: number | null;
+  spilloverLakhs?: number | null;
+  dataStatus?: "full" | "partial" | "none";
 }
 
-const { cityId, corporation, stressedCount, totalBudget, totalComplaints } = Astro.props;
+const {
+  cityId,
+  corporation,
+  totalBudgetLakhs,
+  yoyPct = null,
+  spilloverLakhs = null,
+  dataStatus = "full",
+} = Astro.props;
 
-const healthStatus = stressedCount === 0 ? "good" : stressedCount <= 2 ? "stressed" : "critical";
+function fmtYoY(pct: number | null | undefined): string {
+  if (pct === null || pct === undefined) return "—";
+  const sign = pct >= 0 ? "+" : "";
+  return `${sign}${pct.toFixed(1)}%`;
+}
+
+function yoyClass(pct: number | null | undefined): string {
+  if (pct === null || pct === undefined) return "yoy-none";
+  if (pct > 0) return "yoy-up";
+  if (pct < 0) return "yoy-down";
+  return "yoy-zero";
+}
 ---
 
-<a href={`/${cityId}/${corporation.id}`} class="card corp-card">
-  <h3 class="corp-card__name">{corporation.name}</h3>
-  <p class="text-local">{corporation.name_local}</p>
+<a href={`/${cityId}/${corporation.id}`} class="corp-card">
+  <div class="corp-card__head">
+    <h3 class="corp-card__name">{corporation.name}</h3>
+    <p class="corp-card__local">{corporation.name_local}</p>
+  </div>
 
-  <dl class="corp-card__stats">
-    <div>
-      <dt>Wards</dt>
-      <dd>{corporation.wards}</dd>
-    </div>
-    <div>
-      <dt>Budget</dt>
-      <dd>{totalBudget}</dd>
-    </div>
-    <div>
-      <dt>Complaints</dt>
-      <dd>{totalComplaints}</dd>
-    </div>
-    <div>
-      <dt>Stressed functions</dt>
-      <dd>
-        {stressedCount}
-        <HealthBadge status={healthStatus} />
-      </dd>
-    </div>
-  </dl>
+  <div class="corp-card__amount">
+    <span class="corp-card__value">{formatINR(totalBudgetLakhs)}</span>
+    <span class="corp-card__label">{corporation.budget_year ?? "2026–27"} Budget</span>
+  </div>
+
+  <div class="corp-card__meta">
+    <span class="meta-chip">
+      <i class="fa-solid fa-grid-2"></i>
+      {corporation.wards} wards
+    </span>
+    {yoyPct !== null && (
+      <span class={`meta-chip pill-yoy ${yoyClass(yoyPct)}`}>
+        YoY {fmtYoY(yoyPct)}
+      </span>
+    )}
+    {spilloverLakhs !== null && spilloverLakhs > 0 && (
+      <span class="meta-chip pill-spill">
+        <i class="fa-solid fa-clock-rotate-left"></i>
+        Spillover {formatINR(spilloverLakhs)}
+      </span>
+    )}
+  </div>
+
+  {dataStatus === "partial" && (
+    <p class="corp-card__note">Line items partially extracted.</p>
+  )}
+  {dataStatus === "none" && (
+    <p class="corp-card__note">Book total only. Line items pending.</p>
+  )}
+
+  <span class="corp-card__arrow" aria-hidden="true">
+    <i class="fa-solid fa-arrow-right"></i>
+  </span>
 </a>
 
 <style>
   .corp-card {
+    position: relative;
     display: flex;
     flex-direction: column;
-    height: 100%;
+    gap: 0.75rem;
+    padding: 1.1rem 1.25rem 1rem;
+    background: #fff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
     text-decoration: none;
     color: inherit;
-    transition: box-shadow 0.15s ease, border-color 0.15s ease;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+    height: 100%;
+    min-height: 170px;
   }
   .corp-card:hover {
     border-color: var(--c-primary);
-    box-shadow: 0 2px 8px rgba(63, 95, 122, 0.1);
+    box-shadow: 0 4px 12px rgba(63, 95, 122, 0.08);
+    transform: translateY(-1px);
     text-decoration: none;
   }
+
+  .corp-card__head { display: flex; flex-direction: column; gap: 0.1rem; }
   .corp-card__name {
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--c-primary);
+    font-size: 1rem;
+    font-weight: 700;
+    color: #1a202c;
+    letter-spacing: -0.005em;
   }
-  .corp-card__stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 0.6rem;
-    margin-top: 0.85rem;
+  .corp-card__local {
+    font-size: 0.78rem;
+    color: #718096;
+    margin: 0;
   }
-  .corp-card__stats dt {
-    font-size: 0.72rem;
+
+  .corp-card__amount { display: flex; flex-direction: column; gap: 0.05rem; }
+  .corp-card__value {
+    font-size: 1.45rem;
+    font-weight: 800;
+    color: #1a202c;
+    letter-spacing: -0.015em;
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+  }
+  .corp-card__label {
+    font-size: 0.7rem;
     text-transform: uppercase;
-    letter-spacing: 0.04em;
-    color: var(--c-text-muted);
-  }
-  .corp-card__stats dd {
-    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    color: #718096;
     font-weight: 600;
+  }
+
+  .corp-card__meta {
     display: flex;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 0.4rem;
+    margin-top: 0.1rem;
+  }
+  .meta-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.76rem;
+    font-weight: 600;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: #edf2f7;
+    color: #4a5568;
+    line-height: 1.3;
+    font-variant-numeric: tabular-nums;
+  }
+  .meta-chip i { font-size: 0.72em; opacity: 0.85; }
+  .pill-yoy.yoy-up { background: #e7f5ee; color: #137752; }
+  .pill-yoy.yoy-down { background: #fdeceb; color: #9b2c2c; }
+  .pill-yoy.yoy-zero { background: #edf2f7; color: #718096; }
+  .pill-yoy.yoy-none { background: transparent; color: #718096; border: 1px dashed #cbd5e0; }
+  .pill-spill { background: #fff4cc; color: #9a6700; }
+
+  .corp-card__note {
+    font-size: 0.74rem;
+    color: #9a6700;
+    margin: 0;
+    font-style: italic;
+  }
+
+  .corp-card__arrow {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    color: #cbd5e0;
+    transition: color 0.15s ease, transform 0.15s ease;
+    font-size: 0.85rem;
+  }
+  .corp-card:hover .corp-card__arrow {
+    color: var(--c-primary);
+    transform: translateX(2px);
   }
 </style>

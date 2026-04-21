@@ -2,10 +2,10 @@
   "corporation_id": "south",
   "fiscal_year": "2026-27",
   "unit": "lakhs",
-  "total_2026_27": 152419.71,
-  "total_revised_2025_26": 76320.01,
-  "total_spillover": 14024.5,
-  "yoy_pct": 99.7,
+  "total_2026_27": 360483.84,
+  "total_revised_2025_26": 132034.45,
+  "total_spillover": 101632.36,
+  "yoy_pct": 173.0,
   "functions": [
     {
       "code": "01",
@@ -606,11 +606,219 @@
     {
       "code": "03",
       "name": "Revenue",
-      "total_2026_27": 0.0,
-      "revised_2025_26": 0.0,
+      "total_2026_27": 24876.0,
+      "revised_2025_26": 19378.0,
       "spillover": 0.0,
-      "yoy_pct": null,
-      "sub_categories": []
+      "yoy_pct": 28.4,
+      "sub_categories": [
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 21430.0,
+          "revised_2025_26": 17857.0,
+          "spillover": 0,
+          "yoy_pct": 20.0,
+          "items": [
+            {
+              "code": "03-401001",
+              "name": "Computer & Computer Peripherals",
+              "revised_2025_26": null,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "03-401099",
+              "name": ", office furniture & fitting and office Equipment others",
+              "revised_2025_26": null,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "03-360601",
+              "name": "Library Cess Payable",
+              "revised_2025_26": 2377.0,
+              "pending": 0.0,
+              "current": 4800.0,
+              "total_2026_27": 4800.0,
+              "yoy_pct": 101.9
+            },
+            {
+              "code": "03-360602",
+              "name": "Beggary Cess Payable",
+              "revised_2025_26": 1188.0,
+              "pending": 0.0,
+              "current": 2400.0,
+              "total_2026_27": 2400.0,
+              "yoy_pct": 102.0
+            },
+            {
+              "code": "03-360603",
+              "name": "Urban Land Transport Cess Payable",
+              "revised_2025_26": 792.0,
+              "pending": 0.0,
+              "current": 1600.0,
+              "total_2026_27": 1600.0,
+              "yoy_pct": 102.0
+            },
+            {
+              "code": "03-130224",
+              "name": "BSMILE ( ) Advertisement Fee (New Policy) collected to be contributed to BSMILE",
+              "revised_2025_26": 13500.0,
+              "pending": 0.0,
+              "current": 12600.0,
+              "total_2026_27": 12600.0,
+              "yoy_pct": -6.7
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 3220.0,
+          "revised_2025_26": 1467.0,
+          "spillover": 0,
+          "yoy_pct": 119.5,
+          "items": [
+            {
+              "code": "03-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 952.0,
+              "pending": 0.0,
+              "current": 2000.0,
+              "total_2026_27": 2000.0,
+              "yoy_pct": 110.1
+            },
+            {
+              "code": "03-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 504.0,
+              "pending": 0.0,
+              "current": 1200.0,
+              "total_2026_27": 1200.0,
+              "yoy_pct": 138.1
+            },
+            {
+              "code": "03-200301",
+              "name": "Pay and Allowance to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 11.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 81.8
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 226.0,
+          "revised_2025_26": 54.0,
+          "spillover": 0,
+          "yoy_pct": 318.5,
+          "items": [
+            {
+              "code": "03-210201",
+              "name": ", Rent, Rates and Taxes",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "03-210203",
+              "name": "Printing, Stationery & Photocopying, Revenue Stamp Charges",
+              "revised_2025_26": 17.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 76.5
+            },
+            {
+              "code": "03-210204",
+              "name": "Telephone/Mobil e Expenses",
+              "revised_2025_26": 7.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 114.3
+            },
+            {
+              "code": "03-210302",
+              "name": "BSCC Vehicle Fuel Expenses",
+              "revised_2025_26": 8.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 212.5
+            },
+            {
+              "code": "03-210603",
+              "name": "Medical Reimbursement BSCC Employees",
+              "revised_2025_26": 5.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 900.0
+            },
+            {
+              "code": "03-210999",
+              "name": "Other General or Contingency Expenses",
+              "revised_2025_26": 7.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 614.3
+            },
+            {
+              "code": "03-220102",
+              "name": "Electricity Charges - BSCC Offices",
+              "revised_2025_26": 7.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 185.7
+            },
+            {
+              "code": "03-220201",
+              "name": "Water Charges - BSCC Offices",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": 400.0
+            },
+            {
+              "code": "03-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 900.0
+            },
+            {
+              "code": "03-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 900.0
+            },
+            {
+              "code": "03-222111",
+              "name": "Total Station Survery Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
     },
     {
       "code": "04",
@@ -850,13 +1058,292 @@
     {
       "code": "05",
       "name": "Public Works",
-      "total_2026_27": 34167.5,
-      "revised_2025_26": 13497.0,
-      "spillover": 10274.5,
-      "yoy_pct": 153.1,
+      "total_2026_27": 181452.63,
+      "revised_2025_26": 32544.44,
+      "spillover": 97132.36,
+      "yoy_pct": 457.6,
       "sub_categories": [
         {
-          "name": ", , , Repaiirs and Maintenance of Road, Footpaths, Surface Drains, Flyovers, Bridges and Subways and Storm Water Drains",
+          "name": "Capital Works- GOI and GOK Grants and Other Grants",
+          "total_2026_27": 144632.98,
+          "revised_2025_26": 17700.44,
+          "spillover": 86597.86,
+          "yoy_pct": 717.1,
+          "items": [
+            {
+              "code": "05-340101",
+              "name": "15 Central Finance Commission Grants- (15th Finance Works and Balance 14th Finance Works grants from GBA)",
+              "revised_2025_26": 0.0,
+              "pending": 2500.0,
+              "current": 0.0,
+              "total_2026_27": 2500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340105",
+              "name": "16 16th Finance Commission Grants",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 12829.0,
+              "total_2026_27": 12829.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340203",
+              "name": "Special Infrastructure Project Works",
+              "revised_2025_26": 0.0,
+              "pending": 42927.0,
+              "current": 0.0,
+              "total_2026_27": 42927.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340207",
+              "name": "CMIDP Grants",
+              "revised_2025_26": 0.0,
+              "pending": 14475.0,
+              "current": 0.0,
+              "total_2026_27": 14475.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-140103",
+              "name": "SFC - (SFC- ) SFC Grants-Untied (SFC-Special Grants)",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 404.0,
+              "total_2026_27": 404.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400401",
+              "name": "Brand Bengaluru- Sugama Sanchara Bengaluru (Grants to B- SMILE)",
+              "revised_2025_26": 4272.0,
+              "pending": 13940.0,
+              "current": 0.0,
+              "total_2026_27": 13940.0,
+              "yoy_pct": 226.3
+            },
+            {
+              "code": "05-400101",
+              "name": "Acquisition of Land",
+              "revised_2025_26": 0.0,
+              "pending": 245.21,
+              "current": 4800.0,
+              "total_2026_27": 5045.21,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400103",
+              "name": "– Capital Works - Construction and Development/Impro vement of Lakes",
+              "revised_2025_26": 0.0,
+              "pending": 250.0,
+              "current": 500.0,
+              "total_2026_27": 750.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400210",
+              "name": "/ Capital Works - Construction and Development/Impro vement of Abattoirs and Slaugter House",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400203",
+              "name": "– , Capital Works - Construction and Development/Impro vement of Buildings Auditoriums/Comm unity Halls",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2500.0,
+              "total_2026_27": 2500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400302",
+              "name": "– Capital Works - Construction and Development/Imp rovement Playgrounds",
+              "revised_2025_26": 800.0,
+              "pending": 200.0,
+              "current": 150.0,
+              "total_2026_27": 350.0,
+              "yoy_pct": -56.2
+            },
+            {
+              "code": "05-400303",
+              "name": "– , , Capital Works - Construction and Development/Impr ovement of Electric crematorium, burial ground and Animal crematorium",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400410",
+              "name": "Capital Works- Construction/ Development / Improvement of Ward Works ( Rs 1.50 crore per each wards)",
+              "revised_2025_26": 400.0,
+              "pending": 2000.0,
+              "current": 10800.0,
+              "total_2026_27": 12800.0,
+              "yoy_pct": 3100.0
+            },
+            {
+              "code": "05-400701",
+              "name": "– Capital Works- Street Lights - Providing Additional Fittings Streetlights",
+              "revised_2025_26": 0.0,
+              "pending": 100.0,
+              "current": 100.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400701-02",
+              "name": "– Capital Works-Street Lights -Lighting of Parks, Toilet Public Amenities",
+              "revised_2025_26": 0.0,
+              "pending": 100.0,
+              "current": 100.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400301",
+              "name": "– 400301- , , , 400302 - , , , 400303 - , , , 400307 - , 400308 - ,, 400306 – , 400399 - Capital Works-Development /Improvement of 400301 Parks, Gardens, Boulewards, 400302 Play Grounds, Indoor Stadium, Sports Complex, Stadiums, 400303 Crematoriums, Burial Grounds, Burning Ghats, Electrical Cremetorium 400308 Lakes, 400306 Borewells, UGD, Water supply 400399 Civil Structure other than buildings [including all other developments works]",
+              "revised_2025_26": 0.0,
+              "pending": 300.0,
+              "current": 150.0,
+              "total_2026_27": 450.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400201",
+              "name": "/ , / , , , , , , PHC, , , , , , , , , Capital Works - Construction and Development/Improveme nt of Zonal Office Builing, Auditoriums/Community Halls, School and College,Anganavadi ,Hospital and Health Centers, Maternity Homes, Quarters, PHC, Skill Development, Public Toilets, Swimming Pools Building, Kennels, Cattle pounds ABC Centers, abattoir, Mustering Centers Buildings, Multilevel Car Parking Building, including and complete all Buidings Works zonal and other buildings),",
+              "revised_2025_26": 0.0,
+              "pending": 150.0,
+              "current": 300.0,
+              "total_2026_27": 450.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400402",
+              "name": "– / , / , , , , , , PHC, , , , , , , , , Capital Works - Development/ Improvement of Roads, Footpaths, Major Roads/Arterial/Sub Arterial Roads, Junction Improvements,Surface Drains, Flyovers, Bridges, Subways and Storm Water Drains, including and complete all Road Related works",
+              "revised_2025_26": 1000.0,
+              "pending": 300.0,
+              "current": 200.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": -50.0
+            },
+            {
+              "code": "05-400499",
+              "name": ", Capita l Works Junction improvements , sky walks beutification of junction and foot path works",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5000.0,
+              "total_2026_27": 5000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330401",
+              "name": "Hon'ble Mayor Discretionary Grants (Administrator)",
+              "revised_2025_26": 0.0,
+              "pending": 300.0,
+              "current": 1000.0,
+              "total_2026_27": 1300.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330402",
+              "name": "Deputy Mayor Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 300.0,
+              "current": 500.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330403",
+              "name": "Commissioner Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 300.0,
+              "current": 500.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330404",
+              "name": "T&F Committee Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 210.65,
+              "current": 500.0,
+              "total_2026_27": 710.65,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330405",
+              "name": "Bangalore city in charge Minister's Discretionary Grants",
+              "revised_2025_26": 3000.0,
+              "pending": 1000.0,
+              "current": 5000.0,
+              "total_2026_27": 6000.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "05-330501",
+              "name": "/ - SC/ST Welfare Fund Works-Basic infrastructural developmental works at SC/ST areas(Community Development Works)",
+              "revised_2025_26": 5333.6,
+              "pending": 5000.0,
+              "current": 7245.77,
+              "total_2026_27": 12245.77,
+              "yoy_pct": 129.6
+            },
+            {
+              "code": "05-330502",
+              "name": "OBC/BCM Welfare Fund Works-Basic infrastructural developmental works to Economically Backward Classes",
+              "revised_2025_26": 1838.17,
+              "pending": 2000.0,
+              "current": 2604.87,
+              "total_2026_27": 4604.87,
+              "yoy_pct": 150.5
+            },
+            {
+              "code": "05-330503-01",
+              "name": "Specially abled Welfare Fund Works- Construction of Specially abled friendly Toilets and Ramps in Public Offices",
+              "revised_2025_26": 56.67,
+              "pending": 0.0,
+              "current": 500.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": 782.3
+            },
+            {
+              "code": "05-330503-02",
+              "name": "Specially abled Welfare Fund Works-Other Infrastructural works for Specially abled",
+              "revised_2025_26": 1000.0,
+              "pending": 0.0,
+              "current": 2146.48,
+              "total_2026_27": 2146.48,
+              "yoy_pct": 114.6
+            }
+          ]
+        },
+        {
+          "name": "Repairs & Maintenance — Roads, Footpaths, Flyovers, Subways, SWDs",
           "total_2026_27": 16010.0,
           "revised_2025_26": 7687.0,
           "spillover": 8379.0,
@@ -911,10 +1398,10 @@
         },
         {
           "name": "Repairs & Maintenance — Street Light & Electrical",
-          "total_2026_27": 8089.0,
-          "revised_2025_26": 989.0,
-          "spillover": 365.0,
-          "yoy_pct": 717.9,
+          "total_2026_27": 8159.0,
+          "revised_2025_26": 1021.0,
+          "spillover": 385.0,
+          "yoy_pct": 699.1,
           "items": [
             {
               "code": "05-220101",
@@ -962,18 +1449,36 @@
               "yoy_pct": -33.3
             },
             {
-              "code": "05-221501",
+              "code": "05-221501-04",
               "name": "◌ , , .. , Repairs & Maintenance of Electrical Fittings- M & R to Pump sets, Lifts, DG Sets, Wireless sets & Internal Telephone Exchange",
               "revised_2025_26": 47.0,
               "pending": 40.0,
               "current": 20.0,
               "total_2026_27": 60.0,
               "yoy_pct": 27.7
+            },
+            {
+              "code": "05-221501-05",
+              "name": "Repairs & Maintenance of Electrical Fittings- M & R to Electrical Crematorium - P0287",
+              "revised_2025_26": 32.0,
+              "pending": 20.0,
+              "current": 40.0,
+              "total_2026_27": 60.0,
+              "yoy_pct": 87.5
+            },
+            {
+              "code": "05-221501-06",
+              "name": "Conducting Energy efficient audit at Head Office buildings",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
             }
           ]
         },
         {
-          "name": ", , Repairs and Maintenance of Water supply and UGD, Play Grounds, Dhobi Ghats,Lakes and Others",
+          "name": "Repairs & Maintenance — Water Supply, UGD, Playgrounds, Lakes",
           "total_2026_27": 3550.5,
           "revised_2025_26": 1069.0,
           "spillover": 845.5,
@@ -989,7 +1494,7 @@
               "yoy_pct": null
             },
             {
-              "code": "05-221599",
+              "code": "05-221599-02",
               "name": ", Repairs & Maintenance of Other Fixed Assets- Play Grounds, and Emergency Works)",
               "revised_2025_26": 28.0,
               "pending": 200.0,
@@ -1109,10 +1614,10 @@
         },
         {
           "name": "General Administrative Expenses",
-          "total_2026_27": 2064.0,
-          "revised_2025_26": 1068.0,
+          "total_2026_27": 2239.0,
+          "revised_2025_26": 1245.0,
           "spillover": 0,
-          "yoy_pct": 93.3,
+          "yoy_pct": 79.8,
           "items": [
             {
               "code": "05-210201",
@@ -1160,13 +1665,22 @@
               "yoy_pct": 900.0
             },
             {
-              "code": "05-210913",
+              "code": "05-210913-01",
               "name": "Security Service Expenses and Housekeeping Exp",
               "revised_2025_26": 463.0,
               "pending": 0.0,
               "current": 1000.0,
               "total_2026_27": 1000.0,
               "yoy_pct": 116.0
+            },
+            {
+              "code": "05-210913-02",
+              "name": "Providing Home Guards Security services to Lakes in BSCC",
+              "revised_2025_26": 171.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": -12.3
             },
             {
               "code": "05-210999",
@@ -1212,16 +1726,70 @@
               "current": 20.0,
               "total_2026_27": 20.0,
               "yoy_pct": 81.8
+            },
+            {
+              "code": "05-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 316.7
+            }
+          ]
+        },
+        {
+          "name": "Extraordinary Expenses",
+          "total_2026_27": 1697.15,
+          "revised_2025_26": 990.0,
+          "spillover": 0,
+          "yoy_pct": 71.4,
+          "items": [
+            {
+              "code": "05-350101",
+              "name": "Earnest Money Deposits from Contractors /Suppliers",
+              "revised_2025_26": 90.0,
+              "pending": 0.0,
+              "current": 154.29,
+              "total_2026_27": 154.29,
+              "yoy_pct": 71.4
+            },
+            {
+              "code": "05-350102",
+              "name": "Security Deposits from Contractors /Suppliers",
+              "revised_2025_26": 900.0,
+              "pending": 0.0,
+              "current": 1542.86,
+              "total_2026_27": 1542.86,
+              "yoy_pct": 71.4
             }
           ]
         },
         {
           "name": "Repairs & Maintenance — Buildings",
-          "total_2026_27": 930.0,
-          "revised_2025_26": 774.0,
-          "spillover": 685.0,
-          "yoy_pct": 20.2,
+          "total_2026_27": 1290.0,
+          "revised_2025_26": 889.0,
+          "spillover": 925.0,
+          "yoy_pct": 45.1,
           "items": [
+            {
+              "code": "05-220401-01",
+              "name": "M & R to Head Office",
+              "revised_2025_26": 0.0,
+              "pending": 100.0,
+              "current": 50.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220401-02",
+              "name": "Maintenance of Zonal Buildings",
+              "revised_2025_26": 95.0,
+              "pending": 100.0,
+              "current": 50.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 57.9
+            },
             {
               "code": "05-220403",
               "name": ", Repairs & Maintenance Buildings Auditoriums/Com munity Halls",
@@ -1250,7 +1818,16 @@
               "yoy_pct": 250.0
             },
             {
-              "code": "05-220406",
+              "code": "05-220406-01",
+              "name": ", , , , Repairs & Maintenance of Hospitals, Maternity Homes, Dispensary & Doctors Qtrs. / Clinical Laboratories",
+              "revised_2025_26": 20.0,
+              "pending": 40.0,
+              "current": 20.0,
+              "total_2026_27": 60.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "05-220406-02",
               "name": "Repairs & Maintenance of Primary health Centers",
               "revised_2025_26": 10.0,
               "pending": 10.0,
@@ -1304,23 +1881,113 @@
               "yoy_pct": 101.8
             }
           ]
+        },
+        {
+          "name": "Functions and Ceremonies",
+          "total_2026_27": 350.0,
+          "revised_2025_26": 33.0,
+          "spillover": 0,
+          "yoy_pct": 960.6,
+          "items": [
+            {
+              "code": "05-210701",
+              "name": ", , Independence Day/Republic Day/Kannanda Rajyotsava Celebrations Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-210703",
+              "name": "Nadaprabhu Kempegowda Day Celebrations Expenses",
+              "revised_2025_26": 5.0,
+              "pending": 0.0,
+              "current": 75.0,
+              "total_2026_27": 75.0,
+              "yoy_pct": 1400.0
+            },
+            {
+              "code": "05-210712",
+              "name": "Sports and Cultural Activity Expenses",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 2400.0
+            },
+            {
+              "code": "05-210799",
+              "name": ",Corporat ion Ceremonies and Functions Expenses Others",
+              "revised_2025_26": 27.0,
+              "pending": 0.0,
+              "current": 200.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": 640.7
+            }
+          ]
         }
       ]
     },
     {
       "code": "06",
       "name": "Solid Waste Management",
-      "total_2026_27": 16537.0,
-      "revised_2025_26": 7948.0,
+      "total_2026_27": 46819.0,
+      "revised_2025_26": 21644.0,
       "spillover": 0.0,
-      "yoy_pct": 108.1,
+      "yoy_pct": 116.3,
       "sub_categories": [
         {
-          "name": "Establishment Expenses",
-          "total_2026_27": 15382.0,
-          "revised_2025_26": 7005.0,
+          "name": "SWM Operation and Maintenance",
+          "total_2026_27": 30500.0,
+          "revised_2025_26": 14295.0,
           "spillover": 0,
-          "yoy_pct": 119.6,
+          "yoy_pct": 113.4,
+          "items": [
+            {
+              "code": "06-221612-01",
+              "name": "Grant in aid to BSWML Company Limited- Bengaluru- Adminsitration",
+              "revised_2025_26": 697.0,
+              "pending": 0.0,
+              "current": 1200.0,
+              "total_2026_27": 1200.0,
+              "yoy_pct": 72.2
+            },
+            {
+              "code": "06-221612-02",
+              "name": ", Grant in aid to BSWML Company Limited- Bengaluru-CnT, Plant & other Maintenance",
+              "revised_2025_26": 6455.0,
+              "pending": 0.0,
+              "current": 25000.0,
+              "total_2026_27": 25000.0,
+              "yoy_pct": 287.3
+            },
+            {
+              "code": "06-221612-03",
+              "name": "Grant in aid to BSWML Company Limited- Bengaluru- Developmental works",
+              "revised_2025_26": 6381.0,
+              "pending": 0.0,
+              "current": 3800.0,
+              "total_2026_27": 3800.0,
+              "yoy_pct": -40.4
+            },
+            {
+              "code": "06-221613",
+              "name": "(unnamed)",
+              "revised_2025_26": 762.0,
+              "pending": 0.0,
+              "current": 500.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": -34.4
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 15662.0,
+          "revised_2025_26": 7168.0,
+          "spillover": 0,
+          "yoy_pct": 118.5,
           "items": [
             {
               "code": "06-200101",
@@ -1420,6 +2087,15 @@
               "current": 1.0,
               "total_2026_27": 1.0,
               "yoy_pct": null
+            },
+            {
+              "code": "06-210908-03",
+              "name": "Honorariums Expenses -Link Workers & JHI and Out Sourced Engineers",
+              "revised_2025_26": 163.0,
+              "pending": 0.0,
+              "current": 280.0,
+              "total_2026_27": 280.0,
+              "yoy_pct": 71.8
             },
             {
               "code": "06-210999",
@@ -1532,20 +2208,29 @@
           ]
         },
         {
-          "name": "SWM Operation and Maintenance",
-          "total_2026_27": 500.0,
-          "revised_2025_26": 762.0,
+          "name": "Capital Expenses",
+          "total_2026_27": 2.0,
+          "revised_2025_26": 0,
           "spillover": 0,
-          "yoy_pct": -34.4,
+          "yoy_pct": null,
           "items": [
             {
-              "code": "06-221613",
-              "name": "(unnamed)",
-              "revised_2025_26": 762.0,
+              "code": "06-340203",
+              "name": "[: . . . . . ] Special infrastructure project works solid waste management & Subra Bangalore",
+              "revised_2025_26": 0.0,
               "pending": 0.0,
-              "current": 500.0,
-              "total_2026_27": 500.0,
-              "yoy_pct": -34.4
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-401001",
+              "name": "Computer and Computer Periherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
             }
           ]
         }
@@ -1554,10 +2239,10 @@
     {
       "code": "07",
       "name": "Public Health-General",
-      "total_2026_27": 7797.0,
-      "revised_2025_26": 2108.0,
+      "total_2026_27": 8238.0,
+      "revised_2025_26": 2372.0,
       "spillover": 0.0,
-      "yoy_pct": 269.9,
+      "yoy_pct": 247.3,
       "sub_categories": [
         {
           "name": "Capital Expenses",
@@ -1567,7 +2252,7 @@
           "yoy_pct": null,
           "items": [
             {
-              "code": "07-401299",
+              "code": "07-401299-01",
               "name": ", , , , , ) & & . Brand Bengaluru- Healthy Bengaluru Emergency Health Care Services, Financing, Laboratory Services, War Room and Survelliance System, Bengaluru Health System, and Cosnstruction of High Tech Maternity Home), for Animal Husbandry inlcuing abbatoirs) & Crematorium and Burial Ground), (Grants to GBA)",
               "revised_2025_26": 0.0,
               "pending": 0.0,
@@ -1686,74 +2371,11 @@
           ]
         },
         {
-          "name": "Operation and Maintenance",
-          "total_2026_27": 177.0,
-          "revised_2025_26": 108.0,
-          "spillover": 0,
-          "yoy_pct": 63.9,
-          "items": [
-            {
-              "code": "07-221403",
-              "name": "Repairs & Maintenance of Hospital Equipment",
-              "revised_2025_26": 9.0,
-              "pending": 0.0,
-              "current": 5.0,
-              "total_2026_27": 5.0,
-              "yoy_pct": -44.4
-            },
-            {
-              "code": "07-222001",
-              "name": "Supply of Medicines and Drugs to Hospital & Health Care Centre",
-              "revised_2025_26": 26.0,
-              "pending": 0.0,
-              "current": 44.0,
-              "total_2026_27": 44.0,
-              "yoy_pct": 69.2
-            },
-            {
-              "code": "07-222003",
-              "name": "Disposal of Hospital Waste",
-              "revised_2025_26": 10.0,
-              "pending": 0.0,
-              "current": 17.0,
-              "total_2026_27": 17.0,
-              "yoy_pct": 70.0
-            },
-            {
-              "code": "07-222006",
-              "name": "House Keeping and Laundry Service Expenses",
-              "revised_2025_26": 30.0,
-              "pending": 0.0,
-              "current": 100.0,
-              "total_2026_27": 100.0,
-              "yoy_pct": 233.3
-            },
-            {
-              "code": "07-222109",
-              "name": "Natural Calamities",
-              "revised_2025_26": 11.0,
-              "pending": 0.0,
-              "current": 1.0,
-              "total_2026_27": 1.0,
-              "yoy_pct": -90.9
-            },
-            {
-              "code": "07-222119",
-              "name": ", , Operation and Maintenance of Hearse Van/water tankers/ Cattle Catching vehicles",
-              "revised_2025_26": 22.0,
-              "pending": 0.0,
-              "current": 10.0,
-              "total_2026_27": 10.0,
-              "yoy_pct": -54.5
-            }
-          ]
-        },
-        {
           "name": "General Administrative Expenses",
-          "total_2026_27": 115.0,
-          "revised_2025_26": 83.0,
+          "total_2026_27": 456.0,
+          "revised_2025_26": 238.0,
           "spillover": 0,
-          "yoy_pct": 38.6,
+          "yoy_pct": 91.6,
           "items": [
             {
               "code": "07-210203",
@@ -1801,13 +2423,31 @@
               "yoy_pct": -28.6
             },
             {
-              "code": "07-210908",
+              "code": "07-210908-04",
               "name": "Honorariums Expenses- Grave Diggers",
               "revised_2025_26": 17.0,
               "pending": 0.0,
               "current": 10.0,
               "total_2026_27": 10.0,
               "yoy_pct": -41.2
+            },
+            {
+              "code": "07-210908-05",
+              "name": "Honorarium Expenses -Medical & Health Consultants",
+              "revised_2025_26": 35.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": -85.7
+            },
+            {
+              "code": "07-210908-02",
+              "name": "– [ ] Honorarium Expenses-Marshals [Indira Canteen]",
+              "revised_2025_26": 120.0,
+              "pending": 0.0,
+              "current": 336.0,
+              "total_2026_27": 336.0,
+              "yoy_pct": 180.0
             },
             {
               "code": "07-210999",
@@ -1853,6 +2493,78 @@
               "current": 1.0,
               "total_2026_27": 1.0,
               "yoy_pct": 0.0
+            }
+          ]
+        },
+        {
+          "name": "Operation and Maintenance",
+          "total_2026_27": 277.0,
+          "revised_2025_26": 217.0,
+          "spillover": 0,
+          "yoy_pct": 27.6,
+          "items": [
+            {
+              "code": "07-221403-01",
+              "name": "Repairs & Maintenance of Hospital Equipment",
+              "revised_2025_26": 9.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": -44.4
+            },
+            {
+              "code": "07-221403-02",
+              "name": "Maintenance of Smart Virtual Clinic in BSCC area",
+              "revised_2025_26": 109.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": -8.3
+            },
+            {
+              "code": "07-222001",
+              "name": "Supply of Medicines and Drugs to Hospital & Health Care Centre",
+              "revised_2025_26": 26.0,
+              "pending": 0.0,
+              "current": 44.0,
+              "total_2026_27": 44.0,
+              "yoy_pct": 69.2
+            },
+            {
+              "code": "07-222003",
+              "name": "Disposal of Hospital Waste",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 17.0,
+              "total_2026_27": 17.0,
+              "yoy_pct": 70.0
+            },
+            {
+              "code": "07-222006",
+              "name": "House Keeping and Laundry Service Expenses",
+              "revised_2025_26": 30.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 233.3
+            },
+            {
+              "code": "07-222109",
+              "name": "Natural Calamities",
+              "revised_2025_26": 11.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": -90.9
+            },
+            {
+              "code": "07-222119",
+              "name": ", , Operation and Maintenance of Hearse Van/water tankers/ Cattle Catching vehicles",
+              "revised_2025_26": 22.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": -54.5
             }
           ]
         }
@@ -1937,7 +2649,7 @@
               "yoy_pct": 2578.6
             },
             {
-              "code": "08-210908",
+              "code": "08-210908-05",
               "name": "Honorarium Expenses -Medical & Health Consultants",
               "revised_2025_26": 18.0,
               "pending": 0.0,
@@ -1946,7 +2658,7 @@
               "yoy_pct": 288.9
             },
             {
-              "code": "08-210913",
+              "code": "08-210913-01",
               "name": "Security Service Expenses and Housekeeping Exp",
               "revised_2025_26": 27.0,
               "pending": 0.0,
@@ -2168,10 +2880,10 @@
     {
       "code": "09",
       "name": "Horticulture",
-      "total_2026_27": 5035.0,
-      "revised_2025_26": 2246.0,
-      "spillover": 50.0,
-      "yoy_pct": 124.2,
+      "total_2026_27": 5835.0,
+      "revised_2025_26": 2446.0,
+      "spillover": 800.0,
+      "yoy_pct": 138.6,
       "sub_categories": [
         {
           "name": "Operation and Maintenance",
@@ -2188,6 +2900,51 @@
               "current": 3600.0,
               "total_2026_27": 3600.0,
               "yoy_pct": 116.9
+            }
+          ]
+        },
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 1052.0,
+          "revised_2025_26": 200.0,
+          "spillover": 800.0,
+          "yoy_pct": 426.0,
+          "items": [
+            {
+              "code": "09-400399-01",
+              "name": ", . Brand Bengaluru Green Benguluru (Disaster Management lakes forest park Development perculation Tanks",
+              "revised_2025_26": 200.0,
+              "pending": 750.0,
+              "current": 50.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": 300.0
+            },
+            {
+              "code": "09-400301",
+              "name": "[ / / / , ]Development of parks and gardens including entrance points to the city/railway statins /Airport road/Medians /Flyover/circle in the city centers",
+              "revised_2025_26": 0.0,
+              "pending": 50.0,
+              "current": 200.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-401001",
+              "name": "Computers and computer peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-401099",
+              "name": "Office Furniture and fitting and office Equipment others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
             }
           ]
         },
@@ -2309,42 +3066,6 @@
             {
               "code": "09-221201",
               "name": "Repairs & Maintenance of Computers & Computer Peripherals",
-              "revised_2025_26": 0.0,
-              "pending": 0.0,
-              "current": 1.0,
-              "total_2026_27": 1.0,
-              "yoy_pct": null
-            }
-          ]
-        },
-        {
-          "name": "Capital Expenses",
-          "total_2026_27": 252.0,
-          "revised_2025_26": 0,
-          "spillover": 50.0,
-          "yoy_pct": null,
-          "items": [
-            {
-              "code": "09-400301",
-              "name": "[ / / / , ]Development of parks and gardens including entrance points to the city/railway statins /Airport road/Medians /Flyover/circle in the city centers",
-              "revised_2025_26": 0.0,
-              "pending": 50.0,
-              "current": 200.0,
-              "total_2026_27": 250.0,
-              "yoy_pct": null
-            },
-            {
-              "code": "09-401001",
-              "name": "Computers and computer peripherals",
-              "revised_2025_26": 0.0,
-              "pending": 0.0,
-              "current": 1.0,
-              "total_2026_27": 1.0,
-              "yoy_pct": null
-            },
-            {
-              "code": "09-401099",
-              "name": "Office Furniture and fitting and office Equipment others",
               "revised_2025_26": 0.0,
               "pending": 0.0,
               "current": 1.0,
@@ -2846,143 +3567,17 @@
     {
       "code": "12",
       "name": "Social Welfare",
-      "total_2026_27": 22176.71,
-      "revised_2025_26": 8686.41,
+      "total_2026_27": 26556.71,
+      "revised_2025_26": 11815.41,
       "spillover": 3700.0,
-      "yoy_pct": 155.3,
+      "yoy_pct": 124.8,
       "sub_categories": [
         {
-          "name": "SC/ST Welfare Programmes",
-          "total_2026_27": 8163.85,
-          "revised_2025_26": 3508.39,
-          "spillover": 2000.0,
-          "yoy_pct": 132.7,
-          "items": [
-            {
-              "code": "12-240301-03",
-              "name": "Housing Scheme (Individual) for SC/ST",
-              "revised_2025_26": 1816.0,
-              "pending": 2000.0,
-              "current": 3000.0,
-              "total_2026_27": 5000.0,
-              "yoy_pct": 175.3
-            },
-            {
-              "code": "12-240301-04",
-              "name": "Health Programmes SC/ST beneficiers",
-              "revised_2025_26": 244.0,
-              "pending": 0.0,
-              "current": 500.0,
-              "total_2026_27": 500.0,
-              "yoy_pct": 104.9
-            },
-            {
-              "code": "12-240301-05",
-              "name": "Educational Programmes SC/ST beneficiers",
-              "revised_2025_26": 273.0,
-              "pending": 0.0,
-              "current": 538.25,
-              "total_2026_27": 538.25,
-              "yoy_pct": 97.2
-            },
-            {
-              "code": "12-240301-06",
-              "name": "/ . Construction of Houses for SC/ST working at Graveyard/burial ground in BSCC area",
-              "revised_2025_26": 218.0,
-              "pending": 0.0,
-              "current": 300.0,
-              "total_2026_27": 300.0,
-              "yoy_pct": 37.6
-            },
-            {
-              "code": "12-240301-07",
-              "name": "Procurement of items for distribution to SC/ST Beneficieris",
-              "revised_2025_26": 273.0,
-              "pending": 0.0,
-              "current": 350.0,
-              "total_2026_27": 350.0,
-              "yoy_pct": 28.2
-            },
-            {
-              "code": "12-240301-08",
-              "name": "[75% 25% ] ] SC/ST [E Vending Vehicle to Street Vendors [75% Men 25% women]",
-              "revised_2025_26": 581.0,
-              "pending": 0.0,
-              "current": 842.8,
-              "total_2026_27": 842.8,
-              "yoy_pct": 45.1
-            },
-            {
-              "code": "12-240303-03",
-              "name": "Financial Assistance to Individual programmes for Sc/St",
-              "revised_2025_26": 103.39,
-              "pending": 0.0,
-              "current": 632.8,
-              "total_2026_27": 632.8,
-              "yoy_pct": 512.1
-            }
-          ]
-        },
-        {
-          "name": "Pourakarmika Welfare Programme",
-          "total_2026_27": 7152.41,
-          "revised_2025_26": 1997.24,
-          "spillover": 1000.0,
-          "yoy_pct": 258.1,
-          "items": [
-            {
-              "code": "12-240301-01",
-              "name": "Construction of Individual houses for Pourakarmikas",
-              "revised_2025_26": 1120.0,
-              "pending": 0.0,
-              "current": 1200.0,
-              "total_2026_27": 1200.0,
-              "yoy_pct": 7.1
-            },
-            {
-              "code": "12-240301-02",
-              "name": "Health Programme to Pourakarmikas and families",
-              "revised_2025_26": 237.0,
-              "pending": 0.0,
-              "current": 250.0,
-              "total_2026_27": 250.0,
-              "yoy_pct": 5.5
-            },
-            {
-              "code": "12-240302-01",
-              "name": "Welfare programmes for Pourakarmikas",
-              "revised_2025_26": 273.0,
-              "pending": 0.0,
-              "current": 300.0,
-              "total_2026_27": 300.0,
-              "yoy_pct": 9.9
-            },
-            {
-              "code": "12-240303-01",
-              "name": "( ) Financial Assistance to SC/ST Poura karmikas and D Group { Permanent & Outsource employees}",
-              "revised_2025_26": 79.24,
-              "pending": 1000.0,
-              "current": 4102.41,
-              "total_2026_27": 5102.41,
-              "yoy_pct": 6339.2
-            },
-            {
-              "code": "12-240303-02",
-              "name": ", Assistance to Children of PKs, Gangmen, Malies",
-              "revised_2025_26": 288.0,
-              "pending": 0.0,
-              "current": 300.0,
-              "total_2026_27": 300.0,
-              "yoy_pct": 4.2
-            }
-          ]
-        },
-        {
           "name": "OBC/BCM & Minority Welfare",
-          "total_2026_27": 6341.45,
-          "revised_2025_26": 2867.78,
+          "total_2026_27": 10721.45,
+          "revised_2025_26": 5996.78,
           "spillover": 700.0,
-          "yoy_pct": 121.1,
+          "yoy_pct": 78.8,
           "items": [
             {
               "code": "12-240401-01",
@@ -3129,13 +3724,22 @@
               "yoy_pct": 103.7
             },
             {
-              "code": "12-240601",
+              "code": "12-240601-01",
               "name": "Individual Houses for EWS Rs..5.00 Lakhs per house",
               "revised_2025_26": 245.0,
               "pending": 0.0,
               "current": 325.0,
               "total_2026_27": 325.0,
               "yoy_pct": 32.7
+            },
+            {
+              "code": "12-240601-02",
+              "name": "Procurement of items for distribution to EWS Beneficieris",
+              "revised_2025_26": 98.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 2.0
             },
             {
               "code": "12-240602",
@@ -3154,6 +3758,213 @@
               "current": 150.0,
               "total_2026_27": 150.0,
               "yoy_pct": 23.0
+            },
+            {
+              "code": "12-240604",
+              "name": "Welfare Programmes for Transgender",
+              "revised_2025_26": 61.0,
+              "pending": 0.0,
+              "current": 90.0,
+              "total_2026_27": 90.0,
+              "yoy_pct": 47.5
+            },
+            {
+              "code": "12-240606",
+              "name": "[ ] Welfare Programmes for Hawkers – [Vending Zone]",
+              "revised_2025_26": 122.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 23.0
+            },
+            {
+              "code": "12-240607",
+              "name": "Welfare Programmes- Maintenance of Night Shelters",
+              "revised_2025_26": 61.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 63.9
+            },
+            {
+              "code": "12-240699",
+              "name": "Welfare Programmes General",
+              "revised_2025_26": 2632.0,
+              "pending": 0.0,
+              "current": 2700.0,
+              "total_2026_27": 2700.0,
+              "yoy_pct": 2.6
+            },
+            {
+              "code": "12-250102-01",
+              "name": "– Financial Assistance to sports persons participating National & International level",
+              "revised_2025_26": 18.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 66.7
+            },
+            {
+              "code": "12-250102-02",
+              "name": "( ) Discretionary Medical Relief Grants to Press and Media Reporters [Descritionary Grants of Hon'ble Mayor]",
+              "revised_2025_26": 31.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 61.3
+            },
+            {
+              "code": "12-250102-03",
+              "name": "Group Insurance Scheme to Small and Medium Press reporters",
+              "revised_2025_26": 18.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 66.7
+            },
+            {
+              "code": "12-250105",
+              "name": ", Financial Assistance and Grant in aid to Institutions, [including Kempegowda Development Authority, and Other Institutions",
+              "revised_2025_26": 70.0,
+              "pending": 0.0,
+              "current": 1100.0,
+              "total_2026_27": 1100.0,
+              "yoy_pct": 1471.4
+            },
+            {
+              "code": "12-250108",
+              "name": "Discretionary Medical Relief Grants - Corporators",
+              "revised_2025_26": 18.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 66.7
+            }
+          ]
+        },
+        {
+          "name": "SC/ST Welfare Programmes",
+          "total_2026_27": 8163.85,
+          "revised_2025_26": 3508.39,
+          "spillover": 2000.0,
+          "yoy_pct": 132.7,
+          "items": [
+            {
+              "code": "12-240301-03",
+              "name": "Housing Scheme (Individual) for SC/ST",
+              "revised_2025_26": 1816.0,
+              "pending": 2000.0,
+              "current": 3000.0,
+              "total_2026_27": 5000.0,
+              "yoy_pct": 175.3
+            },
+            {
+              "code": "12-240301-04",
+              "name": "Health Programmes SC/ST beneficiers",
+              "revised_2025_26": 244.0,
+              "pending": 0.0,
+              "current": 500.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": 104.9
+            },
+            {
+              "code": "12-240301-05",
+              "name": "Educational Programmes SC/ST beneficiers",
+              "revised_2025_26": 273.0,
+              "pending": 0.0,
+              "current": 538.25,
+              "total_2026_27": 538.25,
+              "yoy_pct": 97.2
+            },
+            {
+              "code": "12-240301-06",
+              "name": "/ . Construction of Houses for SC/ST working at Graveyard/burial ground in BSCC area",
+              "revised_2025_26": 218.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 37.6
+            },
+            {
+              "code": "12-240301-07",
+              "name": "Procurement of items for distribution to SC/ST Beneficieris",
+              "revised_2025_26": 273.0,
+              "pending": 0.0,
+              "current": 350.0,
+              "total_2026_27": 350.0,
+              "yoy_pct": 28.2
+            },
+            {
+              "code": "12-240301-08",
+              "name": "[75% 25% ] ] SC/ST [E Vending Vehicle to Street Vendors [75% Men 25% women]",
+              "revised_2025_26": 581.0,
+              "pending": 0.0,
+              "current": 842.8,
+              "total_2026_27": 842.8,
+              "yoy_pct": 45.1
+            },
+            {
+              "code": "12-240303-03",
+              "name": "Financial Assistance to Individual programmes for Sc/St",
+              "revised_2025_26": 103.39,
+              "pending": 0.0,
+              "current": 632.8,
+              "total_2026_27": 632.8,
+              "yoy_pct": 512.1
+            }
+          ]
+        },
+        {
+          "name": "Pourakarmika Welfare Programme",
+          "total_2026_27": 7152.41,
+          "revised_2025_26": 1997.24,
+          "spillover": 1000.0,
+          "yoy_pct": 258.1,
+          "items": [
+            {
+              "code": "12-240301-01",
+              "name": "Construction of Individual houses for Pourakarmikas",
+              "revised_2025_26": 1120.0,
+              "pending": 0.0,
+              "current": 1200.0,
+              "total_2026_27": 1200.0,
+              "yoy_pct": 7.1
+            },
+            {
+              "code": "12-240301-02",
+              "name": "Health Programme to Pourakarmikas and families",
+              "revised_2025_26": 237.0,
+              "pending": 0.0,
+              "current": 250.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": 5.5
+            },
+            {
+              "code": "12-240302-01",
+              "name": "Welfare programmes for Pourakarmikas",
+              "revised_2025_26": 273.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 9.9
+            },
+            {
+              "code": "12-240303-01",
+              "name": "( ) Financial Assistance to SC/ST Poura karmikas and D Group { Permanent & Outsource employees}",
+              "revised_2025_26": 79.24,
+              "pending": 1000.0,
+              "current": 4102.41,
+              "total_2026_27": 5102.41,
+              "yoy_pct": 6339.2
+            },
+            {
+              "code": "12-240303-02",
+              "name": ", Assistance to Children of PKs, Gangmen, Malies",
+              "revised_2025_26": 288.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 4.2
             }
           ]
         },

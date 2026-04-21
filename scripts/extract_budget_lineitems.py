@@ -103,7 +103,10 @@ def parse_num(text: str | None) -> float | None:
 
 
 def canonical_subcat(name: str) -> str:
-    return SUBCAT_CANONICAL.get(name, name)
+    # Strip stray leading punctuation (commas, dashes, spaces) that PDF extraction
+    # sometimes leaves behind when the first tokens of a heading were Kannada-only.
+    cleaned = re.sub(r"^[,\-\s]+", "", name).strip()
+    return SUBCAT_CANONICAL.get(cleaned, cleaned)
 
 
 def is_function_heading(english: str) -> str | None:
@@ -218,11 +221,20 @@ def yoy_pct(curr: float, prev: float) -> float | None:
 
 
 def row_has_code(cells: list[str]) -> tuple[str, int] | None:
-    """Find a budget code in any cell of the row. Return (code, cell_index)."""
+    """Find a budget code in any cell of the row. Return (code, cell_index).
+
+    Some cells split the code across lines (e.g. ``03-\\n200101``). We collapse
+    internal whitespace around the hyphen before matching so those still match.
+    """
     for i, c in enumerate(cells):
         if not c:
             continue
-        m = CODE_RE.search(str(c))
+        s = str(c)
+        # Normalise: join split codes like "03-\n200101", "03- 200101",
+        # and the sub-suffix "05-330503-\n01" => "05-330503-01".
+        normalised = re.sub(r"(\b\d{2}-)\s+(\d{4,6})", r"\1\2", s)
+        normalised = re.sub(r"(\b\d{2}-\d{4,6}-)\s+(\d{1,2}\b)", r"\1\2", normalised)
+        m = CODE_RE.search(normalised)
         if m:
             return m.group(0), i
     return None

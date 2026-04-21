@@ -15,4 +15,7 @@ supporting-docs/
 # Python extraction virtualenv
 scripts/.venv/
 scripts/__pycache__/
+
+# Raw extraction dumps (intermediate artifacts, regenerable from PDFs)
+data/**/speech/raw-*.txt
 .vercel

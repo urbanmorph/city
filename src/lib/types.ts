@@ -194,3 +194,34 @@ export interface LineItemBudget {
   yoy_pct: number | null;
   functions: LineItemFunction[];
 }
+
+export interface SpeechProject {
+  id: string;
+  name: string;
+  name_local: string | null;
+  description: string;
+  amount_lakhs: number | null;
+  page: number;
+  category: string;
+  verbatim_quote: string;
+  function_code: string | null;
+  function_name: string | null;
+  tag_reason: string;
+}
+
+export interface SpeechFunctionSummary {
+  code: string;
+  name: string;
+  project_count: number;
+}
+
+export interface SpeechProjects {
+  corporation_id: string;
+  fiscal_year: string;
+  source: string;
+  speech_date: string;
+  commissioner: string;
+  projects: SpeechProject[];
+  functions_summary: SpeechFunctionSummary[];
+  unmapped_count: number;
+}
