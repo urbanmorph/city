@@ -233,7 +233,7 @@
       "verbatim_quote": "Steps will be taken to identify tax evasion cases and to undertake re-assessment of taxes legally due and thereby improve the efficiency on Tax Administration.",
       "function_code": "03",
       "function_name": "Revenue",
-      "tag_reason": "keyword: 'tax evasion'"
+      "tag_reason": "keyword: 'tax-evasion'"
     },
     {
       "id": "b-khata-to-a-khata-conversion",
@@ -283,9 +283,9 @@
       "page": 49,
       "category": "other",
       "verbatim_quote": "A new smart parking system will be implemented to systematically manage roadside parking in commercial areas... This is expected to generate a revenue of Rs. 40.00 crore annually.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "function_code": "03",
+      "function_name": "Revenue",
+      "tag_reason": "keyword: 'parking'"
     },
     {
       "id": "land-acquisition-tdr-2026-27",
@@ -480,7 +480,7 @@
       "verbatim_quote": "committed to present safe roads to citizens by adopting scientific asphalt paving, standardized and pedestrian-friendly footpaths, integrated drainage systems, and junction improvements.",
       "function_code": "05",
       "function_name": "Public Works",
-      "tag_reason": "keyword: 'road'"
+      "tag_reason": "keyword: 'roads'"
     },
     {
       "id": "cmidp-sip-arterial-road-upgradation",
@@ -543,9 +543,9 @@
       "page": 54,
       "category": "infrastructure",
       "verbatim_quote": "the City Corporation will closely work with the Bangalore Metro Rail Corporation Limited to explore the possibility of automated multi-level car parking facilities at major metro stations through the PPP (Public-Private Partnership) model.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "function_code": "03",
+      "function_name": "Revenue",
+      "tag_reason": "keyword: 'parking'"
     },
     {
       "id": "private-partnership-parking-policy",
@@ -556,9 +556,9 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "Private Participation will be encouraged in providing parking facilities at important locations. A new Citizen friendly policy will be evolved to find a long-time solution to the traffic problem of the City.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "function_code": "03",
+      "function_name": "Revenue",
+      "tag_reason": "keyword: 'parking'"
     },
     {
       "id": "banashankari-metro-ttmc-skywalk",
@@ -621,9 +621,9 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "Beautification of open spaces, Fountains at junction points are being proposed. A comprehensive plan will be prepared to take up such developments.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "keyword: 'open space'"
+      "function_code": "05",
+      "function_name": "Public Works",
+      "tag_reason": "keyword: 'junction'"
     },
     {
       "id": "bda-handed-over-layouts-development",
@@ -636,7 +636,7 @@
       "verbatim_quote": "A special action plan will be prepared for the comprehensive development of layouts handed over by the Bangalore Development Authority, including development of parks, improvement of roads, and maintenance of streetlights.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "streetlight-led-conversion",
@@ -662,7 +662,7 @@
       "verbatim_quote": "to develop environment-friendly mobility corridors by creating non-motorized transport corridors along major roads with well-developed footpaths, cycling lanes, and safe pedestrian crossings.",
       "function_code": "05",
       "function_name": "Public Works",
-      "tag_reason": "keyword: 'road'"
+      "tag_reason": "keyword: 'roads'"
     },
     {
       "id": "municipal-bond-200cr",
@@ -740,7 +740,7 @@
       "verbatim_quote": "Of these, 43 lakes have been fully developed, 9 lakes have been partially developed, and 6 lakes remain to be developed. Action will be taken to develop the remaining lakes in a phased manner.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'lake'"
+      "tag_reason": "keyword: 'lakes'"
     },
     {
       "id": "lake-fencing-protection",
@@ -766,7 +766,7 @@
       "verbatim_quote": "Pipeline works have already been undertaken to channel treated water from the sewage treatment plant established at Sarakki Lake by the Bangalore Water Supply and Sewerage Board (BWSSB) to fill up the developed lakes such as Ganapati Pura, Kothanur, and Chunchaghatta lakes.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'lake'"
+      "tag_reason": "keyword: 'lakes'"
     },
     {
       "id": "apartment-treated-water-to-lakes",
@@ -779,7 +779,7 @@
       "verbatim_quote": "It is proposed to utilise the treated excess water from the residential Apartment Complexes to fill up surrounding lakes in accordance with the standards prescribed by the Karnataka State Pollution Control Board (KSPCB).",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'lake'"
+      "tag_reason": "keyword: 'lakes'"
     },
     {
       "id": "begur-madiwala-boating-tourism",
@@ -818,7 +818,7 @@
       "verbatim_quote": "A Comprehensive action plan will be designed to recharge and restore the open wells within the Bengaluru South City Corporation limits and utilize them for watering surrounding parks, greenery and vegetation.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "free-school-supplies-bscc-students",
@@ -870,7 +870,7 @@
       "verbatim_quote": "Efforts will be made to provide quality education in the Corporation's schools and colleges with the support of citizens and NGOs.",
       "function_code": "11",
       "function_name": "Public Education",
-      "tag_reason": "keyword: 'school'"
+      "tag_reason": "keyword: 'schools'"
     },
     {
       "id": "school-zone-traffic-management",
@@ -896,7 +896,7 @@
       "verbatim_quote": "Digital learning will be promoted in schools and colleges under the Bengaluru South City Corporation. As part of this initiative, smart boards will be installed in classrooms.",
       "function_code": "11",
       "function_name": "Public Education",
-      "tag_reason": "keyword: 'school'"
+      "tag_reason": "keyword: 'schools'"
     },
     {
       "id": "25000-sapling-plantation-bmrcl-kride",
@@ -907,9 +907,9 @@
       "page": 60,
       "category": "parks",
       "verbatim_quote": "During 2026-27, it is proposed to plant and maintain 25,000 saplings of different species in collaboration with the Bangalore Metro Rail Corporation Limited and K-RIDE.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "category: parks"
+      "function_code": "10",
+      "function_name": "Urban Forestry",
+      "tag_reason": "keyword: 'saplings'"
     },
     {
       "id": "hazardous-tree-removal-app",
@@ -920,9 +920,9 @@
       "page": 60,
       "category": "parks",
       "verbatim_quote": "a software application will be developed for the public to report hazardous trees, and a mechanism will be put in place for their timely removal.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "category: parks"
+      "function_code": "10",
+      "function_name": "Urban Forestry",
+      "tag_reason": "keyword: 'tree-branch'"
     },
     {
       "id": "wildlife-rescue-program",
@@ -946,9 +946,9 @@
       "page": 61,
       "category": "parks",
       "verbatim_quote": "It is proposed to establish a special \"Smruti Van\" (Memorial Forest) by giving priority to trees with medicinal value within the Corporation limits.",
-      "function_code": "09",
-      "function_name": "Horticulture",
-      "tag_reason": "category: parks"
+      "function_code": "10",
+      "function_name": "Urban Forestry",
+      "tag_reason": "keyword: 'memorial forest'"
     },
     {
       "id": "environment-day-awareness-programmes",
@@ -959,9 +959,9 @@
       "page": 61,
       "category": "other",
       "verbatim_quote": "Programs such as the celebration of World Environment Day and other environmental awareness events will be organized.",
-      "function_code": "10",
-      "function_name": "Urban Forestry",
-      "tag_reason": "keyword: 'environment day'"
+      "function_code": "11",
+      "function_name": "Public Education",
+      "tag_reason": "keyword: 'students'"
     },
     {
       "id": "bamboo-biodiversity-plantation",
@@ -987,7 +987,7 @@
       "verbatim_quote": "Recently, 88 parks covering approximately 3.52 lakh square meters have been handed over by the Bangalore Development Authority. It is proposed to develop these parks.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "brand-bengaluru-green-8-new-parks",
@@ -1000,7 +1000,7 @@
       "verbatim_quote": "Under the \"Brand Bengaluru\" and \"Green Bengaluru,\" new parks are being created. During the year 2025-26, tenders have been invited and work orders issued for the development of 8 parks within the limits.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "sponge-parks",
@@ -1013,7 +1013,7 @@
       "verbatim_quote": "Sponge Parks are proposed to be developed within the limits. An amount of Rs.2.00 crores has been earmarked for this purpose.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "park-recharge-pits-csr",
@@ -1026,7 +1026,7 @@
       "verbatim_quote": "563 recharge pits have already been constructed, and during the current year, action will be taken to construct 200 additional recharge pits under CSR initiatives.",
       "function_code": "09",
       "function_name": "Horticulture",
-      "tag_reason": "keyword: 'park'"
+      "tag_reason": "keyword: 'parks'"
     },
     {
       "id": "park-encroachment-fencing",
@@ -1078,7 +1078,7 @@
       "verbatim_quote": "Rs.13.03 crore will be utilized for the repair of buildings and procurement of equipment for 25 Urban Primary Health Centres and 49 Namma Clinics.",
       "function_code": "08",
       "function_name": "Public Health-Medical",
-      "tag_reason": "keyword: 'uphc'"
+      "tag_reason": "keyword: 'namma clinic'"
     },
     {
       "id": "uphc-24-7-obgyn-paediatrician",
@@ -1089,9 +1089,9 @@
       "page": 63,
       "category": "health",
       "verbatim_quote": "it is proposed to appoint one obstetrician and gynaecologist and one paediatrician on a contract basis at each of these four centres.",
-      "function_code": "08",
-      "function_name": "Public Health-Medical",
-      "tag_reason": "keyword: 'uphc'"
+      "function_code": "07",
+      "function_name": "Public Health-General",
+      "tag_reason": "category: health"
     },
     {
       "id": "hub-spoke-lab-testing",
@@ -1104,7 +1104,7 @@
       "verbatim_quote": "A new \"Hub & Spoke\" model will be implemented for collecting blood samples from patients visiting the 25 Urban Primary Health Centres and 49 Namma Clinics, and testing will be carried out in empanelled private laboratories.",
       "function_code": "08",
       "function_name": "Public Health-Medical",
-      "tag_reason": "keyword: 'uphc'"
+      "tag_reason": "keyword: 'namma clinic'"
     },
     {
       "id": "hotel-worker-health-awareness",
@@ -1247,7 +1247,7 @@
       "verbatim_quote": "it is proposed to deploy 8 mechanical street sweeping machines with a minimum capacity of 5Cum on a rental basis.",
       "function_code": "05",
       "function_name": "Public Works",
-      "tag_reason": "keyword: 'road'"
+      "tag_reason": "keyword: 'roads'"
     },
     {
       "id": "bswml-swm-allocation",
@@ -1519,7 +1519,7 @@
     {
       "code": "03",
       "name": "Revenue",
-      "project_count": 13
+      "project_count": 16
     },
     {
       "code": "04",
@@ -1529,7 +1529,7 @@
     {
       "code": "05",
       "name": "Public Works",
-      "project_count": 23
+      "project_count": 24
     },
     {
       "code": "06",
@@ -1539,27 +1539,27 @@
     {
       "code": "07",
       "name": "Public Health-General",
-      "project_count": 17
+      "project_count": 18
     },
     {
       "code": "08",
       "name": "Public Health-Medical",
-      "project_count": 5
+      "project_count": 4
     },
     {
       "code": "09",
       "name": "Horticulture",
-      "project_count": 20
+      "project_count": 13
     },
     {
       "code": "10",
       "name": "Urban Forestry",
-      "project_count": 3
+      "project_count": 5
     },
     {
       "code": "11",
       "name": "Public Education",
-      "project_count": 7
+      "project_count": 8
     },
     {
       "code": "12",

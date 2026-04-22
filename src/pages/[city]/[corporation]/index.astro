@@ -16,7 +16,7 @@ if (!city || !corporation) {
 const data = loadLineItemBudget(city.id, corporation.id);
 const speech = loadSpeechProjects(city.id, corporation.id);
 
-const view = (Astro.url.searchParams.get("view") ?? "summary") as "summary" | "projects" | "budget";
+const view = (Astro.url.searchParams.get("view") ?? "summary") as "summary" | "goals" | "budget";
 
 // Group speech projects by function_code
 type SpeechProj = NonNullable<typeof speech>["projects"][number];
@@ -109,7 +109,7 @@ function cleanName(s: string): string {
   <Fragment slot="masthead-nav">
     <a href={`/${city.id}/${corporation.id}`} class={view === "summary" ? "is-active" : ""}>Summary</a>
     {speech && (
-      <a href={`/${city.id}/${corporation.id}?view=projects`} class={view === "projects" ? "is-active" : ""}>Projects</a>
+      <a href={`/${city.id}/${corporation.id}?view=goals`} class={view === "goals" ? "is-active" : ""}>Goals</a>
     )}
     <a href={`/${city.id}/${corporation.id}?view=budget`} class={view === "budget" ? "is-active" : ""}>Budget</a>
     <a href="#about">About</a>
@@ -142,8 +142,8 @@ function cleanName(s: string): string {
                 <span class="fn-card__amount">{formatINR(c.amount)}</span>
                 <span class="fn-card__meta">
                   {c.projectCount > 0
-                    ? `${c.projectCount} ${c.projectCount === 1 ? "announcement" : "announcements"}`
-                    : "No speech announcements"}
+                    ? `${c.projectCount} ${c.projectCount === 1 ? "goal" : "goals"}`
+                    : "No speech goals"}
                   {` · ${(c.share * 100).toFixed(1)}% of budget`}
                 </span>
               </div>
@@ -153,7 +153,7 @@ function cleanName(s: string): string {
                   {c.highlights.map((h) => (
                     <li class="fn-card__hl">
                       <a
-                        href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                        href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
                         class="fn-card__hl-link"
                         title={h.description || h.name}
                       >
@@ -170,17 +170,17 @@ function cleanName(s: string): string {
               <div class="fn-card__foot">
                 {c.projectCount > c.highlights.length ? (
                   <a
-                    href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                    href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
                     class="fn-card__more"
                   >
                     {c.projectCount - c.highlights.length} more <i class="fa-solid fa-arrow-right"></i>
                   </a>
                 ) : c.projectCount > 0 ? (
                   <a
-                    href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                    href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
                     class="fn-card__more"
                   >
-                    View all projects <i class="fa-solid fa-arrow-right"></i>
+                    View all goals <i class="fa-solid fa-arrow-right"></i>
                   </a>
                 ) : (
                   <a
@@ -196,13 +196,13 @@ function cleanName(s: string): string {
         </section>
       )}
 
-      {view === "projects" && speech && (
+      {view === "goals" && speech && (
         <section class="view-panel">
           <aside class="note-card">
             <i class="fa-solid fa-circle-info"></i>
             <div>
               <strong>From the Commissioner's Budget Speech, {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}.</strong>
-              {` `}{speech.projects.length} projects and initiatives announced by {speech.commissioner}, grouped here against the 12 budget functions using a keyword heuristic. Tagging is provisional and can be refined.
+              {` `}{speech.projects.length} goals announced by {speech.commissioner}, grouped here against the 12 budget functions using a keyword heuristic. Tagging is provisional and can be refined.
             </div>
           </aside>
 
@@ -213,7 +213,7 @@ function cleanName(s: string): string {
               const withAmount = items.filter((p) => p.amount_lakhs != null);
               const totalLakhs = withAmount.reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
               return (
-                <details class="speech-fn-block" id={`projects-fn-${fn.code}`} open>
+                <details class="speech-fn-block" id={`goals-fn-${fn.code}`} open>
                   <summary class="fn-summary">
                     <span class="fn-lead">
                       <i class="fa-solid fa-chevron-right chev"></i>
@@ -221,7 +221,7 @@ function cleanName(s: string): string {
                       <span class="fn-name">{fn.name}</span>
                     </span>
                     <span class="fn-meta">
-                      <span class="pill pill-count">{items.length} {items.length === 1 ? "project" : "projects"}</span>
+                      <span class="pill pill-count">{items.length} {items.length === 1 ? "goal" : "goals"}</span>
                       {totalLakhs > 0 && <span class="fn-amount">{formatINR(totalLakhs)}</span>}
                     </span>
                   </summary>
@@ -375,7 +375,7 @@ function cleanName(s: string): string {
         </p>
         {speech && (
           <p>
-            The <a href={`/${city.id}/${corporation.id}?view=projects`}>Projects view</a> lists 114 projects and initiatives announced by {speech.commissioner} in the Budget Speech delivered on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Projects are tagged to functions by keyword heuristic and the tags are provisional.
+            The <a href={`/${city.id}/${corporation.id}?view=goals`}>Goals view</a> lists {speech.projects.length} goals announced by {speech.commissioner} in the Budget Speech delivered on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Goals are tagged to functions by keyword heuristic and the tags are provisional.
           </p>
         )}
         <p>
