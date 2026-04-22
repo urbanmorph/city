@@ -41,22 +41,45 @@ a:hover { text-decoration: underline; }
 .site-header {
   background: var(--c-primary);
   color: #fff;
-  padding: 0.75rem 0;
+  padding: 1.5rem 0;
 }
 .site-header .container {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 1.5rem;
 }
 .site-header a { color: #fff; }
 .site-header a:hover { opacity: 0.85; text-decoration: none; }
-.site-logo {
-  font-size: 1.15rem;
-  font-weight: 700;
-  letter-spacing: -0.01em;
+
+.masthead {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  line-height: 1.15;
 }
-.site-nav { display: flex; gap: 1.25rem; font-size: 0.9rem; }
+.masthead-title {
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+}
+.masthead-subtitle {
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: 0.005em;
+}
+
+.site-nav { display: flex; gap: 1.4rem; font-size: 0.92rem; align-items: center; }
+.site-nav a { opacity: 0.82; font-weight: 500; }
+.site-nav a:hover { opacity: 1; }
+.site-nav a.is-active { opacity: 1; border-bottom: 2px solid rgba(255, 255, 255, 0.9); padding-bottom: 0.15rem; }
+
+@media (max-width: 640px) {
+  .site-header { padding: 1rem 0; }
+  .masthead-title { font-size: 1.35rem; }
+  .masthead-subtitle { font-size: 0.8rem; }
+}
 
 /* ── Placeholder Banner ────────────────────────────────── */
 .placeholder-banner {

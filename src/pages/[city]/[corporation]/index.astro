@@ -16,6 +16,8 @@ if (!city || !corporation) {
 const data = loadLineItemBudget(city.id, corporation.id);
 const speech = loadSpeechProjects(city.id, corporation.id);
 
+const view = (Astro.url.searchParams.get("view") ?? "summary") as "summary" | "projects" | "budget";
+
 // Group speech projects by function_code
 type SpeechProj = NonNullable<typeof speech>["projects"][number];
 const projectsByFn = new Map<string, SpeechProj[]>();
@@ -25,8 +27,8 @@ for (const p of speech?.projects ?? []) {
   projectsByFn.get(code)!.push(p);
 }
 
-// Function meta in display order (matches budget functions, plus an "Unmapped" bucket)
-const speechFunctionOrder = [
+// Function meta in display order (matches budget functions)
+const FUNCTION_ORDER = [
   { code: "01", name: "Council" },
   { code: "02", name: "General Administration" },
   { code: "03", name: "Revenue" },
@@ -40,6 +42,38 @@ const speechFunctionOrder = [
   { code: "11", name: "Public Education" },
   { code: "12", name: "Social Welfare" },
 ];
+
+// Build grid cards from line-item data, in fixed FUNCTION_ORDER so the 3x4 is stable
+const fnByCode = new Map((data?.functions ?? []).map((f) => [f.code, f]));
+const totalAllFns = (data?.functions ?? []).reduce((sum, f) => sum + f.total_2026_27, 0);
+
+// Pick up to 3 speech highlights per function: amounted first (desc by amount),
+// then by speech order to fill the slot.
+const HIGHLIGHTS_PER_CARD = 3;
+function pickHighlights(code: string): SpeechProj[] {
+  const items = projectsByFn.get(code) ?? [];
+  const amounted = items
+    .filter((p) => p.amount_lakhs != null)
+    .sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
+  const rest = items.filter((p) => p.amount_lakhs == null);
+  return [...amounted, ...rest].slice(0, HIGHLIGHTS_PER_CARD);
+}
+
+const gridCards = FUNCTION_ORDER.map((f) => {
+  const fn = fnByCode.get(f.code);
+  const amount = fn?.total_2026_27 ?? 0;
+  const share = totalAllFns > 0 ? amount / totalAllFns : 0;
+  const items = projectsByFn.get(f.code) ?? [];
+  const highlights = pickHighlights(f.code);
+  return {
+    code: f.code,
+    name: f.name,
+    amount,
+    share,
+    projectCount: items.length,
+    highlights,
+  };
+});
 
 function fmtYoY(pct: number | null | undefined): string {
   if (pct === null || pct === undefined) return "";
@@ -66,9 +100,21 @@ function cleanName(s: string): string {
 ---
 
 <BaseLayout
-  title={`${corporation.name} Budget Detail ${data?.fiscal_year ?? "2026-27"}`}
-  description={`Function, sub-category and line-item budget for ${corporation.name}`}
+  title={`${corporation.name} Budget ${data?.fiscal_year ?? "2026-27"}`}
+  description={`Public finances and program of works for ${corporation.name}`}
+  mastheadTitle={corporation.name.replace(" City Corporation", "")}
+  mastheadSubtitle={`Public Finances and Program of Works, fiscal year ${data?.fiscal_year ?? "2026-27"}`}
+  mastheadHref={`/${city.id}`}
 >
+  <Fragment slot="masthead-nav">
+    <a href={`/${city.id}/${corporation.id}`} class={view === "summary" ? "is-active" : ""}>Summary</a>
+    {speech && (
+      <a href={`/${city.id}/${corporation.id}?view=projects`} class={view === "projects" ? "is-active" : ""}>Projects</a>
+    )}
+    <a href={`/${city.id}/${corporation.id}?view=budget`} class={view === "budget" ? "is-active" : ""}>Budget</a>
+    <a href="#about">About</a>
+  </Fragment>
+
   <Breadcrumb
     slot="breadcrumb"
     items={[
@@ -80,53 +126,78 @@ function cleanName(s: string): string {
     ]}
   />
 
-  <header class="page-head">
-    <div class="eyebrow">Fiscal Year {data?.fiscal_year ?? "2026-27"}</div>
-    <h1>{corporation.name}</h1>
-    <p class="lede">
-      What was announced in the Commissioner's budget speech, and the line-item budget behind it. Switch tabs to move between the two views.
-    </p>
-  </header>
 
   {data ? (
     <>
-      <section class="topline">
-        <div class="tl-cell">
-          <span class="tl-label">Total</span>
-          <span class="tl-value">{formatINR(data.total_2026_27)}</span>
-          <span class="tl-sub">2026 {`\u2013`}27 Budget Estimate</span>
-        </div>
-        <div class="tl-cell">
-          <span class="tl-label">Previous</span>
-          <span class="tl-value tl-value--muted">{formatINR(data.total_revised_2025_26)}</span>
-          <span class="tl-sub">2025 {`\u2013`}26 Revised</span>
-        </div>
-        <div class="tl-cell">
-          <span class="tl-label">YoY</span>
-          <span class={`tl-value tl-yoy ${yoyClass(data.yoy_pct)}`}>{fmtYoY(data.yoy_pct) || "no data"}</span>
-          <span class="tl-sub">Year on year</span>
-        </div>
-        <div class="tl-cell">
-          <span class="tl-label">Spillover</span>
-          <span class="tl-value tl-value--accent">{data.total_spillover > 0 ? formatINR(data.total_spillover) : "nil"}</span>
-          <span class="tl-sub">Pending from earlier years</span>
-        </div>
-      </section>
+      {view === "summary" && (
+        <section class="fn-grid">
+          {gridCards.map((c) => (
+            <article class="fn-card">
+              <div class="fn-card__head">
+                <span class="fn-card__code">{c.code}</span>
+                <h3 class="fn-card__name">{c.name}</h3>
+              </div>
 
-      <nav class="tabs" role="tablist" aria-label="Budget views">
-        <button type="button" class="tab" role="tab" aria-selected={speech ? "true" : "false"} data-tab-target="speech" disabled={!speech}>
-          <i class="fa-solid fa-microphone-lines"></i>
-          Budget Speech
-          {speech && <span class="tab-count">{speech.projects.length}</span>}
-        </button>
-        <button type="button" class="tab" role="tab" aria-selected={speech ? "false" : "true"} data-tab-target="detail">
-          <i class="fa-solid fa-table-list"></i>
-          Budget Detail
-        </button>
-      </nav>
+              <div class="fn-card__summary">
+                <span class="fn-card__amount">{formatINR(c.amount)}</span>
+                <span class="fn-card__meta">
+                  {c.projectCount > 0
+                    ? `${c.projectCount} ${c.projectCount === 1 ? "announcement" : "announcements"}`
+                    : "No speech announcements"}
+                  {` · ${(c.share * 100).toFixed(1)}% of budget`}
+                </span>
+              </div>
 
-      {speech && (
-        <section class="tab-panel" data-tab="speech" aria-hidden="false">
+              {c.highlights.length > 0 && (
+                <ul class="fn-card__highlights">
+                  {c.highlights.map((h) => (
+                    <li class="fn-card__hl">
+                      <a
+                        href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                        class="fn-card__hl-link"
+                        title={h.description || h.name}
+                      >
+                        <span class="fn-card__hl-name">{h.name}</span>
+                        {h.amount_lakhs != null && (
+                          <span class="fn-card__hl-amt">{formatINR(h.amount_lakhs)}</span>
+                        )}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+
+              <div class="fn-card__foot">
+                {c.projectCount > c.highlights.length ? (
+                  <a
+                    href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                    class="fn-card__more"
+                  >
+                    {c.projectCount - c.highlights.length} more <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                ) : c.projectCount > 0 ? (
+                  <a
+                    href={`/${city.id}/${corporation.id}?view=projects#projects-fn-${c.code}`}
+                    class="fn-card__more"
+                  >
+                    View all projects <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                ) : (
+                  <a
+                    href={`/${city.id}/${corporation.id}?view=budget#budget-fn-${c.code}`}
+                    class="fn-card__more fn-card__more--muted"
+                  >
+                    View in budget <i class="fa-solid fa-arrow-right"></i>
+                  </a>
+                )}
+              </div>
+            </article>
+          ))}
+        </section>
+      )}
+
+      {view === "projects" && speech && (
+        <section class="view-panel">
           <aside class="note-card">
             <i class="fa-solid fa-circle-info"></i>
             <div>
@@ -136,13 +207,13 @@ function cleanName(s: string): string {
           </aside>
 
           <div class="speech-grid">
-            {speechFunctionOrder.map((fn) => {
+            {FUNCTION_ORDER.map((fn) => {
               const items = projectsByFn.get(fn.code) ?? [];
               if (items.length === 0) return null;
               const withAmount = items.filter((p) => p.amount_lakhs != null);
               const totalLakhs = withAmount.reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
               return (
-                <details class="speech-fn-block" open>
+                <details class="speech-fn-block" id={`projects-fn-${fn.code}`} open>
                   <summary class="fn-summary">
                     <span class="fn-lead">
                       <i class="fa-solid fa-chevron-right chev"></i>
@@ -188,7 +259,8 @@ function cleanName(s: string): string {
         </section>
       )}
 
-      <section class="tab-panel" data-tab="detail" aria-hidden={speech ? "true" : "false"}>
+      {view === "budget" && (
+        <section class="view-panel">
         <div class="toolbar">
           <div class="toolbar-left">
             <button type="button" class="tool-btn" data-action="expand-all">
@@ -220,7 +292,7 @@ function cleanName(s: string): string {
 
         <section class="tree">
           {data.functions.map((fn) => (
-            <details class="fn-block" open={fn.code === "05"}>
+            <details class="fn-block" id={`budget-fn-${fn.code}`} open={fn.code === "05"}>
               <summary class="fn-summary">
                 <span class="fn-lead">
                   <i class="fa-solid fa-chevron-right chev"></i>
@@ -291,6 +363,25 @@ function cleanName(s: string): string {
           Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">Corporation Budget Book {data.fiscal_year}</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
         </p>
       </section>
+      )}
+
+      <section id="about" class="about">
+        <h2>About this page</h2>
+        <p>
+          {corporation.name} is one of five corporations constituted under the <a href="https://egazette.karnataka.gov.in" rel="noopener" target="_blank">Greater Bengaluru Governance Act, 2024</a> (Act 36 of 2025). This page summarises its Budget Estimate for fiscal year {data.fiscal_year} across the 12 obligatory functions laid out in Schedule I of the Act.
+        </p>
+        <p>
+          Numbers are extracted from the <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">official budget book published on OpenCity.in</a>. {(data.total_2026_27 / 382595 * 100).toFixed(1)}% of the ₹3,826 Cr book has been captured line-by-line; the remainder sits in rows whose codes span columns irregularly on a handful of pages and will be recovered in a later pass.
+        </p>
+        {speech && (
+          <p>
+            The <a href={`/${city.id}/${corporation.id}?view=projects`}>Projects view</a> lists 114 projects and initiatives announced by {speech.commissioner} in the Budget Speech delivered on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Projects are tagged to functions by keyword heuristic and the tags are provisional.
+          </p>
+        )}
+        <p>
+          Year-on-year comparisons against the previous fiscal are intentionally omitted on the overview — the predecessor entity (BBMP) covered a much larger territory with a different mix of obligations, so those percentages would misrepresent the new corporation's scale.
+        </p>
+      </section>
     </>
   ) : (
     <div class="card mt-2">
@@ -303,24 +394,10 @@ function cleanName(s: string): string {
   document.addEventListener("click", (e) => {
     const t = e.target;
     if (!(t instanceof HTMLElement)) return;
-
-    const tab = t.closest("[data-tab-target]");
-    if (tab) {
-      const target = tab.getAttribute("data-tab-target");
-      document.querySelectorAll("[data-tab-target]").forEach((b) =>
-        b.setAttribute("aria-selected", b.getAttribute("data-tab-target") === target ? "true" : "false")
-      );
-      document.querySelectorAll("[data-tab]").forEach((panel) =>
-        panel.setAttribute("aria-hidden", panel.getAttribute("data-tab") === target ? "false" : "true")
-      );
-      return;
-    }
-
     const btn = t.closest("[data-action]");
     if (!btn) return;
     const action = btn.getAttribute("data-action");
-    const panel = btn.closest("[data-tab]") ?? document;
-    const all = panel.querySelectorAll("details.fn-block, details.sub-block");
+    const all = document.querySelectorAll("details.fn-block, details.sub-block");
     if (action === "expand-all") all.forEach((d) => (d.open = true));
     if (action === "collapse-all") all.forEach((d) => (d.open = false));
   });
@@ -718,53 +795,178 @@ function cleanName(s: string): string {
     .item-list { padding-left: 1.6rem; }
   }
 
-  /* Tabs */
-  .tabs {
-    display: flex;
-    gap: 0;
+  .view-panel { margin-top: 1.5rem; }
+
+  /* Function grid (3x4 cards) */
+  .fn-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
     margin-top: 1.5rem;
-    border-bottom: 1px solid var(--c-rule);
   }
-  .tab {
-    background: transparent;
-    border: none;
-    border-bottom: 2px solid transparent;
-    padding: 0.7rem 1.1rem;
-    display: inline-flex;
+  .fn-card {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 1.2rem 1.25rem;
+    background: #fff;
+    border: 1px solid var(--c-rule);
+    border-radius: 8px;
+    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+  }
+  .fn-card:hover {
+    border-color: var(--c-primary, #3F5F7A);
+    box-shadow: 0 4px 12px rgba(63, 95, 122, 0.08);
+  }
+  .fn-card__head {
+    display: flex;
     align-items: center;
-    gap: 0.5rem;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--c-ink-soft);
-    cursor: pointer;
-    font-family: inherit;
-    margin-bottom: -1px;
-    transition: color 0.15s ease, border-color 0.15s ease;
+    gap: 0.55rem;
   }
-  .tab i { font-size: 0.9em; opacity: 0.85; }
-  .tab:hover:not(:disabled) { color: var(--c-ink); }
-  .tab[aria-selected="true"] {
-    color: var(--c-ink);
-    border-bottom-color: var(--c-primary);
-  }
-  .tab:disabled { opacity: 0.5; cursor: not-allowed; }
-  .tab-count {
+  .fn-card__code {
+    flex-shrink: 0;
     font-size: 0.72rem;
-    font-weight: 600;
-    padding: 0.08rem 0.45rem;
-    border-radius: 999px;
-    background: #edf2f7;
-    color: #4a5568;
+    font-weight: 700;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    background: var(--c-rule-soft);
+    color: var(--c-ink-soft);
     font-variant-numeric: tabular-nums;
+    line-height: 1.4;
+    letter-spacing: 0.02em;
   }
-  .tab[aria-selected="true"] .tab-count {
-    background: var(--c-primary);
-    color: #fff;
+  .fn-card__name {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    line-height: 1.3;
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+  .fn-card__summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding-bottom: 0.55rem;
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .fn-card__amount {
+    font-family: var(--num-font);
+    font-variant-numeric: tabular-nums;
+    font-feature-settings: "tnum";
+    font-size: 1.35rem;
+    font-weight: 800;
+    color: var(--c-ink);
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+  }
+  .fn-card__meta {
+    font-size: 0.74rem;
+    color: var(--c-neutral);
+    letter-spacing: 0.01em;
   }
 
-  /* Tab panels */
-  .tab-panel { display: block; }
-  .tab-panel[aria-hidden="true"] { display: none; }
+  .fn-card__highlights {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    flex: 1;
+  }
+  .fn-card__hl {
+    line-height: 1.35;
+  }
+  .fn-card__hl-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 0.25rem 0;
+    text-decoration: none;
+    color: var(--c-ink);
+    border-bottom: 1px solid transparent;
+  }
+  .fn-card__hl-link:hover {
+    color: var(--c-primary, #3F5F7A);
+    text-decoration: none;
+  }
+  .fn-card__hl-link::before {
+    content: "";
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--c-neutral);
+    flex-shrink: 0;
+    align-self: center;
+    opacity: 0.55;
+  }
+  .fn-card__hl-name {
+    font-size: 0.82rem;
+    font-weight: 500;
+    flex: 1;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .fn-card__hl-amt {
+    flex-shrink: 0;
+    font-family: var(--num-font);
+    font-variant-numeric: tabular-nums;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--c-ink-soft);
+  }
+
+  .fn-card__foot {
+    margin-top: auto;
+    padding-top: 0.3rem;
+  }
+  .fn-card__more {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--c-primary, #3F5F7A);
+    text-decoration: none;
+  }
+  .fn-card__more i { font-size: 0.75em; transition: transform 0.15s ease; }
+  .fn-card__more:hover { text-decoration: none; }
+  .fn-card__more:hover i { transform: translateX(3px); }
+  .fn-card__more--muted { color: var(--c-neutral); }
+
+  @media (max-width: 960px) {
+    .fn-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .fn-grid { grid-template-columns: 1fr; }
+  }
+
+  /* About section */
+  .about {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--c-rule);
+    max-width: 72ch;
+  }
+  .about h2 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--c-ink);
+    margin: 0 0 0.75rem;
+  }
+  .about p {
+    font-size: 0.9rem;
+    color: var(--c-ink-soft);
+    line-height: 1.6;
+    margin: 0 0 0.75rem;
+  }
+  .about p:last-child { margin-bottom: 0; }
+  .about a { color: var(--c-primary); }
 
   /* Speech tab */
   .speech-grid {

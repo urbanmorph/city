@@ -4,9 +4,18 @@ import "../styles/global.css";
 interface Props {
   title: string;
   description?: string;
+  mastheadTitle?: string;
+  mastheadSubtitle?: string;
+  mastheadHref?: string;
 }
 
-const { title, description = "Civic governance data portal for Indian cities" } = Astro.props;
+const {
+  title,
+  description = "Civic governance data portal for Indian cities",
+  mastheadTitle = "City Portal",
+  mastheadSubtitle,
+  mastheadHref = "/",
+} = Astro.props;
 ---
 
 <!doctype html>
@@ -27,9 +36,14 @@ const { title, description = "Civic governance data portal for Indian cities" } 
   <body>
     <header class="site-header">
       <div class="container">
-        <a href="/" class="site-logo">City Portal</a>
+        <a href={mastheadHref} class="masthead">
+          <span class="masthead-title">{mastheadTitle}</span>
+          {mastheadSubtitle && <span class="masthead-subtitle">{mastheadSubtitle}</span>}
+        </a>
         <nav class="site-nav">
-          <a href="#">About</a>
+          <slot name="masthead-nav">
+            <a href="#">About</a>
+          </slot>
         </nav>
       </div>
     </header>
