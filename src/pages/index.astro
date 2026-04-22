@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import CorporationCard from "../components/CorporationCard.astro";
-import { loadCities, loadCorporations, loadBudget, loadLineItemBudget } from "../lib/data-loader";
+import { loadCities, loadCorporations, loadBudget, loadLineItemBudget, loadSpeechProjects } from "../lib/data-loader";
 import { formatINR } from "../lib/format";
 
 const cities = loadCities();
@@ -11,19 +11,22 @@ const corporations = loadCorporations(city.id);
 type CardData = {
   corporation: (typeof corporations)[number];
   totalBudgetLakhs: number;
-  yoyPct: number | null;
-  spilloverLakhs: number | null;
+  functionsTracked: number;
+  goalsTracked: number;
   dataStatus: "full" | "partial" | "none";
 };
 
 const cardData: CardData[] = corporations.map((corp) => {
   const lineItems = loadLineItemBudget(city.id, corp.id);
+  const speech = loadSpeechProjects(city.id, corp.id);
+  const goalsTracked = speech?.projects.length ?? 0;
+
   if (lineItems) {
     return {
       corporation: corp,
       totalBudgetLakhs: lineItems.total_2026_27,
-      yoyPct: lineItems.yoy_pct ?? null,
-      spilloverLakhs: lineItems.total_spillover ?? null,
+      functionsTracked: lineItems.functions.filter((f) => f.total_2026_27 > 0).length,
+      goalsTracked,
       dataStatus: corp.id === "south" ? "partial" : "full",
     };
   }
@@ -31,8 +34,8 @@ const cardData: CardData[] = corporations.map((corp) => {
   return {
     corporation: corp,
     totalBudgetLakhs: budget?.summary.total_expenditure ?? 0,
-    yoyPct: null,
-    spilloverLakhs: null,
+    functionsTracked: 0,
+    goalsTracked,
     dataStatus: "none",
   };
 });
@@ -42,27 +45,24 @@ const totalWards = corporations.reduce((sum, c) => sum + c.wards, 0);
 ---
 
 <BaseLayout
-  title={`${city.name} Governance Portal`}
-  description={`Budget, line items and spillover across ${corporations.length} city corporations.`}
+  title="City Corporations"
+  description={`Public finances and program of works across ${corporations.length} city corporations.`}
+  mastheadTitle="City Corporations"
+  mastheadSubtitle={`Public Finances and Program of Works, fiscal year ${city.budget_year}`}
 >
-  <header class="page-head">
-    <div class="eyebrow">Governance accountability for Indian cities</div>
-    <h1>{city.name}</h1>
-    <p class="lede">
-      Every rupee, traced by corporation, function and line item. Budget estimates, year on year change and spillover from earlier years for Fiscal Year 2026{`\u2013`}27.
-    </p>
-  </header>
-
+  <Fragment slot="masthead-nav">
+    <a href="/about">About</a>
+  </Fragment>
   <section class="topline">
     <div class="tl-cell">
       <span class="tl-label">Total Budget</span>
       <span class="tl-value">{formatINR(totalBudgetLakhs)}</span>
-      <span class="tl-sub">2026 {`\u2013`}27 across {corporations.length} corps</span>
+      <span class="tl-sub">{city.budget_year} across {corporations.length} corporations</span>
     </div>
     <div class="tl-cell">
       <span class="tl-label">Corporations</span>
       <span class="tl-value">{corporations.length}</span>
-      <span class="tl-sub">City corporations under GBA</span>
+      <span class="tl-sub">Municipal corporations</span>
     </div>
     <div class="tl-cell">
       <span class="tl-label">Wards</span>
@@ -71,25 +71,19 @@ const totalWards = corporations.reduce((sum, c) => sum + c.wards, 0);
     </div>
     <div class="tl-cell">
       <span class="tl-label">Fiscal Year</span>
-      <span class="tl-value">2026{`\u2013`}27</span>
+      <span class="tl-value">{city.budget_year}</span>
       <span class="tl-sub">Budget Estimate</span>
     </div>
   </section>
 
   <section class="corps-section">
-    <div class="section-head">
-      <h2>Corporations</h2>
-      <p class="section-sub">Click any corporation to drill into its line-item budget.</p>
-    </div>
-
     <div class="card-grid">
       {cardData.map((c) => (
         <CorporationCard
-          cityId={city.id}
           corporation={c.corporation}
           totalBudgetLakhs={c.totalBudgetLakhs}
-          yoyPct={c.yoyPct}
-          spilloverLakhs={c.spilloverLakhs}
+          functionsTracked={c.functionsTracked}
+          goalsTracked={c.goalsTracked}
           dataStatus={c.dataStatus}
         />
       ))}
@@ -97,7 +91,7 @@ const totalWards = corporations.reduce((sum, c) => sum + c.wards, 0);
   </section>
 
   <p class="source-line">
-    Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">GBA Corporation Budget Books 2026{`\u2013`}27</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
+    Amounts in Indian Rupees (Lakh below one Crore, Crore above). Data from the official budget books published by the corporations.
   </p>
 </BaseLayout>
 

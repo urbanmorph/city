@@ -1,13 +1,15 @@
 ---
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import Breadcrumb from "../../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects } from "../../../lib/data-loader";
-import { formatINR } from "../../../lib/format";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../components/Breadcrumb.astro";
+import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects } from "../../lib/data-loader";
+import { formatINR } from "../../lib/format";
 
-const { city: cityId, corporation: corpId } = Astro.params;
+// City is fixed internally; URLs are corporation-scoped only
+const CITY_ID = "bengaluru";
+const { corporation: corpId } = Astro.params;
 
-const city = loadCity(cityId!);
-const corporation = loadCorporation(cityId!, corpId!);
+const city = loadCity(CITY_ID);
+const corporation = loadCorporation(CITY_ID, corpId!);
 
 if (!city || !corporation) {
   return Astro.redirect("/404");
@@ -59,21 +61,25 @@ function pickHighlights(code: string): SpeechProj[] {
   return [...amounted, ...rest].slice(0, HIGHLIGHTS_PER_CARD);
 }
 
-const gridCards = FUNCTION_ORDER.map((f) => {
-  const fn = fnByCode.get(f.code);
-  const amount = fn?.total_2026_27 ?? 0;
-  const share = totalAllFns > 0 ? amount / totalAllFns : 0;
-  const items = projectsByFn.get(f.code) ?? [];
-  const highlights = pickHighlights(f.code);
-  return {
-    code: f.code,
-    name: f.name,
-    amount,
-    share,
-    projectCount: items.length,
-    highlights,
-  };
-});
+// Council (01) has no goals — it's just the elected body's establishment costs.
+// Hide it from the Summary grid; it remains reachable via the Budget view.
+const gridCards = FUNCTION_ORDER
+  .filter((f) => f.code !== "01")
+  .map((f) => {
+    const fn = fnByCode.get(f.code);
+    const amount = fn?.total_2026_27 ?? 0;
+    const share = totalAllFns > 0 ? amount / totalAllFns : 0;
+    const items = projectsByFn.get(f.code) ?? [];
+    const highlights = pickHighlights(f.code);
+    return {
+      code: f.code,
+      name: f.name,
+      amount,
+      share,
+      projectCount: items.length,
+      highlights,
+    };
+  });
 
 function fmtYoY(pct: number | null | undefined): string {
   if (pct === null || pct === undefined) return "";
@@ -104,25 +110,22 @@ function cleanName(s: string): string {
   description={`Public finances and program of works for ${corporation.name}`}
   mastheadTitle={corporation.name.replace(" City Corporation", "")}
   mastheadSubtitle={`Public Finances and Program of Works, fiscal year ${data?.fiscal_year ?? "2026-27"}`}
-  mastheadHref={`/${city.id}`}
+  mastheadHref="/"
 >
   <Fragment slot="masthead-nav">
-    <a href={`/${city.id}/${corporation.id}`} class={view === "summary" ? "is-active" : ""}>Summary</a>
+    <a href={`/${corporation.id}`} class={view === "summary" ? "is-active" : ""}>Summary</a>
     {speech && (
-      <a href={`/${city.id}/${corporation.id}?view=goals`} class={view === "goals" ? "is-active" : ""}>Goals</a>
+      <a href={`/${corporation.id}?view=goals`} class={view === "goals" ? "is-active" : ""}>Goals</a>
     )}
-    <a href={`/${city.id}/${corporation.id}?view=budget`} class={view === "budget" ? "is-active" : ""}>Budget</a>
-    <a href="#about">About</a>
+    <a href={`/${corporation.id}?view=budget`} class={view === "budget" ? "is-active" : ""}>Budget</a>
+    <a href="/about">About</a>
   </Fragment>
 
   <Breadcrumb
     slot="breadcrumb"
     items={[
       { label: "Home", href: "/" },
-      { label: city.name, href: `/${city.id}` },
-      {
-        label: corporation.name.replace(`${city.name} `, "").replace(" City Corporation", ""),
-      },
+      { label: corporation.name.replace(" City Corporation", "") },
     ]}
   />
 
@@ -132,7 +135,7 @@ function cleanName(s: string): string {
       {view === "summary" && (
         <section class="fn-grid">
           {gridCards.map((c) => (
-            <article class="fn-card">
+            <article class="fn-card" data-fn={c.code}>
               <div class="fn-card__head">
                 <span class="fn-card__code">{c.code}</span>
                 <h3 class="fn-card__name">{c.name}</h3>
@@ -153,7 +156,7 @@ function cleanName(s: string): string {
                   {c.highlights.map((h) => (
                     <li class="fn-card__hl">
                       <a
-                        href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
+                        href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
                         class="fn-card__hl-link"
                         title={h.description || h.name}
                       >
@@ -170,21 +173,21 @@ function cleanName(s: string): string {
               <div class="fn-card__foot">
                 {c.projectCount > c.highlights.length ? (
                   <a
-                    href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
+                    href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
                     class="fn-card__more"
                   >
                     {c.projectCount - c.highlights.length} more <i class="fa-solid fa-arrow-right"></i>
                   </a>
                 ) : c.projectCount > 0 ? (
                   <a
-                    href={`/${city.id}/${corporation.id}?view=goals#goals-fn-${c.code}`}
+                    href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
                     class="fn-card__more"
                   >
                     View all goals <i class="fa-solid fa-arrow-right"></i>
                   </a>
                 ) : (
                   <a
-                    href={`/${city.id}/${corporation.id}?view=budget#budget-fn-${c.code}`}
+                    href={`/${corporation.id}?view=budget#budget-fn-${c.code}`}
                     class="fn-card__more fn-card__more--muted"
                   >
                     View in budget <i class="fa-solid fa-arrow-right"></i>
@@ -213,7 +216,7 @@ function cleanName(s: string): string {
               const withAmount = items.filter((p) => p.amount_lakhs != null);
               const totalLakhs = withAmount.reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
               return (
-                <details class="speech-fn-block" id={`goals-fn-${fn.code}`} open>
+                <details class="speech-fn-block" id={`goals-fn-${fn.code}`} data-fn={fn.code} open>
                   <summary class="fn-summary">
                     <span class="fn-lead">
                       <i class="fa-solid fa-chevron-right chev"></i>
@@ -292,7 +295,7 @@ function cleanName(s: string): string {
 
         <section class="tree">
           {data.functions.map((fn) => (
-            <details class="fn-block" id={`budget-fn-${fn.code}`} open={fn.code === "05"}>
+            <details class="fn-block" id={`budget-fn-${fn.code}`} data-fn={fn.code} open={fn.code === "05"}>
               <summary class="fn-summary">
                 <span class="fn-lead">
                   <i class="fa-solid fa-chevron-right chev"></i>
@@ -364,24 +367,6 @@ function cleanName(s: string): string {
         </p>
       </section>
       )}
-
-      <section id="about" class="about">
-        <h2>About this page</h2>
-        <p>
-          {corporation.name} is one of five corporations constituted under the <a href="https://egazette.karnataka.gov.in" rel="noopener" target="_blank">Greater Bengaluru Governance Act, 2024</a> (Act 36 of 2025). This page summarises its Budget Estimate for fiscal year {data.fiscal_year} across the 12 obligatory functions laid out in Schedule I of the Act.
-        </p>
-        <p>
-          Numbers are extracted from the <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">official budget book published on OpenCity.in</a>. {(data.total_2026_27 / 382595 * 100).toFixed(1)}% of the ₹3,826 Cr book has been captured line-by-line; the remainder sits in rows whose codes span columns irregularly on a handful of pages and will be recovered in a later pass.
-        </p>
-        {speech && (
-          <p>
-            The <a href={`/${city.id}/${corporation.id}?view=goals`}>Goals view</a> lists {speech.projects.length} goals announced by {speech.commissioner} in the Budget Speech delivered on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Goals are tagged to functions by keyword heuristic and the tags are provisional.
-          </p>
-        )}
-        <p>
-          Year-on-year comparisons against the previous fiscal are intentionally omitted on the overview — the predecessor entity (BBMP) covered a much larger territory with a different mix of obligations, so those percentages would misrepresent the new corporation's scale.
-        </p>
-      </section>
     </>
   ) : (
     <div class="card mt-2">
@@ -419,6 +404,22 @@ function cleanName(s: string): string {
     --c-spill: #9a6700;
     --c-spill-bg: #fff4cc;
   }
+
+  /* Per-function color palette — same colors used on Summary cards and
+     accordion headers in Goals/Budget so the 12 functions stay visually
+     consistent across views. */
+  [data-fn="01"] { --fn-c: #475569; --fn-bg: #f1f5f9; }  /* Council */
+  [data-fn="02"] { --fn-c: #52525b; --fn-bg: #f4f4f5; }  /* General Admin */
+  [data-fn="03"] { --fn-c: #b45309; --fn-bg: #fef3c7; }  /* Revenue */
+  [data-fn="04"] { --fn-c: #c2410c; --fn-bg: #ffedd5; }  /* Town Planning */
+  [data-fn="05"] { --fn-c: #1d4ed8; --fn-bg: #dbeafe; }  /* Public Works */
+  [data-fn="06"] { --fn-c: #0f766e; --fn-bg: #ccfbf1; }  /* SWM */
+  [data-fn="07"] { --fn-c: #9d174d; --fn-bg: #fce7f3; }  /* Public Health-General */
+  [data-fn="08"] { --fn-c: #b91c1c; --fn-bg: #fee2e2; }  /* Public Health-Medical */
+  [data-fn="09"] { --fn-c: #4d7c0f; --fn-bg: #ecfccb; }  /* Horticulture */
+  [data-fn="10"] { --fn-c: #166534; --fn-bg: #dcfce7; }  /* Urban Forestry */
+  [data-fn="11"] { --fn-c: #6d28d9; --fn-bg: #ede9fe; }  /* Public Education */
+  [data-fn="12"] { --fn-c: #4338ca; --fn-bg: #e0e7ff; }  /* Social Welfare */
 
   .page-head {
     text-align: left;
@@ -610,7 +611,7 @@ function cleanName(s: string): string {
     font-family: var(--num-font);
     font-feature-settings: "tnum";
     font-size: 0.78rem;
-    font-weight: 600;
+    font-weight: 700;
     color: var(--c-neutral);
     background: var(--c-rule-soft);
     border-radius: 4px;
@@ -625,6 +626,20 @@ function cleanName(s: string): string {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+  }
+
+  /* When a details block has a function color, tint the summary header */
+  [data-fn] > .fn-summary {
+    background: var(--fn-bg);
+    border-left: 3px solid var(--fn-c);
+  }
+  [data-fn] > .fn-summary:hover { background: var(--fn-bg); filter: brightness(0.97); }
+  [data-fn] > .fn-summary .fn-code {
+    background: var(--fn-c);
+    color: #fff;
+  }
+  [data-fn] > .fn-summary .fn-name {
+    color: var(--fn-c);
   }
 
   .fn-meta, .sub-meta, .item-meta {
@@ -801,48 +816,57 @@ function cleanName(s: string): string {
   .fn-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    gap: 0.9rem;
     margin-top: 1.5rem;
   }
   .fn-card {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
-    padding: 1.2rem 1.25rem;
+    gap: 0;
     background: #fff;
-    border: 1px solid var(--c-rule);
-    border-radius: 8px;
+    border: 1px solid #cbd5e0;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
     transition: border-color 0.15s ease, box-shadow 0.15s ease;
   }
   .fn-card:hover {
-    border-color: var(--c-primary, #3F5F7A);
-    box-shadow: 0 4px 12px rgba(63, 95, 122, 0.08);
+    border-color: var(--fn-c, var(--c-primary, #3F5F7A));
+    box-shadow: 0 4px 12px rgba(63, 95, 122, 0.1);
   }
   .fn-card__head {
     display: flex;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.6rem;
+    padding: 0.75rem 1rem;
+    background: var(--fn-bg, var(--c-rule-soft));
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-left: 3px solid var(--fn-c, var(--c-primary));
   }
   .fn-card__code {
     flex-shrink: 0;
-    font-size: 0.72rem;
-    font-weight: 700;
+    font-size: 0.7rem;
+    font-weight: 800;
     padding: 0.15rem 0.45rem;
     border-radius: 4px;
-    background: var(--c-rule-soft);
-    color: var(--c-ink-soft);
+    background: var(--fn-c, #4a5568);
+    color: #fff;
     font-variant-numeric: tabular-nums;
     line-height: 1.4;
-    letter-spacing: 0.02em;
+    letter-spacing: 0.04em;
   }
   .fn-card__name {
     font-size: 1rem;
     font-weight: 700;
-    color: var(--c-ink);
+    color: var(--fn-c, var(--c-ink));
     line-height: 1.3;
     letter-spacing: -0.01em;
     margin: 0;
   }
+  .fn-card > *:not(.fn-card__head) { padding-left: 1.25rem; padding-right: 1.25rem; }
+  .fn-card__summary { padding-top: 1rem; padding-bottom: 0.55rem; }
+  .fn-card__highlights { padding-top: 0.4rem; }
+  .fn-card__foot { padding-bottom: 1rem; }
   .fn-card__summary {
     display: flex;
     flex-direction: column;
@@ -923,18 +947,18 @@ function cleanName(s: string): string {
 
   .fn-card__foot {
     margin-top: auto;
-    padding-top: 0.3rem;
+    padding-top: 0.45rem;
   }
   .fn-card__more {
     display: inline-flex;
     align-items: center;
-    gap: 0.35rem;
-    font-size: 0.8rem;
+    gap: 0.4rem;
+    font-size: 0.92rem;
     font-weight: 600;
     color: var(--c-primary, #3F5F7A);
     text-decoration: none;
   }
-  .fn-card__more i { font-size: 0.75em; transition: transform 0.15s ease; }
+  .fn-card__more i { font-size: 0.8em; transition: transform 0.15s ease; }
   .fn-card__more:hover { text-decoration: none; }
   .fn-card__more:hover i { transform: translateX(3px); }
   .fn-card__more--muted { color: var(--c-neutral); }

@@ -220,29 +220,26 @@ main.content { padding: 1rem 0 3rem; }
 .site-footer {
   background: #1f2937;
   color: #9ca3af;
-  font-size: 0.8rem;
-  padding: 1.25rem 0;
-  text-align: center;
+  font-size: 0.85rem;
+  padding: 1.1rem 0;
   margin-top: auto;
 }
-.site-footer a { color: #d1d5db; }
-.footer-sources {
+.site-footer a { color: #d1d5db; text-decoration: none; }
+.site-footer a:hover { color: #fff; text-decoration: underline; }
+.footer-row {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  text-align: left;
-  max-width: 700px;
-  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
 }
-.footer-sources strong {
-  color: #d1d5db;
-  font-size: 0.82rem;
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-bottom: 0.15rem;
-}
-.footer-sources span { line-height: 1.5; }
+.footer-credit { line-height: 1.5; }
+.footer-nav { display: flex; gap: 1.25rem; font-size: 0.88rem; }
 .placeholder-banner a { color: #92400e; text-decoration: underline; }
+
+@media (max-width: 560px) {
+  .footer-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+}
 
 /* ── Source Citation ───────────────────────────────────── */
 .source-cite {

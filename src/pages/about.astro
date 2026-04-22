@@ -1,0 +1,138 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+---
+
+<BaseLayout
+  title="About"
+  description="About the City Portal — what it is, how the data is extracted, and where it comes from."
+  mastheadTitle="About"
+  mastheadSubtitle="What this portal is and where the data comes from"
+>
+  <Breadcrumb
+    slot="breadcrumb"
+    items={[
+      { label: "Home", href: "/" },
+      { label: "About" },
+    ]}
+  />
+
+  <article class="prose">
+    <section>
+      <h2>What this is</h2>
+      <p>
+        A public-finance lens on Indian city corporations. Each corporation's Budget Estimate is laid out against the obligatory functions that the enabling statute mandates, alongside the projects and initiatives the Commissioner announced in the annual Budget Speech.
+      </p>
+      <p>
+        The aim is to make it easy to ask three questions of any corporation: what is it legally required to do, how is it spending money against those duties, and what has leadership committed to this year.
+      </p>
+    </section>
+
+    <section>
+      <h2>How data is produced</h2>
+      <p>
+        Budget numbers are extracted line-by-line from the official budget books published by the corporations (and mirrored on OpenCity.in). A small Python pipeline uses <code>pdfplumber</code> to parse the tabular sections and normalises the rows into a function → sub-category → line-item tree. Numbers in the portal are captured figures; any material gaps between captured and book total are called out on the relevant page.
+      </p>
+      <p>
+        Goals come from the Commissioner's Budget Speech. The Kannada original is rendered using font-remapped CID glyphs that defeat standard PDF text extraction, so those sections are OCR'd with Tesseract (<code>kan+eng</code>). The parallel English translation in the same book is used as the canonical source for names and amounts, with the Kannada OCR used as a cross-check.
+      </p>
+      <p>
+        Each goal is tagged to one of the 12 budget functions by a keyword heuristic. The reason for every tag is surfaced inline on the Goals view so that disagreements are visible and easy to correct. Tags are provisional and will be refined over time.
+      </p>
+    </section>
+
+    <section>
+      <h2>Bengaluru</h2>
+      <p>
+        The five corporations on this portal were constituted under the <a href="https://egazette.karnataka.gov.in" rel="noopener" target="_blank">Greater Bengaluru Governance Act, 2024</a> (Act 36 of 2025). The 12 functions listed in the Summary of each corporation are the obligatory functions in Schedule I of the Act.
+      </p>
+      <p>
+        Year-on-year comparisons against the previous fiscal are intentionally omitted on the Summary view. The predecessor entity (BBMP) covered a much larger territory with a different mix of obligations, so those percentages would misrepresent the new corporation's scale.
+      </p>
+    </section>
+
+    <section>
+      <h2>Data sources</h2>
+      <ul class="sources">
+        <li>
+          <strong>Budget books:</strong> <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">GBA Corporation Budgets 2026–27</a>, OpenCity.in (mirrored from the five corporation websites).
+        </li>
+        <li>
+          <strong>Budget Speech:</strong> Commissioner's Budget Speech, published alongside the Budget Estimate book.
+        </li>
+        <li>
+          <strong>Enabling Act:</strong> <a href="https://egazette.karnataka.gov.in" rel="noopener" target="_blank">Greater Bengaluru Governance Act, 2024</a> (Karnataka Gazette, Act 36 of 2025).
+        </li>
+        <li>
+          <strong>Benchmarks &amp; governance context:</strong> <a href="https://www.janaagraha.org/asics/" rel="noopener" target="_blank">ASICS</a> (Annual Survey of India's City-Systems), Janaagraha.
+        </li>
+        <li>
+          <strong>Grievance data</strong> (for future cross-reference): <a href="https://data.opencity.in/dataset/bbmp-grievances-data" rel="noopener" target="_blank">BBMP Sahaaya / OpenCity.in</a>, 766K+ complaints 2020–2025.
+        </li>
+      </ul>
+      <p class="note">
+        Amounts on the portal are in Indian Rupees — Lakh below one Crore, Crore above (1 Crore = 100 Lakh = 10 million).
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .prose {
+    max-width: 72ch;
+    margin: 2rem 0 3rem;
+    color: #2b2b2b;
+  }
+  .prose section {
+    margin-bottom: 2.25rem;
+  }
+  .prose h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1a202c;
+    margin: 0 0 0.75rem;
+    letter-spacing: -0.005em;
+  }
+  .prose p {
+    font-size: 0.95rem;
+    line-height: 1.65;
+    color: #4a5568;
+    margin: 0 0 0.85rem;
+  }
+  .prose p:last-child {
+    margin-bottom: 0;
+  }
+  .prose a {
+    color: var(--c-primary);
+  }
+  .prose code {
+    background: #edf2f7;
+    padding: 0.08rem 0.35rem;
+    border-radius: 3px;
+    font-size: 0.88em;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    color: #2d3748;
+  }
+  .sources {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+  .sources li {
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: #4a5568;
+  }
+  .sources strong {
+    color: #1a202c;
+  }
+  .note {
+    font-size: 0.85rem;
+    color: #718096;
+    font-style: italic;
+    margin-top: 0.5rem;
+  }
+</style>
