@@ -63,6 +63,7 @@ function pickHighlights(code: string): SpeechProj[] {
 
 // Council (01) has no goals — it's just the elected body's establishment costs.
 // Hide it from the Summary grid; it remains reachable via the Budget view.
+// Sort by expenditure (highest first) so scale is the first axis of comparison.
 const gridCards = FUNCTION_ORDER
   .filter((f) => f.code !== "01")
   .map((f) => {
@@ -79,7 +80,8 @@ const gridCards = FUNCTION_ORDER
       projectCount: items.length,
       highlights,
     };
-  });
+  })
+  .sort((a, b) => b.amount - a.amount);
 
 function fmtYoY(pct: number | null | undefined): string {
   if (pct === null || pct === undefined) return "";
