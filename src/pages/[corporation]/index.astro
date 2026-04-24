@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects } from "../../lib/data-loader";
+import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects, loadMergedSpeechProjects, DEPT_TO_FUNCTION } from "../../lib/data-loader";
 import { formatINR } from "../../lib/format";
 
 // City is fixed internally; URLs are corporation-scoped only
@@ -17,16 +17,33 @@ if (!city || !corporation) {
 
 const data = loadLineItemBudget(city.id, corporation.id);
 const speech = loadSpeechProjects(city.id, corporation.id);
+const { merged: mergedProjects } = await loadMergedSpeechProjects(city.id, corporation.id);
 
 const view = (Astro.url.searchParams.get("view") ?? "summary") as "summary" | "goals" | "budget";
 
-// Group speech projects by function_code
-type SpeechProj = NonNullable<typeof speech>["projects"][number];
+// Group merged projects: primary placement drives the bar and contributes to the bar's total.
+// Each project also appears under its secondary departments' function bars (shown, not counted).
+type SpeechProj = (typeof mergedProjects)[number];
+type GoalPlacement = { project: SpeechProj; as: "primary" | "secondary"; viaDept?: string };
 const projectsByFn = new Map<string, SpeechProj[]>();
-for (const p of speech?.projects ?? []) {
-  const code = p.function_code ?? "unmapped";
-  if (!projectsByFn.has(code)) projectsByFn.set(code, []);
-  projectsByFn.get(code)!.push(p);
+const placementsByFn = new Map<string, GoalPlacement[]>();
+function pushPlacement(code: string, placement: GoalPlacement) {
+  if (!placementsByFn.has(code)) placementsByFn.set(code, []);
+  placementsByFn.get(code)!.push(placement);
+  if (placement.as === "primary") {
+    if (!projectsByFn.has(code)) projectsByFn.set(code, []);
+    projectsByFn.get(code)!.push(placement.project);
+  }
+}
+for (const p of mergedProjects) {
+  const primaryCode = p.effective_function_code ?? "unmapped";
+  pushPlacement(primaryCode, { project: p, as: "primary" });
+  for (const secDept of p.secondary_departments) {
+    const secCode = DEPT_TO_FUNCTION[secDept];
+    if (secCode && secCode !== primaryCode) {
+      pushPlacement(secCode, { project: p, as: "secondary", viaDept: secDept });
+    }
+  }
 }
 
 // Function meta in display order (matches budget functions)
@@ -213,10 +230,13 @@ function cleanName(s: string): string {
 
           <div class="speech-grid">
             {FUNCTION_ORDER.map((fn) => {
-              const items = projectsByFn.get(fn.code) ?? [];
-              if (items.length === 0) return null;
-              const withAmount = items.filter((p) => p.amount_lakhs != null);
-              const totalLakhs = withAmount.reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
+              const placements = placementsByFn.get(fn.code) ?? [];
+              if (placements.length === 0) return null;
+              const primaryItems = projectsByFn.get(fn.code) ?? [];
+              const totalLakhs = primaryItems
+                .filter((p) => p.amount_lakhs != null)
+                .reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
+              const secondaryCount = placements.filter((x) => x.as === "secondary").length;
               return (
                 <details class="speech-fn-block" id={`goals-fn-${fn.code}`} data-fn={fn.code} open>
                   <summary class="fn-summary">
@@ -226,26 +246,43 @@ function cleanName(s: string): string {
                       <span class="fn-name">{fn.name}</span>
                     </span>
                     <span class="fn-meta">
-                      <span class="pill pill-count">{items.length} {items.length === 1 ? "goal" : "goals"}</span>
+                      <span class="pill pill-count">
+                        {primaryItems.length} {primaryItems.length === 1 ? "goal" : "goals"}
+                        {secondaryCount > 0 && ` + ${secondaryCount} shared`}
+                      </span>
                       {totalLakhs > 0 && <span class="fn-amount">{formatINR(totalLakhs)}</span>}
                     </span>
                   </summary>
                   <ul class="speech-list">
-                    {items.map((p) => (
-                      <li class="speech-item">
+                    {placements.map(({ project: p, as, viaDept }) => (
+                      <li class={`speech-item${p.source === "manual" ? " speech-item--manual" : ""}${as === "secondary" ? " speech-item--secondary" : ""}`}>
                         <div class="speech-item-main">
-                          <span class="speech-item-name">{p.name}</span>
+                          <span class="speech-item-name">
+                            {p.source === "manual" && <span class="manual-badge">manual</span>}
+                            {p.name}
+                          </span>
                           {p.description && p.description !== p.name && (
                             <span class="speech-item-desc">{p.description}</span>
                           )}
                           <span class="speech-item-foot">
-                            <span class="speech-page">p.{p.page}</span>
-                            <span class="speech-reason" title={p.tag_reason}>{p.tag_reason}</span>
+                            {p.page > 0 && <span class="speech-page">p.{p.page}</span>}
+                            {as === "secondary" && viaDept && (
+                              <span class="dept-chips">
+                                <span data-dept={viaDept} class="dept-chip dept-chip--secondary" title="Also tagged to this department — not counted in this function's total">
+                                  also: {viaDept}
+                                </span>
+                              </span>
+                            )}
+                            {as === "primary" && p.departments.length === 0 && p.tag_reason && (
+                              <span class="speech-reason" title={p.tag_reason}>{p.tag_reason}</span>
+                            )}
                           </span>
                         </div>
                         <div class="speech-item-meta">
                           {p.amount_lakhs != null ? (
-                            <span class="speech-amount">{formatINR(p.amount_lakhs)}</span>
+                            <span class={`speech-amount${as === "secondary" ? " speech-amount--secondary" : ""}`}>
+                              {as === "secondary" ? "—" : formatINR(p.amount_lakhs)}
+                            </span>
                           ) : (
                             <span class="speech-amount speech-amount--none">no amount</span>
                           )}
@@ -1098,6 +1135,55 @@ function cleanName(s: string): string {
     font-weight: 500;
     font-style: italic;
     color: var(--c-neutral);
+  }
+  .speech-item--manual {
+    background: #f5f3ff;
+    border-left: 3px solid #7c3aed;
+    padding-left: calc(1.75rem - 3px);
+  }
+  .speech-item--manual:hover { background: #efeafd; }
+  .manual-badge {
+    display: inline-block; background: #7c3aed; color: #fff;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.05rem 0.35rem; border-radius: 3px;
+    text-transform: uppercase; margin-right: 0.4rem;
+    vertical-align: middle;
+  }
+  /* Department palette — shared with the editor. Same hues as the Schedule-I function cards. */
+  [data-dept="engineering"]        { --dept-c: #1d4ed8; --dept-bg: #dbeafe; }
+  [data-dept="revenue"]            { --dept-c: #b45309; --dept-bg: #fef3c7; }
+  [data-dept="advertisement"]      { --dept-c: #b45309; --dept-bg: #fef3c7; }
+  [data-dept="health-sanitation"]  { --dept-c: #9d174d; --dept-bg: #fce7f3; }
+  [data-dept="animal-husbandry"]   { --dept-c: #b91c1c; --dept-bg: #fee2e2; }
+  [data-dept="forest-horticulture"]{ --dept-c: #4d7c0f; --dept-bg: #ecfccb; }
+  [data-dept="administration"]     { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+  [data-dept="finance"]            { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+  [data-dept="public-relations"]   { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+  [data-dept="solid-waste"]        { --dept-c: #0f766e; --dept-bg: #ccfbf1; }
+  [data-dept="welfare"]            { --dept-c: #4338ca; --dept-bg: #e0e7ff; }
+  [data-dept="land-acquisition"]   { --dept-c: #c2410c; --dept-bg: #ffedd5; }
+  [data-dept="town-planning"]      { --dept-c: #c2410c; --dept-bg: #ffedd5; }
+  [data-dept="education"]          { --dept-c: #6d28d9; --dept-bg: #ede9fe; }
+
+  .dept-chips { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
+  .dept-chip {
+    font-size: 0.68rem; font-weight: 600; line-height: 1.15;
+    padding: 0.15rem 0.5rem; border-radius: 999px;
+    background: var(--dept-c, #137752); color: #fff;
+    box-shadow: 0 1px 1px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.12);
+  }
+  .dept-chip--secondary {
+    background: var(--dept-bg, #e7f5ee);
+    color: var(--dept-c, #137752);
+    border: 1px dashed var(--dept-c, #137752);
+    box-shadow: none;
+    padding: calc(0.15rem - 1px) calc(0.5rem - 1px);
+  }
+  .speech-item--secondary { opacity: 0.82; }
+  .speech-item--secondary .speech-item-name { font-weight: 500; }
+  .speech-amount--secondary {
+    color: var(--c-neutral); font-weight: 500;
+    font-style: italic;
   }
 
   @media (max-width: 640px) {

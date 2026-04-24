@@ -1,20 +1,21 @@
 """Auto-tag budget speech projects with a function code (01-12).
 
-Reads:  data/bengaluru/budgets/2026-27/speech/south-projects.json
-Writes: data/bengaluru/budgets/2026-27/speech/south-projects.tagged.json
+Reads:  data/bengaluru/budgets/2026-27/speech/{corp}-projects.json
+Writes: data/bengaluru/budgets/2026-27/speech/{corp}-projects.tagged.json
+
+Usage:  python3 scripts/tag_speech_projects.py [--corp south]
 
 The mapping is heuristic (category + keyword) and intentionally conservative.
 Ambiguous items fall to "unmapped" so we can spot gaps on the page.
 """
 from __future__ import annotations
 
+import argparse
 import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SRC = ROOT / "data/bengaluru/budgets/2026-27/speech/south-projects.json"
-OUT = ROOT / "data/bengaluru/budgets/2026-27/speech/south-projects.tagged.json"
 
 FUNCTIONS = {
     "01": "Council",
@@ -74,6 +75,13 @@ KEYWORD_RULES: list[tuple[str, list[str]]] = [
         r"single plot approval", r"building plan", r"occupancy certificate",
         r"revenue grant", r"revenue\s*/\s*resource", r"\bparking\b",
         r"land acquisition dispute", r"fee revenue",
+        r"\badvertisement tender",
+        # North-specific revenue patterns (do not match any South project — verified)
+        r"stamp duty", r"\bpsus?\b", r"development charges",
+        r"b[- ]register", r"\ba-khatha\b", r"\bb-khatha\b",
+        r"advertisement\S?\)?\s*rules", r"advertisement revenue",
+        r"license fees", r"vacant municipal", r"urban design cell",
+        r"property records", r"\be-khatha\b", r"greater bengaluru\s*(?:area)?\s*\(advertisement\)",
     ]),
     # 10 Urban Forestry — before 09 so tree/forestry items don't fall into parks
     ("10", [r"wildlife", r"environment day", r"forestry", r"afforest", r"tree planting",
@@ -83,7 +91,8 @@ KEYWORD_RULES: list[tuple[str, list[str]]] = [
     ("09", [r"\blakes?\b", r"kere mitra", r"\bparks?\b", r"\bgardens?\b", r"\bplaygrounds?\b"]),
     # 04 Town Planning and Regulation
     ("04", [r"master plan", r"comprehensive master plan", r"zoning", r"layout approval",
-            r"town planning"]),
+            r"town planning", r"\btdr cell\b", r"\btdr exchange\b",
+            r"single window approval", r"digiti(z|s)e the identification of land"]),
     # 05 Public Works (roads, drains, bridges, lighting, buildings, water, beautification)
     ("05", [
         r"\broads?\b", r"junction", r"flyover", r"underpass", r"bridge", r"footpath",
@@ -100,6 +109,15 @@ KEYWORD_RULES: list[tuple[str, list[str]]] = [
         r"internal audit", r"bscc dedicated website", r"\bwebsites?\b", r"social media",
         r"citizen outreach", r"janara kade", r"review meetings", r"disaster management",
         r"ai-enabled", r"ai platform", r"research internship",
+        r"information technology cell", r"integrated command",
+        r"news bulletin", r"ev charging",
+        # North-specific administrative patterns (do not match any South project — verified)
+        r"\baudit cell\b", r"records digiti[sz]ation", r"\bcomplaint\b",
+        r"phone-in", r"\btrade licen[cs]e", r"host-to-host", r"online payment",
+        r"online building plan", r"\bobps\b", r"dishank", r"biometric attendance",
+        r"ease of doing business", r"inter-department clearance",
+        r"e-drc", r"e-tdr", r"administration software",
+        r"software to facilitate the administration",
     ]),
     # 01 Council (elected reps — rarely seen in speech but possible)
     ("01", [r"corporator", r"council meeting", r"standing committee"]),
@@ -136,6 +154,13 @@ def suggest_function(project: dict) -> tuple[str | None, str]:
 
 
 def main() -> None:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--corp", default="south", help="corporation id (e.g. south, central)")
+    args = ap.parse_args()
+
+    SRC = ROOT / f"data/bengaluru/budgets/2026-27/speech/{args.corp}-projects.json"
+    OUT = ROOT / f"data/bengaluru/budgets/2026-27/speech/{args.corp}-projects.tagged.json"
+
     data = json.loads(SRC.read_text())
     projects = data["projects"]
 

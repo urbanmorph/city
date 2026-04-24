@@ -1,0 +1,1109 @@
+{
+  "corporation_id": "east",
+  "fiscal_year": "2026-27",
+  "source": "becc_speech_bud2026-27.pdf",
+  "speech_date": "2026-03-28",
+  "commissioner": "Ramesh D.S., IAS",
+  "extraction_notes": [
+    "PDF is bilingual: Kannada pages 1-38, English pages 41-78. Pages 39-40 are section dividers, pages 78-80 are budget summary tables and closing.",
+    "Source text extracted via pdfplumber (English section, clean Unicode) and Tesseract OCR kan+eng at 300 DPI for the Kannada section (audit/diff pass).",
+    "Speech is structured as 111 numbered items organised under 15 section headings (Revenue, Advertisement, Land acquisition and E-D.R.C/E-T.D.R, Town Planning, Administration, Welfare, Sanitation, Public Relations, Finance and Account Section, Public Works, Storm Water Drains, Lakes Division, Horticulture, Public Health, Animal Husbandry, Forest).",
+    "Amounts quoted in crore (1 crore = 100 lakh) are converted to lakhs here for consistency with the rest of this codebase.",
+    "Some items are revenue targets (property tax, advertisement, Premium FAR, B->A Khata conversion) rather than expenditures; they are captured and tagged with category 'revenue' where relevant.",
+    "Items without a specific named scheme or quoted amount have been omitted per spec (e.g. general 'identify road-wise advertisement areas' statements). Only concrete named initiatives, identifiable schemes, or items with quoted monetary allocations are included.",
+    "Page numbers below refer to speech-PDF page numbers (1-80). The speech's own footer numbering runs 39-78 for the English section.",
+    "BECC = Bengaluru East City Corporation. The speech identifies the corporation as carved out of the former BBMP Mahadevapura zone (effective 02.09.2025) comprising the Mahadevapura and K.R.Puram assembly constituencies."
+  ],
+  "projects": [
+    {
+      "id": "property-tax-revenue-target-1500cr",
+      "name": "Property tax revenue target of Rs. 1,500 crore",
+      "name_local": null,
+      "description": "Anticipated BECC property tax revenue for 2026-27 via identifying out-of-net properties with no additional tax imposition; enhanced officer/staff efficiency and GBA Act, 2024 rules.",
+      "amount_lakhs": 150000.0,
+      "page": 45,
+      "category": "other",
+      "verbatim_quote": "The Corporation has anticipated a revenue of Rs.1500 Crores during the year 2026-27. This goal will be accomplished by identifying the properties outside the tax net and bringing them into the tax bracket, with no additional tax imposition."
+    },
+    {
+      "id": "e-khata-digital-rollout",
+      "name": "Contactless faceless e-Khata system (4.50 lakh khatas)",
+      "name_local": null,
+      "description": "Digitise all ~4.50 lakh khatas from paper to online; India's largest Digital-2 system. ~1.30 lakh e-khatas finalised in 2025-26; remaining 3.20 lakh draft e-khatas targeted in 2026-27.",
+      "amount_lakhs": null,
+      "page": 46,
+      "category": "other",
+      "verbatim_quote": "implementing a contactless, faceless e-khata system through digitization of all the khatas, i.e., about 4.50 lakh, from paper form to online. This is India's largest Digital-2 system... approximately 1.30 lakh e-khatas have been finalized and distributed... We are aiming at distributing the remaining 3.20 lakh draft e-khatas."
+    },
+    {
+      "id": "e-aasthi-geo-tag-property-mapping",
+      "name": "e-Aasthi geo-tag property mapping",
+      "name_local": null,
+      "description": "Digitise all properties in the Corporation and implement e-Aasthi via geo-tag mapping, enabling property owners to view their information online.",
+      "amount_lakhs": null,
+      "page": 46,
+      "category": "other",
+      "verbatim_quote": "All properties coming under the jurisdiction of the Corporation have been digitized, e-Aasthi has been implemented through geo-tag mapping."
+    },
+    {
+      "id": "aadhaar-linked-khata-transfer-blockchain",
+      "name": "Aadhaar-linked automated khata mutation on blockchain",
+      "name_local": null,
+      "description": "Aadhaar linked to e-Khata for automated khata transfer/mutation; data kept safe and decentralised via blockchain technology.",
+      "amount_lakhs": null,
+      "page": 46,
+      "category": "other",
+      "verbatim_quote": "Aadhar number has been linked to the e-khata system, which helps automated khata transfer (mutation)... This will be safe kept and decentralized through the use of block chain technology."
+    },
+    {
+      "id": "gis-property-tax-integration-150cr",
+      "name": "GIS-based property tax system integration (BESCOM/BWSSB/Kaveri)",
+      "name_local": null,
+      "description": "GIS-based e-khata property tax system linked with BESCOM, BWSSB and Kaveri software; expected to generate additional ~Rs.150 crore per year in property tax.",
+      "amount_lakhs": 15000.0,
+      "page": 47,
+      "category": "other",
+      "verbatim_quote": "linking the Geographic Information System (G.I.S)- based e-khata property tax system with Bengaluru Electricity Supply Company Limited, Bengaluru Water Supply and Sewerage Board and Kaveri Software. It is expected to generate an additional property tax revenue of about Rs. 150 crores per year."
+    },
+    {
+      "id": "3d-modelling-ai-tax-expansion",
+      "name": "3D modelling + AI-integrated tax expansion",
+      "name_local": null,
+      "description": "Expand tax jurisdiction via 3D modelling of commercial and high-rise buildings and IT-enabled integrated AI systems; develop GIS-based property information portal on the lines of Dishaank.",
+      "amount_lakhs": null,
+      "page": 47,
+      "category": "other",
+      "verbatim_quote": "It is planned to expand the tax jurisdiction through 3D modelling of commercial and high-rise buildings, and I.T-enabled integrated artificial intelligence(AI) systems."
+    },
+    {
+      "id": "ai-defaulter-detection-100cr",
+      "name": "AI-based property tax defaulter detection system (Rs. 100 crore/year target)",
+      "name_local": null,
+      "description": "AI technology to identify property tax defaulters; integrate BESCOM, trade licence, building plan, e-Aasthi, BWSSB databases. Target: additional Rs.100 crore/year.",
+      "amount_lakhs": 10000.0,
+      "page": 48,
+      "category": "other",
+      "verbatim_quote": "An artificial intelligence (AI) technology- based system to identify the defaulters who have not paid the property tax will be introduced... an additional Rs.100 crores per annum from property tax."
+    },
+    {
+      "id": "b-to-a-khata-conversion-225cr",
+      "name": "B-Khata to A-Khata conversion drive (Rs. 225 crore/year target)",
+      "name_local": null,
+      "description": "Process initiated 01-11-2025 for B-Khata to A-Khata conversion under DyCM chairmanship; expected to generate additional Rs.225 crore/year.",
+      "amount_lakhs": 22500.0,
+      "page": 48,
+      "category": "other",
+      "verbatim_quote": "the process for property-holders of 'B' Khata for conversion of their property to 'A' Khata by submitting applications as per the rules of the Corporation was initiated with effect from 01-11-2025... an additional Rs.225.00 crores per annum from property tax."
+    },
+    {
+      "id": "legacy-self-to-commercial-ad-conversion-20cr",
+      "name": "Self-to-Commercial Advertisement conversion (Rs. 20 crore target)",
+      "name_local": null,
+      "description": "3-month conversion window under the new GBA Advertisement Rules 2025 (Legacy OTO); BECC to collect ~Rs.20 crore from this provision.",
+      "amount_lakhs": 2000.0,
+      "page": 49,
+      "category": "other",
+      "verbatim_quote": "A period of 03 months has been provided for the conversion of Self Advertisements into Commercial Advertisement display under the new Advertisement Rules and Bengaluru East City Corporation will collect about Rs.20 crores through this provision."
+    },
+    {
+      "id": "ad-agency-licences-2-75cr",
+      "name": "Advertising agency licence fee (Rs. 2.75 crore target)",
+      "name_local": null,
+      "description": "Licence applications from advertising agencies estimated to yield ~Rs.2.75 crore revenue.",
+      "amount_lakhs": 275.0,
+      "page": 49,
+      "category": "other",
+      "verbatim_quote": "The applications for license are being received from advertising agencies, amounting to an estimated revenue of about Rs.2.75 crores."
+    },
+    {
+      "id": "skywalk-ground-rent-10cr",
+      "name": "Skywalk advertisement ground rent (Rs. 10 crore)",
+      "name_local": null,
+      "description": "Ground rent fee of approximately Rs. 10 crore expected from skywalk advertisement agencies.",
+      "amount_lakhs": 1000.0,
+      "page": 49,
+      "category": "other",
+      "verbatim_quote": "Ground rent fee of approximately Rs. 10 crores are expected from skywalk advertisement agencies."
+    },
+    {
+      "id": "new-skywalks-ad-revenue-15cr",
+      "name": "New skywalks — ground rent and advertisement fee (Rs. 15 crore)",
+      "name_local": null,
+      "description": "Sites identified for building new skywalks in BECC, expected to generate Rs.15 crore from ground rent and advertisement fees.",
+      "amount_lakhs": 1500.0,
+      "page": 50,
+      "category": "infrastructure",
+      "verbatim_quote": "Places for building new skywalks in the Bengaluru East City Corporation have been identified, which is expected to generate the ground rent and advertisement fee amounting to about Rs. 15 crores."
+    },
+    {
+      "id": "ppp-bus-shelter-advertisements-5cr",
+      "name": "PPP bus shelter advertisements (Rs. 5 crore)",
+      "name_local": null,
+      "description": "Ground rent of about Rs. 5 crore expected from advertisements on bus shelter structures under the PPP model.",
+      "amount_lakhs": 500.0,
+      "page": 50,
+      "category": "other",
+      "verbatim_quote": "A ground rent of about Rs. 5 crores is expected from advertisements on bus shelter structures under the PPP model."
+    },
+    {
+      "id": "legacy-advertisement-revenue-68cr",
+      "name": "Legacy advertisement total collection (Rs. 68 crore)",
+      "name_local": null,
+      "description": "BECC estimated to collect Rs.68 crore from legacy advertisements, LED skywalks, bus shelters, underpasses, etc.",
+      "amount_lakhs": 6800.0,
+      "page": 50,
+      "category": "other",
+      "verbatim_quote": "The Bengaluru East City Corporation is estimated to collect Rs. 68 crores from legacy advertisements, LED skywalks, bus shelters, underpasses, etc."
+    },
+    {
+      "id": "road-widening-land-possession-510cr",
+      "name": "Road-widening land possession (14 acres / Rs. 510 crore value)",
+      "name_local": null,
+      "description": "Took possession of 56,722.6 sq m (14 acres) of land for arterial/sub-arterial road expansion; valued at ~Rs.510 crore as public property.",
+      "amount_lakhs": 51000.0,
+      "page": 50,
+      "category": "roads",
+      "verbatim_quote": "it has taken possession of the land of total 56722.6 square metres (14 acres) intended for the expansion of several arterial and sub-arterial roads. This land, as a public property is valued at approximately Rs.510 crore."
+    },
+    {
+      "id": "land-acquisition-compensation-70cr",
+      "name": "Land acquisition compensation allocation (Rs. 70 crore)",
+      "name_local": null,
+      "description": "Rs.70 crore earmarked in 2026-27 budget for land acquisition compensation to accelerate road and infrastructure projects.",
+      "amount_lakhs": 7000.0,
+      "page": 51,
+      "category": "roads",
+      "verbatim_quote": "To address this, Rs.70 crore has been earmarked in the 2026-27 budget for land acquisition compensation."
+    },
+    {
+      "id": "town-planning-revenue-982cr",
+      "name": "Town Planning division revenue target (Rs. 982 crore)",
+      "name_local": null,
+      "description": "Expected income of ~Rs.982 crore in 2026-27 from building plan approval, plinth/occupancy certificates, premium FAR fee, 5% park/open space fee, etc.",
+      "amount_lakhs": 98200.0,
+      "page": 51,
+      "category": "other",
+      "verbatim_quote": "An income of approximately Rs. 982 crore is expected in the year 2026-27 from the town planning division of Bengaluru East City Corporation from fees related to building plan approval, plinth certificate, occupancy certificate, premium FAR fee, 5% of fee on park/open space in single site plan approval, and other sources."
+    },
+    {
+      "id": "auto-dcr-obps-building-plans",
+      "name": "Auto DCR OBPS — online building plan approval",
+      "name_local": null,
+      "description": "Continue OBPS-based online building plan approvals (in force since 01-07-2020) under Centre's EoDB; integrate external/internal NOCs into the software.",
+      "amount_lakhs": null,
+      "page": 51,
+      "category": "other",
+      "verbatim_quote": "the Auto DCR Software is developed to provide a simplified, transparent and hassle-free building plan approvals for all types of buildings via the Online Building Plan System (OBPS). Since 01-07-2020, all building plan approvals have been issued exclusively online."
+    },
+    {
+      "id": "nambike-nakshe-trusted-plan",
+      "name": "Nambike Nakshe (Trusted Plan) — auto-approval up to 4 units",
+      "name_local": null,
+      "description": "People-friendly automatic building plan approvals within 15 days for up to four housing units on sites within 375 sq m.",
+      "amount_lakhs": null,
+      "page": 52,
+      "category": "other",
+      "verbatim_quote": "Under the people-friendly Nambike Nakshe (Trusted Plan) scheme of the Corporation, building plan approvals for up to four housing units on sites within 375 square metres are sanctioned automatically through the software within 15 days."
+    },
+    {
+      "id": "single-plot-portal-139cr",
+      "name": "Single Plot online portal (Rs. 139 crore revenue target)",
+      "name_local": null,
+      "description": "Owners of vacant plots can submit applications online via the Single Plot portal; targets additional Rs.139 crore revenue.",
+      "amount_lakhs": 13900.0,
+      "page": 52,
+      "category": "other",
+      "verbatim_quote": "For properties categorized as single sites (vacant plots) within the Corporation's jurisdiction, owners can now submit applications online through the Single Plot portal. This initiative aligns with the Corporation's efforts to generate an additional Rs. 139.00 crore in revenue."
+    },
+    {
+      "id": "urban-design-cell-50l",
+      "name": "Urban Design Cell (Rs. 50 lakh)",
+      "name_local": null,
+      "description": "Rs.50 lakh earmarked to establish an exclusive Urban Design Cell within BECC.",
+      "amount_lakhs": 50.0,
+      "page": 52,
+      "category": "other",
+      "verbatim_quote": "A budget of Rs. 50 lakhs has been earmarked to establish an exclusive Urban Design Cell within the Corporation limits."
+    },
+    {
+      "id": "becc-public-dashboard",
+      "name": "BECC Public Dashboard (ward/subdivision/division level)",
+      "name_local": null,
+      "description": "Launch public dashboard providing detailed project and expenditure info at ward, subdivision and division levels; active redressal + transparent digital democracy.",
+      "amount_lakhs": null,
+      "page": 52,
+      "category": "other",
+      "verbatim_quote": "the \"BECC Public Dashboard\" will be launched. This initiative will provide detailed information on projects and expenditures at the ward, subdivision, and division levels."
+    },
+    {
+      "id": "becc-own-corporation-building-25cr",
+      "name": "BECC own Corporation headquarters building (Rs. 25 crore)",
+      "name_local": null,
+      "description": "Initial allocation of Rs.25 crore in 2026-27 budget for construction of BECC's own Corporation building.",
+      "amount_lakhs": 2500.0,
+      "page": 53,
+      "category": "infrastructure",
+      "verbatim_quote": "an initial allocation of Rs.25 crore has been earmarked in the 2026-27 budget for the construction of its own corporation building."
+    },
+    {
+      "id": "cadre-recruitment-proposal",
+      "name": "Cadre and Recruitment (C&R) proposal",
+      "name_local": null,
+      "description": "C&R proposal detailing officers/staff required based on population submitted to government for approval; expected to reduce workload per section.",
+      "amount_lakhs": null,
+      "page": 53,
+      "category": "other",
+      "verbatim_quote": "The Cadre and Recruitment (C&R) proposal, detailing the officers and staff required based on the population within the Bengaluru East City Corporation limits, has been submitted to the government for approval."
+    },
+    {
+      "id": "officer-staff-training-workshops",
+      "name": "Officer and staff training / workshops",
+      "name_local": null,
+      "description": "Program chalked out to enhance officer/staff efficiency through required trainings and workshops.",
+      "amount_lakhs": null,
+      "page": 53,
+      "category": "other",
+      "verbatim_quote": "A program has been chalked out to enhance the efficiency of officers/staff by organizing required training and workshops."
+    },
+    {
+      "id": "ai-attendance-system",
+      "name": "AI-based attendance system for officers/staff",
+      "name_local": null,
+      "description": "AI-based attendance system to ensure punctuality of officers and staff during office hours.",
+      "amount_lakhs": null,
+      "page": 53,
+      "category": "other",
+      "verbatim_quote": "To ensure the punctuality of officers and staff during office hours, an AI-based attendance system will be implemented."
+    },
+    {
+      "id": "administrative-software-adoption-6cr",
+      "name": "Administrative software adoption (Rs. 6 crore)",
+      "name_local": null,
+      "description": "Rs.6 crore earmarked in budget for adoption of necessary software across Corporation.",
+      "amount_lakhs": 600.0,
+      "page": 53,
+      "category": "other",
+      "verbatim_quote": "Rs. 6 crores have been earmarked in the budget for the adoption of necessary softwares."
+    },
+    {
+      "id": "file-digitisation-abcd",
+      "name": "A/B file digitisation and archiving",
+      "name_local": null,
+      "description": "A and B files (long-term retention) to be digitised by scanning and permanently archived.",
+      "amount_lakhs": null,
+      "page": 54,
+      "category": "other",
+      "verbatim_quote": "A and B files, which require long-term retention, will be digitized by scanning and permanently archived."
+    },
+    {
+      "id": "legal-cell-4-5cr",
+      "name": "Legal Cell (Rs. 4.50 crore)",
+      "name_local": null,
+      "description": "Legal Cell established for expert legal counsel and efficient handling of court cases; Rs.4.50 crore earmarked in 2026-27 for its management and operations.",
+      "amount_lakhs": 450.0,
+      "page": 54,
+      "category": "other",
+      "verbatim_quote": "a Legal Cell has been established. Accordingly, an allocation of Rs.4.50 crores has been earmarked in the 2026-27 budget for its management and operations."
+    },
+    {
+      "id": "e-office-all-sections",
+      "name": "e-Office rollout across all sections",
+      "name_local": null,
+      "description": "Measures to move all files via e-Office software across all sections of the Corporation.",
+      "amount_lakhs": null,
+      "page": 54,
+      "category": "other",
+      "verbatim_quote": "Measures will be taken to move all files via e-Office software across all sections of the Corporation."
+    },
+    {
+      "id": "pourakarmika-regularisation-1330",
+      "name": "Pourakarmika regularisation (1,330 of 1,605)",
+      "name_local": null,
+      "description": "Out of 1,605 Pourakarmikas in BECC, 1,330 regularised during the 2025 regularisation drive initiated by the CM and DyCM.",
+      "amount_lakhs": null,
+      "page": 54,
+      "category": "welfare",
+      "verbatim_quote": "There is a total of 1,605 Pourakarmikas within the Corporation limits... Following the regularization drive during the year 2025... 1,330 Pourakarmikas have been regularized in Bengaluru East City Corporation."
+    },
+    {
+      "id": "welfare-department-221cr",
+      "name": "Welfare Department allocation (Rs. 221 crore)",
+      "name_local": null,
+      "description": "Rs.221 crore earmarked for the Welfare Department (SC/ST, BC, minorities, Persons with Disabilities, pourakarmikas, senior citizens, women, street vendors, transgender community).",
+      "amount_lakhs": 22100.0,
+      "page": 55,
+      "category": "welfare",
+      "verbatim_quote": "a total grant of Rs.221.00 crore has been earmarked in the budget for the year 2026-27 for the Welfare Department of the corporation. These funds are dedicated to the social, economic, and educational empowerment of Scheduled Castes, Scheduled Tribes, Backward Classes, and Minorities, as well as Persons with Disabilities, Pourakarmikas, senior citizens, women, street vendors, and the transgender community."
+    },
+    {
+      "id": "onti-mane-amruta-mahotsava-housing",
+      "name": "Onti Mane / Bengaluru Amruta Mahotsava Housing subsidy (Rs. 5 lakh/beneficiary)",
+      "name_local": null,
+      "description": "Rs.5 lakh per beneficiary subsidy for pourakarmikas, SC/ST, manual scavengers, PwD, BC, minorities and EWS for house construction or 1BHK flat purchase.",
+      "amount_lakhs": null,
+      "page": 56,
+      "category": "welfare",
+      "verbatim_quote": "Under the Onti Mane (Single House) Scheme and the Bengaluru Amruta Mahotsava Housing Scheme, a subsidy of Rs. 5.00 lakh will be provided to Pourakarmikas, Scheduled Castes and Scheduled Tribes, persons identified as Manual Scavengers... persons with disabilities, Backward Classes, Minorities, and economically weaker sections for building their own houses and for the purchase of 1BHK flats."
+    },
+    {
+      "id": "education-fee-reimbursement-scheme",
+      "name": "School/college fee reimbursement + overseas studies",
+      "name_local": null,
+      "description": "Reimbursement of school/college fees, higher-education incentives, and overseas studies financial assistance for SC/ST/BC, pourakarmikas, PwD and Group-D employees' children.",
+      "amount_lakhs": null,
+      "page": 56,
+      "category": "education",
+      "verbatim_quote": "the Corporation will provide reimbursement of school and college fees, incentives for higher education, and financial assistance for overseas studies."
+    },
+    {
+      "id": "health-programme-critical-illness",
+      "name": "Health Programme — critical illness reimbursement",
+      "name_local": null,
+      "description": "Medical expense reimbursement to SC/ST/BC beneficiaries suffering from critical illnesses.",
+      "amount_lakhs": null,
+      "page": 56,
+      "category": "health",
+      "verbatim_quote": "Under the Health Programme for the year 2026-27, medical expenses will be reimbursed to eligible beneficiaries of Scheduled Castes, Scheduled Tribes, and Backward Classes suffering from critical illnesses."
+    },
+    {
+      "id": "women-electric-two-wheelers",
+      "name": "Free electric two-wheelers for employed women / pourakarmikas",
+      "name_local": null,
+      "description": "Corporation to provide electric two-wheelers free of cost to employed women and pourakarmikas.",
+      "amount_lakhs": null,
+      "page": 57,
+      "category": "welfare",
+      "verbatim_quote": "the Corporation aims to empower women by providing electric two-wheelers to employed women and pourakarmikas at free of cost within its jurisdiction."
+    },
+    {
+      "id": "women-vocational-sewing-training",
+      "name": "Women vocational sewing training + free sewing machines",
+      "name_local": null,
+      "description": "Program to empower women through vocational sewing training and free sewing machines.",
+      "amount_lakhs": null,
+      "page": 57,
+      "category": "welfare",
+      "verbatim_quote": "a program will be implemented to provide vocational sewing training and free sewing machines."
+    },
+    {
+      "id": "pwd-two-wheelers-wheelchairs",
+      "name": "PwD two-wheelers and electric wheelchairs",
+      "name_local": null,
+      "description": "Distribute two-wheelers with additional wheels and electric wheelchairs to eligible Persons with Disabilities.",
+      "amount_lakhs": null,
+      "page": 57,
+      "category": "welfare",
+      "verbatim_quote": "the Corporation is committed to the empowerment of persons with disabilities by distributing two-wheelers fitted with additional wheels and electric wheel chairs."
+    },
+    {
+      "id": "street-vendor-e-vending-vehicles",
+      "name": "Street vendor e-vending vehicles",
+      "name_local": null,
+      "description": "Distribute e-vending vehicles and organise development programmes for street vendors.",
+      "amount_lakhs": null,
+      "page": 57,
+      "category": "welfare",
+      "verbatim_quote": "e-vending vehicles will be distributed and development programmes will be organised."
+    },
+    {
+      "id": "pourakarmika-student-laptops",
+      "name": "Free laptops for pourakarmika and SC/ST/BC/minority degree students",
+      "name_local": null,
+      "description": "Free laptops to pourakarmika children and SC/ST/BC/minority students pursuing degree to promote higher education.",
+      "amount_lakhs": null,
+      "page": 57,
+      "category": "education",
+      "verbatim_quote": "the Corporation aims to provide free laptops to the students of pourakarmikas and the students belonging to Scheduled Castes/Scheduled Tribes, backward classes and minority community who pursuing degree."
+    },
+    {
+      "id": "homeless-shelter-upgrades",
+      "name": "Homeless centres — upgrade 6, establish 2 new",
+      "name_local": null,
+      "description": "Upgrade six existing homeless centres and establish two new centres; financial assistance for senior citizen welfare.",
+      "amount_lakhs": null,
+      "page": 58,
+      "category": "welfare",
+      "verbatim_quote": "The Corporation aims to provide shelter for the homeless by upgrading six existing homeless centres and establishing two new centres."
+    },
+    {
+      "id": "skill-development-programme",
+      "name": "Skill development programme (SC/ST/BC/minorities)",
+      "name_local": null,
+      "description": "Skill development programme for SC/ST/BC/minorities and municipal workers' dependents to lead self-reliant lives.",
+      "amount_lakhs": null,
+      "page": 58,
+      "category": "education",
+      "verbatim_quote": "A skill development program will be implemented to empower members of the Scheduled Caste, Scheduled Tribe, Backward Classes, and Minority communities, as well as the dependents of municipal workers, to lead self-reliant lives."
+    },
+    {
+      "id": "swavalambi-sarathi-scheme",
+      "name": "Swavalambi Sarathi Scheme (auto/car subsidy)",
+      "name_local": null,
+      "description": "Rs.80,000 subsidy for auto-rickshaw purchase; Rs.1,50,000 for car purchase under Sarathi Scheme for economically backward classes.",
+      "amount_lakhs": null,
+      "page": 58,
+      "category": "welfare",
+      "verbatim_quote": "To implement the Swavalambi Sarathi Scheme and empower economically backward classes... a subsidy of Rs. 80,000 will be provided for the purchase of an auto-rickshaw, and Rs. 1,50,000 for the purchase of a car under Sarathi Scheme."
+    },
+    {
+      "id": "bswml-garbage-contribution-300cr",
+      "name": "BSWML garbage collection and development (Rs. 300 crore)",
+      "name_local": null,
+      "description": "Rs.300 crore earmarked to Bengaluru Solid Waste Management Limited (BSWML) for garbage collection, disposal, and development works.",
+      "amount_lakhs": 30000.0,
+      "page": 59,
+      "category": "swm",
+      "verbatim_quote": "An amount of Rs.300.00 crores has been earmarked in the Budget for the year 2026–2027 by the Bengaluru East City Corporation to the Bengaluru Solid Waste Management Limited for collection and disposal of garbage, and development works."
+    },
+    {
+      "id": "pourakarmika-safety-gear-1-5cr",
+      "name": "Pourakarmika safety gear — gloves/masks/gumboots (Rs. 1.5 crore)",
+      "name_local": null,
+      "description": "Rs.1.50 crore for hand gloves, masks, and gum boots for Pourakarmikas' health and safety.",
+      "amount_lakhs": 150.0,
+      "page": 59,
+      "category": "health",
+      "verbatim_quote": "An amount of Rs.1.50 crores has been earmarked in the Budget for the year 2026–2027 to provide the required hand gloves, masks, and gum boots in view of health and safety of Powrakarmikas working within the limits of the Bengaluru East City Corporation."
+    },
+    {
+      "id": "pourakarmika-health-checkups-uphc",
+      "name": "Pourakarmika quarterly UPHC health check-ups",
+      "name_local": null,
+      "description": "Regular free health check-ups every three months through Urban Primary Health Centres for Pourakarmikas, loaders, auto/tipper drivers and other sanitation workers.",
+      "amount_lakhs": null,
+      "page": 59,
+      "category": "health",
+      "verbatim_quote": "It is planned to conduct regular health check-ups at free of cost once in every three months through Urban Primary Health Centres to protect the health of Powrakarmikas, loaders, auto and tipper drivers, and other sanitation workers."
+    },
+    {
+      "id": "suvidha-cabins-mustering-2cr",
+      "name": "Suvidha Cabins at mustering centres (Rs. 2 crore)",
+      "name_local": null,
+      "description": "Rs.2 crore to set up Suvidha Cabins at mustering centres for rest facilities for sanitation workers.",
+      "amount_lakhs": 200.0,
+      "page": 59,
+      "category": "welfare",
+      "verbatim_quote": "An amount of Rs.2.00 crores has been earmarked to set-up Suvidha Cabins at mustering centres for providing rest facilities to Powrakarmikas, loaders, auto and tipper drivers, and other sanitation workers."
+    },
+    {
+      "id": "iec-health-hygiene-1-9cr",
+      "name": "IEC public health-hygiene awareness (Rs. 1.9 crore)",
+      "name_local": null,
+      "description": "Rs.1.90 crore earmarked for IEC (Information, Education, Communication) activities on public health and hygiene.",
+      "amount_lakhs": 190.0,
+      "page": 60,
+      "category": "health",
+      "verbatim_quote": "An amount of Rs.1.90 crores has been earmarked to create awareness among the public regarding health and hygiene through IEC activities."
+    },
+    {
+      "id": "digital-public-relations-centre",
+      "name": "Digital-enabled Public Relations Centre",
+      "name_local": null,
+      "description": "Set up digital Public Relations Centre to disseminate BECC programmes, development works, and welfare programmes via various media.",
+      "amount_lakhs": null,
+      "page": 60,
+      "category": "other",
+      "verbatim_quote": "It is planned to set up a digital-enabled Public Relations Centre to disseminate information/programmes, development works and welfare programmes of the Bengaluru East City Corporation to the public through various media."
+    },
+    {
+      "id": "ifms-online-receipts-payments",
+      "name": "IFMS online receipts/payments module",
+      "name_local": null,
+      "description": "All receipts and payments to move to online mode via IFMS Module; bank payment gateways integrated with Receipt Module Software for real-time collection.",
+      "amount_lakhs": null,
+      "page": 61,
+      "category": "other",
+      "verbatim_quote": "steps are being taken in developing the IFMS Module to carry out all payments of the Corporation through the IFMS software."
+    },
+    {
+      "id": "finance-commission-grants-187cr",
+      "name": "State & 15th/16th Finance Commission grants (Rs. 187 crore)",
+      "name_local": null,
+      "description": "Expected Rs.73 crore from State Finance Commission and Rs.114 crore under 15th/16th Finance Commissions of Government of India in 2026-27.",
+      "amount_lakhs": 18700.0,
+      "page": 61,
+      "category": "infrastructure",
+      "verbatim_quote": "it is expected to receive Rs.73 crores from the State Finance Commission and Rs.114 crores under the 15th and 16th Finance Commissions of the Government of India."
+    },
+    {
+      "id": "dbt-aadhaar-welfare-transfers",
+      "name": "DBT Aadhaar-linked welfare transfer system",
+      "name_local": null,
+      "description": "Separate DBT system for direct financial assistance to Aadhaar-linked bank accounts of beneficiaries (natural calamity relief, welfare schemes).",
+      "amount_lakhs": null,
+      "page": 61,
+      "category": "welfare",
+      "verbatim_quote": "A separate DBT system has been implemented in the Bengaluru East City Corporation to directly transfer financial assistance to Aadhaar-linked bank accounts of beneficiaries for those affected by natural calamities and beneficiaries under the various welfare schemes."
+    },
+    {
+      "id": "metro-connectivity-roads",
+      "name": "Metro station connectivity roads",
+      "name_local": null,
+      "description": "Integrated multimodal transport connectivity roads to metro stations within Corporation limits; infrastructure development, asphaltation and footpaths.",
+      "amount_lakhs": null,
+      "page": 62,
+      "category": "roads",
+      "verbatim_quote": "connectivity roads to metro stations within the corporation limits will be developed."
+    },
+    {
+      "id": "panathur-s-cross-road-white-topping",
+      "name": "Panathur S-Cross Road — white topping widening",
+      "name_local": null,
+      "description": "Long-stalled Panathur S-Cross Road widened and developed with white topping.",
+      "amount_lakhs": null,
+      "page": 62,
+      "category": "roads",
+      "verbatim_quote": "the project of Panathur S-Cross Road, which had been stalled for a long time, has been widened and developed with white topping."
+    },
+    {
+      "id": "balagere-flood-road-white-topping",
+      "name": "Balagere flood-affected road — white topping",
+      "name_local": null,
+      "description": "Flood-affected Balagere Road developed with white topping for smooth public movement.",
+      "amount_lakhs": null,
+      "page": 62,
+      "category": "roads",
+      "verbatim_quote": "The flood-affected Balagere Road has been developed with white topping, enabling smooth movement for the public."
+    },
+    {
+      "id": "orr-service-road-asphalt-kr-puram-ibbalur",
+      "name": "ORR service roads (K.R. Puram to Ibbalur Junction) asphalted",
+      "name_local": null,
+      "description": "Outer Ring Road service roads from K.R. Puram to Ibbalur Junction asphalted and developed.",
+      "amount_lakhs": null,
+      "page": 62,
+      "category": "roads",
+      "verbatim_quote": "The service roads of the Outer Ring Road from K.R. Puram to Ibbalur Junction have been asphalted and developed."
+    },
+    {
+      "id": "ward-road-drainage-2-25cr-per-ward",
+      "name": "Ward road + drainage development (Rs. 112.5 crore / Rs. 2.25 cr per ward)",
+      "name_local": null,
+      "description": "Rs.2.25 crore per ward, totalling Rs.112.50 crore, allocated for comprehensive development and annual maintenance of all roads and drainage systems across wards.",
+      "amount_lakhs": 11250.0,
+      "page": 63,
+      "category": "roads",
+      "verbatim_quote": "An amount of Rs.2.25 crore per ward, totalling Rs.112.50 crore, has been allocated for the comprehensive development and annual maintenance of all roads and drainage systems within the corporation limits."
+    },
+    {
+      "id": "sc-st-bc-minority-capital-works-227cr",
+      "name": "SC/ST/BC/minority areas capital works (Rs. 227 crore)",
+      "name_local": null,
+      "description": "Rs.227 crore earmarked for capital works in areas where SC/ST/BC/minority communities reside.",
+      "amount_lakhs": 22700.0,
+      "page": 63,
+      "category": "infrastructure",
+      "verbatim_quote": "A total of Rs.227.00 crores has been earmarked for undertaking capital works in the areas where the people belonging to Scheduled Castes, Scheduled Tribes, Backward Classes, and minority communities reside within the Corporation limits."
+    },
+    {
+      "id": "silk-board-kr-puram-orr-450cr",
+      "name": "Durable ORR: Silk Board to K.R. Puram (Rs. 450 crore)",
+      "name_local": null,
+      "description": "Rs.450 crore Government of Karnataka project to construct a durable Outer Ring Road from Silk Board Junction to K.R. Puram; work to begin this fiscal.",
+      "amount_lakhs": 45000.0,
+      "page": 63,
+      "category": "roads",
+      "verbatim_quote": "A project worth of Rs. 450.00 crores has been evolved by the Government of Karnataka in order to construct a durable Outer Ring Road from Silk Board Junction to K.R. Puram, and the work will be taken up during the current financial year."
+    },
+    {
+      "id": "junction-redesign-skywalks-50cr",
+      "name": "High-traffic junction redesign + pedestrian skywalks (Rs. 50 crore)",
+      "name_local": null,
+      "description": "Rs.50 crore earmarked for redesign and comprehensive development of high-traffic junctions and building skywalks to make them pedestrian-friendly.",
+      "amount_lakhs": 5000.0,
+      "page": 64,
+      "category": "infrastructure",
+      "verbatim_quote": "an amount of Rs. 50.00 crores has been earmarked for redesign and comprehensive development of high-traffic junctions and build skywalks to make such junction as pedestrian-friendly within the Bengaluru East City Corporation."
+    },
+    {
+      "id": "footpaths-100km",
+      "name": "Footpath development — 100 km target",
+      "name_local": null,
+      "description": "Goal to develop 100 km length of footpaths within BECC limits.",
+      "amount_lakhs": null,
+      "page": 64,
+      "category": "roads",
+      "verbatim_quote": "The goal has been set to develop 100.00 km length of footpaths within the limits of the City Corporation."
+    },
+    {
+      "id": "orrca-metro-viaduct-footpath-160cr",
+      "name": "ORRCA — 9 km Metro viaduct footpath (Rs. 160 crore)",
+      "name_local": null,
+      "description": "9 km footpath along Metro viaduct on ORR at Rs.160 crore under sponsorship of Outer Ring Road Companies Association (ORRCA).",
+      "amount_lakhs": 16000.0,
+      "page": 64,
+      "category": "roads",
+      "verbatim_quote": "A 9 km footpath along the Metro viaduct on the Outer Ring Road will be constructed at an estimated cost of Rs. 160.00 crores under the sponsorship of the Outer Ring Road Companies Association (ORRCA)."
+    },
+    {
+      "id": "sip-arterial-works-298-1cr",
+      "name": "SIP arterial & sub-arterial works (Rs. 298.10 crore)",
+      "name_local": null,
+      "description": "Arterial and sub-arterial works under Special Infrastructure Programme already taken up across 8 divisions (Marathahalli 30, Doddanekkundi 32.5, Whitefield 17, Kadugodi 0.15, Ramamurthy Nagar 27.4, K.R. Puram 20.5, Horamavu 9, HAL Airport 3.1 crore).",
+      "amount_lakhs": 29810.0,
+      "page": 64,
+      "category": "roads",
+      "verbatim_quote": "Under special infrastructure development projects, arterial and sub-arterial works have already been taken up in the following divisions under an outlay of Rs.298.10 crores."
+    },
+    {
+      "id": "cmidp-ward-roads-50cr",
+      "name": "CMIDP ward road development (Rs. 50 crore)",
+      "name_local": null,
+      "description": "Hon'ble Chief Minister's Infrastructure Development Programme — ward road development works taken up in 8 divisions totalling Rs.50 crore.",
+      "amount_lakhs": 5000.0,
+      "page": 65,
+      "category": "roads",
+      "verbatim_quote": "Under the Hon'ble Chief Minister's Infrastructure Development Programme, ward road development works have already been taken up in the following divisions under an outlay of Rs. 50.00 crores."
+    },
+    {
+      "id": "alpine-eco-grade-separator-50cr",
+      "name": "Alpine Eco Road grade separator on ORR (Rs. 50 crore)",
+      "name_local": null,
+      "description": "Grade separator on Alpine Eco Road of ORR at estimated Rs.50 crore, funded from newly proposed Municipal Bonds.",
+      "amount_lakhs": 5000.0,
+      "page": 65,
+      "category": "infrastructure",
+      "verbatim_quote": "It is proposed to construct a grade separator at an estimated cost of Rs. 50.00 crores on Alpine Eco Road of Outer Ring Road out of the amount collected through newly proposed Municipal bonds."
+    },
+    {
+      "id": "varthur-gunjur-flyover-150cr",
+      "name": "Varthur–Gunjur elevated flyover 2 km (Rs. 150 crore)",
+      "name_local": null,
+      "description": "~2 km elevated flyover from Varthur towards Gunjur, extension of KRDCL flyover, at Rs.150 crore from Municipal Bonds.",
+      "amount_lakhs": 15000.0,
+      "page": 65,
+      "category": "infrastructure",
+      "verbatim_quote": "It is proposed to construct an elevated flyover from Varthur towards Gunjur for a stretch of about 2 kms at an estimated cost of about Rs. 150.00 crores."
+    },
+    {
+      "id": "public-space-beautification-20cr",
+      "name": "Prominent public places development (Rs. 20 crore)",
+      "name_local": null,
+      "description": "Rs.20 crore earmarked in 2026-27 for comprehensive development of prominent public places within BECC.",
+      "amount_lakhs": 2000.0,
+      "page": 66,
+      "category": "infrastructure",
+      "verbatim_quote": "An amount of Rs. 20.00 crores has been earmarked during the year 2026-27 for the comprehensive development of the prominent public places within the Bengaluru East City Corporation."
+    },
+    {
+      "id": "railway-bridges-rob-rub-25cr",
+      "name": "Railway over-bridge / under-bridge construction (Rs. 25 crore)",
+      "name_local": null,
+      "description": "Rs.25 crore earmarked for construction of required railway over-bridges and under-bridges within BECC jurisdiction.",
+      "amount_lakhs": 2500.0,
+      "page": 66,
+      "category": "infrastructure",
+      "verbatim_quote": "An amount of Rs. 25.00 crores has been earmarked during the year 2026-27 for the construction of railway over-bridge and under-bridge at the required places within the jurisdiction of the City Corporation."
+    },
+    {
+      "id": "flyover-underpass-beautification-ngo",
+      "name": "Flyover and underpass beautification via NGO cooperation",
+      "name_local": null,
+      "description": "Beautify BECC flyovers and underpasses with cooperation of NGOs and associations under the Corporation.",
+      "amount_lakhs": null,
+      "page": 66,
+      "category": "infrastructure",
+      "verbatim_quote": "Flyovers and underpass coming under Bengaluru East City Corporation it is proposed to beautify with the co-operation of Non-governmental organisations and associations coming under the limits of the corporation."
+    },
+    {
+      "id": "major-road-widening-40cr",
+      "name": "Major road widening programme (Rs. 40 crore)",
+      "name_local": null,
+      "description": "Rs.40 crore for comprehensive development and road widening of Bileshivalya main road, OAR-Satya Sai metro station road, Bellathuru main road (SH-35), Nallurahalli main road, Whitefield–Varthur–Kadugodi main road.",
+      "amount_lakhs": 4000.0,
+      "page": 66,
+      "category": "roads",
+      "verbatim_quote": "Rs. 40.00 crores has been earmarked during the year 2026-27 for the comprehensive development of major roads and Road Widening of the below following Roads within the jurisdiction of Bengaluru East City Corporation."
+    },
+    {
+      "id": "led-streetlight-conversion-38cr",
+      "name": "Sodium-vapour to LED streetlight replacement (Rs. 38 crore)",
+      "name_local": null,
+      "description": "Rs.38 crore earmarked for replacing sodium vapour streetlights with LED streetlights within BECC.",
+      "amount_lakhs": 3800.0,
+      "page": 67,
+      "category": "lighting",
+      "verbatim_quote": "Rs.38.00 crores have been earmarked for replacing sodium vapor streetlights with LED streetlights in limits of Bangalore East City Corporation."
+    },
+    {
+      "id": "streetlight-maintenance-17cr",
+      "name": "Roadside streetlight maintenance (Rs. 17 crore)",
+      "name_local": null,
+      "description": "Rs.17 crore earmarked for maintenance of roadside streetlights within BECC.",
+      "amount_lakhs": 1700.0,
+      "page": 67,
+      "category": "lighting",
+      "verbatim_quote": "Rs 17.00 crores has been earmarked for maintenance of roadside streetlights within the limits of Bangalore East City Corporation."
+    },
+    {
+      "id": "electric-crematorium-5cr",
+      "name": "Electric crematorium construction (Rs. 5 crore)",
+      "name_local": null,
+      "description": "Rs.5 crore earmarked to construct electric crematorium within BECC limits.",
+      "amount_lakhs": 500.0,
+      "page": 67,
+      "category": "health",
+      "verbatim_quote": "An amount of Rs. 5.00 crores have been earmarked to construct electric crematorium within the limits of Bangalore East City Corporation."
+    },
+    {
+      "id": "panathur-crematorium-maintenance-1cr",
+      "name": "Panathur Electric Crematorium repair/maintenance (Rs. 1 crore)",
+      "name_local": null,
+      "description": "Rs.1 crore earmarked for repair and maintenance of Panathur Electric Crematorium.",
+      "amount_lakhs": 100.0,
+      "page": 68,
+      "category": "health",
+      "verbatim_quote": "Rs. 1.00 crore has been earmarked for repair and maintenance of Panathur Electric crematorium within the limits of Bangalore East City Corporation."
+    },
+    {
+      "id": "prahari-vehicle-1cr",
+      "name": "Prahari vehicle purchase (Rs. 1 crore)",
+      "name_local": null,
+      "description": "Rs.1 crore earmarked during 2026-27 for purchase of prahari vehicles for operations by Revenue, Works, Solid Waste and Health departments.",
+      "amount_lakhs": 100.0,
+      "page": 68,
+      "category": "other",
+      "verbatim_quote": "Rs. 1.00 crore has been earmarked during the year 2026-27 for the purchase of prahari vehicles for the operations carried out by the Revenue, Works, Solid Waste and Health Departments."
+    },
+    {
+      "id": "16th-fc-capital-works-89cr",
+      "name": "16th Finance Commission capital works (Rs. 89 crore)",
+      "name_local": null,
+      "description": "Rs.89 crore expected under 16th Finance Commission grant for capital works within BECC limits.",
+      "amount_lakhs": 8900.0,
+      "page": 68,
+      "category": "infrastructure",
+      "verbatim_quote": "an amount of Rs.89.00 crores is expected under the grant of 16th Finance Commission and action will be taken to undertake capital works within the limits of corporation."
+    },
+    {
+      "id": "swd-concrete-retaining-wall-existing",
+      "name": "SWD concrete retaining walls — Mahadevapura + K.R.Puram zones",
+      "name_local": null,
+      "description": "Of 150 km SWD in Mahadevapura, 72 km already has concrete retaining walls (Karnataka govt grant up to 2018-2023); in K.R.Puram, 52 of 75 km done.",
+      "amount_lakhs": null,
+      "page": 68,
+      "category": "infrastructure",
+      "verbatim_quote": "out of 150 km length of storm water drains, concrete retaining wall for 72 km length of storm water drain has already been constructed... out of the 75 km length of storm water drains in K.R.Puram zone, concrete retaining wall for 52 km stretch of storm water drain has been constructed."
+    },
+    {
+      "id": "flood-hit-areas-58-remaining-20",
+      "name": "Flood-hit area remediation (20 remaining of 58)",
+      "name_local": null,
+      "description": "58 flood-hit areas identified in BECC; 38 relieved; remaining 20 to be developed into flood-free areas.",
+      "amount_lakhs": null,
+      "page": 69,
+      "category": "infrastructure",
+      "verbatim_quote": "58 flood-hit areas have been identified in the Bengaluru East City Corporation, out of which relief package has been provided in 38 flood-hit areas. The remaining 20 flood-hit areas will be developed and converted into flood-free areas at the earliest."
+    },
+    {
+      "id": "panathur-geddalahalli-swd-flood-relief",
+      "name": "Panathur & Geddalahalli flood-relief SWD works",
+      "name_local": null,
+      "description": "Panathur SWD completed (flood-free); Geddalahalli Railway Vent work to be expedited to make the area flood-free.",
+      "amount_lakhs": null,
+      "page": 69,
+      "category": "infrastructure",
+      "verbatim_quote": "the Panathur storm water drain work has been completed and made flood-free. It is decided to complete the Geddalahalli Railway Vent work expeditiously."
+    },
+    {
+      "id": "ndmf-swd-25cr",
+      "name": "NDMF-funded SWD works (Rs. 25 crore)",
+      "name_local": null,
+      "description": "Rs.25 crore under National Disaster Management Fund: Siddapura Lake weir canal, Spice Garden SWD, Bili Shivalaya SWD, Balagere Rajakaluve, Yamalur Eppsilon Rajakaluve.",
+      "amount_lakhs": 2500.0,
+      "page": 69,
+      "category": "infrastructure",
+      "verbatim_quote": "The works such as Siddapuralake weir Canal work, storm water drains near Spice Garden, Bili Shivalayastorm water drain, Balagere Rajakaluve... have been undertaken out of the grant of Rs. 25 crores under National Disaster Management Fund."
+    },
+    {
+      "id": "world-bank-swd-629cr",
+      "name": "World Bank SWD package (Rs. 629 crore)",
+      "name_local": null,
+      "description": "Rs.629 crore under World Bank assistance: Rs.540 crore for Mahadevapura and Rs.89 crore for K.R.Puram; 6 packages approved and work started.",
+      "amount_lakhs": 62900.0,
+      "page": 69,
+      "category": "infrastructure",
+      "verbatim_quote": "Rs.629 crores have been provided out of the grant under World Bank assistance, out of which Rs.540.00 crores and Rs.89.00 crores have been provided to Mahadevapura assembly constituency and K.R.Puram assembly constituency respectively."
+    },
+    {
+      "id": "lakes-live-45-development",
+      "name": "Lake rejuvenation — 45 live lakes",
+      "name_local": null,
+      "description": "45 live lakes in BECC; 40 already developed, 1 in progress, remaining 4 to be taken up in 2026-27 for rejuvenation, augmentation and maintenance.",
+      "amount_lakhs": null,
+      "page": 72,
+      "category": "parks",
+      "verbatim_quote": "A total of 45 live- lakes are there in Bengaluru East City Corporation, out of which, 40 lakes have already been developed. Development work of 01 lake is under progress. Development work of the remaining 4 lakes will be undertaken in the current year."
+    },
+    {
+      "id": "lakes-annual-maintenance-28cr",
+      "name": "Lakes annual maintenance (Rs. 28 crore)",
+      "name_local": null,
+      "description": "Rs.28 crore earmarked in 2026-27 for annual maintenance of lakes in BECC limits.",
+      "amount_lakhs": 2800.0,
+      "page": 72,
+      "category": "parks",
+      "verbatim_quote": "An amount of Rs. 28.00 crore has been earmarked in the budget of the Corporation for the year 2026-27 for the annual maintenance of the lakes."
+    },
+    {
+      "id": "lakes-chain-link-fence-5cr",
+      "name": "Lake chain-link fencing for 10 lakes (Rs. 5 crore)",
+      "name_local": null,
+      "description": "Rs.5 crore earmarked to erect chain link fences along boundaries of 10 lakes.",
+      "amount_lakhs": 500.0,
+      "page": 72,
+      "category": "parks",
+      "verbatim_quote": "A grant of Rs. 5.00 crores have been earmarked for erecting chain link fences along the boundaries of 10 lakes of the City Corporation."
+    },
+    {
+      "id": "4-lakes-development-25cr",
+      "name": "Development of 4 lakes (Rs. 25 crore)",
+      "name_local": null,
+      "description": "Rs.25 crore for development of 4 lakes in 2026-27.",
+      "amount_lakhs": 2500.0,
+      "page": 72,
+      "category": "parks",
+      "verbatim_quote": "It has been decided to undertake the development work of 4 lakes under the grant of Rs. 25.00 crores of the Corporation for the year 2026-27."
+    },
+    {
+      "id": "lake-water-quality-aerators-wetlands",
+      "name": "Lake water quality — aerators, floating wetlands, enzymes",
+      "name_local": null,
+      "description": "Install aerators and floating wetlands, use biological enzymes and digital equipment for lake rejuvenation and water quality improvement.",
+      "amount_lakhs": null,
+      "page": 72,
+      "category": "parks",
+      "verbatim_quote": "The works such as installation of aerators and floating wetlands, use of biological enzymes and installation of digital equipment including rejuvenation and development of lakes to improve water quality."
+    },
+    {
+      "id": "community-lake-conservation-policy-2024",
+      "name": "Community Involvement for Lake Conservation Policy 2024",
+      "name_local": null,
+      "description": "Policy to provide lake facilities to citizen groups and private organisations interested in lake development.",
+      "amount_lakhs": null,
+      "page": 73,
+      "category": "parks",
+      "verbatim_quote": "\"Community Involvement for Lake Conservation Policy\"- 2024 has been evolved and thereby an action has been taken to provide various facilities at the lakes."
+    },
+    {
+      "id": "home-guard-lake-protection",
+      "name": "Home Guard deployment at lakes",
+      "name_local": null,
+      "description": "Home Guards deployed to protect lakes and ensure safe experience for public walkers.",
+      "amount_lakhs": null,
+      "page": 73,
+      "category": "parks",
+      "verbatim_quote": "Home Guard personnel have been deployed to protect the lakes and ensure that the public who come for walk do not face any kind of trouble."
+    },
+    {
+      "id": "parks-annual-maintenance-soaking-pits-10cr",
+      "name": "Parks annual maintenance + 35 soaking pits (Rs. 10 crore)",
+      "name_local": null,
+      "description": "Rs.10 crore for annual maintenance of parks (54 parks across Mahadevapura and K.R.Puram) and construction of 35 soaking pits to augment groundwater.",
+      "amount_lakhs": 1000.0,
+      "page": 73,
+      "category": "parks",
+      "verbatim_quote": "An amount of Rs. 10.00 crore has been earmarked in the budget of the Corporation for the year 2026-27 for annual maintenance of the parks in the East City Corporation and for the construction of 35 soaking pits."
+    },
+    {
+      "id": "parks-chain-link-fence-7-5cr",
+      "name": "Parks chain-link fencing (Rs. 7.5 crore)",
+      "name_local": null,
+      "description": "Rs.7.50 crore to erect chain link fences along boundaries of city corporation parks.",
+      "amount_lakhs": 750.0,
+      "page": 73,
+      "category": "parks",
+      "verbatim_quote": "A grant of Rs. 7.50 crore has been earmarked to erect the chain link fences along the boundaries of the city corporation parks."
+    },
+    {
+      "id": "park-development-median-lake-17-5cr",
+      "name": "Park/median/lake-park development (Rs. 17.5 crore)",
+      "name_local": null,
+      "description": "Rs.17.50 crore for development of parks/median parks/lake parks in 2026-27.",
+      "amount_lakhs": 1750.0,
+      "page": 74,
+      "category": "parks",
+      "verbatim_quote": "A grant of Rs. 17.50 crore has been earmarked for the development of parks/median/lake parks in the budget for the year 2026-27."
+    },
+    {
+      "id": "green-bengaluru-nurseries-10cr",
+      "name": "Brand Bengaluru — Green Bengaluru nurseries (Rs. 10 crore)",
+      "name_local": null,
+      "description": "Rs.10 crore earmarked to set up new nursery centres in parks under Brand Bengaluru — Green Bengaluru concept.",
+      "amount_lakhs": 1000.0,
+      "page": 74,
+      "category": "parks",
+      "verbatim_quote": "under the concept of \"Brand Bengaluru\" \"Green Bengaluru\", Rs. 10.00 crores have been earmarked in the budget for the year 2026-27 for making the city greener by setting up new nursery centres in parks."
+    },
+    {
+      "id": "park-filming-revenue-upgrade",
+      "name": "Park filming/shooting revenue upgrade",
+      "name_local": null,
+      "description": "Upgrade parks and make them available for filming, serial shoots, short films and photography to increase resources.",
+      "amount_lakhs": null,
+      "page": 74,
+      "category": "parks",
+      "verbatim_quote": "It is aimed to increase resources by upgrading the parks in the limits of city corporation and making them available for filming and shooting of serials, short films, and photography."
+    },
+    {
+      "id": "brand-bengaluru-health-phc-namma-clinic-35cr",
+      "name": "Brand Bengaluru Health — 15 PHCs + 10 Namma Clinics (Rs. 35 crore)",
+      "name_local": null,
+      "description": "Rs.35 crore to set up 15 new Primary Health Centres and 10 Namma Clinics under Brand Bengaluru — Health concept.",
+      "amount_lakhs": 3500.0,
+      "page": 74,
+      "category": "health",
+      "verbatim_quote": "It is proposed to set up new15 primary health centres and 10 Namma Clinics in the corporation limits... Rs. 35.00 crores have been earmarked during the year 2026-27."
+    },
+    {
+      "id": "phc-equipment-upgrade-6-8cr",
+      "name": "PHC equipment and healthcare asset upgrade (Rs. 6.8 crore)",
+      "name_local": null,
+      "description": "Rs.6.8 crore for purchasing hospital equipment and strengthening healthcare assets at Primary Health Centres.",
+      "amount_lakhs": 680.0,
+      "page": 74,
+      "category": "health",
+      "verbatim_quote": "Priority has been given to the development and extension of Primary Health Centres (PHCS) and Rs. 6.8 crores have been earmarked for purchasing required hospital equipment and strengthening of healthcare assets."
+    },
+    {
+      "id": "indira-canteen-maintenance-5cr",
+      "name": "Indira Canteen annual maintenance (Rs. 5 crore)",
+      "name_local": null,
+      "description": "Rs.5 crore for annual maintenance of Indira Canteens within BECC limits.",
+      "amount_lakhs": 500.0,
+      "page": 75,
+      "category": "welfare",
+      "verbatim_quote": "Rs. 5.00 crores have been earmarked in the budget for the year 2026-27 for the annual maintenance of Indira Canteens within the limits of Corporation."
+    },
+    {
+      "id": "public-health-mosquito-polio-iec-4-8cr",
+      "name": "Public health programmes — mosquito control, pulse polio, IEC (Rs. 4.8 crore)",
+      "name_local": null,
+      "description": "Rs.4.80 crore for mosquito control, pulse polio vaccination and public-health awareness campaigns.",
+      "amount_lakhs": 480.0,
+      "page": 75,
+      "category": "health",
+      "verbatim_quote": "Rs. 4.80 crores have been earmarked in the budget for public health programmes such as mosquito control, pulse polio vaccination, and public health awareness campaigns."
+    },
+    {
+      "id": "stray-dog-shelter-500-capacity-12cr",
+      "name": "Stray dog permanent shelter (500 capacity, Rs. 12 crore)",
+      "name_local": null,
+      "description": "Rs.12 crore to construct a 500-capacity stray dog shelter as per Supreme Court order; includes maintenance and feeding.",
+      "amount_lakhs": 1200.0,
+      "page": 75,
+      "category": "welfare",
+      "verbatim_quote": "a total of Rs. 12.00 crore has been earmarked during the year 2026-27 for the construction of a shelter with a capacity of 500 stray dogs, maintenance and feeding of the said dogs."
+    },
+    {
+      "id": "abc-neutering-6cr",
+      "name": "Stray dog ABC neutering (Rs. 6 crore)",
+      "name_local": null,
+      "description": "Two packages to double the number of neutering surgeries; Rs.6 crore earmarked for the stray dog control programme.",
+      "amount_lakhs": 600.0,
+      "page": 75,
+      "category": "welfare",
+      "verbatim_quote": "For the stray dogs control program in the corporation limits, two packages have been created with the aim of doubling the number of neutering surgeries, for which an estimated Rs. 6.00 crores have been earmarked."
+    },
+    {
+      "id": "mahadevapura-abc-neutering-centre-4cr",
+      "name": "Mahadevapura ABC Stray Dog Neutering Surgery Centre (Rs. 4 crore)",
+      "name_local": null,
+      "description": "Rs.4 crore for state-of-the-art scientific Stray Dog Neutering Surgery Centre (ABC) in Mahadevapura zone.",
+      "amount_lakhs": 400.0,
+      "page": 76,
+      "category": "welfare",
+      "verbatim_quote": "It is proposed to construct a state-of-the-art, well- equipped scientific Stray Dog Neutering Surgery Centre (ABC) in Mahadevapura zone of the Corporation, and an estimated amount of Rs. 4.00 crore has been earmarked."
+    },
+    {
+      "id": "corporation-veterinary-clinics-2cr",
+      "name": "Corporation Veterinary Clinics — 2 in phase 1 (Rs. 2 crore)",
+      "name_local": null,
+      "description": "Rs.2 crore to establish 2 Corporation Veterinary Clinics (first-of-its-kind) serving small/large animals within BECC.",
+      "amount_lakhs": 200.0,
+      "page": 76,
+      "category": "welfare",
+      "verbatim_quote": "an estimated grant of Rs. 2.00 crore has been earmarked for the establishment and maintenance of two Corporation Veterinary Clinics in the first phase during the year 2026-27."
+    },
+    {
+      "id": "electric-animal-crematorium-2cr",
+      "name": "Electric animal crematorium (Rs. 2 crore)",
+      "name_local": null,
+      "description": "Rs.2 crore to set up an electric animal crematorium for scientific disposal of dead animals within BECC.",
+      "amount_lakhs": 200.0,
+      "page": 76,
+      "category": "welfare",
+      "verbatim_quote": "about Rs. 2.00 crores have been earmarked for setting up an electric animal crematorium for the scientific disposal of all types of dead animals within the limits of the Corporation."
+    },
+    {
+      "id": "mobile-veterinary-vehicle-50l",
+      "name": "Mobile veterinary vehicle (Rs. 50 lakh)",
+      "name_local": null,
+      "description": "Rs.50 lakh earmarked to introduce mobile veterinary vehicle for field-level livestock treatment.",
+      "amount_lakhs": 50.0,
+      "page": 76,
+      "category": "welfare",
+      "verbatim_quote": "It is proposed to introduce a mobile veterinary vehicle for the first time by the Corporation to provide quick and quality treatment to the livestock at the field level. An estimated grant of Rs. 50.00 lakh has been earmarked."
+    },
+    {
+      "id": "afforestation-sponge-city-3-5cr",
+      "name": "Afforestation — Sponge City (Rs. 3.5 crore)",
+      "name_local": null,
+      "description": "Rs.3.50 crore for city afforestation under the 'Sponge City' concept (lake rejuvenation + decentralized drainage + improved SWD + afforestation).",
+      "amount_lakhs": 350.0,
+      "page": 77,
+      "category": "other",
+      "verbatim_quote": "the Corporation has emphasized on a forestation of the city, for which a grant of Rs. 3.50 crore shave been earmarked during this year."
+    },
+    {
+      "id": "miyawaki-tree-parks",
+      "name": "Miyawaki tree parks",
+      "name_local": null,
+      "description": "Miyawaki tree parks to be built within Corporation limits.",
+      "amount_lakhs": null,
+      "page": 77,
+      "category": "other",
+      "verbatim_quote": "It is proposed to build Miyawaki tree parks within the corporations limits."
+    },
+    {
+      "id": "bmrcl-kride-25000-saplings",
+      "name": "BMRCL/KRIDE 25,000 saplings planting",
+      "name_local": null,
+      "description": "Coordination with BMRCL and KRIDE to plant 25,000 saplings in public places within BECC.",
+      "amount_lakhs": null,
+      "page": 77,
+      "category": "other",
+      "verbatim_quote": "With the coordination of M/s BMRCL and M/s KRIDE corporation proposes to plant 25000 various seeds in public places within the corporation limits."
+    },
+    {
+      "id": "tree-root-trimming-public-spaces",
+      "name": "Tree-root trimming in public spaces",
+      "name_local": null,
+      "description": "Trim tree roots in public places to avoid unfortunate incidents.",
+      "amount_lakhs": null,
+      "page": 77,
+      "category": "other",
+      "verbatim_quote": "action will be taken for trimming of tree roots in public places in order to avoid unfortunate incidents."
+    },
+    {
+      "id": "wildlife-rescue-team",
+      "name": "Wildlife rescue team (snakes, monkeys, other animals)",
+      "name_local": null,
+      "description": "Separate team in Forest Department to rescue snakes, monkeys and other animals from public places and relocate them safely.",
+      "amount_lakhs": null,
+      "page": 77,
+      "category": "other",
+      "verbatim_quote": "Separate team is formed in the corporation Forest department to catch snakes, monkeys and other animals from public places and shift them to safe places."
+    },
+    {
+      "id": "municipal-bonds-20000l",
+      "name": "Municipal Bonds (Rs. 200 crore) — capital markets",
+      "name_local": null,
+      "description": "BECC proposes issuance of Municipal Bonds of Rs.200 crore to fund specific capital works (per budget summary classification).",
+      "amount_lakhs": 20000.0,
+      "page": 79,
+      "category": "infrastructure",
+      "verbatim_quote": "Borrowing (Municipal bonds) 20000.00"
+    }
+  ]
+}

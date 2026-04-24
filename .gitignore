@@ -18,4 +18,5 @@ scripts/__pycache__/
 
 # Raw extraction dumps (intermediate artifacts, regenerable from PDFs)
 data/**/speech/raw-*.txt
+data/**/speech/*-raw-*.txt
 .vercel

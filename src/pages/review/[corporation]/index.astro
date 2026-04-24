@@ -1,0 +1,760 @@
+---
+import {
+  loadCorporation,
+  loadDepartments,
+  loadMergedSpeechProjects,
+} from "../../../lib/data-loader";
+import { editorForToken } from "../../../lib/supabase";
+
+export const prerender = false;
+
+const { corporation: corpId } = Astro.params;
+const VALID = new Set(["south", "central", "east", "west", "north"]);
+if (!corpId || !VALID.has(corpId)) return Astro.redirect("/404");
+
+const urlToken = Astro.url.searchParams.get("token");
+const cookieToken = Astro.cookies.get("review_token")?.value ?? null;
+const token = urlToken ?? cookieToken;
+const editor = editorForToken(token);
+
+if (!editor) {
+  return new Response("Forbidden — valid ?token= required", {
+    status: 403,
+    headers: { "content-type": "text/plain" },
+  });
+}
+
+if (urlToken && urlToken !== cookieToken) {
+  Astro.cookies.set("review_token", urlToken, {
+    path: "/",
+    httpOnly: false,
+    sameSite: "lax",
+    maxAge: 60 * 60 * 24 * 30,
+  });
+}
+
+const corp = loadCorporation("bengaluru", corpId);
+if (!corp) return Astro.redirect("/404");
+
+const { merged } = await loadMergedSpeechProjects("bengaluru", corpId);
+const depts = loadDepartments("bengaluru").departments;
+
+const SECTION_ORDER = [
+  "administration", "finance-and-accounts", "advertisement", "revenue",
+  "land-acquisition", "public-relations", "urban-planning", "public-works",
+  "lakes-division", "education", "forestry", "horticulture", "health",
+  "sanitation", "animal-husbandry", "welfare",
+];
+const SECTION_LABEL: Record<string, string> = {
+  administration: "Administration",
+  "finance-and-accounts": "Finance and Accounts",
+  advertisement: "Advertisement",
+  revenue: "Revenue",
+  "land-acquisition": "Land Acquisition",
+  "public-relations": "Public Relations",
+  "urban-planning": "Urban Planning",
+  "public-works": "Public Works",
+  "lakes-division": "Lakes Division",
+  education: "Education",
+  forestry: "Forestry",
+  horticulture: "Horticulture",
+  health: "Health",
+  sanitation: "Sanitation",
+  "animal-husbandry": "Animal Husbandry",
+  welfare: "Welfare",
+};
+
+type Row = (typeof merged)[number] & { sectionKey: string; sectionLocal: string | null };
+const rows: Row[] = merged.map((p) => ({
+  ...p,
+  sectionKey: p.section ?? "unknown",
+  sectionLocal: p.section_local ?? null,
+}));
+
+const rowsBySection = new Map<string, Row[]>();
+for (const r of rows) {
+  if (!rowsBySection.has(r.sectionKey)) rowsBySection.set(r.sectionKey, []);
+  rowsBySection.get(r.sectionKey)!.push(r);
+}
+
+const sectionsInOrder = [
+  ...SECTION_ORDER.filter((s) => rowsBySection.has(s)),
+  ...Array.from(rowsBySection.keys()).filter((s) => !SECTION_ORDER.includes(s)),
+];
+
+const taggedCount = rows.filter((r) => r.departments.length > 0).length;
+const totalCount = rows.length;
+const pct = totalCount ? Math.round((taggedCount / totalCount) * 100) : 0;
+
+function fmtAmount(lakhs: number | null | undefined): string {
+  if (lakhs == null) return "no amount";
+  if (lakhs >= 100) return `₹${(lakhs / 100).toFixed(2)} Cr`;
+  return `₹${lakhs.toFixed(2)} L`;
+}
+---
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Tag speech items — {corp.name}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex,nofollow" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <style is:global>
+    :root {
+      --c-primary: #3F5F7A;
+      --c-ink: #1a202c;
+      --c-ink-soft: #4a5568;
+      --c-rule: #e2e8f0;
+      --c-rule-soft: #edf2f7;
+      --c-neutral: #718096;
+      --c-good: #137752;
+      --c-good-bg: #e7f5ee;
+      --c-bg: #f9fafb;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: "Inter", system-ui, -apple-system, sans-serif;
+      color: var(--c-ink); background: var(--c-bg); line-height: 1.5;
+    }
+    .masthead { background: var(--c-primary); color: #fff; padding: 1.1rem 0; }
+    .container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
+    .masthead h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
+    .masthead p { font-size: 0.84rem; color: rgba(255,255,255,0.78); margin-top: 0.15rem; }
+
+    .note-bar {
+      background: #eff6ff; border-bottom: 1px solid #bfdbfe;
+      color: #1e3a8a; font-size: 0.8rem;
+      padding: 0.55rem 0;
+    }
+    .note-bar strong { font-weight: 700; }
+
+    .sub-bar {
+      background: #fff; border-bottom: 1px solid var(--c-rule);
+      padding: 0.65rem 0; position: sticky; top: 0; z-index: 10;
+    }
+    .sub-row {
+      display: flex; align-items: center; gap: 0.7rem;
+      flex-wrap: wrap; justify-content: space-between;
+      font-size: 0.85rem; color: var(--c-ink-soft);
+    }
+    .progress strong { color: var(--c-ink); font-weight: 700; }
+    .progress .bar {
+      display: inline-block; width: 120px; height: 5px;
+      background: var(--c-rule-soft); border-radius: 3px;
+      vertical-align: middle; margin: 0 0.45rem; overflow: hidden;
+    }
+    .progress .bar > span { display: block; height: 100%; background: var(--c-good); }
+    .sub-row input[type=text] {
+      font: inherit; padding: 0.35rem 0.55rem;
+      border: 1px solid var(--c-rule); border-radius: 4px;
+      background: #fff; color: var(--c-ink); flex: 1 1 200px; min-width: 180px;
+    }
+    .editor-info { font-size: 0.78rem; color: var(--c-neutral); }
+
+    main { padding: 0.8rem 0 4rem; }
+    .sections { display: flex; flex-direction: column; gap: 0.5rem; }
+
+    details.sec {
+      background: #fff; border: 1px solid var(--c-rule); border-radius: 6px;
+    }
+    details.sec > summary {
+      list-style: none; cursor: pointer;
+      display: grid; align-items: center;
+      grid-template-columns: 16px 1fr auto auto;
+      gap: 0.55rem; padding: 0.65rem 0.75rem;
+    }
+    details.sec > summary::-webkit-details-marker { display: none; }
+    .chev { color: var(--c-neutral); font-size: 0.78rem; transition: transform 0.15s; width: 14px; text-align: center; }
+    details[open] .chev { transform: rotate(90deg); }
+    .sec-name { font-size: 0.95rem; font-weight: 700; color: var(--c-ink); }
+    .sec-local { color: var(--c-neutral); font-weight: 500; font-size: 0.8rem; margin-left: 0.35rem; }
+    .count-pill {
+      font-size: 0.72rem; font-weight: 600;
+      background: var(--c-rule-soft); color: var(--c-ink-soft);
+      padding: 0.08rem 0.45rem; border-radius: 10px;
+      font-variant-numeric: tabular-nums;
+    }
+    .sec-tagged { color: var(--c-good); font-weight: 600; font-size: 0.78rem; }
+
+    .items { border-top: 1px solid var(--c-rule); }
+    .item {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 0.45rem 1rem;
+      padding: 0.8rem 0.9rem 0.8rem 2.2rem;
+      border-bottom: 1px solid var(--c-rule-soft);
+    }
+    .item:last-child { border-bottom: 0; }
+    .item:hover { background: #fcfcfd; }
+
+    .item-head {
+      display: flex; align-items: baseline; gap: 0.5rem;
+      flex-wrap: wrap;
+    }
+    .item-num { color: var(--c-neutral); font-size: 0.75rem; font-weight: 600; font-variant-numeric: tabular-nums; }
+    .item-name { font-size: 0.9rem; font-weight: 600; color: var(--c-ink); letter-spacing: -0.003em; }
+    .item-meta {
+      font-size: 0.74rem; color: var(--c-neutral);
+      font-variant-numeric: tabular-nums;
+      display: inline-flex; gap: 0.5rem; align-items: center;
+      margin-left: auto;
+    }
+    .page-pill {
+      background: var(--c-rule-soft); color: var(--c-ink-soft);
+      padding: 0.04rem 0.4rem; border-radius: 3px; font-weight: 600;
+    }
+    .amt { color: var(--c-ink); font-weight: 700; }
+
+    .verbatim {
+      font-size: 0.8rem; color: var(--c-ink-soft);
+      font-style: italic; line-height: 1.45;
+    }
+
+    .dept-cell {
+      display: flex; flex-direction: column; gap: 0.3rem;
+      align-items: flex-start;
+      position: relative;
+    }
+    /* Department color palette — mapped to the Schedule-I function each department rolls up to.
+       Same hues used on Summary cards (/south), so tags are recognisable across views. */
+    [data-dept="engineering"]        { --dept-c: #1d4ed8; --dept-bg: #dbeafe; }
+    [data-dept="revenue"]            { --dept-c: #b45309; --dept-bg: #fef3c7; }
+    [data-dept="advertisement"]      { --dept-c: #b45309; --dept-bg: #fef3c7; }
+    [data-dept="health-sanitation"]  { --dept-c: #9d174d; --dept-bg: #fce7f3; }
+    [data-dept="animal-husbandry"]   { --dept-c: #b91c1c; --dept-bg: #fee2e2; }
+    [data-dept="forest-horticulture"]{ --dept-c: #4d7c0f; --dept-bg: #ecfccb; }
+    [data-dept="administration"]     { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+    [data-dept="finance"]            { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+    [data-dept="public-relations"]   { --dept-c: #52525b; --dept-bg: #f4f4f5; }
+    [data-dept="solid-waste"]        { --dept-c: #0f766e; --dept-bg: #ccfbf1; }
+    [data-dept="welfare"]            { --dept-c: #4338ca; --dept-bg: #e0e7ff; }
+    [data-dept="land-acquisition"]   { --dept-c: #c2410c; --dept-bg: #ffedd5; }
+    [data-dept="town-planning"]      { --dept-c: #c2410c; --dept-bg: #ffedd5; }
+    [data-dept="education"]          { --dept-c: #6d28d9; --dept-bg: #ede9fe; }
+    .chip[data-dept] { --dept-c: var(--c-good); --dept-bg: var(--c-good-bg); }
+
+    .chips { display: flex; flex-wrap: wrap; gap: 0.35rem; align-items: center; }
+    .chip {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      font-size: 0.76rem; font-weight: 600;
+      padding: 0.22rem 0.55rem 0.22rem 0.6rem;
+      border-radius: 999px;
+      line-height: 1.15;
+      transition: background 0.12s, box-shadow 0.12s;
+    }
+    .chip.primary {
+      background: var(--dept-c);
+      color: #fff;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.15), inset 0 1px 0 rgba(255,255,255,0.14);
+    }
+    .chip.primary .star { color: rgba(255,255,255,0.92); font-size: 0.85em; margin-right: -0.1rem; }
+    .chip.secondary {
+      background: var(--dept-bg); color: var(--dept-c);
+      border: 1px dashed var(--dept-c);
+      padding: calc(0.22rem - 1px) calc(0.55rem - 1px) calc(0.22rem - 1px) calc(0.6rem - 1px);
+    }
+    .chip.secondary:hover { border-style: solid; filter: brightness(0.97); }
+    .chip .x {
+      background: rgba(255,255,255,0.22); border: 0;
+      color: inherit; cursor: pointer;
+      width: 16px; height: 16px; border-radius: 50%;
+      display: inline-flex; align-items: center; justify-content: center;
+      font-size: 0.85em; line-height: 1; padding: 0;
+      transition: background 0.12s;
+    }
+    .chip.secondary .x { background: rgba(255,255,255,0.6); color: var(--dept-c); }
+    .chip .x:hover { background: rgba(255,255,255,0.4); }
+    .chip.secondary .x:hover { background: #fff; }
+    .chip.untagged {
+      background: #fef3c7; color: #92400e;
+      font-style: italic; font-weight: 500;
+      border-radius: 999px; padding: 0.2rem 0.65rem;
+    }
+    .chip.heuristic {
+      background: var(--c-rule-soft); color: var(--c-ink-soft);
+      border: 1px dashed var(--c-rule);
+      padding: calc(0.22rem - 1px) calc(0.55rem - 1px) calc(0.22rem - 1px) calc(0.6rem - 1px);
+      font-weight: 500;
+    }
+    .chip.heuristic .hint-label {
+      font-size: 0.64rem; text-transform: uppercase;
+      letter-spacing: 0.05em; opacity: 0.7; margin-right: 0.25rem;
+    }
+    .make-primary {
+      font: inherit; font-size: 0.68rem; font-weight: 600;
+      background: none; border: 0; color: inherit;
+      cursor: pointer; padding: 0 0.1rem; opacity: 0.78;
+      text-decoration: underline;
+      text-decoration-color: currentColor;
+      text-underline-offset: 2px;
+    }
+    .make-primary:hover { opacity: 1; }
+    .add-dept {
+      font: inherit; font-size: 0.74rem; font-weight: 500;
+      padding: 0.22rem 0.65rem;
+      border: 1px dashed var(--c-rule);
+      border-radius: 999px;
+      background: transparent; color: var(--c-neutral); cursor: pointer;
+      transition: border-color 0.12s, color 0.12s, background 0.12s;
+    }
+    .add-dept:hover {
+      background: #fff; color: var(--c-primary);
+      border-color: var(--c-primary); border-style: solid;
+    }
+    .save-state { font-size: 0.68rem; color: var(--c-neutral); font-style: italic; margin-left: 0.35rem; }
+    .save-state.saved { color: var(--c-good); }
+    .save-state.error { color: #9b2c2c; }
+
+    .picker {
+      position: absolute; top: calc(100% + 4px); left: 0; z-index: 20;
+      background: #fff; border: 1px solid var(--c-rule); border-radius: 8px;
+      box-shadow: 0 6px 20px rgba(15,23,42,0.08), 0 1px 3px rgba(15,23,42,0.06);
+      padding: 0.3rem; display: none; min-width: 220px;
+      max-height: 280px; overflow-y: auto;
+    }
+    .picker.open { display: block; }
+    .picker button {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%; text-align: left;
+      font: inherit; font-size: 0.82rem; font-weight: 500;
+      padding: 0.45rem 0.65rem; border: 0; background: transparent;
+      border-radius: 5px; cursor: pointer; color: var(--c-ink);
+      border-left: 3px solid var(--dept-c, transparent);
+      padding-left: calc(0.65rem - 3px);
+      transition: background 0.1s;
+    }
+    .picker button:hover:not([disabled]) { background: var(--dept-bg, var(--c-rule-soft)); }
+    .picker button[disabled] {
+      color: var(--dept-c, var(--c-good));
+      background: var(--dept-bg, var(--c-good-bg));
+      cursor: default; opacity: 1;
+    }
+    .picker button[disabled]::after { content: "✓"; font-weight: 700; }
+
+    details.sec-untagged > summary { background: #fffbeb; }
+
+    .item.manual { background: #f5f3ff; border-left: 3px solid #7c3aed; padding-left: calc(2.2rem - 3px); }
+    .item.manual:hover { background: #efeafd; }
+    .manual-badge {
+      display: inline-block; background: #7c3aed; color: #fff;
+      font-size: 0.66rem; font-weight: 700; letter-spacing: 0.04em;
+      padding: 0.06rem 0.4rem; border-radius: 3px; text-transform: uppercase;
+    }
+    .delete-manual {
+      font: inherit; font-size: 0.7rem;
+      background: none; border: 0; color: #9b2c2c;
+      cursor: pointer; padding: 0; margin-top: 0.2rem;
+      text-decoration: underline;
+    }
+
+    .add-bar {
+      display: flex; gap: 0.5rem; margin-bottom: 0.5rem;
+    }
+    .btn-primary {
+      font: inherit; font-size: 0.85rem; font-weight: 600;
+      padding: 0.4rem 0.9rem; border-radius: 5px;
+      background: var(--c-primary); color: #fff; border: 0; cursor: pointer;
+    }
+    .btn-primary:hover { background: #2f4a60; }
+
+    .add-form {
+      display: none; background: #fff; border: 1px solid var(--c-rule);
+      border-radius: 6px; padding: 0.9rem; margin-bottom: 0.6rem;
+      flex-direction: column; gap: 0.55rem;
+    }
+    .add-form.open { display: flex; }
+    .add-form label { font-size: 0.78rem; font-weight: 600; color: var(--c-ink-soft); display: block; }
+    .add-form input, .add-form textarea, .add-form select {
+      font: inherit; width: 100%; padding: 0.4rem 0.55rem;
+      border: 1px solid var(--c-rule); border-radius: 4px;
+      background: #fff; color: var(--c-ink); margin-top: 0.15rem;
+    }
+    .add-form textarea { min-height: 60px; resize: vertical; }
+    .add-form-row { display: grid; grid-template-columns: 1fr 120px 120px; gap: 0.5rem; }
+    .add-form-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+    .add-form-cancel {
+      font: inherit; font-size: 0.82rem;
+      padding: 0.4rem 0.85rem; border-radius: 5px;
+      background: #fff; color: var(--c-ink-soft);
+      border: 1px solid var(--c-rule); cursor: pointer;
+    }
+    @media (max-width: 720px) {
+      .add-form-row { grid-template-columns: 1fr; }
+      .item.manual { padding-left: calc(1rem - 3px); }
+    }
+
+    .hint {
+      color: var(--c-neutral); font-size: 0.78rem;
+      padding: 0.9rem 0; border-top: 1px solid var(--c-rule); margin-top: 1.2rem;
+    }
+
+    @media (max-width: 720px) {
+      .masthead h1 { font-size: 1.15rem; }
+      .container { padding: 0 0.75rem; }
+      .item {
+        grid-template-columns: 1fr;
+        padding: 0.7rem 0.75rem 0.7rem 1rem;
+      }
+      .item-meta { margin-left: 0; font-size: 0.7rem; }
+      .item-name { font-size: 0.88rem; }
+      .dept-cell { width: 100%; }
+      .picker { min-width: 100%; left: 0; right: 0; }
+      .sub-row { font-size: 0.8rem; gap: 0.5rem; }
+      .progress .bar { width: 90px; }
+      details.sec > summary {
+        grid-template-columns: 14px 1fr auto;
+        gap: 0.45rem; padding: 0.6rem 0.65rem;
+      }
+      .sec-tagged { display: none; }
+      .sec-local { display: block; margin-left: 0; font-size: 0.72rem; }
+      .note-bar { font-size: 0.74rem; padding: 0.5rem 0; }
+    }
+  </style>
+</head>
+<body data-corp-id={corpId}>
+
+<header class="masthead">
+  <div class="container">
+    <h1>{corp.name} · Tag speech items</h1>
+    <p>Assign each speech item to one or more departments. Changes save live.</p>
+  </div>
+</header>
+
+<div class="note-bar">
+  <div class="container">
+    <strong>How multi-tag works:</strong> The <strong>first department you pick is the primary</strong> (★) —
+    the item's budget is counted there. Additional tags are <em>secondary</em> (dashed): the item will
+    show up in those department views too, but won't be counted again. Use <strong>make primary</strong>
+    on a secondary chip to swap.
+  </div>
+</div>
+
+<div class="sub-bar">
+  <div class="container">
+    <div class="sub-row">
+      <div class="progress">
+        <strong><span id="tagged-count">{taggedCount}</span> / {totalCount}</strong> tagged
+        <span class="bar"><span id="tagged-bar" style={`width: ${pct}%`}></span></span>
+        <span><span id="remaining-count">{totalCount - taggedCount}</span> remaining</span>
+      </div>
+      <input type="text" id="search" placeholder="Search name, description, verbatim…" />
+      <div class="editor-info">Signed in as <strong>{editor}</strong></div>
+    </div>
+  </div>
+</div>
+
+<main class="container">
+
+<div class="add-bar">
+  <button class="btn-primary" type="button" id="toggle-add-form">+ Add project</button>
+</div>
+
+<form class="add-form" id="add-form">
+  <div>
+    <label for="af-name">Project name</label>
+    <input type="text" id="af-name" required minlength="3" placeholder="e.g. New flyover at Koramangala junction" />
+  </div>
+  <div>
+    <label for="af-verbatim">Verbatim / source (optional)</label>
+    <textarea id="af-verbatim" placeholder="Quote from document or note on source"></textarea>
+  </div>
+  <div class="add-form-row">
+    <div>
+      <label for="af-section">Section</label>
+      <select id="af-section">
+        <option value="manual">Manual (not in speech)</option>
+        {Object.entries(SECTION_LABEL).map(([k, v]) => <option value={k}>{v}</option>)}
+      </select>
+    </div>
+    <div>
+      <label for="af-amount">Amount (Cr)</label>
+      <input type="number" id="af-amount" step="0.01" placeholder="e.g. 12.50" />
+    </div>
+    <div>
+      <label for="af-page">Page</label>
+      <input type="number" id="af-page" step="1" placeholder="optional" />
+    </div>
+  </div>
+  <div>
+    <label for="af-dept">Primary department (optional)</label>
+    <select id="af-dept">
+      <option value="">— none —</option>
+      {depts.map((d) => <option value={d.id}>{d.name}</option>)}
+    </select>
+  </div>
+  <div class="add-form-actions">
+    <button type="button" class="add-form-cancel" id="af-cancel">Cancel</button>
+    <button type="submit" class="btn-primary">Add project</button>
+  </div>
+</form>
+
+<div class="sections">
+
+  {sectionsInOrder.map((key) => {
+    const items = rowsBySection.get(key) ?? [];
+    const tagged = items.filter((r) => r.departments.length > 0).length;
+    const local = items.find((r) => r.sectionLocal)?.sectionLocal ?? null;
+    return (
+      <details class="sec">
+        <summary>
+          <i class="fa-solid fa-chevron-right chev"></i>
+          <span>
+            <span class="sec-name">{SECTION_LABEL[key] ?? key}</span>
+            {local && <span class="sec-local">{local}</span>}
+          </span>
+          <span class="sec-tagged">{tagged} tagged</span>
+          <span class="count-pill">{items.length}</span>
+        </summary>
+        <div class="items">
+          {items.map((r) => (
+            <div class="item">
+              <div>
+                <div class="item-head">
+                  <span class="item-num">#{r.id.slice(0, 24)}</span>
+                  <span class="item-name">{r.name}</span>
+                  <span class="item-meta">
+                    <span class="page-pill">p.{r.page}</span>
+                    <span class="amt">{fmtAmount(r.amount_lakhs)}</span>
+                  </span>
+                </div>
+                <p class="verbatim">"{r.verbatim_quote}"</p>
+              </div>
+              <div class="dept-cell" data-item-id={r.id} data-departments={JSON.stringify(r.departments)}>
+                <div class="chips"></div>
+                <button class="add-dept" type="button">+ tag department</button>
+                <span class="save-state"></span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </details>
+    );
+  })}
+
+</div>
+
+<p class="hint">Click <strong>+ tag department</strong> to add · click <strong>×</strong> to remove · click <strong>make primary</strong> on a secondary chip to promote it · edits auto-save.</p>
+
+</main>
+
+<script define:vars={{ depts, corpId }}>
+  const DEPTS = depts.map((d) => ({ id: d.id, name: d.name }));
+  const CORP_ID = corpId;
+
+  function byId(id) { return document.getElementById(id); }
+  function deptName(id) { return (DEPTS.find((d) => d.id === id) || { name: id }).name; }
+
+  function renderChips(cell) {
+    const chips = cell.querySelector(".chips");
+    const current = JSON.parse(cell.dataset.departments || "[]");
+    chips.innerHTML = "";
+    if (current.length === 0) return;
+    current.forEach((id, idx) => {
+      const span = document.createElement("span");
+      const isPrimary = idx === 0;
+      span.className = "chip " + (isPrimary ? "primary" : "secondary");
+      span.dataset.dept = id;
+      span.title = isPrimary ? "Primary — budget counted here" : "Secondary — shown here, not counted";
+      if (isPrimary) {
+        const star = document.createElement("span");
+        star.className = "star";
+        star.textContent = "★";
+        span.appendChild(star);
+      }
+      const nameSpan = document.createElement("span");
+      nameSpan.textContent = deptName(id);
+      span.appendChild(nameSpan);
+      if (!isPrimary) {
+        const promote = document.createElement("button");
+        promote.type = "button";
+        promote.className = "make-primary";
+        promote.textContent = "make primary";
+        promote.dataset.promote = id;
+        span.appendChild(promote);
+      }
+      const x = document.createElement("button");
+      x.type = "button";
+      x.className = "x";
+      x.setAttribute("aria-label", "remove");
+      x.textContent = "×";
+      x.dataset.remove = id;
+      span.appendChild(x);
+      chips.appendChild(span);
+    });
+  }
+
+  function updateProgress() {
+    const cells = document.querySelectorAll(".dept-cell");
+    let tagged = 0;
+    cells.forEach((c) => {
+      const n = (JSON.parse(c.dataset.departments || "[]") || []).length;
+      if (n > 0) tagged++;
+    });
+    const total = cells.length;
+    byId("tagged-count").textContent = tagged;
+    byId("remaining-count").textContent = total - tagged;
+    byId("tagged-bar").style.width = total ? Math.round((tagged / total) * 100) + "%" : "0%";
+  }
+
+  async function save(cell) {
+    const itemId = cell.dataset.itemId;
+    const departments = JSON.parse(cell.dataset.departments || "[]");
+    const state = cell.querySelector(".save-state");
+    state.textContent = "saving…";
+    state.className = "save-state";
+    try {
+      const res = await fetch("/api/review/tag", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ corpId: CORP_ID, itemId, departments }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
+      cell.dataset.departments = JSON.stringify(data.departments);
+      renderChips(cell);
+      state.textContent = "saved";
+      state.className = "save-state saved";
+      setTimeout(() => { state.textContent = ""; }, 1500);
+      updateProgress();
+    } catch (e) {
+      state.textContent = "error";
+      state.className = "save-state error";
+      console.error(e);
+    }
+  }
+
+  function togglePicker(cell) {
+    const existing = cell.querySelector(".picker");
+    if (existing && existing.classList.contains("open")) {
+      existing.classList.remove("open");
+      return;
+    }
+    closeAllPickers();
+    let picker = existing;
+    if (!picker) {
+      picker = document.createElement("div");
+      picker.className = "picker";
+      cell.appendChild(picker);
+    }
+    const current = new Set(JSON.parse(cell.dataset.departments || "[]"));
+    picker.innerHTML = "";
+    for (const d of DEPTS) {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.textContent = d.name;
+      b.dataset.dept = d.id;
+      if (current.has(d.id)) { b.disabled = true; }
+      b.addEventListener("click", () => {
+        if (current.has(d.id)) return;
+        const arr = JSON.parse(cell.dataset.departments || "[]");
+        arr.push(d.id);
+        cell.dataset.departments = JSON.stringify(arr);
+        renderChips(cell);
+        picker.classList.remove("open");
+        save(cell);
+      });
+      picker.appendChild(b);
+    }
+    picker.classList.add("open");
+  }
+
+  function closeAllPickers() {
+    document.querySelectorAll(".picker.open").forEach((p) => p.classList.remove("open"));
+  }
+
+  document.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.matches(".add-dept")) {
+      const cell = target.closest(".dept-cell");
+      togglePicker(cell);
+      e.stopPropagation();
+      return;
+    }
+    if (target.matches("[data-remove]")) {
+      const cell = target.closest(".dept-cell");
+      const id = target.dataset.remove;
+      const current = JSON.parse(cell.dataset.departments || "[]").filter((x) => x !== id);
+      cell.dataset.departments = JSON.stringify(current);
+      renderChips(cell);
+      save(cell);
+      e.stopPropagation();
+      return;
+    }
+    if (target.matches("[data-promote]")) {
+      const cell = target.closest(".dept-cell");
+      const id = target.dataset.promote;
+      const current = JSON.parse(cell.dataset.departments || "[]");
+      const reordered = [id, ...current.filter((x) => x !== id)];
+      cell.dataset.departments = JSON.stringify(reordered);
+      renderChips(cell);
+      save(cell);
+      e.stopPropagation();
+      return;
+    }
+    if (!target.closest(".picker")) closeAllPickers();
+  });
+
+  // Add-project form
+  byId("toggle-add-form").addEventListener("click", () => {
+    byId("add-form").classList.toggle("open");
+  });
+  byId("af-cancel").addEventListener("click", () => {
+    byId("add-form").classList.remove("open");
+  });
+  byId("add-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const name = byId("af-name").value.trim();
+    if (name.length < 3) return;
+    const amountCr = parseFloat(byId("af-amount").value);
+    const payload = {
+      corpId: CORP_ID,
+      name,
+      verbatim_quote: byId("af-verbatim").value,
+      section: byId("af-section").value || "manual",
+      amount_lakhs: isFinite(amountCr) ? amountCr * 100 : null,
+      page: byId("af-page").value ? parseInt(byId("af-page").value, 10) : null,
+      departments: byId("af-dept").value ? [byId("af-dept").value] : [],
+    };
+    try {
+      const res = await fetch("/api/review/manual-item", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      location.reload();
+    } catch (err) {
+      alert("Could not add project: " + err.message);
+    }
+  });
+
+  // Delete manual
+  document.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-delete-manual]");
+    if (!btn) return;
+    if (!confirm("Delete this manual project?")) return;
+    const itemId = btn.dataset.deleteManual;
+    const res = await fetch("/api/review/manual-item", {
+      method: "DELETE",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ corpId: CORP_ID, itemId }),
+    });
+    if (res.ok) location.reload();
+    else alert("Delete failed");
+  });
+
+  byId("search").addEventListener("input", (e) => {
+    const q = e.target.value.toLowerCase().trim();
+    document.querySelectorAll(".item").forEach((item) => {
+      const hay = item.textContent.toLowerCase();
+      item.style.display = !q || hay.includes(q) ? "" : "none";
+    });
+  });
+
+  document.querySelectorAll(".dept-cell").forEach(renderChips);
+</script>
+
+</body>
+</html>

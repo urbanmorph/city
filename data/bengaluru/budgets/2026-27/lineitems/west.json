@@ -1,0 +1,4316 @@
+{
+  "corporation_id": "west",
+  "fiscal_year": "2026-27",
+  "unit": "lakhs",
+  "total_2026_27": 464327.61,
+  "total_revised_2025_26": 67432.44,
+  "total_spillover": 152004.5,
+  "yoy_pct": 588.6,
+  "functions": [
+    {
+      "code": "01",
+      "name": "Council",
+      "total_2026_27": 2900.68,
+      "revised_2025_26": 0.0,
+      "spillover": 0.0,
+      "yoy_pct": null,
+      "sub_categories": [
+        {
+          "name": "Council and Corporators Expenses",
+          "total_2026_27": 2598.23,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "01-210101",
+              "name": "Honorarium to Hon’ble Mayor",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2.4,
+              "total_2026_27": 2.4,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210102",
+              "name": "Honorarium to Deputy Mayor",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.8,
+              "total_2026_27": 1.8,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210103",
+              "name": "Honorarium to Corporators'",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210104",
+              "name": "Sitting Fees to Corporators'",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 4.03,
+              "total_2026_27": 4.03,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210105",
+              "name": "/ Corporators' Study Tour/ Conveyance Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210106",
+              "name": "/ , , Meeting Expenses of Hon’ble Mayor's/Dy. Mayor/ Council & Standing and Ward Committee Guarantee commission",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 250.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210111",
+              "name": "Medical Expenses for Corporators",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1120.0,
+              "total_2026_27": 1120.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210112",
+              "name": "Former Corporators' Medical Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1120.0,
+              "total_2026_27": 1120.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 157.7,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "01-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 112.0,
+              "total_2026_27": 112.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 45.7,
+              "total_2026_27": 45.7,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 144.75,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "01-210203",
+              "name": ", Printing, Stationery & Photocopying and Revenue Stamp Charges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.75,
+              "total_2026_27": 0.75,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 112.0,
+              "total_2026_27": 112.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-210999",
+              "name": "Other General & Contingency Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "01-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "02",
+      "name": "General Administration",
+      "total_2026_27": 18108.28,
+      "revised_2025_26": 1917.33,
+      "spillover": 1600.0,
+      "yoy_pct": 844.5,
+      "sub_categories": [
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 12978.0,
+          "revised_2025_26": 1611.0,
+          "spillover": 0,
+          "yoy_pct": 705.6,
+          "items": [
+            {
+              "code": "02-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 518.0,
+              "pending": 0.0,
+              "current": 1350.0,
+              "total_2026_27": 1350.0,
+              "yoy_pct": 160.6
+            },
+            {
+              "code": "02-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 331.0,
+              "pending": 0.0,
+              "current": 712.0,
+              "total_2026_27": 712.0,
+              "yoy_pct": 115.1
+            },
+            {
+              "code": "02-200301",
+              "name": "Pay and Allowances to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 382.0,
+              "pending": 0.0,
+              "current": 771.0,
+              "total_2026_27": 771.0,
+              "yoy_pct": 101.8
+            },
+            {
+              "code": "02-200402",
+              "name": "Salary of Data Entry Operators",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-200403",
+              "name": "Salary of Out Sourced Employees,",
+              "revised_2025_26": 380.0,
+              "pending": 0.0,
+              "current": 645.0,
+              "total_2026_27": 645.0,
+              "yoy_pct": 69.7
+            },
+            {
+              "code": "02-200501",
+              "name": "Pension",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 6000.0,
+              "total_2026_27": 6000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-200503",
+              "name": "Commuted Value of Pension",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1500.0,
+              "total_2026_27": 1500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-200504",
+              "name": "Death cum Retirement Gratuity",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1000.0,
+              "total_2026_27": 1000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-200506",
+              "name": "New Pension Scheme",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1000.0,
+              "total_2026_27": 1000.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 2755.0,
+          "revised_2025_26": 60.0,
+          "spillover": 1600.0,
+          "yoy_pct": 4491.7,
+          "items": [
+            {
+              "code": "02-401001-01",
+              "name": "– Brand Bengaluru-Tech Bengaluru IT Applications and Software",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 600.0,
+              "total_2026_27": 600.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-400901",
+              "name": "Cars and Other Office Vehicles",
+              "revised_2025_26": 60.0,
+              "pending": 0.0,
+              "current": 75.0,
+              "total_2026_27": 75.0,
+              "yoy_pct": 25.0
+            },
+            {
+              "code": "02-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-401002",
+              "name": ", - IT Applications and e - services, Software, eoffice implimentaion",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 450.0,
+              "total_2026_27": 450.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-330301",
+              "name": "BWCC Matching Contribution to GOI & GOK Grants",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-230105",
+              "name": "( ) Interest on loan from Banks ( Muncipal bonds )",
+              "revised_2025_26": 0.0,
+              "pending": 1600.0,
+              "current": 0.0,
+              "total_2026_27": 1600.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 2163.28,
+          "revised_2025_26": 246.33,
+          "spillover": 0,
+          "yoy_pct": 778.2,
+          "items": [
+            {
+              "code": "02-210201",
+              "name": ", Rent, Rates and Taxes",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210203",
+              "name": ", , , Printing, Stationery and Photo copying & Revenue Stamp Charges",
+              "revised_2025_26": 12.19,
+              "pending": 0.0,
+              "current": 40.0,
+              "total_2026_27": 40.0,
+              "yoy_pct": 228.1
+            },
+            {
+              "code": "02-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 0.6,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 1566.7
+            },
+            {
+              "code": "02-210301",
+              "name": "Vehicle Hire Charges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 12.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 191.7
+            },
+            {
+              "code": "02-210304",
+              "name": "Travelling & Conveyance Expense Reimbursements",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210401",
+              "name": "Legal Expenses",
+              "revised_2025_26": 5.0,
+              "pending": 0.0,
+              "current": 400.0,
+              "total_2026_27": 400.0,
+              "yoy_pct": 7900.0
+            },
+            {
+              "code": "02-210499",
+              "name": "Consultancy Charges Others",
+              "revised_2025_26": 40.0,
+              "pending": 0.0,
+              "current": 400.0,
+              "total_2026_27": 400.0,
+              "yoy_pct": 900.0
+            },
+            {
+              "code": "02-210501",
+              "name": "/ , , , , , , . Advertisement Expenses News Papers/TV,Radio,Social Media, Publication-House Magzines, & Periodicals, Booklets, etc",
+              "revised_2025_26": 140.0,
+              "pending": 0.0,
+              "current": 620.0,
+              "total_2026_27": 620.0,
+              "yoy_pct": 342.9
+            },
+            {
+              "code": "02-210601",
+              "name": "Training & Workshop Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210901",
+              "name": "BMTF Office Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210907",
+              "name": "Budget preparation Expenses",
+              "revised_2025_26": 5.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 400.0
+            },
+            {
+              "code": "02-210908-01",
+              "name": "– Honorarium Expenses - General",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210909",
+              "name": ", Natural Calamities/Fire Hazard/ Compensation",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210999",
+              "name": "Other General or Contingency Expenses ,",
+              "revised_2025_26": 26.54,
+              "pending": 0.0,
+              "current": 36.28,
+              "total_2026_27": 36.28,
+              "yoy_pct": 36.7
+            },
+            {
+              "code": "02-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 650.0
+            },
+            {
+              "code": "02-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 650.0
+            },
+            {
+              "code": "02-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 1400.0
+            },
+            {
+              "code": "02-222101",
+              "name": "Election Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 250.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-230105",
+              "name": "Interest on loan from Banks",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Functions and Ceremonies",
+          "total_2026_27": 212.0,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "02-210701",
+              "name": ", , Independence Day/Republic Day/ Kannanda Rajyotsava Celebrations Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210703",
+              "name": "Nadaprabhu Kempegowda Day Celebrations Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210704",
+              "name": "Poura Karmikas Day Celebration Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210705",
+              "name": ": . . Dr.B.R Ambedkar Birthday Celebration Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210706",
+              "name": "Kadalekai Parishe Cultural Programme Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210707",
+              "name": "Bengaluru Dasara Festival Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210708",
+              "name": "Bengaluru Karaga Celebration Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "02-210799",
+              "name": "Corporation Ceremonies and F unctions Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "03",
+      "name": "Revenue",
+      "total_2026_27": 13374.95,
+      "revised_2025_26": 4951.0,
+      "spillover": 0.0,
+      "yoy_pct": 170.1,
+      "sub_categories": [
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 9642.0,
+          "revised_2025_26": 2684.66,
+          "spillover": 0,
+          "yoy_pct": 259.2,
+          "items": [
+            {
+              "code": "03-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 13.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 92.3
+            },
+            {
+              "code": "03-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others ,",
+              "revised_2025_26": 9.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 177.8
+            },
+            {
+              "code": "03-360601",
+              "name": "Library Cess Payable",
+              "revised_2025_26": 1452.36,
+              "pending": 0.0,
+              "current": 5232.0,
+              "total_2026_27": 5232.0,
+              "yoy_pct": 260.2
+            },
+            {
+              "code": "03-360602",
+              "name": "Beggary Cess Payable",
+              "revised_2025_26": 726.18,
+              "pending": 0.0,
+              "current": 2616.0,
+              "total_2026_27": 2616.0,
+              "yoy_pct": 260.2
+            },
+            {
+              "code": "03-360603",
+              "name": "Urban Land Transport Cess Payable",
+              "revised_2025_26": 484.12,
+              "pending": 0.0,
+              "current": 1744.0,
+              "total_2026_27": 1744.0,
+              "yoy_pct": 260.2
+            },
+            {
+              "code": "03-130224",
+              "name": "( ) (Advertisement Fee (New Policy) Collected tobe contributed to BSMILE",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 3600.35,
+          "revised_2025_26": 2175.87,
+          "spillover": 0,
+          "yoy_pct": 65.5,
+          "items": [
+            {
+              "code": "03-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 1619.0,
+              "pending": 0.0,
+              "current": 2676.87,
+              "total_2026_27": 2676.87,
+              "yoy_pct": 65.3
+            },
+            {
+              "code": "03-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 512.0,
+              "pending": 0.0,
+              "current": 868.23,
+              "total_2026_27": 868.23,
+              "yoy_pct": 69.6
+            },
+            {
+              "code": "03-200301",
+              "name": "Pay and Allowance to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 44.87,
+              "pending": 0.0,
+              "current": 55.25,
+              "total_2026_27": 55.25,
+              "yoy_pct": 23.1
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 132.6,
+          "revised_2025_26": 90.47,
+          "spillover": 0,
+          "yoy_pct": 46.6,
+          "items": [
+            {
+              "code": "03-210201",
+              "name": ", Rent, Rates and Taxes",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 7.0,
+              "total_2026_27": 7.0,
+              "yoy_pct": 250.0
+            },
+            {
+              "code": "03-210203",
+              "name": "Printing, Stationery & Photocopying Revenue stamp Charges",
+              "revised_2025_26": 27.05,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 10.9
+            },
+            {
+              "code": "03-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 15.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 0.0
+            },
+            {
+              "code": "03-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 14.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 78.6
+            },
+            {
+              "code": "03-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 150.0
+            },
+            {
+              "code": "03-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 3.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": 400.0
+            },
+            {
+              "code": "03-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 6.74,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 48.4
+            },
+            {
+              "code": "03-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 0.23,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": 769.6
+            },
+            {
+              "code": "03-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles,",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "03-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 12.45,
+              "pending": 0.0,
+              "current": 2.6,
+              "total_2026_27": 2.6,
+              "yoy_pct": -79.1
+            },
+            {
+              "code": "03-222111",
+              "name": "Total Station Survey Expenses",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 66.7
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "04",
+      "name": "Town Planning and Regulation",
+      "total_2026_27": 5079.24,
+      "revised_2025_26": 4701.7,
+      "spillover": 0.0,
+      "yoy_pct": 8.0,
+      "sub_categories": [
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 3836.24,
+          "revised_2025_26": 4441.7,
+          "spillover": 0,
+          "yoy_pct": -13.6,
+          "items": [
+            {
+              "code": "04-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-401002",
+              "name": "IT Applications and Software",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-350106",
+              "name": "Security Deposits",
+              "revised_2025_26": 115.75,
+              "pending": 0.0,
+              "current": 2500.0,
+              "total_2026_27": 2500.0,
+              "yoy_pct": 2059.8
+            },
+            {
+              "code": "04-360901",
+              "name": "Water Supply Scheme Development Surcharge",
+              "revised_2025_26": 50.8,
+              "pending": 0.0,
+              "current": 135.64,
+              "total_2026_27": 135.64,
+              "yoy_pct": 167.0
+            },
+            {
+              "code": "04-360902",
+              "name": "Formation of Ring Road Development Surcharge",
+              "revised_2025_26": 50.79,
+              "pending": 0.0,
+              "current": 135.6,
+              "total_2026_27": 135.6,
+              "yoy_pct": 167.0
+            },
+            {
+              "code": "04-360903",
+              "name": "Improvements of Slums Development Surcharge",
+              "revised_2025_26": 25.64,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 290.0
+            },
+            {
+              "code": "04-360904",
+              "name": ", Mass Rapid Transport System Development Surcharge",
+              "revised_2025_26": 225.33,
+              "pending": 0.0,
+              "current": 900.0,
+              "total_2026_27": 900.0,
+              "yoy_pct": 299.4
+            },
+            {
+              "code": "04-130225",
+              "name": "FAR ( ) Premium FAR Fees (Collected to be Contributed to BSIMLE)",
+              "revised_2025_26": 3973.39,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": -100.0
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 622.0,
+          "revised_2025_26": 254.0,
+          "spillover": 0,
+          "yoy_pct": 144.9,
+          "items": [
+            {
+              "code": "04-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 150.0,
+              "pending": 0.0,
+              "current": 410.0,
+              "total_2026_27": 410.0,
+              "yoy_pct": 173.3
+            },
+            {
+              "code": "04-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 104.0,
+              "pending": 0.0,
+              "current": 212.0,
+              "total_2026_27": 212.0,
+              "yoy_pct": 103.8
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 621.0,
+          "revised_2025_26": 6.0,
+          "spillover": 0,
+          "yoy_pct": 10250.0,
+          "items": [
+            {
+              "code": "04-210203",
+              "name": "Printing, Stationery & Photo copying , Revenue stamp Charges",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 400.0
+            },
+            {
+              "code": "04-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 3.0,
+              "total_2026_27": 3.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "04-210206",
+              "name": "Degitalisation of Building Plans",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 8.0,
+              "total_2026_27": 8.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 8.0,
+              "total_2026_27": 8.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 3.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "04-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles,",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 8.0,
+              "total_2026_27": 8.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals,",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 8.0,
+              "total_2026_27": 8.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-210915",
+              "name": "Urban Design Cell Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "04-210404",
+              "name": ", Master plan, local area plan, mobility plan Charges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 500.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "05",
+      "name": "Public Works",
+      "total_2026_27": 320951.92,
+      "revised_2025_26": 15019.36,
+      "spillover": 142049.25,
+      "yoy_pct": 2036.9,
+      "sub_categories": [
+        {
+          "name": "Repairs & Maintenance — Water Supply, UGD, Playgrounds, Lakes",
+          "total_2026_27": 125222.56,
+          "revised_2025_26": 2993.23,
+          "spillover": 23187.56,
+          "yoy_pct": 4083.5,
+          "items": [
+            {
+              "code": "05-220801",
+              "name": ", Repairs & Maintenance - UGD & Water Supply Assets -Water Supply",
+              "revised_2025_26": 0.0,
+              "pending": 41.23,
+              "current": 20.0,
+              "total_2026_27": 61.23,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-221599-02",
+              "name": ", Repairs & Maintenance of Dhobhi Ghats & Other Fixed Assets- Emergency Works)",
+              "revised_2025_26": 22.0,
+              "pending": 84.0,
+              "current": 80.0,
+              "total_2026_27": 164.0,
+              "yoy_pct": 645.5
+            },
+            {
+              "code": "05-221802",
+              "name": "1. . 750.00 2. . 400.00 Maintenance of Lakes including STP Maintenance",
+              "revised_2025_26": 328.56,
+              "pending": 250.0,
+              "current": 1150.0,
+              "total_2026_27": 1400.0,
+              "yoy_pct": 326.1
+            },
+            {
+              "code": "05-222103",
+              "name": "Rain Water Harvesting Expense - Providing Rain water Harvesting in BWCC Buildings",
+              "revised_2025_26": 36.0,
+              "pending": 41.5,
+              "current": 200.0,
+              "total_2026_27": 241.5,
+              "yoy_pct": 570.8
+            },
+            {
+              "code": "05-222109",
+              "name": "Natural Calamities Expenses",
+              "revised_2025_26": 30.0,
+              "pending": 0.0,
+              "current": 200.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": 566.7
+            },
+            {
+              "code": "05-221599-01",
+              "name": "( . 5.00 ) Repairs & Maintenance of Other Fixed Assets-Maintenance of Control Room, Temporary Monsoon Control Room and Disaster Management (Rs. 5.Lakhs each per ward)",
+              "revised_2025_26": 168.0,
+              "pending": 58.23,
+              "current": 560.0,
+              "total_2026_27": 618.23,
+              "yoy_pct": 268.0
+            },
+            {
+              "code": "05-222101",
+              "name": "Election Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1000.0,
+              "total_2026_27": 1000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-222112",
+              "name": "Removal of Unauthorised Building Construction and Advertisement Boards",
+              "revised_2025_26": 0.0,
+              "pending": 16.0,
+              "current": 180.0,
+              "total_2026_27": 196.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-222113",
+              "name": "Encroachment Clearance Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 18.0,
+              "current": 210.0,
+              "total_2026_27": 228.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-222114",
+              "name": "Expenses for Immersion of Ganesh Idols",
+              "revised_2025_26": 70.67,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 324.5
+            },
+            {
+              "code": "05-400401-01",
+              "name": "( ) Brand Bengaluru- Sugama Sanchara Bengaluru (Grant in aid to BSMILE)",
+              "revised_2025_26": 0.0,
+              "pending": 13950.0,
+              "current": 49600.0,
+              "total_2026_27": 63550.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400401-02",
+              "name": "B rand Bengaluru-Vibrant Bengaluru",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400101-01",
+              "name": ", Acquisition of Land",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2000.0,
+              "total_2026_27": 2000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400101-02",
+              "name": "Capital Works Fencing of Vacant BWCC Land (including Parks, Lakes, Play grounds & Gardens) and BWCC Assets",
+              "revised_2025_26": 0.0,
+              "pending": 125.0,
+              "current": 500.0,
+              "total_2026_27": 625.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400103",
+              "name": "– 1. . 750.00 . 2. . 100.00",
+              "revised_2025_26": 58.0,
+              "pending": 275.28,
+              "current": 850.0,
+              "total_2026_27": 1125.28,
+              "yoy_pct": 1840.1
+            },
+            {
+              "code": "05-400210",
+              "name": "– Capital Works - Construction and Development/Improvement of Abattoirs/ Slaugter House",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400203",
+              "name": "– , Capital Works -Construction and Development/Improvement of Buildings Auditoriums/Community Halls (Kempegowda Community Hall, at Hampinagar Rs.25.00 Cr]",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2500.0,
+              "total_2026_27": 2500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400302",
+              "name": "– 1. . 500.00 ) Capital Works -Construction and Development/Improvement Playgrounds 1. Rs. 500.00 lakhs for Ganesha palyground in Kenggeri",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 500.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400303",
+              "name": "– , , Capital Works - Construction and Development/Improvement of Electric crematorium, burial ground and Animal crematorium",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400701-01",
+              "name": "– Capital Works Street Lights - Providing Additional Fittings Streetlights,",
+              "revised_2025_26": 0.0,
+              "pending": 960.0,
+              "current": 16800.0,
+              "total_2026_27": 17760.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400701-02",
+              "name": "– Capital Works Street Lights -Lighting of Parks, Toilet Public Amenities",
+              "revised_2025_26": 0.0,
+              "pending": 15.0,
+              "current": 125.0,
+              "total_2026_27": 140.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400301",
+              "name": "– 400301- , , , 400302 - , , , 400303 - , , , 400307 - , 400308 - ,, 400306 – , 400399 - 1. . 1000.00 2. . 500.00 Capital Works-Development /Improvement of, 400301 Parks, Gardens, Boulewards, 400302 Play Grounds, Indoor Stadium, Sports Complex, Stadiums, 400303 Crematoriums, Burial Grounds, Burning Ghats, Electrical Cremetorium, 400307 Dhobi Ghats,",
+              "revised_2025_26": 0.0,
+              "pending": 600.0,
+              "current": 1500.0,
+              "total_2026_27": 2100.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400201",
+              "name": "/ , / , , , , , , PHC, , , , , , , , , 1. . 1000.00 50 ( . 2000.00 ) 2. . . 300.00 3. .100.00 Capital Works -Construction and Development/Improvement of Zonal Office Builing, Auditoriums/ Community Halls, School and College,Anganavadi ,Hospital and Health Centers, Maternity Homes, Quarters, PHC, Skill Development, Public Toilets, Swimming Pools Building, Kennels, Cattle pounds ABC Centers, abattoir, Mustering Centers Buildings, Multilevel Car Parking Building, including and complete all Buidings Works 1. Rs. 1000.00 Lakhs Project cost for Construction of 50 bed",
+              "revised_2025_26": 200.0,
+              "pending": 450.0,
+              "current": 1400.0,
+              "total_2026_27": 1850.0,
+              "yoy_pct": 825.0
+            },
+            {
+              "code": "05-400411",
+              "name": "/ – , Capital Works – Construction of ROB/RUB - ROB at Kengeri Sattelite Town and RUB at Ramohalli Gate at Yeshwanthpur Constituency",
+              "revised_2025_26": 0.0,
+              "pending": 300.0,
+              "current": 0.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400402",
+              "name": ", , / / / , , , , , , . . 1. . 800.00 2. , . 400.00 . 600.00 , 3. . 500.00 . 200.00 , Capital Works -Development/ Improvement of Roads, Footpaths, Major Roads/Arterial/Sub Arterial Roads, Junction mprovements, Surface Drains, Flyovers, Bridges, Subways and Storm Water Drains, including and complete all Road Related works",
+              "revised_2025_26": 0.0,
+              "pending": 275.0,
+              "current": 3400.0,
+              "total_2026_27": 3675.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400499",
+              "name": ", , Capital Works- Junction Improvements, Sky Walk and Upgradation of Footpath in the City Corporation Area",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5000.0,
+              "total_2026_27": 5000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-400902",
+              "name": "Prahari Vehicles",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 80.0,
+              "total_2026_27": 80.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 40.0,
+              "total_2026_27": 40.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 40.0,
+              "total_2026_27": 40.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330401",
+              "name": "Hon'ble Mayor Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 262.45,
+              "current": 1500.0,
+              "total_2026_27": 1762.45,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330402",
+              "name": "Deputy Mayor Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 266.58,
+              "current": 1000.0,
+              "total_2026_27": 1266.58,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330403",
+              "name": "Commissioner Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 258.89,
+              "current": 1000.0,
+              "total_2026_27": 1258.89,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330404",
+              "name": "T&F Committee Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 218.0,
+              "current": 500.0,
+              "total_2026_27": 718.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330405",
+              "name": "Bangalore city in charge Minister's Discretionary Grants",
+              "revised_2025_26": 0.0,
+              "pending": 831.23,
+              "current": 4000.0,
+              "total_2026_27": 4831.23,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330406",
+              "name": "Special Descritionary Development Works",
+              "revised_2025_26": 0.0,
+              "pending": 208.59,
+              "current": 0.0,
+              "total_2026_27": 208.59,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-330501",
+              "name": "/ - SC/ST Welfare Fund Works-Basic infrastructural developmental works at SC/ST areas(Community Development Works)",
+              "revised_2025_26": 2080.0,
+              "pending": 3682.58,
+              "current": 5800.0,
+              "total_2026_27": 9482.58,
+              "yoy_pct": 355.9
+            }
+          ]
+        },
+        {
+          "name": "Capital Works - GOI, GOK and Other Grants",
+          "total_2026_27": 123455.0,
+          "revised_2025_26": 1200.0,
+          "spillover": 103499.0,
+          "yoy_pct": 10187.9,
+          "items": [
+            {
+              "code": "05-340105",
+              "name": "16 Central Finance Commission Grants- 16th Finance Commission Grants",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 19956.0,
+              "total_2026_27": 19956.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340203",
+              "name": "– , GOK Grants - Special Infrastructure Project Works",
+              "revised_2025_26": 0.0,
+              "pending": 66774.0,
+              "current": 0.0,
+              "total_2026_27": 66774.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340207",
+              "name": "– GOK Grants - Chief Minister Infrastructure Development Programme (CMIDP)",
+              "revised_2025_26": 0.0,
+              "pending": 31725.0,
+              "current": 0.0,
+              "total_2026_27": 31725.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-140103",
+              "name": "SFC Grants-Untied (SFC-Special Grants)",
+              "revised_2025_26": 0.0,
+              "pending": 5000.0,
+              "current": 0.0,
+              "total_2026_27": 5000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340206",
+              "name": "Grant-in-Aid to Development works undertaken by Bsmile (Grants to B SMILE for Works)",
+              "revised_2025_26": 1200.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": -100.0
+            }
+          ]
+        },
+        {
+          "name": "Capital Works – Other Grants",
+          "total_2026_27": 23350.0,
+          "revised_2025_26": 199.0,
+          "spillover": 750.0,
+          "yoy_pct": 11633.7,
+          "items": [
+            {
+              "code": "05-340302",
+              "name": "Grants and Contribution Received From Others for Works -Deposit Contribution Works",
+              "revised_2025_26": 199.0,
+              "pending": 750.0,
+              "current": 0.0,
+              "total_2026_27": 750.0,
+              "yoy_pct": 276.9
+            },
+            {
+              "code": "05-340303",
+              "name": "National Disaster Mitigation Fund",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-340304",
+              "name": "World Bank Externally Aided Project",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-320105",
+              "name": "( ) ( ) Loan from Bank (Muncipal bonds)",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 22600.0,
+              "total_2026_27": 22600.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Repairs & Maintenance — Roads, Footpaths, Flyovers, Subways, SWDs",
+          "total_2026_27": 21585.25,
+          "revised_2025_26": 2666.0,
+          "spillover": 11935.25,
+          "yoy_pct": 709.6,
+          "items": [
+            {
+              "code": "05-220602",
+              "name": "– - [ ] Brand Bengaluru – Micro Surfacing Repairs & Maintenance Arterial and Sub Arterial Roads (Maintaining of Arterial and Sub- Arterial Roads",
+              "revised_2025_26": 350.0,
+              "pending": 10500.0,
+              "current": 0.0,
+              "total_2026_27": 10500.0,
+              "yoy_pct": 2900.0
+            },
+            {
+              "code": "05-220603",
+              "name": ", , Repairs & Maintenance - Flyovers/ Subways /ROB/RUB",
+              "revised_2025_26": 60.0,
+              "pending": 160.0,
+              "current": 100.0,
+              "total_2026_27": 260.0,
+              "yoy_pct": 333.3
+            },
+            {
+              "code": "05-220610",
+              "name": "30 , .20 , . 25.00 112 . . . 100.00 ) Repairs & Maintenance - Collector and Local Street Roads- (Zonal POW Works - Annual Maintenance Desilting, Drain Rs.30.00 Lakhs and Pot hole filling Rs.20 Lakhs, Footpath Maintenance Rs.25 Lakhs per ward for 112 wards and newly added BDA area in Yeshwanthapura constituency (Rs. 100.00 lakhs )",
+              "revised_2025_26": 1578.0,
+              "pending": 750.25,
+              "current": 8500.0,
+              "total_2026_27": 9250.25,
+              "yoy_pct": 486.2
+            },
+            {
+              "code": "05-220702",
+              "name": "Repairs and Maintenance of SWD",
+              "revised_2025_26": 678.0,
+              "pending": 525.0,
+              "current": 1050.0,
+              "total_2026_27": 1575.0,
+              "yoy_pct": 132.3
+            }
+          ]
+        },
+        {
+          "name": "Repairs and Maintenance of Street Light and Electrical Fittings",
+          "total_2026_27": 12649.06,
+          "revised_2025_26": 1261.99,
+          "spillover": 983.06,
+          "yoy_pct": 902.3,
+          "items": [
+            {
+              "code": "05-220101",
+              "name": "Electricity Charges Street Lighting Electrical Maintenance SFC Grants",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 8866.0,
+              "total_2026_27": 8866.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220902",
+              "name": "Repairs & Maintenance Annual Street Light Maintenance",
+              "revised_2025_26": 788.0,
+              "pending": 500.0,
+              "current": 1650.0,
+              "total_2026_27": 2150.0,
+              "yoy_pct": 172.8
+            },
+            {
+              "code": "05-221501-01",
+              "name": ", , , Repairs & Maintenance of Electrical Fittings- Electrical Installations in BWCC Buildings, Schools, M.Homes, Community Halls, Markets & Others",
+              "revised_2025_26": 142.0,
+              "pending": 150.0,
+              "current": 350.0,
+              "total_2026_27": 500.0,
+              "yoy_pct": 252.1
+            },
+            {
+              "code": "05-221501-02",
+              "name": ", Repairs & Maintenance of Electrical Fittings- Electrical Installations in Parks & Gardens, Playgrounds,",
+              "revised_2025_26": 158.0,
+              "pending": 112.56,
+              "current": 350.0,
+              "total_2026_27": 462.56,
+              "yoy_pct": 192.8
+            },
+            {
+              "code": "05-221501-03",
+              "name": "Repairs & Maintenance of Electrical Fittings-Maintenance of Community hall (Electrical Community Halls)",
+              "revised_2025_26": 9.99,
+              "pending": 19.92,
+              "current": 50.0,
+              "total_2026_27": 69.92,
+              "yoy_pct": 599.9
+            },
+            {
+              "code": "05-221501-04",
+              "name": ", , . . , . Repairs & Maintenance of Electrical Fittings- Pump sets, Lifts, DG Sets, Wireless sets & Internal Telephone Exchange",
+              "revised_2025_26": 72.0,
+              "pending": 90.33,
+              "current": 200.0,
+              "total_2026_27": 290.33,
+              "yoy_pct": 303.2
+            },
+            {
+              "code": "05-221501-05",
+              "name": "Repairs & Maintenance of Electrical Fittings-Electrical Crematorium",
+              "revised_2025_26": 92.0,
+              "pending": 110.25,
+              "current": 200.0,
+              "total_2026_27": 310.25,
+              "yoy_pct": 237.2
+            },
+            {
+              "code": "05-221501-06",
+              "name": "Conducting Energy Efficient Audit at Head Office buildings",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 4589.5,
+          "revised_2025_26": 2248.69,
+          "spillover": 0,
+          "yoy_pct": 104.1,
+          "items": [
+            {
+              "code": "05-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 1853.65,
+              "pending": 0.0,
+              "current": 3656.0,
+              "total_2026_27": 3656.0,
+              "yoy_pct": 97.2
+            },
+            {
+              "code": "05-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 292.05,
+              "pending": 0.0,
+              "current": 755.0,
+              "total_2026_27": 755.0,
+              "yoy_pct": 158.5
+            },
+            {
+              "code": "05-200301",
+              "name": "Pay and Allowance to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 102.99,
+              "pending": 0.0,
+              "current": 178.5,
+              "total_2026_27": 178.5,
+              "yoy_pct": 73.3
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 4078.13,
+          "revised_2025_26": 2304.52,
+          "spillover": 263.46,
+          "yoy_pct": 77.0,
+          "items": [
+            {
+              "code": "05-210201",
+              "name": ", Rent, Rates and Taxes",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-210203",
+              "name": "Printing, Stationery & Photocopying Revenue Stamp Charges",
+              "revised_2025_26": 25.3,
+              "pending": 3.67,
+              "current": 66.0,
+              "total_2026_27": 69.67,
+              "yoy_pct": 175.4
+            },
+            {
+              "code": "05-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 6.51,
+              "pending": 2.23,
+              "current": 28.0,
+              "total_2026_27": 30.23,
+              "yoy_pct": 364.4
+            },
+            {
+              "code": "05-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 9900.0
+            },
+            {
+              "code": "05-210403",
+              "name": "( ) Consultancy Charges Technical,",
+              "revised_2025_26": 73.0,
+              "pending": 10.0,
+              "current": 230.0,
+              "total_2026_27": 240.0,
+              "yoy_pct": 228.8
+            },
+            {
+              "code": "05-210603",
+              "name": "Medical Expenses Reimbursement BWCC Employees",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 77.5,
+              "total_2026_27": 77.5,
+              "yoy_pct": 675.0
+            },
+            {
+              "code": "05-210913-01",
+              "name": "Security Service Expenses and Housekeeping expenses",
+              "revised_2025_26": 1266.13,
+              "pending": 198.56,
+              "current": 1500.0,
+              "total_2026_27": 1698.56,
+              "yoy_pct": 34.2
+            },
+            {
+              "code": "05-210913-02",
+              "name": "Providing Home Guards Security Services to Lakes in BWCC",
+              "revised_2025_26": 189.0,
+              "pending": 10.0,
+              "current": 750.0,
+              "total_2026_27": 760.0,
+              "yoy_pct": 302.1
+            },
+            {
+              "code": "05-210999",
+              "name": "Other General & Contingency Expenses",
+              "revised_2025_26": 523.59,
+              "pending": 20.0,
+              "current": 430.0,
+              "total_2026_27": 450.0,
+              "yoy_pct": -14.1
+            },
+            {
+              "code": "05-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 118.08,
+              "pending": 19.0,
+              "current": 388.17,
+              "total_2026_27": 407.17,
+              "yoy_pct": 244.8
+            },
+            {
+              "code": "05-220104",
+              "name": "Electricity Charges - Crematoriums",
+              "revised_2025_26": 36.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 316.7
+            },
+            {
+              "code": "05-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 7.36,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 375.5
+            },
+            {
+              "code": "05-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 30.5,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": -18.0
+            },
+            {
+              "code": "05-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 18.05,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 38.5
+            }
+          ]
+        },
+        {
+          "name": "Functions and Ceremonies",
+          "total_2026_27": 3080.68,
+          "revised_2025_26": 1054.93,
+          "spillover": 439.18,
+          "yoy_pct": 192.0,
+          "items": [
+            {
+              "code": "05-210701",
+              "name": ", , Independence Day/Republic Day/ Kannanda Rajyotsava Celebrations Expenses",
+              "revised_2025_26": 3.0,
+              "pending": 2.0,
+              "current": 78.0,
+              "total_2026_27": 80.0,
+              "yoy_pct": 2566.7
+            },
+            {
+              "code": "05-210703",
+              "name": "Nadaprabhu Kempegowda Day Celebrations Expenses",
+              "revised_2025_26": 21.0,
+              "pending": 0.0,
+              "current": 151.0,
+              "total_2026_27": 151.0,
+              "yoy_pct": 619.0
+            },
+            {
+              "code": "05-210712",
+              "name": "Sports and Cultural Activity Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 80.0,
+              "total_2026_27": 80.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-210799",
+              "name": ", Corporation Ceremonies and Functions Other expenses",
+              "revised_2025_26": 8.0,
+              "pending": 0.0,
+              "current": 69.5,
+              "total_2026_27": 69.5,
+              "yoy_pct": 768.8
+            },
+            {
+              "code": "05-220401-01",
+              "name": "M & R to Head Office / Annex / Council and Town Hall Building",
+              "revised_2025_26": 0.0,
+              "pending": 2.0,
+              "current": 18.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220401-02",
+              "name": "Maintenance of all Zonal Buildings",
+              "revised_2025_26": 82.7,
+              "pending": 75.0,
+              "current": 300.0,
+              "total_2026_27": 375.0,
+              "yoy_pct": 353.4
+            },
+            {
+              "code": "05-220403",
+              "name": ", Repairs & Maintenance Buildings Auditoriums/Community Halls",
+              "revised_2025_26": 278.0,
+              "pending": 45.0,
+              "current": 500.0,
+              "total_2026_27": 545.0,
+              "yoy_pct": 96.0
+            },
+            {
+              "code": "05-220404",
+              "name": "Repairs & Maintenance Buildings Markets",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220405",
+              "name": "Repairs & Maintenance Buildings Schools and colleges",
+              "revised_2025_26": 163.23,
+              "pending": 120.0,
+              "current": 200.0,
+              "total_2026_27": 320.0,
+              "yoy_pct": 96.0
+            },
+            {
+              "code": "05-220406-01",
+              "name": ", , , , Repairs & Maintenance of Hospitals, Maternity Homes, Dispensary & Doctors Qtrs. / Clinical Laboratories",
+              "revised_2025_26": 294.0,
+              "pending": 146.68,
+              "current": 400.0,
+              "total_2026_27": 546.68,
+              "yoy_pct": 85.9
+            },
+            {
+              "code": "05-220406-02",
+              "name": "Repairs & Maintenance of Primary health Centers",
+              "revised_2025_26": 15.0,
+              "pending": 15.0,
+              "current": 150.0,
+              "total_2026_27": 165.0,
+              "yoy_pct": 1000.0
+            },
+            {
+              "code": "05-220407",
+              "name": "Repairs and Maintenance of Buildings BWCC Quarters",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220409",
+              "name": "Repairs & Maintenance - Buildings Skill Development Centres - Maintenance of Tailoring Centers",
+              "revised_2025_26": 0.0,
+              "pending": 15.0,
+              "current": 120.0,
+              "total_2026_27": 135.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220410",
+              "name": "Repairs & Maintenance Buildings Slaughter Houses/Abattoir",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "05-220415",
+              "name": ", Repairs & Maintenance - Buildings Kennels, Cattle Pounds and Animal Birth Control Centers",
+              "revised_2025_26": 28.0,
+              "pending": 12.0,
+              "current": 100.0,
+              "total_2026_27": 112.0,
+              "yoy_pct": 300.0
+            },
+            {
+              "code": "05-220503",
+              "name": ", Repairs & Maintenance Crematoriums and Burial Grounds",
+              "revised_2025_26": 162.0,
+              "pending": 6.5,
+              "current": 200.0,
+              "total_2026_27": 206.5,
+              "yoy_pct": 27.5
+            }
+          ]
+        },
+        {
+          "name": "OBC/BCM Welfare Fund Works- Basic infrastructural developmental works to Economically Backward Classes",
+          "total_2026_27": 2049.32,
+          "revised_2025_26": 743.0,
+          "spillover": 699.32,
+          "yoy_pct": 175.8,
+          "items": [
+            {
+              "code": "05-330503-01",
+              "name": "Specially abled Welfare Fund Works- Construction of Specially abled friendly Toilets and Ramps in Public Offices",
+              "revised_2025_26": 123.0,
+              "pending": 374.66,
+              "current": 650.0,
+              "total_2026_27": 1024.66,
+              "yoy_pct": 733.1
+            },
+            {
+              "code": "05-330503-02",
+              "name": "Specially abled Welfare Fund Works-Other Infrastructural works for Specially abled",
+              "revised_2025_26": 620.0,
+              "pending": 324.66,
+              "current": 700.0,
+              "total_2026_27": 1024.66,
+              "yoy_pct": 65.3
+            }
+          ]
+        },
+        {
+          "name": "Extraordinary Expenses",
+          "total_2026_27": 892.42,
+          "revised_2025_26": 348.0,
+          "spillover": 292.42,
+          "yoy_pct": 156.4,
+          "items": [
+            {
+              "code": "05-350101",
+              "name": "Earnest Money Deposits from Contractors/Suppliers",
+              "revised_2025_26": 80.0,
+              "pending": 169.58,
+              "current": 300.0,
+              "total_2026_27": 469.58,
+              "yoy_pct": 487.0
+            },
+            {
+              "code": "05-350102",
+              "name": "Security Deposits from Contractors/Suppliers",
+              "revised_2025_26": 268.0,
+              "pending": 122.84,
+              "current": 300.0,
+              "total_2026_27": 422.84,
+              "yoy_pct": 57.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "06",
+      "name": "Solid Waste Management",
+      "total_2026_27": 51038.22,
+      "revised_2025_26": 17541.67,
+      "spillover": 9.0,
+      "yoy_pct": 191.0,
+      "sub_categories": [
+        {
+          "name": "SWM Operation and Maintenance",
+          "total_2026_27": 32000.0,
+          "revised_2025_26": 6163.7,
+          "spillover": 0,
+          "yoy_pct": 419.2,
+          "items": [
+            {
+              "code": "06-221612-01",
+              "name": "Grant in Aid to M/s BSWML Administrative Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2200.0,
+              "total_2026_27": 2200.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-221612-02",
+              "name": ", Grant in Aid to M/s BSWML Cleaning and Transportation Plant and other maintenance ,",
+              "revised_2025_26": 2643.7,
+              "pending": 0.0,
+              "current": 27800.0,
+              "total_2026_27": 27800.0,
+              "yoy_pct": 951.6
+            },
+            {
+              "code": "06-221612-03",
+              "name": "Grant in Aid to M/s BSWML – Developmental Works",
+              "revised_2025_26": 3500.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": -100.0
+            },
+            {
+              "code": "06-221613",
+              "name": "Mechanical Sweeping machine hire charges",
+              "revised_2025_26": 20.0,
+              "pending": 0.0,
+              "current": 2000.0,
+              "total_2026_27": 2000.0,
+              "yoy_pct": 9900.0
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 17644.38,
+          "revised_2025_26": 10913.5,
+          "spillover": 0,
+          "yoy_pct": 61.7,
+          "items": [
+            {
+              "code": "06-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 6323.0,
+              "pending": 0.0,
+              "current": 10826.0,
+              "total_2026_27": 10826.0,
+              "yoy_pct": 71.2
+            },
+            {
+              "code": "06-200201",
+              "name": "Allowances and Benefits to Officers and staff",
+              "revised_2025_26": 2740.0,
+              "pending": 0.0,
+              "current": 4375.0,
+              "total_2026_27": 4375.0,
+              "yoy_pct": 59.7
+            },
+            {
+              "code": "06-200301",
+              "name": "Pay and Allowance Equal Pay to Equal Work Staff",
+              "revised_2025_26": 2.5,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 700.0
+            },
+            {
+              "code": "06-200401",
+              "name": "( ) Salary of Outsourced Poura Karmikas DPS",
+              "revised_2025_26": 1848.0,
+              "pending": 0.0,
+              "current": 2423.38,
+              "total_2026_27": 2423.38,
+              "yoy_pct": 31.1
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 683.84,
+          "revised_2025_26": 269.47,
+          "spillover": 0,
+          "yoy_pct": 153.8,
+          "items": [
+            {
+              "code": "06-210203",
+              "name": "Printing, Stationery & Photocopying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 7.5,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 566.7
+            },
+            {
+              "code": "06-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 8.0,
+              "pending": 0.0,
+              "current": 2.71,
+              "total_2026_27": 2.71,
+              "yoy_pct": -66.1
+            },
+            {
+              "code": "06-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 2.4,
+              "pending": 0.0,
+              "current": 6.19,
+              "total_2026_27": 6.19,
+              "yoy_pct": 157.9
+            },
+            {
+              "code": "06-210403",
+              "name": "( ) Consultancy Charges Technical",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 18.0,
+              "pending": 0.0,
+              "current": 126.9,
+              "total_2026_27": 126.9,
+              "yoy_pct": 605.0
+            },
+            {
+              "code": "06-210704",
+              "name": "Poura Karmikas Day Celebration Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 69.5,
+              "total_2026_27": 69.5,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-210908-02",
+              "name": "Honorarium Expenses -Marshals",
+              "revised_2025_26": 6.48,
+              "pending": 0.0,
+              "current": 33.54,
+              "total_2026_27": 33.54,
+              "yoy_pct": 417.6
+            },
+            {
+              "code": "06-210908-03",
+              "name": "Honorariums Expenses - Link Workers & Junior Health Inspectors and Outsources Engineers",
+              "revised_2025_26": 190.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 57.9
+            },
+            {
+              "code": "06-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 19.23,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 56.0
+            },
+            {
+              "code": "06-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 13.56,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 158.1
+            },
+            {
+              "code": "06-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 0.8,
+              "pending": 0.0,
+              "current": 3.0,
+              "total_2026_27": 3.0,
+              "yoy_pct": 275.0
+            },
+            {
+              "code": "06-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 16.0,
+              "total_2026_27": 16.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 3.5,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 71.4
+            }
+          ]
+        },
+        {
+          "name": "Health and Sanitation",
+          "total_2026_27": 651.0,
+          "revised_2025_26": 195.0,
+          "spillover": 0,
+          "yoy_pct": 233.8,
+          "items": [
+            {
+              "code": "06-220302",
+              "name": "/ Consumption SWM related Consumables",
+              "revised_2025_26": 145.0,
+              "pending": 0.0,
+              "current": 295.0,
+              "total_2026_27": 295.0,
+              "yoy_pct": 103.4
+            },
+            {
+              "code": "06-220411",
+              "name": "( -. ) Repairs & Maintenance - Buildings Public Toilets (Including E-Toilets, Suvidha cabins),",
+              "revised_2025_26": 25.0,
+              "pending": 0.0,
+              "current": 128.0,
+              "total_2026_27": 128.0,
+              "yoy_pct": 412.0
+            },
+            {
+              "code": "06-221002",
+              "name": "Repairs & Maintenance of SWM Plant & Machinery",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-222120",
+              "name": "Maintenance of Slaughter Houses/Abattoir",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-221601",
+              "name": "Repairs and Maintenance – Others",
+              "revised_2025_26": 15.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 233.3
+            },
+            {
+              "code": "06-221611",
+              "name": "Maintenance of Mustering Centres for Poura Karmikas",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 1400.0
+            },
+            {
+              "code": "06-240101",
+              "name": ", , Campaigns, Rallies and IEC Programmes",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 23.0,
+              "total_2026_27": 23.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "( ) Capital Expenses (BWCC Fund)",
+          "total_2026_27": 59.0,
+          "revised_2025_26": 0,
+          "spillover": 9.0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "06-400899-01",
+              "name": "( , , , Brand Bengaluru-Clean Bengaluru (Purchase of Land for Landfill sites , Public Toilets and SWM Equipments , Long Term Hiring of Mechanical Sweeping Machine",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-401001",
+              "name": "Repairs and Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 6.5,
+              "current": 25.0,
+              "total_2026_27": 31.5,
+              "yoy_pct": null
+            },
+            {
+              "code": "06-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 2.5,
+              "current": 25.0,
+              "total_2026_27": 27.5,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "( ) Capital Expenses (GOK Grant)",
+          "total_2026_27": 0,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "06-340203",
+              "name": "[ : . . . . . ] Special Infrastructure Project Works Solid Waste Management & Subra Bengaluru - [Works are executed at M/s BSWML]",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "07",
+      "name": "Public Health-General",
+      "total_2026_27": 12424.24,
+      "revised_2025_26": 3434.64,
+      "spillover": 4030.0,
+      "yoy_pct": 261.7,
+      "sub_categories": [
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 3910.0,
+          "revised_2025_26": 13.0,
+          "spillover": 3530.0,
+          "yoy_pct": 29976.9,
+          "items": [
+            {
+              "code": "07-401299-01",
+              "name": ", , , , , ) & & Brand Bengaluru- Healthy Bengaluru Emergency Health Care Services, Financing, Laboratory Services, War",
+              "revised_2025_26": 0.0,
+              "pending": 3500.0,
+              "current": 0.0,
+              "total_2026_27": 3500.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "07-400905",
+              "name": "Hearse Vans",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "07-400906",
+              "name": "Cattle Catching Vehicles",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "07-400215",
+              "name": "Establishment of Dog Kennel (Pre fabricated container for CD recovered Dogs)",
+              "revised_2025_26": 0.0,
+              "pending": 30.0,
+              "current": 200.0,
+              "total_2026_27": 230.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "07-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 7.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 328.6
+            },
+            {
+              "code": "07-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 400.0
+            },
+            {
+              "code": "07-401203",
+              "name": "Hospital Equipment",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 70.0,
+              "total_2026_27": 70.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 3357.44,
+          "revised_2025_26": 1513.0,
+          "spillover": 0,
+          "yoy_pct": 121.9,
+          "items": [
+            {
+              "code": "07-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 1043.0,
+              "pending": 0.0,
+              "current": 1958.22,
+              "total_2026_27": 1958.22,
+              "yoy_pct": 87.7
+            },
+            {
+              "code": "07-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 468.0,
+              "pending": 0.0,
+              "current": 1389.22,
+              "total_2026_27": 1389.22,
+              "yoy_pct": 196.8
+            },
+            {
+              "code": "07-200301",
+              "name": "Pay and Allowance to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 400.0
+            }
+          ]
+        },
+        {
+          "name": "Programme Expenses",
+          "total_2026_27": 3321.0,
+          "revised_2025_26": 1259.5,
+          "spillover": 300.0,
+          "yoy_pct": 163.7,
+          "items": [
+            {
+              "code": "07-240101",
+              "name": ", , . Campaigns, Rallies, IEC and AIDS Programmes",
+              "revised_2025_26": 18.0,
+              "pending": 0.0,
+              "current": 71.0,
+              "total_2026_27": 71.0,
+              "yoy_pct": 294.4
+            },
+            {
+              "code": "07-240103",
+              "name": "Pulse Polio Programme Expenses",
+              "revised_2025_26": 16.67,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 199.9
+            },
+            {
+              "code": "07-240104",
+              "name": "Mosquito Control Programme Expenses",
+              "revised_2025_26": 653.0,
+              "pending": 200.0,
+              "current": 700.0,
+              "total_2026_27": 900.0,
+              "yoy_pct": 37.8
+            },
+            {
+              "code": "07-240105",
+              "name": "Street Dog Management Expenses",
+              "revised_2025_26": 238.5,
+              "pending": 100.0,
+              "current": 1200.0,
+              "total_2026_27": 1300.0,
+              "yoy_pct": 445.1
+            },
+            {
+              "code": "07-240702",
+              "name": "Indira Canteen Food Supply Programme",
+              "revised_2025_26": 333.33,
+              "pending": 0.0,
+              "current": 1000.0,
+              "total_2026_27": 1000.0,
+              "yoy_pct": 200.0
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 1153.8,
+          "revised_2025_26": 428.47,
+          "spillover": 0,
+          "yoy_pct": 169.3,
+          "items": [
+            {
+              "code": "07-210203",
+              "name": ", , Printing, Stationery & Photocopying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 16.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 87.5
+            },
+            {
+              "code": "07-210204",
+              "name": "– Telephone/Mobile Expenses",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 18.3,
+              "total_2026_27": 18.3,
+              "yoy_pct": 357.5
+            },
+            {
+              "code": "07-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 12.5,
+              "pending": 0.0,
+              "current": 37.5,
+              "total_2026_27": 37.5,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-210603",
+              "name": "Medical Expenses Reimbursement BWCC Employees",
+              "revised_2025_26": 12.0,
+              "pending": 0.0,
+              "current": 250.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": 1983.3
+            },
+            {
+              "code": "07-210799",
+              "name": "Corporation Ceremonies and Functions Expenses Others",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-210908-04",
+              "name": "Honorariums Expenees - Grave Diggers",
+              "revised_2025_26": 22.67,
+              "pending": 0.0,
+              "current": 68.0,
+              "total_2026_27": 68.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-210908-05",
+              "name": "Honorarium Expenses - Medical & Health Consultants",
+              "revised_2025_26": 66.67,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 50.0
+            },
+            {
+              "code": "07-210908-02",
+              "name": "[ ] Honorarium Expense – Marshals [ Indira Canteen ]",
+              "revised_2025_26": 140.0,
+              "pending": 0.0,
+              "current": 430.0,
+              "total_2026_27": 430.0,
+              "yoy_pct": 207.1
+            },
+            {
+              "code": "07-210999",
+              "name": "Other General andr Contingency Expenses",
+              "revised_2025_26": 105.0,
+              "pending": 0.0,
+              "current": 70.0,
+              "total_2026_27": 70.0,
+              "yoy_pct": -33.3
+            },
+            {
+              "code": "07-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 21.5,
+              "pending": 0.0,
+              "current": 64.5,
+              "total_2026_27": 64.5,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 7.8,
+              "pending": 0.0,
+              "current": 27.5,
+              "total_2026_27": 27.5,
+              "yoy_pct": 252.6
+            },
+            {
+              "code": "07-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles,",
+              "revised_2025_26": 2.33,
+              "pending": 0.0,
+              "current": 8.0,
+              "total_2026_27": 8.0,
+              "yoy_pct": 243.3
+            },
+            {
+              "code": "07-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 8.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 150.0
+            }
+          ]
+        },
+        {
+          "name": "Operation and Maintenance Expenses",
+          "total_2026_27": 682.0,
+          "revised_2025_26": 220.67,
+          "spillover": 200.0,
+          "yoy_pct": 209.1,
+          "items": [
+            {
+              "code": "07-221403-01",
+              "name": "Repairs & Maintenance of Hospital Equipment",
+              "revised_2025_26": 13.33,
+              "pending": 0.0,
+              "current": 40.0,
+              "total_2026_27": 40.0,
+              "yoy_pct": 200.1
+            },
+            {
+              "code": "07-221403-02",
+              "name": "Maintenance of Smart Virtual Clinic in BWCC area",
+              "revised_2025_26": 133.33,
+              "pending": 200.0,
+              "current": 200.0,
+              "total_2026_27": 400.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-222001",
+              "name": "Supply of Medicines and Drugs to Hospital & Health Care Centre",
+              "revised_2025_26": 34.0,
+              "pending": 0.0,
+              "current": 102.0,
+              "total_2026_27": 102.0,
+              "yoy_pct": 200.0
+            },
+            {
+              "code": "07-222003",
+              "name": "Disposal of Hospital Waste",
+              "revised_2025_26": 6.67,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 199.9
+            },
+            {
+              "code": "07-222006",
+              "name": "House Keeping and Laundry Service Expenses",
+              "revised_2025_26": 16.67,
+              "pending": 0.0,
+              "current": 60.0,
+              "total_2026_27": 60.0,
+              "yoy_pct": 259.9
+            },
+            {
+              "code": "07-222109",
+              "name": "Natural Calamities Expenses",
+              "revised_2025_26": 6.67,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 349.8
+            },
+            {
+              "code": "07-222119",
+              "name": ", , Operation and Maintenance of Hearse Van/water tankers/ Cattle Catching vehicles",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 200.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "08",
+      "name": "Public Health-Medical",
+      "total_2026_27": 6439.2,
+      "revised_2025_26": 1113.12,
+      "spillover": 0.0,
+      "yoy_pct": 478.5,
+      "sub_categories": [
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 2500.0,
+          "revised_2025_26": 751.0,
+          "spillover": 0,
+          "yoy_pct": 232.9,
+          "items": [
+            {
+              "code": "08-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 630.0,
+              "pending": 0.0,
+              "current": 2200.0,
+              "total_2026_27": 2200.0,
+              "yoy_pct": 249.2
+            },
+            {
+              "code": "08-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 121.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 147.9
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 2173.2,
+          "revised_2025_26": 255.36,
+          "spillover": 0,
+          "yoy_pct": 751.0,
+          "items": [
+            {
+              "code": "08-210203",
+              "name": ", , Printing, Stationery & Photoc opying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 0.75,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 700.0
+            },
+            {
+              "code": "08-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 1.32,
+              "pending": 0.0,
+              "current": 7.2,
+              "total_2026_27": 7.2,
+              "yoy_pct": 445.5
+            },
+            {
+              "code": "08-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 7.91,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 279.3
+            },
+            {
+              "code": "08-210499",
+              "name": "Consultancy Charges Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-210601",
+              "name": "Training & Workshop Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 3.0,
+              "total_2026_27": 3.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-210602",
+              "name": "Managed Health Care BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1000.0,
+              "total_2026_27": 1000.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-210908-05",
+              "name": "Honorarium Expenses - Medical & Health Consultants",
+              "revised_2025_26": 175.93,
+              "pending": 0.0,
+              "current": 800.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": 354.7
+            },
+            {
+              "code": "08-210913-01",
+              "name": "Security Service Expenses and Housekeeping expenses",
+              "revised_2025_26": 31.06,
+              "pending": 0.0,
+              "current": 137.0,
+              "total_2026_27": 137.0,
+              "yoy_pct": 341.1
+            },
+            {
+              "code": "08-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 5.2,
+              "pending": 0.0,
+              "current": 14.0,
+              "total_2026_27": 14.0,
+              "yoy_pct": 169.2
+            },
+            {
+              "code": "08-220102",
+              "name": "Electricity Charges BWCC Offices",
+              "revised_2025_26": 30.75,
+              "pending": 0.0,
+              "current": 144.0,
+              "total_2026_27": 144.0,
+              "yoy_pct": 368.3
+            },
+            {
+              "code": "08-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 1.92,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 420.8
+            },
+            {
+              "code": "08-221101",
+              "name": "Repairs & Maintenance of Cars & Other Office Vehicles",
+              "revised_2025_26": 0.02,
+              "pending": 0.0,
+              "current": 4.0,
+              "total_2026_27": 4.0,
+              "yoy_pct": 19900.0
+            },
+            {
+              "code": "08-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 0.5,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": 2300.0
+            }
+          ]
+        },
+        {
+          "name": "Operation and Maintenance Expenses",
+          "total_2026_27": 920.0,
+          "revised_2025_26": 106.76,
+          "spillover": 0,
+          "yoy_pct": 761.7,
+          "items": [
+            {
+              "code": "08-221403",
+              "name": "Repairs & Maintenance of Hospital Equipment",
+              "revised_2025_26": 9.0,
+              "pending": 0.0,
+              "current": 110.0,
+              "total_2026_27": 110.0,
+              "yoy_pct": 1122.2
+            },
+            {
+              "code": "08-222001",
+              "name": "Supply of Medicines and Drugs to Hospital & Health Care Centre",
+              "revised_2025_26": 28.0,
+              "pending": 0.0,
+              "current": 325.0,
+              "total_2026_27": 325.0,
+              "yoy_pct": 1060.7
+            },
+            {
+              "code": "08-222002",
+              "name": "Supply of Food in Hospitals and Health Care Centres",
+              "revised_2025_26": 40.55,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 23.3
+            },
+            {
+              "code": "08-222003",
+              "name": "Disposal of Hospital Waste",
+              "revised_2025_26": 8.15,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 268.1
+            },
+            {
+              "code": "08-222004",
+              "name": "Hospital and Health Care Medical Service -P0062, P3573 P3888",
+              "revised_2025_26": 20.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 650.0
+            },
+            {
+              "code": "08-222006",
+              "name": "House Keeping and Laundry Service Expenses",
+              "revised_2025_26": 1.06,
+              "pending": 0.0,
+              "current": 80.0,
+              "total_2026_27": 80.0,
+              "yoy_pct": 7447.2
+            },
+            {
+              "code": "08-222007",
+              "name": "Maintenance of Dialysis Center",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-222109",
+              "name": "Natural Calamities Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 835.0,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "08-401001",
+              "name": "Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-401203",
+              "name": "Hospital Equipment",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 800.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Programme Expenses",
+          "total_2026_27": 11.0,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "08-240101",
+              "name": ", , Campaigns, Rallies and Information, Education and Publicity Programme",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 11.0,
+              "total_2026_27": 11.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-240202",
+              "name": "Establishment of Palliative Care Centre",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "08-240201",
+              "name": "Hospital and Health Care Programme Stents to Heart patients",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "09",
+      "name": "Horticulture",
+      "total_2026_27": 7460.05,
+      "revised_2025_26": 2782.47,
+      "spillover": 1195.08,
+      "yoy_pct": 168.1,
+      "sub_categories": [
+        {
+          "name": "Operation and Maintenance Expenses",
+          "total_2026_27": 4745.0,
+          "revised_2025_26": 1912.0,
+          "spillover": 345.0,
+          "yoy_pct": 148.2,
+          "items": [
+            {
+              "code": "09-220501",
+              "name": "Maintenance of BWCC Parks",
+              "revised_2025_26": 1912.0,
+              "pending": 345.0,
+              "current": 4400.0,
+              "total_2026_27": 4745.0,
+              "yoy_pct": 148.2
+            }
+          ]
+        },
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 1160.08,
+          "revised_2025_26": 0,
+          "spillover": 850.08,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "09-400399-01",
+              "name": ", . Brand Bengaluru-Green Bengaluru Disaster Management s, Lakes s, Forest , Park Development Perculation Tanks",
+              "revised_2025_26": 0.0,
+              "pending": 617.56,
+              "current": 0.0,
+              "total_2026_27": 617.56,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-400301",
+              "name": "[ / / / , ] 1. 100 . 100.00 Development of Parks and Gardens Including Entrance points to the City/Railway Stations/Airport Road. /Medians/Flyovers/Circles in the City Centers and other various heads 1. 100 Miyawaky forest (Rs. 100.00 Lakhs)",
+              "revised_2025_26": 0.0,
+              "pending": 232.52,
+              "current": 300.0,
+              "total_2026_27": 532.52,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-401001",
+              "name": "Purchase of Computers & Computer Peripherals",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-401099",
+              "name": ", Office Furniture & Fitting, and Office Equipment Others",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 1140.93,
+          "revised_2025_26": 654.0,
+          "spillover": 0,
+          "yoy_pct": 74.5,
+          "items": [
+            {
+              "code": "09-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 428.0,
+              "pending": 0.0,
+              "current": 1066.12,
+              "total_2026_27": 1066.12,
+              "yoy_pct": 149.1
+            },
+            {
+              "code": "09-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 226.0,
+              "pending": 0.0,
+              "current": 74.81,
+              "total_2026_27": 74.81,
+              "yoy_pct": -66.9
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 414.04,
+          "revised_2025_26": 216.47,
+          "spillover": 0,
+          "yoy_pct": 91.3,
+          "items": [
+            {
+              "code": "09-210203",
+              "name": "Printing, Stationery & Photo copying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 1.15,
+              "pending": 0.0,
+              "current": 7.2,
+              "total_2026_27": 7.2,
+              "yoy_pct": 526.1
+            },
+            {
+              "code": "09-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 0.23,
+              "pending": 0.0,
+              "current": 2.24,
+              "total_2026_27": 2.24,
+              "yoy_pct": 873.9
+            },
+            {
+              "code": "09-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 3.35,
+              "pending": 0.0,
+              "current": 8.6,
+              "total_2026_27": 8.6,
+              "yoy_pct": 156.7
+            },
+            {
+              "code": "09-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 15.0,
+              "total_2026_27": 15.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 0.07,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": 17042.9
+            },
+            {
+              "code": "09-220105",
+              "name": "Electricity Charges - Parks & Play grounds",
+              "revised_2025_26": 210.0,
+              "pending": 0.0,
+              "current": 360.0,
+              "total_2026_27": 360.0,
+              "yoy_pct": 71.4
+            },
+            {
+              "code": "09-221101",
+              "name": ", Repairs & Maintenance of Cars & Other Office Vehicles,",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "09-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals,",
+              "revised_2025_26": 1.67,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": 19.8
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "10",
+      "name": "Urban Forestry",
+      "total_2026_27": 2240.0,
+      "revised_2025_26": 942.3,
+      "spillover": 0.0,
+      "yoy_pct": 137.7,
+      "sub_categories": [
+        {
+          "name": "Operation and Maintenance Expenses",
+          "total_2026_27": 1940.0,
+          "revised_2025_26": 824.0,
+          "spillover": 0,
+          "yoy_pct": 135.4,
+          "items": [
+            {
+              "code": "10-221701",
+              "name": "Avenue Plantation Expenses",
+              "revised_2025_26": 224.0,
+              "pending": 0.0,
+              "current": 600.0,
+              "total_2026_27": 600.0,
+              "yoy_pct": 167.9
+            },
+            {
+              "code": "10-221702",
+              "name": ", , Tree Survey and Tree numbering expenses",
+              "revised_2025_26": 56.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": -10.7
+            },
+            {
+              "code": "10-221703",
+              "name": "Maintenance of Plantation raised in BWCC Area",
+              "revised_2025_26": 160.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": -37.5
+            },
+            {
+              "code": "10-221704",
+              "name": "Production and Maintenance of Seedlings",
+              "revised_2025_26": 51.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 96.1
+            },
+            {
+              "code": "10-221706",
+              "name": "Tree Canopy Management",
+              "revised_2025_26": 280.0,
+              "pending": 0.0,
+              "current": 900.0,
+              "total_2026_27": 900.0,
+              "yoy_pct": 221.4
+            },
+            {
+              "code": "10-221707",
+              "name": "Providing Tree Guards",
+              "revised_2025_26": 28.0,
+              "pending": 0.0,
+              "current": 50.0,
+              "total_2026_27": 50.0,
+              "yoy_pct": 78.6
+            },
+            {
+              "code": "10-221708",
+              "name": "Animal Rescue unit Maintenance expenses",
+              "revised_2025_26": 19.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 426.3
+            },
+            {
+              "code": "10-221709",
+              "name": "Vanamahothsava and other Maintenance expenses",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 40.0,
+              "total_2026_27": 40.0,
+              "yoy_pct": 566.7
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 242.0,
+          "revised_2025_26": 110.8,
+          "spillover": 0,
+          "yoy_pct": 118.4,
+          "items": [
+            {
+              "code": "10-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 68.8,
+              "pending": 0.0,
+              "current": 160.0,
+              "total_2026_27": 160.0,
+              "yoy_pct": 132.6
+            },
+            {
+              "code": "10-200201",
+              "name": "Allowances and Benefits to Officers and Staff,",
+              "revised_2025_26": 36.0,
+              "pending": 0.0,
+              "current": 72.0,
+              "total_2026_27": 72.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "10-200301",
+              "name": "Pay and Allowance to Equal Pay to Equal Work Staff",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 66.7
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 58.0,
+          "revised_2025_26": 7.5,
+          "spillover": 0,
+          "yoy_pct": 673.3,
+          "items": [
+            {
+              "code": "10-210203",
+              "name": "Printing, Stationery & Photocopying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 5.0,
+              "total_2026_27": 5.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "10-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 1.0,
+              "total_2026_27": 1.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "10-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 3.0,
+              "pending": 0.0,
+              "current": 2.0,
+              "total_2026_27": 2.0,
+              "yoy_pct": -33.3
+            },
+            {
+              "code": "10-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 525.0
+            },
+            {
+              "code": "10-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 0.5,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": 4900.0
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "11",
+      "name": "Public Education",
+      "total_2026_27": 4435.16,
+      "revised_2025_26": 2129.85,
+      "spillover": 0.0,
+      "yoy_pct": 108.2,
+      "sub_categories": [
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 1963.16,
+          "revised_2025_26": 965.0,
+          "spillover": 0,
+          "yoy_pct": 103.4,
+          "items": [
+            {
+              "code": "11-210203",
+              "name": "Printing, Stationery & Photo copying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 4.0,
+              "total_2026_27": 4.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-210302",
+              "name": "BWCC Vehicle Fuel Expenses",
+              "revised_2025_26": 6.0,
+              "pending": 0.0,
+              "current": 12.0,
+              "total_2026_27": 12.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-210601",
+              "name": "Training & Workshop Expenses",
+              "revised_2025_26": 10.0,
+              "pending": 0.0,
+              "current": 20.0,
+              "total_2026_27": 20.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-210603",
+              "name": "Medical Reimbursement BWCC Employees",
+              "revised_2025_26": 7.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 42.9
+            },
+            {
+              "code": "11-210908-06",
+              "name": "Honorarium Expenses -Outsourced teachers",
+              "revised_2025_26": 722.0,
+              "pending": 0.0,
+              "current": 1160.0,
+              "total_2026_27": 1160.0,
+              "yoy_pct": 60.7
+            },
+            {
+              "code": "11-210911",
+              "name": ", , Information, Education and Publicity Programme",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 150.0
+            },
+            {
+              "code": "11-210912",
+              "name": ", First Aid Facilities in Office, Schools and Colleges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 25.0,
+              "total_2026_27": 25.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "11-210913-01",
+              "name": "Security Service Expenses and Housekeeping Expenses",
+              "revised_2025_26": 150.0,
+              "pending": 0.0,
+              "current": 600.0,
+              "total_2026_27": 600.0,
+              "yoy_pct": 300.0
+            },
+            {
+              "code": "11-220102",
+              "name": "Electricity Charges - BWCC Offices",
+              "revised_2025_26": 5.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-220201",
+              "name": "Water Charges - BWCC Offices",
+              "revised_2025_26": 3.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-221101",
+              "name": ", Repairs & Maintenance of Cars & Other Office Vehicles,",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 5.16,
+              "total_2026_27": 5.16,
+              "yoy_pct": 158.0
+            },
+            {
+              "code": "11-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 2.0,
+              "pending": 0.0,
+              "current": 4.0,
+              "total_2026_27": 4.0,
+              "yoy_pct": 100.0
+            },
+            {
+              "code": "11-221914",
+              "name": "School/College Contingency Expenses",
+              "revised_2025_26": 21.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 66.7
+            },
+            {
+              "code": "11-210914",
+              "name": "House Keeping Expenses",
+              "revised_2025_26": 21.0,
+              "pending": 0.0,
+              "current": 42.0,
+              "total_2026_27": 42.0,
+              "yoy_pct": 100.0
+            }
+          ]
+        },
+        {
+          "name": "Operation and Maintenance Expenses",
+          "total_2026_27": 1260.0,
+          "revised_2025_26": 550.0,
+          "spillover": 0,
+          "yoy_pct": 129.1,
+          "items": [
+            {
+              "code": "11-221903",
+              "name": "Mid day Meal Expenses",
+              "revised_2025_26": 99.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 203.0
+            },
+            {
+              "code": "11-221905",
+              "name": ", , Note Books, Uniforms, School Bags and Shoes expenses",
+              "revised_2025_26": 375.0,
+              "pending": 0.0,
+              "current": 800.0,
+              "total_2026_27": 800.0,
+              "yoy_pct": 113.3
+            },
+            {
+              "code": "11-221999",
+              "name": "School and College Other Educational Expenses",
+              "revised_2025_26": 76.0,
+              "pending": 0.0,
+              "current": 160.0,
+              "total_2026_27": 160.0,
+              "yoy_pct": 110.5
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 773.0,
+          "revised_2025_26": 457.0,
+          "spillover": 0,
+          "yoy_pct": 69.1,
+          "items": [
+            {
+              "code": "11-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 322.0,
+              "pending": 0.0,
+              "current": 698.0,
+              "total_2026_27": 698.0,
+              "yoy_pct": 116.8
+            },
+            {
+              "code": "11-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 135.0,
+              "pending": 0.0,
+              "current": 75.0,
+              "total_2026_27": 75.0,
+              "yoy_pct": -44.4
+            }
+          ]
+        },
+        {
+          "name": "Programme Expenses",
+          "total_2026_27": 344.0,
+          "revised_2025_26": 83.85,
+          "spillover": 0,
+          "yoy_pct": 310.3,
+          "items": [
+            {
+              "code": "11-240701-01",
+              "name": ", PPP with Bharatiya Vidya Bhavan",
+              "revised_2025_26": 24.85,
+              "pending": 0.0,
+              "current": 34.0,
+              "total_2026_27": 34.0,
+              "yoy_pct": 36.8
+            },
+            {
+              "code": "11-240701-02",
+              "name": "& BWCC DISTRICT ASSOCIATION OF BHARATH SCOUTS & GUIDES",
+              "revised_2025_26": 9.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 11.1
+            },
+            {
+              "code": "11-240701-03",
+              "name": "School and College Other Educational Programmes",
+              "revised_2025_26": 50.0,
+              "pending": 0.0,
+              "current": 200.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": 300.0
+            },
+            {
+              "code": "11-240701-04",
+              "name": "Introduction of SMART Schools in phased manner",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": null
+            }
+          ]
+        },
+        {
+          "name": "Functions and Ceremonies",
+          "total_2026_27": 95.0,
+          "revised_2025_26": 74.0,
+          "spillover": 0,
+          "yoy_pct": 28.4,
+          "items": [
+            {
+              "code": "11-210701",
+              "name": ", , Independence Day/Republic Day/ Kannanda Rajyotsava Celebrations Expenses",
+              "revised_2025_26": 24.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 25.0
+            },
+            {
+              "code": "11-210710",
+              "name": "School Day Teachers' Day/Children's Day Celebration Expenses Celebration Expenses",
+              "revised_2025_26": 25.0,
+              "pending": 0.0,
+              "current": 30.0,
+              "total_2026_27": 30.0,
+              "yoy_pct": 20.0
+            },
+            {
+              "code": "11-210712",
+              "name": "Sports and Cultural Activity Expenses",
+              "revised_2025_26": 25.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 40.0
+            }
+          ]
+        },
+        {
+          "name": "Capital Expenses",
+          "total_2026_27": 0,
+          "revised_2025_26": 0,
+          "spillover": 0,
+          "yoy_pct": null,
+          "items": [
+            {
+              "code": "11-401199-01",
+              "name": "( , , Brand Bengaluru- Education Bengaluru (Educational Improvement Programme and development of infrastructure High Quality Education Uniform, Educational Environment improvement)",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "11-400602",
+              "name": "RO Plants",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "11-401101",
+              "name": "Computers and Computer Peripherals Scools/Colleges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "11-401102",
+              "name": ", Lab Apparatus and Equipment Schools & Colleges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "11-401103",
+              "name": "Furniture & Fittings to Schools & Colleges",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "code": "12",
+      "name": "Social Welfare",
+      "total_2026_27": 19875.67,
+      "revised_2025_26": 12899.0,
+      "spillover": 3121.17,
+      "yoy_pct": 54.1,
+      "sub_categories": [
+        {
+          "name": "Pourakarmika Welfare",
+          "total_2026_27": 18599.87,
+          "revised_2025_26": 12362.0,
+          "spillover": 3121.17,
+          "yoy_pct": 50.5,
+          "items": [
+            {
+              "code": "12-240301-01",
+              "name": "Construction of Individual houses for Pourakarmikas",
+              "revised_2025_26": 652.0,
+              "pending": 431.51,
+              "current": 1000.0,
+              "total_2026_27": 1431.51,
+              "yoy_pct": 119.6
+            },
+            {
+              "code": "12-240301-02",
+              "name": "Health Programme to Pourakarmikas and families",
+              "revised_2025_26": 254.0,
+              "pending": 151.0,
+              "current": 400.0,
+              "total_2026_27": 551.0,
+              "yoy_pct": 116.9
+            },
+            {
+              "code": "12-240302-01",
+              "name": "Welfare programmes for Pourakarmikas",
+              "revised_2025_26": 308.0,
+              "pending": 91.0,
+              "current": 550.0,
+              "total_2026_27": 641.0,
+              "yoy_pct": 108.1
+            },
+            {
+              "code": "12-240303-01",
+              "name": "( ) Financial Assistance to SC/ST Poura karmikas and D Group { Permanent & Outsource employees}",
+              "revised_2025_26": 363.0,
+              "pending": 95.68,
+              "current": 600.0,
+              "total_2026_27": 695.68,
+              "yoy_pct": 91.6
+            },
+            {
+              "code": "12-240303-02",
+              "name": ", Assistance to Children of PKs, Gangmen, Malies",
+              "revised_2025_26": 330.0,
+              "pending": 81.75,
+              "current": 550.0,
+              "total_2026_27": 631.75,
+              "yoy_pct": 91.4
+            },
+            {
+              "code": "12-240303-04",
+              "name": "[ ], Social Security scheme to DPS PK's [Pension]",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "12-240301-03",
+              "name": "Housing Scheme (Individual) for SC/ST",
+              "revised_2025_26": 1599.0,
+              "pending": 892.01,
+              "current": 2000.0,
+              "total_2026_27": 2892.01,
+              "yoy_pct": 80.9
+            },
+            {
+              "code": "12-240301-04",
+              "name": "Health Programmes SC/ST beneficiers",
+              "revised_2025_26": 165.0,
+              "pending": 57.08,
+              "current": 400.0,
+              "total_2026_27": 457.08,
+              "yoy_pct": 177.0
+            },
+            {
+              "code": "12-240301-05",
+              "name": "Educational Programmes SC/ST beneficiers",
+              "revised_2025_26": 108.0,
+              "pending": 68.78,
+              "current": 250.0,
+              "total_2026_27": 318.78,
+              "yoy_pct": 195.2
+            },
+            {
+              "code": "12-240301-06",
+              "name": "/ . Construction of Houses for SC/ST working at Graveyard/burial ground in BWCC area",
+              "revised_2025_26": 127.0,
+              "pending": 167.56,
+              "current": 300.0,
+              "total_2026_27": 467.56,
+              "yoy_pct": 268.2
+            },
+            {
+              "code": "12-240301-07",
+              "name": "Procurement of items for distribution to SC/ST Beneficieris",
+              "revised_2025_26": 208.0,
+              "pending": 92.53,
+              "current": 600.0,
+              "total_2026_27": 692.53,
+              "yoy_pct": 232.9
+            },
+            {
+              "code": "12-240301-08",
+              "name": "[75% 25% ] ] e-Vending Vehicle to SC/ST Street Vendors [75% for Men 25% for women]",
+              "revised_2025_26": 608.0,
+              "pending": 135.34,
+              "current": 900.0,
+              "total_2026_27": 1035.34,
+              "yoy_pct": 70.3
+            },
+            {
+              "code": "12-240303-03",
+              "name": "(unnamed)",
+              "revised_2025_26": 237.0,
+              "pending": 58.42,
+              "current": 400.0,
+              "total_2026_27": 458.42,
+              "yoy_pct": 93.4
+            },
+            {
+              "code": "12-240401-01",
+              "name": "Construction of Houses for Backward classes & Minorities",
+              "revised_2025_26": 432.0,
+              "pending": 245.5,
+              "current": 700.0,
+              "total_2026_27": 945.5,
+              "yoy_pct": 118.9
+            },
+            {
+              "code": "12-240401-02",
+              "name": "– Health Programmes BCM beneficiers",
+              "revised_2025_26": 93.0,
+              "pending": 22.32,
+              "current": 200.0,
+              "total_2026_27": 222.32,
+              "yoy_pct": 139.1
+            },
+            {
+              "code": "12-240401-03",
+              "name": "Educational Programmes BCM beneficiers",
+              "revised_2025_26": 115.0,
+              "pending": 32.72,
+              "current": 200.0,
+              "total_2026_27": 232.72,
+              "yoy_pct": 102.4
+            },
+            {
+              "code": "12-240401-04",
+              "name": "Financial assistance to economocally backward student for higher education ( Foreign)",
+              "revised_2025_26": 104.0,
+              "pending": 0.0,
+              "current": 200.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": 92.3
+            },
+            {
+              "code": "12-240401-05",
+              "name": "Procurement of items for distribution to BCM Beneficieris",
+              "revised_2025_26": 126.0,
+              "pending": 26.66,
+              "current": 250.0,
+              "total_2026_27": 276.66,
+              "yoy_pct": 119.6
+            },
+            {
+              "code": "12-240401-06",
+              "name": "[75% 25% ] OBC/BCM E Vending Vehicle to Street Vendors [75% Men 25% women]",
+              "revised_2025_26": 154.0,
+              "pending": 0.0,
+              "current": 300.0,
+              "total_2026_27": 300.0,
+              "yoy_pct": 94.8
+            },
+            {
+              "code": "12-240401-07",
+              "name": ", , , Honorarium Expenses - Tailoring/ Knitting/ Embroidery/Coir training centres staff",
+              "revised_2025_26": 61.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 63.9
+            },
+            {
+              "code": "12-240401-08",
+              "name": ", , , Rent to Tailoring/Knitting/ Embroidery/Coir training centres",
+              "revised_2025_26": 61.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 63.9
+            },
+            {
+              "code": "12-240401-09",
+              "name": "[ ] Social Security scheme to DPS PK's [Pension]",
+              "revised_2025_26": 0.0,
+              "pending": 0.0,
+              "current": 0.0,
+              "total_2026_27": 0.0,
+              "yoy_pct": null
+            },
+            {
+              "code": "12-240501-01",
+              "name": "Individual Houses for Specially abled Rs.5.00 Lakhs per house",
+              "revised_2025_26": 272.0,
+              "pending": 205.91,
+              "current": 600.0,
+              "total_2026_27": 805.91,
+              "yoy_pct": 196.3
+            },
+            {
+              "code": "12-240501-02",
+              "name": "Health Programmes Specially abled Beneficiaries",
+              "revised_2025_26": 90.0,
+              "pending": 25.36,
+              "current": 150.0,
+              "total_2026_27": 175.36,
+              "yoy_pct": 94.8
+            },
+            {
+              "code": "12-240501-03",
+              "name": "Education Programmes Specially abled Beneficiaries",
+              "revised_2025_26": 90.0,
+              "pending": 29.68,
+              "current": 150.0,
+              "total_2026_27": 179.68,
+              "yoy_pct": 99.6
+            },
+            {
+              "code": "12-240501-04",
+              "name": "Financial Assistance to Specially abled Beneficiaries",
+              "revised_2025_26": 112.0,
+              "pending": 10.0,
+              "current": 150.0,
+              "total_2026_27": 160.0,
+              "yoy_pct": 42.9
+            },
+            {
+              "code": "12-240501-05",
+              "name": "Financial Assistance to Specially abled sports persons participating National & International level",
+              "revised_2025_26": 85.0,
+              "pending": 0.0,
+              "current": 150.0,
+              "total_2026_27": 150.0,
+              "yoy_pct": 76.5
+            },
+            {
+              "code": "12-240501-06",
+              "name": "Financial Assistance to Educational Institutions meant for Specially abled persons",
+              "revised_2025_26": 77.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 29.9
+            },
+            {
+              "code": "12-240501-07",
+              "name": "Distribution of Three Wheeler Motor Vehicle for Specially abled Persons",
+              "revised_2025_26": 156.0,
+              "pending": 34.89,
+              "current": 200.0,
+              "total_2026_27": 234.89,
+              "yoy_pct": 50.6
+            },
+            {
+              "code": "12-2405",
+              "name": "Procurement of items for distribution to Specially abled Beneficieris",
+              "revised_2025_26": 108.0,
+              "pending": 43.47,
+              "current": 200.0,
+              "total_2026_27": 243.47,
+              "yoy_pct": 125.4
+            },
+            {
+              "code": "12-240601-01",
+              "name": "Individual Houses for EWS Rs..5.00 Lakhs per house,",
+              "revised_2025_26": 361.0,
+              "pending": 122.0,
+              "current": 500.0,
+              "total_2026_27": 622.0,
+              "yoy_pct": 72.3
+            },
+            {
+              "code": "12-240601-02",
+              "name": "Procurement of items for distribution to EWS Beneficieris",
+              "revised_2025_26": 145.0,
+              "pending": 0.0,
+              "current": 200.0,
+              "total_2026_27": 200.0,
+              "yoy_pct": 37.9
+            },
+            {
+              "code": "12-240602",
+              "name": "Welfare Programmes for women",
+              "revised_2025_26": 180.0,
+              "pending": 0.0,
+              "current": 250.0,
+              "total_2026_27": 250.0,
+              "yoy_pct": 38.9
+            },
+            {
+              "code": "12-240603",
+              "name": "Welfare Programmes for Senior Citizens",
+              "revised_2025_26": 180.0,
+              "pending": 0.0,
+              "current": 220.0,
+              "total_2026_27": 220.0,
+              "yoy_pct": 22.2
+            },
+            {
+              "code": "12-240604",
+              "name": "Welfare Programmes for Transgender",
+              "revised_2025_26": 91.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 9.9
+            },
+            {
+              "code": "12-240606",
+              "name": "[ ] Welfare Programmes for Hawkers [Vending Zone]",
+              "revised_2025_26": 180.0,
+              "pending": 0.0,
+              "current": 210.0,
+              "total_2026_27": 210.0,
+              "yoy_pct": 16.7
+            },
+            {
+              "code": "12-240607",
+              "name": "Welfare Programmes-Maintenance of Night Shelters",
+              "revised_2025_26": 91.0,
+              "pending": 0.0,
+              "current": 100.0,
+              "total_2026_27": 100.0,
+              "yoy_pct": 9.9
+            },
+            {
+              "code": "12-240699",
+              "name": "Welfare Programmes General",
+              "revised_2025_26": 3886.0,
+              "pending": 0.0,
+              "current": 2000.0,
+              "total_2026_27": 2000.0,
+              "yoy_pct": -48.5
+            },
+            {
+              "code": "12-250102-01",
+              "name": "– Financial Assistance to sports persons participating National & International level",
+              "revised_2025_26": 27.0,
+              "pending": 0.0,
+              "current": 35.1,
+              "total_2026_27": 35.1,
+              "yoy_pct": 30.0
+            },
+            {
+              "code": "12-250102-02",
+              "name": "( ) Discretionary Medical Relief Grants to Press and Media Reporters [Descritionary grants of Hon’ble Mayor]",
+              "revised_2025_26": 45.0,
+              "pending": 0.0,
+              "current": 58.5,
+              "total_2026_27": 58.5,
+              "yoy_pct": 30.0
+            },
+            {
+              "code": "12-250102-03",
+              "name": "Group Insurance Scheme to Small and Medium Press reporters",
+              "revised_2025_26": 27.0,
+              "pending": 0.0,
+              "current": 35.1,
+              "total_2026_27": 35.1,
+              "yoy_pct": 30.0
+            },
+            {
+              "code": "12-250107",
+              "name": "Discretionary Medical Relief Grants Hon’ble Mayor",
+              "revised_2025_26": 27.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 29.6
+            },
+            {
+              "code": "12-250108",
+              "name": "Discretionary Medical Relief Grants Corporators",
+              "revised_2025_26": 27.0,
+              "pending": 0.0,
+              "current": 35.0,
+              "total_2026_27": 35.0,
+              "yoy_pct": 29.6
+            }
+          ]
+        },
+        {
+          "name": "Establishment Expenses",
+          "total_2026_27": 1248.3,
+          "revised_2025_26": 517.0,
+          "spillover": 0,
+          "yoy_pct": 141.5,
+          "items": [
+            {
+              "code": "12-200101",
+              "name": "Pay of Officers and Staff",
+              "revised_2025_26": 111.0,
+              "pending": 0.0,
+              "current": 144.3,
+              "total_2026_27": 144.3,
+              "yoy_pct": 30.0
+            },
+            {
+              "code": "12-200201",
+              "name": "Allowances and Benefits to Officers and Staff",
+              "revised_2025_26": 60.0,
+              "pending": 0.0,
+              "current": 78.0,
+              "total_2026_27": 78.0,
+              "yoy_pct": 30.0
+            },
+            {
+              "code": "12-200301",
+              "name": "Pay and Allowance Equal Pay to Equal Work Staff",
+              "revised_2025_26": 346.0,
+              "pending": 0.0,
+              "current": 1026.0,
+              "total_2026_27": 1026.0,
+              "yoy_pct": 196.5
+            }
+          ]
+        },
+        {
+          "name": "General Administrative Expenses",
+          "total_2026_27": 27.5,
+          "revised_2025_26": 20.0,
+          "spillover": 0,
+          "yoy_pct": 37.5,
+          "items": [
+            {
+              "code": "12-210203",
+              "name": "Printing, Stationery & Photocopying Revenue/Postal Stamp Charges",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 50.0
+            },
+            {
+              "code": "12-210204",
+              "name": "Telephone/Mobile Expenses",
+              "revised_2025_26": 1.0,
+              "pending": 0.0,
+              "current": 1.5,
+              "total_2026_27": 1.5,
+              "yoy_pct": 50.0
+            },
+            {
+              "code": "12-210603",
+              "name": "Medical Expenses Reimbursement BWCC Employees",
+              "revised_2025_26": 4.0,
+              "pending": 0.0,
+              "current": 6.0,
+              "total_2026_27": 6.0,
+              "yoy_pct": 50.0
+            },
+            {
+              "code": "12-221201",
+              "name": "Repairs & Maintenance of Computers & Computer Peripherals",
+              "revised_2025_26": 3.0,
+              "pending": 0.0,
+              "current": 4.0,
+              "total_2026_27": 4.0,
+              "yoy_pct": 33.3
+            },
+            {
+              "code": "12-210999",
+              "name": "Other General and Contingency Expenses",
+              "revised_2025_26": 8.0,
+              "pending": 0.0,
+              "current": 10.0,
+              "total_2026_27": 10.0,
+              "yoy_pct": 25.0
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
