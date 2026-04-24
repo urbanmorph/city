@@ -67,96 +67,91 @@ export function loadSpeechProjects(cityId: string, corpId: string, year = "2026-
   );
 }
 
-// Department → Schedule-I function the department rolls up to.
-// Matches departments.json budget_heads (and budget_notes for "funded under …").
-export const DEPT_TO_FUNCTION: Record<string, string> = {
-  engineering: "05",
-  revenue: "03",
-  advertisement: "03",
-  "health-sanitation": "07",
-  "animal-husbandry": "07",
-  "forest-horticulture": "09",
-  administration: "02",
-  finance: "02",
-  "public-relations": "02",
-  "solid-waste": "06",
-  welfare: "12",
-  "town-planning": "04",
-  "land-acquisition": "04",
-  education: "11",
-};
+// A "category" is a thematic section from the Commissioner's speech (e.g. welfare,
+// public-works). Each corp has its own set — read from the speech JSON's sections[].
+export interface CategoryDef {
+  code: string;
+  title: string;
+  title_local: string | null;
+  page_start?: number;
+  page_end?: number;
+}
 
-export interface MergedProject {
+export function loadCategories(cityId: string, corpId: string, year = "2026-27"): CategoryDef[] {
+  const speech = loadSpeechProjects(cityId, corpId, year);
+  const raw = (speech as any)?.sections ?? [];
+  return raw.map((s: any) => ({
+    code: s.code,
+    title: s.title,
+    title_local: s.title_local ?? null,
+    page_start: s.page_start,
+    page_end: s.page_end,
+  }));
+}
+
+export interface MergedItem {
   id: string;
   name: string;
   name_local: string | null;
   description: string;
   amount_lakhs: number | null;
   page: number;
-  category: string;
   verbatim_quote: string;
-  function_code: string | null;
-  function_name: string | null;
-  tag_reason: string;
-  section?: string | null;
-  section_local?: string | null;
-  departments: string[];      // editor-assigned; first = primary, rest = secondary
-  primary_department: string | null;
-  secondary_departments: string[];
-  effective_function_code: string | null; // primary dept's function if tagged, else heuristic function_code
+  section: string | null;              // from extraction (auto-tag)
+  section_local: string | null;
+  effective_category: string;           // override if present, else section, else 'uncategorised'
+  has_override: boolean;
   source: "speech" | "manual";
 }
 
-export async function loadMergedSpeechProjects(
+export async function loadMergedItems(
   cityId: string,
   corpId: string,
   year = "2026-27"
-): Promise<{ base: SpeechProjects | null; merged: MergedProject[] }> {
-  const { loadItemDepartments, loadManualItems } = await import("./supabase");
+): Promise<MergedItem[]> {
+  const { loadItemCategories, loadManualItems } = await import("./supabase");
   const base = loadSpeechProjects(cityId, corpId, year);
   const [overrides, manuals] = await Promise.all([
-    loadItemDepartments(corpId),
+    loadItemCategories(corpId),
     loadManualItems(corpId),
   ]);
 
-  const merged: MergedProject[] = [];
+  const out: MergedItem[] = [];
   for (const p of base?.projects ?? []) {
-    const depts = overrides.get(p.id) ?? [];
-    const primary = depts[0] ?? null;
-    merged.push({
-      ...(p as any),
-      section: (p as any).section ?? null,
+    const override = overrides.get(p.id);
+    const section = (p as any).section ?? null;
+    out.push({
+      id: p.id,
+      name: p.name,
+      name_local: p.name_local ?? null,
+      description: p.description ?? "",
+      amount_lakhs: p.amount_lakhs,
+      page: p.page,
+      verbatim_quote: p.verbatim_quote ?? "",
+      section,
       section_local: (p as any).section_local ?? null,
-      departments: depts,
-      primary_department: primary,
-      secondary_departments: depts.slice(1),
-      effective_function_code: primary ? (DEPT_TO_FUNCTION[primary] ?? p.function_code) : p.function_code,
+      effective_category: override ?? section ?? "uncategorised",
+      has_override: !!override,
       source: "speech",
     });
   }
   for (const m of manuals) {
-    const depts = m.departments ?? [];
-    const primary = depts[0] ?? null;
-    merged.push({
+    const override = overrides.get(m.item_id) ?? m.category_override ?? null;
+    const section = m.section ?? "manual";
+    out.push({
       id: m.item_id,
       name: m.name,
       name_local: null,
       description: m.description ?? "",
       amount_lakhs: m.amount_lakhs,
       page: m.page ?? 0,
-      category: "manual",
       verbatim_quote: m.verbatim_quote ?? "",
-      function_code: null,
-      function_name: null,
-      tag_reason: "manually added",
-      section: m.section ?? "manual",
+      section,
       section_local: null,
-      departments: depts,
-      primary_department: primary,
-      secondary_departments: depts.slice(1),
-      effective_function_code: primary ? (DEPT_TO_FUNCTION[primary] ?? null) : null,
+      effective_category: override ?? section,
+      has_override: !!override,
       source: "manual",
     });
   }
-  return { base, merged };
+  return out;
 }

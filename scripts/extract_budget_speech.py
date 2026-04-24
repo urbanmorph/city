@@ -188,6 +188,102 @@ SOUTH_SECTIONS: list[dict] = [
 ]
 
 
+# Central speech (English) — projects span pages 7-42. Section headings
+# appear inline in the English PDF (pdfplumber with CID-glyphs); we pick
+# the first page where each heading/topic becomes dominant.
+CENTRAL_SECTIONS: list[dict] = [
+    {"code": "revenue", "title": "Revenue", "title_local": "ಕಂದಾಯ", "page_start": 4, "page_end": 10},
+    {"code": "administration", "title": "Administration", "title_local": "ಆಡಳಿತ", "page_start": 11, "page_end": 11},
+    {"code": "public-relations", "title": "Public Relations", "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ", "page_start": 12, "page_end": 12},
+    {"code": "advertisement", "title": "Advertisement", "title_local": "ಜಾಹೀರಾತು", "page_start": 13, "page_end": 13},
+    {"code": "land-acquisition", "title": "Land Acquisition", "title_local": "ಭೂಸ್ವಾಧಿನ", "page_start": 14, "page_end": 14},
+    {"code": "urban-planning", "title": "Urban Planning", "title_local": "ನಗರ ಯೋಜನೆ", "page_start": 15, "page_end": 17},
+    {"code": "finance-and-accounts", "title": "Finance and Accounts", "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ", "page_start": 18, "page_end": 19},
+    {"code": "public-works", "title": "Public Works", "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು", "page_start": 20, "page_end": 26},
+    {"code": "sanitation", "title": "Sanitation", "title_local": "ಸ್ವಚ್ಛತೆ", "page_start": 27, "page_end": 27},
+    {"code": "lakes-division", "title": "Lakes Division", "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ", "page_start": 28, "page_end": 29},
+    {"code": "health", "title": "Health", "title_local": "ಆರೋಗ್ಯ", "page_start": 30, "page_end": 32},
+    {"code": "animal-husbandry", "title": "Animal Husbandry", "title_local": "ಪಶು ಸಂಗೋಪನೆ", "page_start": 33, "page_end": 34},
+    {"code": "horticulture", "title": "Horticulture", "title_local": "ತೋಟಗಾರಿಕೆ", "page_start": 35, "page_end": 35},
+    {"code": "forestry", "title": "Urban Forestry", "title_local": "ಅರಣ್ಯ", "page_start": 36, "page_end": 36},
+    {"code": "welfare", "title": "Social Welfare", "title_local": "ಕಲ್ಯಾಣ", "page_start": 37, "page_end": 39},
+    {"code": "education", "title": "Public Education", "title_local": "ಶಿಕ್ಷಣ", "page_start": 40, "page_end": 42},
+]
+
+
+# East speech (English) — projects span pages 45-79. English section
+# headings are prominent on each page of the English half (pp 45+).
+EAST_SECTIONS: list[dict] = [
+    {"code": "revenue", "title": "Revenue", "title_local": "ಕಂದಾಯ", "page_start": 45, "page_end": 48},
+    {"code": "advertisement", "title": "Advertisement", "title_local": "ಜಾಹೀರಾತು", "page_start": 49, "page_end": 49},
+    {"code": "land-acquisition", "title": "Land Acquisition and e-DRC/e-TDR", "title_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌", "page_start": 50, "page_end": 50},
+    {"code": "urban-planning", "title": "Town Planning", "title_local": "ನಗರ ಯೋಜನೆ", "page_start": 51, "page_end": 51},
+    {"code": "administration", "title": "Administration", "title_local": "ಆಡಳಿತ", "page_start": 52, "page_end": 53},
+    {"code": "welfare", "title": "Welfare", "title_local": "ಕಲ್ಯಾಣ", "page_start": 54, "page_end": 57},
+    {"code": "sanitation", "title": "Sanitation", "title_local": "ಸ್ವಚ್ಛತೆ", "page_start": 58, "page_end": 59},
+    {"code": "public-relations", "title": "Public Relations", "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ", "page_start": 60, "page_end": 60},
+    {"code": "finance-and-accounts", "title": "Finance and Account Section", "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ", "page_start": 61, "page_end": 61},
+    {"code": "public-works", "title": "Public Works", "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು", "page_start": 62, "page_end": 70},
+    {"code": "lakes-division", "title": "Lakes Division", "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ", "page_start": 71, "page_end": 72},
+    {"code": "horticulture", "title": "Horticulture", "title_local": "ತೋಟಗಾರಿಕೆ", "page_start": 73, "page_end": 73},
+    {"code": "health", "title": "Public Health", "title_local": "ಆರೋಗ್ಯ", "page_start": 74, "page_end": 74},
+    {"code": "animal-husbandry", "title": "Animal Husbandry", "title_local": "ಪಶು ಸಂಗೋಪನೆ", "page_start": 75, "page_end": 75},
+    {"code": "forestry", "title": "Forest", "title_local": "ಅರಣ್ಯ", "page_start": 76, "page_end": 77},
+    {"code": "budget-summary", "title": "Bird's Eye View of Budget", "title_local": None, "page_start": 78, "page_end": 79},
+]
+
+
+# West speech (English) — projects span pages 4-41. Headings are inline in
+# the English PDF.
+WEST_SECTIONS: list[dict] = [
+    {"code": "revenue", "title": "Revenue", "title_local": "ಕಂದಾಯ", "page_start": 4, "page_end": 6},
+    {"code": "advertisement", "title": "Advertisement", "title_local": "ಜಾಹೀರಾತು", "page_start": 7, "page_end": 7},
+    {"code": "land-acquisition", "title": "Land Acquisition and TDR", "title_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌", "page_start": 8, "page_end": 8},
+    {"code": "urban-planning", "title": "Urban Planning", "title_local": "ನಗರ ಯೋಜನೆ", "page_start": 9, "page_end": 11},
+    {"code": "administration", "title": "Administration", "title_local": "ಆಡಳಿತ", "page_start": 12, "page_end": 13},
+    {"code": "sanitation", "title": "Sanitation", "title_local": "ಸ್ವಚ್ಛತೆ", "page_start": 14, "page_end": 14},
+    {"code": "welfare", "title": "Welfare", "title_local": "ಕಲ್ಯಾಣ", "page_start": 15, "page_end": 16},
+    {"code": "public-relations", "title": "Public Relations", "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ", "page_start": 17, "page_end": 17},
+    {"code": "finance-and-accounts", "title": "Finance and Accounts Department", "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ", "page_start": 18, "page_end": 19},
+    {"code": "horticulture", "title": "Horticulture", "title_local": "ತೋಟಗಾರಿಕೆ", "page_start": 20, "page_end": 21},
+    {"code": "lakes-division", "title": "Lakes", "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ", "page_start": 22, "page_end": 23},
+    {"code": "education", "title": "Education Department", "title_local": "ಶಿಕ್ಷಣ", "page_start": 24, "page_end": 26},
+    {"code": "health", "title": "Health", "title_local": "ಆರೋಗ್ಯ", "page_start": 27, "page_end": 30},
+    {"code": "animal-husbandry", "title": "Animal Husbandry", "title_local": "ಪಶು ಸಂಗೋಪನೆ", "page_start": 31, "page_end": 31},
+    {"code": "public-works", "title": "Public Works", "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು", "page_start": 32, "page_end": 41},
+]
+
+
+# North speech (English) — projects span pages 52-76. Headings appear in
+# ALL-CAPS in the English portion of the PDF.
+NORTH_SECTIONS: list[dict] = [
+    {"code": "revenue", "title": "Revenue", "title_local": "ಕಂದಾಯ", "page_start": 52, "page_end": 52},
+    {"code": "finance-and-accounts", "title": "Finance and Accounts", "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ", "page_start": 53, "page_end": 53},
+    {"code": "advertisement", "title": "Advertisement", "title_local": "ಜಾಹೀರಾತು", "page_start": 54, "page_end": 54},
+    {"code": "urban-planning", "title": "Town Planning", "title_local": "ನಗರ ಯೋಜನೆ", "page_start": 55, "page_end": 55},
+    {"code": "administration", "title": "Administration", "title_local": "ಆಡಳಿತ", "page_start": 56, "page_end": 56},
+    {"code": "welfare", "title": "Welfare", "title_local": "ಕಲ್ಯಾಣ", "page_start": 57, "page_end": 60},
+    {"code": "public-relations", "title": "Public Relation", "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ", "page_start": 61, "page_end": 61},
+    {"code": "sanitation", "title": "Sanitation", "title_local": "ಸ್ವಚ್ಛತೆ", "page_start": 62, "page_end": 63},
+    {"code": "forestry", "title": "Forest", "title_local": "ಅರಣ್ಯ", "page_start": 64, "page_end": 64},
+    {"code": "horticulture", "title": "Horticulture", "title_local": "ತೋಟಗಾರಿಕೆ", "page_start": 65, "page_end": 65},
+    {"code": "health", "title": "Health", "title_local": "ಆರೋಗ್ಯ", "page_start": 66, "page_end": 68},
+    {"code": "animal-husbandry", "title": "Animal Husbandry", "title_local": "ಪಶು ಸಂಗೋಪನೆ", "page_start": 69, "page_end": 70},
+    {"code": "public-works", "title": "Public Works", "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು", "page_start": 71, "page_end": 73},
+    {"code": "lakes-division", "title": "Lakes", "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ", "page_start": 74, "page_end": 74},
+    {"code": "education", "title": "Education", "title_local": "ಶಿಕ್ಷಣ", "page_start": 75, "page_end": 76},
+]
+
+
+SECTIONS_BY_CORP: dict[str, list[dict]] = {
+    "south": SOUTH_SECTIONS,
+    "central": CENTRAL_SECTIONS,
+    "east": EAST_SECTIONS,
+    "west": WEST_SECTIONS,
+    "north": NORTH_SECTIONS,
+}
+
+
 def _section_for_page(page: int | None, sections: list[dict]) -> dict | None:
     """Return the section dict that contains the given page number."""
     if page is None:
@@ -537,7 +633,9 @@ def enrich_projects(projects_path: Path, ocr_path: Path, corp: str) -> None:
     eng_pages = {pn: t for pn, t in pages.items() if pn >= 41}
     kan_pages = {pn: t for pn, t in pages.items() if pn <= 38}
 
-    sections = SOUTH_SECTIONS  # only South for now per spec
+    sections = SECTIONS_BY_CORP.get(corp)
+    if sections is None:
+        raise SystemExit(f"No sections table defined for corp={corp!r}")
 
     # Pre-compute cross-goal links
     links = _link_goals(projects)
@@ -637,9 +735,9 @@ def main() -> None:
         return
 
     # mode == enrich
-    if args.corp != "south":
+    if args.corp not in SECTIONS_BY_CORP:
         raise SystemExit(
-            f"--corp {args.corp!r} not supported in enrich mode yet — only 'south'."
+            f"--corp {args.corp!r} not supported. Known: {sorted(SECTIONS_BY_CORP)}"
         )
     out_dir = Path(args.out_dir) if args.out_dir else Path(__file__).resolve().parent.parent / "data/bengaluru/budgets/2026-27/speech"
     projects_path = out_dir / f"{args.corp}-projects.json"

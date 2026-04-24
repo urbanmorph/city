@@ -1,0 +1,243 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import Breadcrumb from "../../../components/Breadcrumb.astro";
+import { loadCity, loadCorporation, loadCategories, loadMergedItems } from "../../../lib/data-loader";
+import { formatINR } from "../../../lib/format";
+
+const CITY_ID = "bengaluru";
+const { corporation: corpId, category: catCode } = Astro.params;
+
+const city = loadCity(CITY_ID);
+const corporation = loadCorporation(CITY_ID, corpId!);
+if (!city || !corporation) return Astro.redirect("/404");
+
+const categories = loadCategories(CITY_ID, corporation.id);
+const category = categories.find((c) => c.code === catCode);
+if (!category) return Astro.redirect(`/${corporation.id}`);
+
+const items = await loadMergedItems(CITY_ID, corporation.id);
+const catItems = items
+  .filter((it) => it.effective_category === category.code)
+  .sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
+
+const totalAmount = catItems
+  .filter((i) => i.amount_lakhs != null)
+  .reduce((sum, i) => sum + (i.amount_lakhs ?? 0), 0);
+
+// Sibling categories (with items) for a bottom nav strip
+const siblingCats = categories
+  .map((c) => ({
+    code: c.code, title: c.title,
+    count: items.filter((it) => it.effective_category === c.code).length,
+  }))
+  .filter((c) => c.count > 0 && c.code !== category.code);
+---
+
+<BaseLayout
+  title={`${category.title} — ${corporation.name}`}
+  description={`${catItems.length} items under ${category.title} in ${corporation.name}'s 2026-27 speech`}
+  mastheadTitle={corporation.name.replace(" City Corporation", "")}
+  mastheadSubtitle={`Goals from the Budget Speech 2026-27, organised by the Commissioner's own sections`}
+  mastheadHref="/"
+>
+  <Fragment slot="masthead-nav">
+    <a href={`/${corporation.id}`}>Summary</a>
+    <a href="/about">About</a>
+  </Fragment>
+
+  <Breadcrumb
+    slot="breadcrumb"
+    items={[
+      { label: "Home", href: "/" },
+      { label: corporation.name.replace(" City Corporation", ""), href: `/${corporation.id}` },
+      { label: category.title },
+    ]}
+  />
+
+  <article class="cat-page" data-cat={category.code}>
+    <header class="cat-header">
+      <h1 class="cat-title">
+        {category.title}
+        {category.title_local && <span class="cat-title-local">{category.title_local}</span>}
+      </h1>
+      <div class="cat-stats">
+        <span class="cat-stat">
+          <span class="cat-stat__n">{catItems.length}</span>
+          <span class="cat-stat__l">{catItems.length === 1 ? "item" : "items"}</span>
+        </span>
+        {totalAmount > 0 && (
+          <span class="cat-stat">
+            <span class="cat-stat__n">{formatINR(totalAmount)}</span>
+            <span class="cat-stat__l">total</span>
+          </span>
+        )}
+        {category.page_start && (
+          <span class="cat-stat">
+            <span class="cat-stat__n">p.{category.page_start}–{category.page_end}</span>
+            <span class="cat-stat__l">in speech</span>
+          </span>
+        )}
+      </div>
+    </header>
+
+    <ul class="item-list">
+      {catItems.map((it) => (
+        <li class={`it${it.source === "manual" ? " it--manual" : ""}`}>
+          <div class="it-main">
+            <div class="it-head">
+              {it.source === "manual" && <span class="manual-badge">manual</span>}
+              <span class="it-name">{it.name}</span>
+              <span class="it-meta">
+                {it.page > 0 && <span class="page-pill">p.{it.page}</span>}
+                {it.amount_lakhs != null ? (
+                  <span class="amt">{formatINR(it.amount_lakhs)}</span>
+                ) : (
+                  <span class="amt amt--none">no amount</span>
+                )}
+              </span>
+            </div>
+            {it.verbatim_quote && <p class="verbatim">"{it.verbatim_quote}"</p>}
+          </div>
+        </li>
+      ))}
+    </ul>
+
+    <div data-realtime-corp={corporation.id} hidden></div>
+    <script>
+      import { subscribeCorpRealtime } from "../../../lib/realtime-client";
+      const el = document.querySelector("[data-realtime-corp]");
+      if (el) subscribeCorpRealtime(el.getAttribute("data-realtime-corp"));
+    </script>
+
+    {siblingCats.length > 0 && (
+      <nav class="cat-nav">
+        <span class="cat-nav__label">Other categories:</span>
+        {siblingCats.map((s) => (
+          <a href={`/${corporation.id}/category/${s.code}`} class="cat-nav__link" data-cat={s.code}>
+            {s.title} <span class="cat-nav__n">{s.count}</span>
+          </a>
+        ))}
+      </nav>
+    )}
+  </article>
+</BaseLayout>
+
+<style>
+  :root {
+    --c-ink: #1a202c;
+    --c-ink-soft: #4a5568;
+    --c-rule: #e2e8f0;
+    --c-rule-soft: #edf2f7;
+    --c-neutral: #718096;
+  }
+
+  [data-cat="administration"], [data-cat="finance-and-accounts"], [data-cat="public-relations"]      { --cat-c: #52525b; --cat-bg: #f4f4f5; }
+  [data-cat="revenue"], [data-cat="advertisement"], [data-cat="markets"], [data-cat="properties"], [data-cat="assets"]                { --cat-c: #b45309; --cat-bg: #fef3c7; }
+  [data-cat="land-acquisition"], [data-cat="urban-planning"]        { --cat-c: #c2410c; --cat-bg: #ffedd5; }
+  [data-cat="public-works"], [data-cat="lakes-division"], [data-cat="storm-water-drains"]    { --cat-c: #1d4ed8; --cat-bg: #dbeafe; }
+  [data-cat="education"]             { --cat-c: #6d28d9; --cat-bg: #ede9fe; }
+  [data-cat="forestry"], [data-cat="urban-forestry"]        { --cat-c: #166534; --cat-bg: #dcfce7; }
+  [data-cat="horticulture"]          { --cat-c: #4d7c0f; --cat-bg: #ecfccb; }
+  [data-cat="health"], [data-cat="health-department-clinical"] { --cat-c: #9d174d; --cat-bg: #fce7f3; }
+  [data-cat="sanitation"]            { --cat-c: #0f766e; --cat-bg: #ccfbf1; }
+  [data-cat="animal-husbandry"]      { --cat-c: #b91c1c; --cat-bg: #fee2e2; }
+  [data-cat="welfare"]               { --cat-c: #4338ca; --cat-bg: #e0e7ff; }
+
+  .cat-page { margin-top: 1rem; }
+
+  .cat-header {
+    background: var(--cat-bg, var(--c-rule-soft));
+    border-left: 4px solid var(--cat-c, #3F5F7A);
+    border-radius: 6px;
+    padding: 1.1rem 1.3rem;
+    margin-bottom: 1.2rem;
+  }
+  .cat-title {
+    font-size: 1.8rem; font-weight: 800; letter-spacing: -0.02em;
+    color: var(--cat-c, var(--c-ink));
+    margin: 0 0 0.25rem;
+    display: flex; align-items: baseline; gap: 0.6rem; flex-wrap: wrap;
+  }
+  .cat-title-local {
+    font-size: 1.05rem; font-weight: 500;
+    color: var(--c-neutral);
+  }
+  .cat-stats { display: flex; gap: 1.5rem; flex-wrap: wrap; margin-top: 0.5rem; }
+  .cat-stat { display: flex; flex-direction: column; }
+  .cat-stat__n { font-size: 1rem; font-weight: 700; color: var(--c-ink); font-variant-numeric: tabular-nums; }
+  .cat-stat__l { font-size: 0.72rem; color: var(--c-neutral); text-transform: uppercase; letter-spacing: 0.06em; }
+
+  .item-list { list-style: none; padding: 0; margin: 0; }
+  .it {
+    display: flex; padding: 0.9rem 0;
+    border-bottom: 1px solid var(--c-rule-soft);
+  }
+  .it:last-child { border-bottom: 0; }
+  .it--manual {
+    background: #f5f3ff;
+    border-left: 3px solid #7c3aed;
+    padding-left: 0.9rem; padding-right: 0.9rem;
+    border-radius: 4px;
+    margin-bottom: 0.3rem;
+  }
+
+  .it-main { flex: 1; }
+  .it-head { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
+  .it-name { font-size: 1rem; font-weight: 600; color: var(--c-ink); letter-spacing: -0.005em; }
+  .it-meta {
+    font-size: 0.76rem; color: var(--c-neutral);
+    display: inline-flex; gap: 0.55rem; align-items: center; margin-left: auto;
+    font-variant-numeric: tabular-nums;
+  }
+  .page-pill {
+    background: var(--c-rule-soft); color: var(--c-ink-soft);
+    padding: 0.06rem 0.45rem; border-radius: 3px; font-weight: 600;
+  }
+  .amt { color: var(--c-ink); font-weight: 700; font-size: 0.82rem; }
+  .amt--none { font-weight: 500; font-style: italic; color: var(--c-neutral); }
+  .manual-badge {
+    display: inline-block; background: #7c3aed; color: #fff;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.05rem 0.4rem; border-radius: 3px; text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .verbatim {
+    font-size: 0.86rem; color: var(--c-ink-soft);
+    font-style: italic; line-height: 1.5;
+    margin-top: 0.3rem;
+  }
+
+  .cat-nav {
+    margin-top: 2.5rem; padding-top: 1.2rem;
+    border-top: 1px solid var(--c-rule);
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    align-items: center;
+  }
+  .cat-nav__label {
+    font-size: 0.76rem; color: var(--c-neutral); margin-right: 0.3rem;
+  }
+  .cat-nav__link {
+    font-size: 0.78rem; font-weight: 600;
+    padding: 0.3rem 0.7rem;
+    background: var(--cat-bg, var(--c-rule-soft));
+    color: var(--cat-c, var(--c-ink));
+    border-radius: 999px;
+    text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    transition: filter 0.12s;
+  }
+  .cat-nav__link:hover { filter: brightness(0.95); }
+  .cat-nav__n {
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.65);
+    padding: 0.02rem 0.35rem;
+    border-radius: 999px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  @media (max-width: 640px) {
+    .cat-title { font-size: 1.4rem; }
+    .it-meta { margin-left: 0; }
+    .cat-header { padding: 0.9rem 1rem; }
+  }
+</style>

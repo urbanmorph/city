@@ -26,37 +26,25 @@ export function editorForToken(token: string | null | undefined): string | null 
   return tokens.get(token) ?? null;
 }
 
-export interface ItemDepartmentRow {
-  corp_id: string;
-  item_id: string;
-  departments: string[];
-  editor_name: string | null;
-  updated_at: string;
-}
+// No in-memory cache for now — reviewers iterate fast and want immediate feedback.
+// Supabase anon reads are sub-100ms; re-enable a short TTL if traffic grows.
 
-let cache: { key: string; at: number; rows: Map<string, string[]> } | null = null;
-const TTL_MS = 60_000;
-
-export async function loadItemDepartments(corpId: string): Promise<Map<string, string[]>> {
-  const now = Date.now();
-  if (cache && cache.key === corpId && now - cache.at < TTL_MS) return cache.rows;
+export async function loadItemCategories(corpId: string): Promise<Map<string, string>> {
   if (!supabaseAnon) return new Map();
   const { data, error } = await supabaseAnon
-    .from("city_item_departments")
-    .select("item_id, departments")
+    .from("city_item_categories")
+    .select("item_id, category")
     .eq("corp_id", corpId);
-  if (error || !data) return cache?.rows ?? new Map();
-  const rows = new Map<string, string[]>();
-  for (const r of data as { item_id: string; departments: string[] }[]) {
-    rows.set(r.item_id, r.departments ?? []);
+  if (error || !data) return new Map();
+  const rows = new Map<string, string>();
+  for (const r of data as { item_id: string; category: string }[]) {
+    rows.set(r.item_id, r.category);
   }
-  cache = { key: corpId, at: now, rows };
   return rows;
 }
 
-export function invalidateItemDepartments(corpId: string) {
-  if (cache && cache.key === corpId) cache = null;
-  if (manualCache && manualCache.key === corpId) manualCache = null;
+export function invalidateItemCategories(_corpId: string) {
+  // no-op while cache is disabled
 }
 
 export interface ManualItem {
@@ -67,25 +55,19 @@ export interface ManualItem {
   page: number | null;
   verbatim_quote: string | null;
   section: string | null;
-  departments: string[];
+  category_override: string | null;
   editor_name: string | null;
   created_at: string;
   updated_at: string;
 }
 
-let manualCache: { key: string; at: number; rows: ManualItem[] } | null = null;
-
 export async function loadManualItems(corpId: string): Promise<ManualItem[]> {
-  const now = Date.now();
-  if (manualCache && manualCache.key === corpId && now - manualCache.at < TTL_MS) return manualCache.rows;
   if (!supabaseAnon) return [];
   const { data, error } = await supabaseAnon
     .from("city_manual_items")
-    .select("item_id,name,description,amount_lakhs,page,verbatim_quote,section,departments,editor_name,created_at,updated_at")
+    .select("item_id,name,description,amount_lakhs,page,verbatim_quote,section,category_override,editor_name,created_at,updated_at")
     .eq("corp_id", corpId)
     .order("created_at", { ascending: true });
-  if (error || !data) return manualCache?.rows ?? [];
-  const rows = data as ManualItem[];
-  manualCache = { key: corpId, at: now, rows };
-  return rows;
+  if (error || !data) return [];
+  return data as ManualItem[];
 }

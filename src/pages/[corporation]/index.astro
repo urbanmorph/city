@@ -1,142 +1,67 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadLineItemBudget, loadSpeechProjects, loadMergedSpeechProjects, DEPT_TO_FUNCTION } from "../../lib/data-loader";
+import { loadCity, loadCorporation, loadCategories, loadMergedItems } from "../../lib/data-loader";
 import { formatINR } from "../../lib/format";
 
-// City is fixed internally; URLs are corporation-scoped only
 const CITY_ID = "bengaluru";
 const { corporation: corpId } = Astro.params;
 
 const city = loadCity(CITY_ID);
 const corporation = loadCorporation(CITY_ID, corpId!);
+if (!city || !corporation) return Astro.redirect("/404");
 
-if (!city || !corporation) {
-  return Astro.redirect("/404");
+// Goals/Budget tabs are hidden this phase — bounce legacy query strings home.
+const view = Astro.url.searchParams.get("view");
+if (view === "goals" || view === "budget") {
+  return Astro.redirect(`/${corporation.id}`);
 }
 
-const data = loadLineItemBudget(city.id, corporation.id);
-const speech = loadSpeechProjects(city.id, corporation.id);
-const { merged: mergedProjects } = await loadMergedSpeechProjects(city.id, corporation.id);
+const categories = loadCategories(CITY_ID, corporation.id);
+const items = await loadMergedItems(CITY_ID, corporation.id);
 
-const view = (Astro.url.searchParams.get("view") ?? "summary") as "summary" | "goals" | "budget";
-
-// Group merged projects: primary placement drives the bar and contributes to the bar's total.
-// Each project also appears under its secondary departments' function bars (shown, not counted).
-type SpeechProj = (typeof mergedProjects)[number];
-type GoalPlacement = { project: SpeechProj; as: "primary" | "secondary"; viaDept?: string };
-const projectsByFn = new Map<string, SpeechProj[]>();
-const placementsByFn = new Map<string, GoalPlacement[]>();
-function pushPlacement(code: string, placement: GoalPlacement) {
-  if (!placementsByFn.has(code)) placementsByFn.set(code, []);
-  placementsByFn.get(code)!.push(placement);
-  if (placement.as === "primary") {
-    if (!projectsByFn.has(code)) projectsByFn.set(code, []);
-    projectsByFn.get(code)!.push(placement.project);
-  }
-}
-for (const p of mergedProjects) {
-  const primaryCode = p.effective_function_code ?? "unmapped";
-  pushPlacement(primaryCode, { project: p, as: "primary" });
-  for (const secDept of p.secondary_departments) {
-    const secCode = DEPT_TO_FUNCTION[secDept];
-    if (secCode && secCode !== primaryCode) {
-      pushPlacement(secCode, { project: p, as: "secondary", viaDept: secDept });
-    }
-  }
+const byCat = new Map<string, typeof items>();
+for (const it of items) {
+  const key = it.effective_category;
+  if (!byCat.has(key)) byCat.set(key, []);
+  byCat.get(key)!.push(it);
 }
 
-// Function meta in display order (matches budget functions)
-const FUNCTION_ORDER = [
-  { code: "01", name: "Council" },
-  { code: "02", name: "General Administration" },
-  { code: "03", name: "Revenue" },
-  { code: "04", name: "Town Planning and Regulation" },
-  { code: "05", name: "Public Works" },
-  { code: "06", name: "Solid Waste Management" },
-  { code: "07", name: "Public Health-General" },
-  { code: "08", name: "Public Health-Medical" },
-  { code: "09", name: "Horticulture" },
-  { code: "10", name: "Urban Forestry" },
-  { code: "11", name: "Public Education" },
-  { code: "12", name: "Social Welfare" },
-];
+const ITEMS_PER_CARD = 4;
+const totalAmountLakhs = items
+  .filter((i) => i.amount_lakhs != null)
+  .reduce((sum, i) => sum + (i.amount_lakhs ?? 0), 0);
 
-// Build grid cards from line-item data, in fixed FUNCTION_ORDER so the 3x4 is stable
-const fnByCode = new Map((data?.functions ?? []).map((f) => [f.code, f]));
-const totalAllFns = (data?.functions ?? []).reduce((sum, f) => sum + f.total_2026_27, 0);
-
-// Pick up to 3 speech highlights per function: amounted first (desc by amount),
-// then by speech order to fill the slot.
-const HIGHLIGHTS_PER_CARD = 3;
-function pickHighlights(code: string): SpeechProj[] {
-  const items = projectsByFn.get(code) ?? [];
-  const amounted = items
-    .filter((p) => p.amount_lakhs != null)
-    .sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
-  const rest = items.filter((p) => p.amount_lakhs == null);
-  return [...amounted, ...rest].slice(0, HIGHLIGHTS_PER_CARD);
-}
-
-// Council (01) has no goals — it's just the elected body's establishment costs.
-// Hide it from the Summary grid; it remains reachable via the Budget view.
-// Sort by expenditure (highest first) so scale is the first axis of comparison.
-const gridCards = FUNCTION_ORDER
-  .filter((f) => f.code !== "01")
-  .map((f) => {
-    const fn = fnByCode.get(f.code);
-    const amount = fn?.total_2026_27 ?? 0;
-    const share = totalAllFns > 0 ? amount / totalAllFns : 0;
-    const items = projectsByFn.get(f.code) ?? [];
-    const highlights = pickHighlights(f.code);
+const gridCards = categories
+  .map((cat) => {
+    const catItems = byCat.get(cat.code) ?? [];
+    const amount = catItems
+      .filter((i) => i.amount_lakhs != null)
+      .reduce((sum, i) => sum + (i.amount_lakhs ?? 0), 0);
+    const sorted = [...catItems].sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
     return {
-      code: f.code,
-      name: f.name,
+      code: cat.code,
+      title: cat.title,
+      titleLocal: cat.title_local,
       amount,
-      share,
-      projectCount: items.length,
-      highlights,
+      share: totalAmountLakhs > 0 ? amount / totalAmountLakhs : 0,
+      itemCount: catItems.length,
+      highlights: sorted.slice(0, ITEMS_PER_CARD),
     };
   })
+  .filter((c) => c.itemCount > 0)
   .sort((a, b) => b.amount - a.amount);
-
-function fmtYoY(pct: number | null | undefined): string {
-  if (pct === null || pct === undefined) return "";
-  const sign = pct >= 0 ? "+" : "";
-  return `${sign}${pct.toFixed(1)}%`;
-}
-
-function yoyClass(pct: number | null | undefined): string {
-  if (pct === null || pct === undefined) return "yoy-none";
-  if (pct > 0) return "yoy-up";
-  if (pct < 0) return "yoy-down";
-  return "yoy-zero";
-}
-
-function cleanName(s: string): string {
-  // Strip stray em-dashes, double-spaces, orphan commas/punctuation
-  return s
-    .replace(/\s[—–]\s/g, ", ")
-    .replace(/\s*,\s*,+/g, ", ")
-    .replace(/\s{2,}/g, " ")
-    .replace(/[,.\s]+$/g, "")
-    .trim();
-}
 ---
 
 <BaseLayout
-  title={`${corporation.name} Budget ${data?.fiscal_year ?? "2026-27"}`}
-  description={`Public finances and program of works for ${corporation.name}`}
+  title={`${corporation.name} Budget 2026-27`}
+  description={`Goals and allocations from the ${corporation.name} budget speech`}
   mastheadTitle={corporation.name.replace(" City Corporation", "")}
-  mastheadSubtitle={`Public Finances and Program of Works, fiscal year ${data?.fiscal_year ?? "2026-27"}`}
+  mastheadSubtitle={`Goals from the Budget Speech 2026-27, organised by the Commissioner's own sections`}
   mastheadHref="/"
 >
   <Fragment slot="masthead-nav">
-    <a href={`/${corporation.id}`} class={view === "summary" ? "is-active" : ""}>Summary</a>
-    {speech && (
-      <a href={`/${corporation.id}?view=goals`} class={view === "goals" ? "is-active" : ""}>Goals</a>
-    )}
-    <a href={`/${corporation.id}?view=budget`} class={view === "budget" ? "is-active" : ""}>Budget</a>
+    <a href={`/${corporation.id}`} class="is-active">Summary</a>
     <a href="/about">About</a>
   </Fragment>
 
@@ -148,283 +73,62 @@ function cleanName(s: string): string {
     ]}
   />
 
-
-  {data ? (
-    <>
-      {view === "summary" && (
-        <section class="fn-grid">
-          {gridCards.map((c) => (
-            <article class="fn-card" data-fn={c.code}>
-              <div class="fn-card__head">
-                <span class="fn-card__code">{c.code}</span>
-                <h3 class="fn-card__name">{c.name}</h3>
-              </div>
-
-              <div class="fn-card__summary">
-                <span class="fn-card__amount">{formatINR(c.amount)}</span>
-                <span class="fn-card__meta">
-                  {c.projectCount > 0
-                    ? `${c.projectCount} ${c.projectCount === 1 ? "goal" : "goals"}`
-                    : "No speech goals"}
-                  {` · ${(c.share * 100).toFixed(1)}% of budget`}
-                </span>
-              </div>
-
-              {c.highlights.length > 0 && (
-                <ul class="fn-card__highlights">
-                  {c.highlights.map((h) => (
-                    <li class="fn-card__hl">
-                      <a
-                        href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
-                        class="fn-card__hl-link"
-                        title={h.description || h.name}
-                      >
-                        <span class="fn-card__hl-name">{h.name}</span>
-                        {h.amount_lakhs != null && (
-                          <span class="fn-card__hl-amt">{formatINR(h.amount_lakhs)}</span>
-                        )}
-                      </a>
-                    </li>
-                  ))}
-                </ul>
-              )}
-
-              <div class="fn-card__foot">
-                {c.projectCount > c.highlights.length ? (
-                  <a
-                    href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
-                    class="fn-card__more"
-                  >
-                    {c.projectCount - c.highlights.length} more <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                ) : c.projectCount > 0 ? (
-                  <a
-                    href={`/${corporation.id}?view=goals#goals-fn-${c.code}`}
-                    class="fn-card__more"
-                  >
-                    View all goals <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                ) : (
-                  <a
-                    href={`/${corporation.id}?view=budget#budget-fn-${c.code}`}
-                    class="fn-card__more fn-card__more--muted"
-                  >
-                    View in budget <i class="fa-solid fa-arrow-right"></i>
-                  </a>
-                )}
-              </div>
-            </article>
-          ))}
-        </section>
-      )}
-
-      {view === "goals" && speech && (
-        <section class="view-panel">
-          <aside class="note-card">
-            <i class="fa-solid fa-circle-info"></i>
-            <div>
-              <strong>From the Commissioner's Budget Speech, {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}.</strong>
-              {` `}{speech.projects.length} goals announced by {speech.commissioner}, grouped here against the 12 budget functions using a keyword heuristic. Tagging is provisional and can be refined.
-            </div>
-          </aside>
-
-          <div class="speech-grid">
-            {FUNCTION_ORDER.map((fn) => {
-              const placements = placementsByFn.get(fn.code) ?? [];
-              if (placements.length === 0) return null;
-              const primaryItems = projectsByFn.get(fn.code) ?? [];
-              const totalLakhs = primaryItems
-                .filter((p) => p.amount_lakhs != null)
-                .reduce((sum, p) => sum + (p.amount_lakhs ?? 0), 0);
-              const secondaryCount = placements.filter((x) => x.as === "secondary").length;
-              return (
-                <details class="speech-fn-block" id={`goals-fn-${fn.code}`} data-fn={fn.code} open>
-                  <summary class="fn-summary">
-                    <span class="fn-lead">
-                      <i class="fa-solid fa-chevron-right chev"></i>
-                      <span class="fn-code">{fn.code}</span>
-                      <span class="fn-name">{fn.name}</span>
-                    </span>
-                    <span class="fn-meta">
-                      <span class="pill pill-count">
-                        {primaryItems.length} {primaryItems.length === 1 ? "goal" : "goals"}
-                        {secondaryCount > 0 && ` + ${secondaryCount} shared`}
-                      </span>
-                      {totalLakhs > 0 && <span class="fn-amount">{formatINR(totalLakhs)}</span>}
-                    </span>
-                  </summary>
-                  <ul class="speech-list">
-                    {placements.map(({ project: p, as, viaDept }) => (
-                      <li class={`speech-item${p.source === "manual" ? " speech-item--manual" : ""}${as === "secondary" ? " speech-item--secondary" : ""}`}>
-                        <div class="speech-item-main">
-                          <span class="speech-item-name">
-                            {p.source === "manual" && <span class="manual-badge">manual</span>}
-                            {p.name}
-                          </span>
-                          {p.description && p.description !== p.name && (
-                            <span class="speech-item-desc">{p.description}</span>
-                          )}
-                          <span class="speech-item-foot">
-                            {p.page > 0 && <span class="speech-page">p.{p.page}</span>}
-                            {as === "secondary" && viaDept && (
-                              <span class="dept-chips">
-                                <span data-dept={viaDept} class="dept-chip dept-chip--secondary" title="Also tagged to this department — not counted in this function's total">
-                                  also: {viaDept}
-                                </span>
-                              </span>
-                            )}
-                            {as === "primary" && p.departments.length === 0 && p.tag_reason && (
-                              <span class="speech-reason" title={p.tag_reason}>{p.tag_reason}</span>
-                            )}
-                          </span>
-                        </div>
-                        <div class="speech-item-meta">
-                          {p.amount_lakhs != null ? (
-                            <span class={`speech-amount${as === "secondary" ? " speech-amount--secondary" : ""}`}>
-                              {as === "secondary" ? "—" : formatINR(p.amount_lakhs)}
-                            </span>
-                          ) : (
-                            <span class="speech-amount speech-amount--none">no amount</span>
-                          )}
-                        </div>
-                      </li>
-                    ))}
-                  </ul>
-                </details>
-              );
-            })}
-          </div>
-
-          <p class="source-line">
-            Source: Budget Speech {data.fiscal_year}, {corporation.name}, delivered by {speech.commissioner} on {new Date(speech.speech_date).toLocaleDateString("en-IN", { day: "numeric", month: "long", year: "numeric" })}. Function tags are provisional — assigned by keyword heuristic and open to refinement.
-          </p>
-        </section>
-      )}
-
-      {view === "budget" && (
-        <section class="view-panel">
-        <div class="toolbar">
-          <div class="toolbar-left">
-            <button type="button" class="tool-btn" data-action="expand-all">
-              <i class="fa-solid fa-chevrons-down"></i> Expand all
-            </button>
-            <button type="button" class="tool-btn" data-action="collapse-all">
-              <i class="fa-solid fa-chevrons-up"></i> Collapse all
-            </button>
-          </div>
-          <div class="toolbar-right">
-            <span class="legend">
-              <span class="swatch swatch-up"></span> budget grew
-            </span>
-            <span class="legend">
-              <span class="swatch swatch-down"></span> budget shrank
-            </span>
-            <span class="legend">
-              <span class="swatch swatch-spill"></span> spillover
-            </span>
-          </div>
+  <section class="cat-grid">
+    {gridCards.map((c) => (
+      <article class="cat-card" data-cat={c.code}>
+        <div class="cat-card__head">
+          <h3 class="cat-card__name">{c.title}</h3>
+          {c.titleLocal && <span class="cat-card__local">{c.titleLocal}</span>}
         </div>
 
-        <aside class="note-card">
-          <i class="fa-solid fa-circle-info"></i>
-          <div>
-            <strong>Extracted from the OpenCity.in budget PDF.</strong> Captured {formatINR(data.total_2026_27)} of a book total of {`\u20B9`}3,826 Cr ({(data.total_2026_27 / 382595 * 100).toFixed(1)}% coverage). The remaining {`\u20B9`}{Math.round((382595 - data.total_2026_27) / 100)} Cr sit in rows where codes span columns irregularly on a handful of pages.
-          </div>
-        </aside>
+        <div class="cat-card__summary">
+          <span class="cat-card__amount">{c.amount > 0 ? formatINR(c.amount) : "—"}</span>
+          <span class="cat-card__meta">
+            {c.itemCount} {c.itemCount === 1 ? "item" : "items"}
+            {c.amount > 0 && ` · ${(c.share * 100).toFixed(1)}% of speech amount`}
+          </span>
+        </div>
 
-        <section class="tree">
-          {data.functions.map((fn) => (
-            <details class="fn-block" id={`budget-fn-${fn.code}`} data-fn={fn.code} open={fn.code === "05"}>
-              <summary class="fn-summary">
-                <span class="fn-lead">
-                  <i class="fa-solid fa-chevron-right chev"></i>
-                  <span class="fn-code">{fn.code}</span>
-                  <span class="fn-name">{cleanName(fn.name)}</span>
-                </span>
-                <span class="fn-meta">
-                  {fn.spillover > 0 && (
-                    <span class="pill pill-spill">
-                      <i class="fa-solid fa-clock-rotate-left"></i>
-                      {formatINR(fn.spillover)}
-                    </span>
+        {c.highlights.length > 0 && (
+          <ul class="cat-card__highlights">
+            {c.highlights.map((h) => (
+              <li class="cat-card__hl">
+                <a href={`/${corporation.id}/category/${c.code}`} class="cat-card__hl-link" title={h.description || h.name}>
+                  <span class="cat-card__hl-name">{h.name}</span>
+                  {h.amount_lakhs != null && (
+                    <span class="cat-card__hl-amt">{formatINR(h.amount_lakhs)}</span>
                   )}
-                  <span class={`pill pill-yoy ${yoyClass(fn.yoy_pct)}`}>{fmtYoY(fn.yoy_pct) || "—"}</span>
-                  <span class="fn-amount">{formatINR(fn.total_2026_27)}</span>
-                </span>
-              </summary>
-              <div class="sub-list">
-                {fn.sub_categories.length === 0 && (
-                  <p class="no-data">No line items captured for this function yet.</p>
-                )}
-                {fn.sub_categories.map((sub) => (
-                  <details class="sub-block">
-                    <summary class="sub-summary">
-                      <span class="sub-lead">
-                        <i class="fa-solid fa-chevron-right chev chev-sm"></i>
-                        <span class="sub-name">{cleanName(sub.name)}</span>
-                      </span>
-                      <span class="sub-meta">
-                        {sub.spillover > 0 && (
-                          <span class="pill pill-spill pill-sm">
-                            <i class="fa-solid fa-clock-rotate-left"></i>
-                            {formatINR(sub.spillover)}
-                          </span>
-                        )}
-                        <span class={`pill pill-yoy pill-sm ${yoyClass(sub.yoy_pct)}`}>{fmtYoY(sub.yoy_pct) || "—"}</span>
-                        <span class="sub-amount">{formatINR(sub.total_2026_27)}</span>
-                      </span>
-                    </summary>
-                    <ul class="item-list">
-                      {sub.items.map((it) => (
-                        <li class="item">
-                          <span class="item-main">
-                            <span class="item-code">{it.code}</span>
-                            <span class="item-name">{cleanName(it.name)}</span>
-                          </span>
-                          <span class="item-meta">
-                            {(it.pending ?? 0) > 0 && (
-                              <span class="pill pill-spill pill-xs">
-                                <i class="fa-solid fa-clock-rotate-left"></i>
-                                {formatINR(it.pending!)}
-                              </span>
-                            )}
-                            <span class={`pill pill-yoy pill-xs ${yoyClass(it.yoy_pct)}`}>{fmtYoY(it.yoy_pct) || "—"}</span>
-                            <span class="item-amount">{formatINR(it.total_2026_27)}</span>
-                          </span>
-                        </li>
-                      ))}
-                    </ul>
-                  </details>
-                ))}
-              </div>
-            </details>
-          ))}
-        </section>
+                </a>
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <p class="source-line">
-          Source: <a href="https://data.opencity.in/dataset/gba-corporation-budgets-2026-27" rel="noopener" target="_blank">Corporation Budget Book {data.fiscal_year}</a>, OpenCity.in. Amounts in Indian Rupees (Lakh below one Crore, Crore above).
-        </p>
-      </section>
-      )}
-    </>
-  ) : (
-    <div class="card mt-2">
-      <p class="text-muted">Line-item budget data not available for this corporation.</p>
-    </div>
-  )}
+        <div class="cat-card__foot">
+          {c.itemCount > c.highlights.length ? (
+            <a href={`/${corporation.id}/category/${c.code}`} class="cat-card__more">
+              {c.itemCount - c.highlights.length} more <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          ) : (
+            <a href={`/${corporation.id}/category/${c.code}`} class="cat-card__more">
+              View all <i class="fa-solid fa-arrow-right"></i>
+            </a>
+          )}
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <p class="source-line">
+    Source: Commissioner's Budget Speech 2026-27 for {corporation.name}. Items organised by the speech's own section headings. Reviewer overrides apply live.
+  </p>
 </BaseLayout>
 
-<script is:inline>
-  document.addEventListener("click", (e) => {
-    const t = e.target;
-    if (!(t instanceof HTMLElement)) return;
-    const btn = t.closest("[data-action]");
-    if (!btn) return;
-    const action = btn.getAttribute("data-action");
-    const all = document.querySelectorAll("details.fn-block, details.sub-block");
-    if (action === "expand-all") all.forEach((d) => (d.open = true));
-    if (action === "collapse-all") all.forEach((d) => (d.open = false));
-  });
+<div data-realtime-corp={corporation.id} hidden></div>
+<script>
+  import { subscribeCorpRealtime } from "../../lib/realtime-client";
+  const el = document.querySelector("[data-realtime-corp]");
+  if (el) subscribeCorpRealtime(el.getAttribute("data-realtime-corp"));
 </script>
 
 <style>
@@ -434,761 +138,128 @@ function cleanName(s: string): string {
     --c-ink-soft: #4a5568;
     --c-rule: #e2e8f0;
     --c-rule-soft: #edf2f7;
-    --c-good: #137752;
-    --c-good-bg: #e7f5ee;
-    --c-bad: #9b2c2c;
-    --c-bad-bg: #fdeceb;
     --c-neutral: #718096;
-    --c-neutral-bg: #edf2f7;
-    --c-spill: #9a6700;
-    --c-spill-bg: #fff4cc;
   }
 
-  /* Per-function color palette — same colors used on Summary cards and
-     accordion headers in Goals/Budget so the 12 functions stay visually
-     consistent across views. */
-  [data-fn="01"] { --fn-c: #475569; --fn-bg: #f1f5f9; }  /* Council */
-  [data-fn="02"] { --fn-c: #52525b; --fn-bg: #f4f4f5; }  /* General Admin */
-  [data-fn="03"] { --fn-c: #b45309; --fn-bg: #fef3c7; }  /* Revenue */
-  [data-fn="04"] { --fn-c: #c2410c; --fn-bg: #ffedd5; }  /* Town Planning */
-  [data-fn="05"] { --fn-c: #1d4ed8; --fn-bg: #dbeafe; }  /* Public Works */
-  [data-fn="06"] { --fn-c: #0f766e; --fn-bg: #ccfbf1; }  /* SWM */
-  [data-fn="07"] { --fn-c: #9d174d; --fn-bg: #fce7f3; }  /* Public Health-General */
-  [data-fn="08"] { --fn-c: #b91c1c; --fn-bg: #fee2e2; }  /* Public Health-Medical */
-  [data-fn="09"] { --fn-c: #4d7c0f; --fn-bg: #ecfccb; }  /* Horticulture */
-  [data-fn="10"] { --fn-c: #166534; --fn-bg: #dcfce7; }  /* Urban Forestry */
-  [data-fn="11"] { --fn-c: #6d28d9; --fn-bg: #ede9fe; }  /* Public Education */
-  [data-fn="12"] { --fn-c: #4338ca; --fn-bg: #e0e7ff; }  /* Social Welfare */
+  /* Category palette — same hues shared with /review/[corp] and /{corp}/category/{c}. */
+  [data-cat="administration"],
+  [data-cat="finance-and-accounts"],
+  [data-cat="public-relations"]           { --cat-c: #52525b; --cat-bg: #f4f4f5; }
+  [data-cat="revenue"],
+  [data-cat="advertisement"],
+  [data-cat="markets"],
+  [data-cat="properties"],
+  [data-cat="assets"]                     { --cat-c: #b45309; --cat-bg: #fef3c7; }
+  [data-cat="land-acquisition"],
+  [data-cat="urban-planning"]             { --cat-c: #c2410c; --cat-bg: #ffedd5; }
+  [data-cat="public-works"],
+  [data-cat="lakes-division"],
+  [data-cat="storm-water-drains"]         { --cat-c: #1d4ed8; --cat-bg: #dbeafe; }
+  [data-cat="education"]                  { --cat-c: #6d28d9; --cat-bg: #ede9fe; }
+  [data-cat="forestry"],
+  [data-cat="urban-forestry"]             { --cat-c: #166534; --cat-bg: #dcfce7; }
+  [data-cat="horticulture"]               { --cat-c: #4d7c0f; --cat-bg: #ecfccb; }
+  [data-cat="health"],
+  [data-cat="health-department-clinical"] { --cat-c: #9d174d; --cat-bg: #fce7f3; }
+  [data-cat="sanitation"]                 { --cat-c: #0f766e; --cat-bg: #ccfbf1; }
+  [data-cat="animal-husbandry"]           { --cat-c: #b91c1c; --cat-bg: #fee2e2; }
+  [data-cat="welfare"]                    { --cat-c: #4338ca; --cat-bg: #e0e7ff; }
 
-  .page-head {
-    text-align: left;
-    margin: 2rem 0 1.5rem;
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid var(--c-rule);
-  }
-  .page-head .eyebrow {
-    font-size: 0.72rem;
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--c-ink-soft);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
-  }
-  .page-head h1 {
-    text-align: left;
-    font-size: clamp(1.75rem, 3.6vw, 2.4rem);
-    font-weight: 800;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-    color: var(--c-ink);
-    margin: 0;
-  }
-  .page-head .lede {
-    margin: 0.75rem 0 0;
-    max-width: 68ch;
-    color: var(--c-ink-soft);
-    font-size: 0.98rem;
-    line-height: 1.55;
-  }
-
-  /* Topline grid */
-  .topline {
+  .cat-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 0;
-    background: var(--c-card);
-    border: 1px solid var(--c-rule);
-    border-radius: 8px;
-    overflow: hidden;
-    margin-top: 1.5rem;
-  }
-  .tl-cell {
-    padding: 1.1rem 1.25rem;
-    border-right: 1px solid var(--c-rule);
-    display: flex;
-    flex-direction: column;
-    gap: 0.2rem;
-    background: #fff;
-  }
-  .tl-cell:last-child { border-right: none; }
-  .tl-label {
-    font-size: 0.7rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--c-ink-soft);
-    font-weight: 600;
-  }
-  .tl-value {
-    font-family: var(--num-font);
-    font-feature-settings: "tnum";
-    font-variant-numeric: tabular-nums;
-    font-size: 1.45rem;
-    font-weight: 700;
-    color: var(--c-ink);
-    letter-spacing: -0.01em;
-  }
-  .tl-value--muted { color: var(--c-ink-soft); font-weight: 600; }
-  .tl-value--accent { color: var(--c-spill); }
-  .tl-value.yoy-up { color: var(--c-good); }
-  .tl-value.yoy-down { color: var(--c-bad); }
-  .tl-value.yoy-zero, .tl-value.yoy-none { color: var(--c-neutral); }
-  .tl-sub {
-    font-size: 0.74rem;
-    color: var(--c-neutral);
-  }
-
-  /* Toolbar */
-  .toolbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin: 1.25rem 0 0.75rem;
-  }
-  .toolbar-left { display: flex; gap: 0.5rem; }
-  .toolbar-right {
-    display: flex;
     gap: 0.9rem;
-    font-size: 0.78rem;
-    color: var(--c-ink-soft);
-  }
-  .legend { display: inline-flex; align-items: center; gap: 0.35rem; }
-  .swatch {
-    width: 10px; height: 10px; border-radius: 2px; display: inline-block;
-  }
-  .swatch-up { background: var(--c-good); }
-  .swatch-down { background: var(--c-bad); }
-  .swatch-spill { background: var(--c-spill); }
-
-  .tool-btn {
-    font-family: var(--num-font);
-    font-size: 0.85rem;
-    font-weight: 600;
-    padding: 0.45rem 0.85rem;
-    background: #fff;
-    border: 1px solid var(--c-rule);
-    border-radius: 6px;
-    color: var(--c-ink);
-    cursor: pointer;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    transition: all 0.15s ease;
-  }
-  .tool-btn:hover {
-    border-color: var(--c-primary);
-    color: var(--c-primary);
-    background: #f7fafc;
-  }
-  .tool-btn i { font-size: 0.75rem; }
-
-  /* Note card */
-  .note-card {
-    display: flex;
-    gap: 0.65rem;
-    padding: 0.8rem 1rem;
-    background: #fffbeb;
-    border: 1px solid #fde68a;
-    border-left: 3px solid var(--c-accent);
-    border-radius: 6px;
-    color: #78350f;
-    font-size: 0.86rem;
-    line-height: 1.55;
-    margin-bottom: 1.25rem;
-  }
-  .note-card i { color: var(--c-spill); margin-top: 0.2rem; }
-
-  /* Tree */
-  .tree {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-  }
-
-  .fn-block {
-    background: #fff;
-    border: 1px solid var(--c-rule);
-    border-radius: 8px;
-    overflow: hidden;
-    transition: border-color 0.15s ease;
-  }
-  .fn-block[open] {
-    border-color: var(--c-primary);
-    box-shadow: 0 1px 2px rgba(0,0,0,0.03);
-  }
-
-  summary { list-style: none; cursor: pointer; }
-  summary::-webkit-details-marker { display: none; }
-
-  .fn-summary {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.9rem 1.1rem;
-  }
-  .fn-summary:hover { background: #f8fafc; }
-  .fn-lead {
-    display: grid;
-    grid-template-columns: auto auto 1fr;
-    align-items: center;
-    gap: 0.85rem;
-    min-width: 0;
-  }
-  .chev {
-    color: var(--c-neutral);
-    transition: transform 0.2s ease;
-    font-size: 0.8rem;
-    width: 0.9rem;
-    flex-shrink: 0;
-  }
-  details[open] > summary .chev { transform: rotate(90deg); }
-  .chev-sm { font-size: 0.7rem; color: var(--c-neutral); }
-
-  .fn-code {
-    font-family: var(--num-font);
-    font-feature-settings: "tnum";
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--c-neutral);
-    background: var(--c-rule-soft);
-    border-radius: 4px;
-    padding: 0.15rem 0.5rem;
-    letter-spacing: 0.04em;
-  }
-  .fn-name {
-    font-size: 1.02rem;
-    font-weight: 700;
-    color: var(--c-ink);
-    letter-spacing: -0.005em;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  /* When a details block has a function color, tint the summary header */
-  [data-fn] > .fn-summary {
-    background: var(--fn-bg);
-    border-left: 3px solid var(--fn-c);
-  }
-  [data-fn] > .fn-summary:hover { background: var(--fn-bg); filter: brightness(0.97); }
-  [data-fn] > .fn-summary .fn-code {
-    background: var(--fn-c);
-    color: #fff;
-  }
-  [data-fn] > .fn-summary .fn-name {
-    color: var(--fn-c);
-  }
-
-  .fn-meta, .sub-meta, .item-meta {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-feature-settings: "tnum";
-    font-variant-numeric: tabular-nums;
-    white-space: nowrap;
-  }
-
-  .fn-amount {
-    font-weight: 800;
-    font-size: 1.05rem;
-    color: var(--c-ink);
-    letter-spacing: -0.01em;
-    min-width: 6rem;
-    text-align: right;
-  }
-
-  .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.3rem;
-    font-size: 0.78rem;
-    font-weight: 600;
-    padding: 0.2rem 0.55rem;
-    border-radius: 999px;
-    line-height: 1.3;
-    font-feature-settings: "tnum";
-  }
-  .pill-sm { font-size: 0.72rem; padding: 0.15rem 0.5rem; }
-  .pill-xs { font-size: 0.7rem; padding: 0.1rem 0.45rem; }
-
-  .pill-yoy { min-width: 3.8rem; justify-content: center; }
-  .pill-yoy.yoy-up { background: var(--c-good-bg); color: var(--c-good); }
-  .pill-yoy.yoy-down { background: var(--c-bad-bg); color: var(--c-bad); }
-  .pill-yoy.yoy-zero { background: var(--c-neutral-bg); color: var(--c-neutral); }
-  .pill-yoy.yoy-none { background: transparent; color: var(--c-neutral); border: 1px dashed var(--c-rule); }
-
-  .pill-spill {
-    background: var(--c-spill-bg);
-    color: var(--c-spill);
-  }
-  .pill-spill i { font-size: 0.7em; }
-
-  /* Sub level */
-  .sub-list {
-    border-top: 1px solid var(--c-rule);
-    background: #fafbfc;
-    padding: 0.25rem 0;
-  }
-  .no-data {
-    padding: 0.75rem 1.25rem;
-    margin: 0;
-    font-size: 0.85rem;
-    color: var(--c-neutral);
-    font-style: italic;
-  }
-
-  .sub-block {
-    border-bottom: 1px solid var(--c-rule-soft);
-  }
-  .sub-block:last-child { border-bottom: none; }
-
-  .sub-summary {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.7rem 1.1rem 0.7rem 2.4rem;
-  }
-  .sub-summary:hover { background: #f1f5f9; }
-  .sub-lead {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.6rem;
-    min-width: 0;
-  }
-  .sub-name {
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--c-ink);
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-  .sub-amount {
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--c-ink);
-    min-width: 5.5rem;
-    text-align: right;
-  }
-
-  /* Item level */
-  .item-list {
-    list-style: none;
-    margin: 0;
-    padding: 0.4rem 1.1rem 0.7rem 3.5rem;
-    background: #fff;
-    border-top: 1px solid var(--c-rule-soft);
-  }
-  .item {
-    display: grid;
-    grid-template-columns: 1fr auto;
-    gap: 0.75rem;
-    align-items: baseline;
-    padding: 0.4rem 0;
-    font-size: 0.87rem;
-    border-bottom: 1px dashed var(--c-rule-soft);
-  }
-  .item:last-child { border-bottom: none; }
-  .item-main {
-    display: inline-flex;
-    align-items: baseline;
-    gap: 0.65rem;
-    min-width: 0;
-  }
-  .item-code {
-    font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
-    font-size: 0.72rem;
-    color: var(--c-neutral);
-    letter-spacing: 0.02em;
-    flex-shrink: 0;
-  }
-  .item-name {
-    color: var(--c-ink);
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  .item-amount {
-    font-weight: 600;
-    font-size: 0.9rem;
-    color: var(--c-ink);
-    min-width: 5rem;
-    text-align: right;
-  }
-
-  .source-line {
     margin-top: 1.5rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--c-rule);
-    font-size: 0.82rem;
-    color: var(--c-ink-soft);
   }
-  .source-line a { color: var(--c-primary); }
-
+  @media (max-width: 1000px) {
+    .cat-grid { grid-template-columns: repeat(3, 1fr); }
+  }
   @media (max-width: 720px) {
-    .topline { grid-template-columns: repeat(2, 1fr); }
-    .tl-cell { border-right: none; border-bottom: 1px solid var(--c-rule); }
-    .tl-cell:nth-child(2) { border-right: none; }
-    .tl-cell:nth-child(even) { border-right: none; }
-    .tl-cell:nth-child(odd) { border-right: 1px solid var(--c-rule); }
-    .tl-cell:last-child, .tl-cell:nth-last-child(2) { border-bottom: none; }
-
-    .fn-summary, .sub-summary, .item {
-      grid-template-columns: 1fr;
-    }
-    .fn-meta, .sub-meta, .item-meta {
-      justify-content: flex-start;
-      padding-left: 1.75rem;
-    }
-    .item-meta { padding-left: 0; }
-    .fn-amount, .sub-amount, .item-amount { text-align: left; min-width: 0; }
-    .toolbar-right { display: none; }
-    .sub-summary { padding-left: 1.6rem; }
-    .item-list { padding-left: 1.6rem; }
+    .cat-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .cat-grid { grid-template-columns: 1fr; }
   }
 
-  .view-panel { margin-top: 1.5rem; }
-
-  /* Function grid (3x4 cards) */
-  .fn-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 0.9rem;
-    margin-top: 1.5rem;
-  }
-  .fn-card {
-    display: flex;
-    flex-direction: column;
-    gap: 0;
+  .cat-card {
+    display: flex; flex-direction: column;
     background: #fff;
     border: 1px solid #cbd5e0;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 1px 0 rgba(0, 0, 0, 0.03);
-    transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    border-radius: 6px; overflow: hidden;
+    box-shadow: 0 1px 0 rgba(0,0,0,0.03);
+    transition: border-color 0.15s, box-shadow 0.15s;
   }
-  .fn-card:hover {
-    border-color: var(--fn-c, var(--c-primary, #3F5F7A));
-    box-shadow: 0 4px 12px rgba(63, 95, 122, 0.1);
+  .cat-card:hover {
+    border-color: var(--cat-c, #3F5F7A);
+    box-shadow: 0 4px 12px rgba(63,95,122,0.1);
   }
-  .fn-card__head {
-    display: flex;
-    align-items: center;
-    gap: 0.6rem;
-    padding: 0.75rem 1rem;
-    background: var(--fn-bg, var(--c-rule-soft));
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-    border-left: 3px solid var(--fn-c, var(--c-primary));
+
+  .cat-card__head {
+    display: flex; flex-direction: column; gap: 0.1rem;
+    padding: 0.7rem 1rem;
+    background: var(--cat-bg, var(--c-rule-soft));
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    border-left: 3px solid var(--cat-c, #3F5F7A);
   }
-  .fn-card__code {
-    flex-shrink: 0;
-    font-size: 0.7rem;
-    font-weight: 800;
-    padding: 0.15rem 0.45rem;
-    border-radius: 4px;
-    background: var(--fn-c, #4a5568);
-    color: #fff;
-    font-variant-numeric: tabular-nums;
-    line-height: 1.4;
-    letter-spacing: 0.04em;
+  .cat-card__name {
+    font-size: 0.98rem; font-weight: 700;
+    color: var(--cat-c, var(--c-ink));
+    line-height: 1.25; letter-spacing: -0.005em; margin: 0;
   }
-  .fn-card__name {
-    font-size: 1rem;
-    font-weight: 700;
-    color: var(--fn-c, var(--c-ink));
-    line-height: 1.3;
-    letter-spacing: -0.01em;
-    margin: 0;
+  .cat-card__local {
+    font-size: 0.76rem; font-weight: 500;
+    color: var(--c-neutral); line-height: 1.2;
   }
-  .fn-card > *:not(.fn-card__head) { padding-left: 1.25rem; padding-right: 1.25rem; }
-  .fn-card__summary { padding-top: 1rem; padding-bottom: 0.55rem; }
-  .fn-card__highlights { padding-top: 0.4rem; }
-  .fn-card__foot { padding-bottom: 1rem; }
-  .fn-card__summary {
-    display: flex;
-    flex-direction: column;
-    gap: 0.1rem;
-    padding-bottom: 0.55rem;
+
+  .cat-card > *:not(.cat-card__head) { padding-left: 1rem; padding-right: 1rem; }
+  .cat-card__summary {
+    display: flex; flex-direction: column; gap: 0.05rem;
+    padding-top: 0.85rem; padding-bottom: 0.5rem;
     border-bottom: 1px solid var(--c-rule-soft);
   }
-  .fn-card__amount {
-    font-family: var(--num-font);
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-    font-size: 1.35rem;
-    font-weight: 800;
-    color: var(--c-ink);
-    letter-spacing: -0.015em;
-    line-height: 1.1;
+  .cat-card__amount {
+    font-family: var(--num-font); font-variant-numeric: tabular-nums;
+    font-size: 1.25rem; font-weight: 800; letter-spacing: -0.015em;
+    color: var(--c-ink); line-height: 1.1;
   }
-  .fn-card__meta {
-    font-size: 0.74rem;
-    color: var(--c-neutral);
-    letter-spacing: 0.01em;
-  }
+  .cat-card__meta { font-size: 0.72rem; color: var(--c-neutral); }
 
-  .fn-card__highlights {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-    flex: 1;
+  .cat-card__highlights {
+    list-style: none; padding-top: 0.4rem; display: flex; flex-direction: column; gap: 0;
   }
-  .fn-card__hl {
-    line-height: 1.35;
+  .cat-card__hl { margin: 0; }
+  .cat-card__hl-link {
+    display: flex; align-items: baseline; justify-content: space-between;
+    gap: 0.55rem; padding: 0.35rem 0;
+    color: var(--c-ink); text-decoration: none;
+    border-bottom: 1px solid var(--c-rule-soft);
+    transition: color 0.12s;
   }
-  .fn-card__hl-link {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 0.5rem;
-    padding: 0.25rem 0;
-    text-decoration: none;
-    color: var(--c-ink);
-    border-bottom: 1px solid transparent;
+  .cat-card__hl:last-child .cat-card__hl-link { border-bottom: 0; }
+  .cat-card__hl-link:hover { color: var(--cat-c, #3F5F7A); }
+  .cat-card__hl-name {
+    font-size: 0.8rem; line-height: 1.3; flex: 1;
+    overflow: hidden; display: -webkit-box;
+    -webkit-line-clamp: 2; -webkit-box-orient: vertical;
   }
-  .fn-card__hl-link:hover {
-    color: var(--c-primary, #3F5F7A);
-    text-decoration: none;
-  }
-  .fn-card__hl-link::before {
-    content: "";
-    width: 4px;
-    height: 4px;
-    border-radius: 50%;
-    background: var(--c-neutral);
+  .cat-card__hl-amt {
+    font-size: 0.72rem; font-weight: 700;
+    color: var(--c-ink-soft); font-variant-numeric: tabular-nums;
     flex-shrink: 0;
-    align-self: center;
-    opacity: 0.55;
-  }
-  .fn-card__hl-name {
-    font-size: 0.82rem;
-    font-weight: 500;
-    flex: 1;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .fn-card__hl-amt {
-    flex-shrink: 0;
-    font-family: var(--num-font);
-    font-variant-numeric: tabular-nums;
-    font-size: 0.78rem;
-    font-weight: 700;
-    color: var(--c-ink-soft);
   }
 
-  .fn-card__foot {
-    margin-top: auto;
-    padding-top: 0.45rem;
+  .cat-card__foot { padding-top: 0.5rem; padding-bottom: 0.85rem; }
+  .cat-card__more {
+    font-size: 0.78rem; font-weight: 600;
+    color: var(--cat-c, #3F5F7A); text-decoration: none;
+    display: inline-flex; align-items: center; gap: 0.3rem;
   }
-  .fn-card__more {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-    font-size: 0.92rem;
-    font-weight: 600;
-    color: var(--c-primary, #3F5F7A);
-    text-decoration: none;
-  }
-  .fn-card__more i { font-size: 0.8em; transition: transform 0.15s ease; }
-  .fn-card__more:hover { text-decoration: none; }
-  .fn-card__more:hover i { transform: translateX(3px); }
-  .fn-card__more--muted { color: var(--c-neutral); }
+  .cat-card__more:hover { text-decoration: underline; }
 
-  @media (max-width: 960px) {
-    .fn-grid { grid-template-columns: repeat(2, 1fr); }
-  }
-  @media (max-width: 560px) {
-    .fn-grid { grid-template-columns: 1fr; }
-  }
-
-  /* About section */
-  .about {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
+  .source-line {
+    font-size: 0.78rem; color: var(--c-neutral);
+    margin-top: 2rem; padding-top: 1rem;
     border-top: 1px solid var(--c-rule);
-    max-width: 72ch;
-  }
-  .about h2 {
-    font-size: 1.05rem;
-    font-weight: 700;
-    color: var(--c-ink);
-    margin: 0 0 0.75rem;
-  }
-  .about p {
-    font-size: 0.9rem;
-    color: var(--c-ink-soft);
-    line-height: 1.6;
-    margin: 0 0 0.75rem;
-  }
-  .about p:last-child { margin-bottom: 0; }
-  .about a { color: var(--c-primary); }
-
-  /* Speech tab */
-  .speech-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 0.6rem;
-    margin-top: 1rem;
-  }
-  .speech-fn-block {
-    background: #fff;
-    border: 1px solid var(--c-rule);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-  .speech-fn-block > .fn-summary {
-    list-style: none;
-    cursor: pointer;
-    padding: 0.85rem 1rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 1rem;
-    transition: background 0.12s ease;
-  }
-  .speech-fn-block > .fn-summary::-webkit-details-marker { display: none; }
-  .speech-fn-block > .fn-summary:hover { background: #f7fafc; }
-  .speech-fn-block[open] > .fn-summary .chev { transform: rotate(90deg); }
-
-  .pill-count {
-    background: #edf2f7;
-    color: #4a5568;
-  }
-
-  .speech-list {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    border-top: 1px solid var(--c-rule-soft);
-  }
-  .speech-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 1rem;
-    padding: 0.75rem 1rem 0.75rem 2.5rem;
-    border-bottom: 1px solid var(--c-rule-soft);
-  }
-  .speech-item:last-child { border-bottom: none; }
-  .speech-item:hover { background: #fafbfc; }
-  .speech-item-main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.15rem;
-    min-width: 0;
-    flex: 1;
-  }
-  .speech-item-name {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: var(--c-ink);
-    line-height: 1.35;
-  }
-  .speech-item-desc {
-    font-size: 0.82rem;
-    color: var(--c-ink-soft);
-    line-height: 1.4;
-  }
-  .speech-item-foot {
-    display: flex;
-    gap: 0.75rem;
-    align-items: center;
-    margin-top: 0.25rem;
-    font-size: 0.72rem;
-    color: var(--c-neutral);
-  }
-  .speech-page {
-    font-variant-numeric: tabular-nums;
-    padding: 0.05rem 0.4rem;
-    background: #edf2f7;
-    border-radius: 3px;
-    font-weight: 600;
-    color: #4a5568;
-  }
-  .speech-reason {
-    font-style: italic;
-    opacity: 0.8;
-  }
-  .speech-item-meta {
-    flex-shrink: 0;
-    text-align: right;
-  }
-  .speech-amount {
-    font-family: var(--num-font);
-    font-variant-numeric: tabular-nums;
-    font-feature-settings: "tnum";
-    font-size: 0.95rem;
-    font-weight: 700;
-    color: var(--c-ink);
-    letter-spacing: -0.01em;
-  }
-  .speech-amount--none {
-    font-size: 0.78rem;
-    font-weight: 500;
-    font-style: italic;
-    color: var(--c-neutral);
-  }
-  .speech-item--manual {
-    background: #f5f3ff;
-    border-left: 3px solid #7c3aed;
-    padding-left: calc(1.75rem - 3px);
-  }
-  .speech-item--manual:hover { background: #efeafd; }
-  .manual-badge {
-    display: inline-block; background: #7c3aed; color: #fff;
-    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
-    padding: 0.05rem 0.35rem; border-radius: 3px;
-    text-transform: uppercase; margin-right: 0.4rem;
-    vertical-align: middle;
-  }
-  /* Department palette — shared with the editor. Same hues as the Schedule-I function cards. */
-  [data-dept="engineering"]        { --dept-c: #1d4ed8; --dept-bg: #dbeafe; }
-  [data-dept="revenue"]            { --dept-c: #b45309; --dept-bg: #fef3c7; }
-  [data-dept="advertisement"]      { --dept-c: #b45309; --dept-bg: #fef3c7; }
-  [data-dept="health-sanitation"]  { --dept-c: #9d174d; --dept-bg: #fce7f3; }
-  [data-dept="animal-husbandry"]   { --dept-c: #b91c1c; --dept-bg: #fee2e2; }
-  [data-dept="forest-horticulture"]{ --dept-c: #4d7c0f; --dept-bg: #ecfccb; }
-  [data-dept="administration"]     { --dept-c: #52525b; --dept-bg: #f4f4f5; }
-  [data-dept="finance"]            { --dept-c: #52525b; --dept-bg: #f4f4f5; }
-  [data-dept="public-relations"]   { --dept-c: #52525b; --dept-bg: #f4f4f5; }
-  [data-dept="solid-waste"]        { --dept-c: #0f766e; --dept-bg: #ccfbf1; }
-  [data-dept="welfare"]            { --dept-c: #4338ca; --dept-bg: #e0e7ff; }
-  [data-dept="land-acquisition"]   { --dept-c: #c2410c; --dept-bg: #ffedd5; }
-  [data-dept="town-planning"]      { --dept-c: #c2410c; --dept-bg: #ffedd5; }
-  [data-dept="education"]          { --dept-c: #6d28d9; --dept-bg: #ede9fe; }
-
-  .dept-chips { display: inline-flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; }
-  .dept-chip {
-    font-size: 0.68rem; font-weight: 600; line-height: 1.15;
-    padding: 0.15rem 0.5rem; border-radius: 999px;
-    background: var(--dept-c, #137752); color: #fff;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.08), inset 0 1px 0 rgba(255,255,255,0.12);
-  }
-  .dept-chip--secondary {
-    background: var(--dept-bg, #e7f5ee);
-    color: var(--dept-c, #137752);
-    border: 1px dashed var(--dept-c, #137752);
-    box-shadow: none;
-    padding: calc(0.15rem - 1px) calc(0.5rem - 1px);
-  }
-  .speech-item--secondary { opacity: 0.82; }
-  .speech-item--secondary .speech-item-name { font-weight: 500; }
-  .speech-amount--secondary {
-    color: var(--c-neutral); font-weight: 500;
-    font-style: italic;
-  }
-
-  @media (max-width: 640px) {
-    .tab { padding: 0.6rem 0.7rem; font-size: 0.86rem; }
-    .speech-item { padding-left: 1.25rem; }
-    .speech-item-foot { flex-wrap: wrap; gap: 0.35rem; }
+    line-height: 1.55;
   }
 </style>

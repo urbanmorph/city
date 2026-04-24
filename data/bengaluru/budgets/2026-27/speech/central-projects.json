@@ -23,7 +23,9 @@
       "amount_lakhs": null,
       "page": 7,
       "category": "other",
-      "verbatim_quote": "Through an online system, we have created E-PID numbers for properties within the Corporation's jurisdiction, allowing citizens to obtain e-Khatas through a software interface."
+      "verbatim_quote": "Through an online system, we have created E-PID numbers for properties within the Corporation's jurisdiction, allowing citizens to obtain e-Khatas through a software interface.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "new-khata-stamp-duty-levy",
@@ -33,7 +35,9 @@
       "amount_lakhs": null,
       "page": 8,
       "category": "other",
-      "verbatim_quote": "We have decided to levy a 2% tax on stamp duty for issuing new Khatas, which will increase the Corporation's revenue."
+      "verbatim_quote": "We have decided to levy a 2% tax on stamp duty for issuing new Khatas, which will increase the Corporation's revenue.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "b-to-a-khata-conversion-charge",
@@ -43,7 +47,9 @@
       "amount_lakhs": null,
       "page": 8,
       "category": "other",
-      "verbatim_quote": "Through systematic digitization and verification, we have successfully converted eligible properties from B-Khata to A-Khata. We levy a charge of 5% on the guidance value for this conversion."
+      "verbatim_quote": "Through systematic digitization and verification, we have successfully converted eligible properties from B-Khata to A-Khata. We levy a charge of 5% on the guidance value for this conversion.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "property-tax-enforcement-seal-auction",
@@ -53,7 +59,9 @@
       "amount_lakhs": null,
       "page": 8,
       "category": "other",
-      "verbatim_quote": "If taxes remain unpaid even after issuing notices, we will seal the properties and proceed with auction."
+      "verbatim_quote": "If taxes remain unpaid even after issuing notices, we will seal the properties and proceed with auction.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "revenue-officer-kiosk-centres",
@@ -63,7 +71,9 @@
       "amount_lakhs": null,
       "page": 9,
       "category": "other",
-      "verbatim_quote": "We will open kiosk service centers in the offices of the Corporation's Revenue Officers, allowing citizens to pay property tax and access other facilities on their own."
+      "verbatim_quote": "We will open kiosk service centers in the offices of the Corporation's Revenue Officers, allowing citizens to pay property tax and access other facilities on their own.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "new-parking-policy",
@@ -73,7 +83,9 @@
       "amount_lakhs": null,
       "page": 9,
       "category": "other",
-      "verbatim_quote": "To increase non-tax revenue, we will formulate a new parking policy."
+      "verbatim_quote": "To increase non-tax revenue, we will formulate a new parking policy.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "outdoor-advertising-ppp",
@@ -83,7 +95,9 @@
       "amount_lakhs": null,
       "page": 9,
       "category": "other",
-      "verbatim_quote": "we will also focus on scientific management of outdoor advertising and the commercial utilization of Corporation properties through public-private partnership."
+      "verbatim_quote": "we will also focus on scientific management of outdoor advertising and the commercial utilization of Corporation properties through public-private partnership.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "corporation-properties-rental-recovery",
@@ -93,7 +107,9 @@
       "amount_lakhs": 5800.0,
       "page": 9,
       "category": "other",
-      "verbatim_quote": "Within the Bengaluru Central City Corporation's jurisdiction, we have 438 properties from which we expect rental income of ₹58 crores. Of these, 220 properties are currently on lease."
+      "verbatim_quote": "Within the Bengaluru Central City Corporation's jurisdiction, we have 438 properties from which we expect rental income of ₹58 crores. Of these, 220 properties are currently on lease.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "asset-monetization-long-term-lease",
@@ -103,7 +119,9 @@
       "amount_lakhs": null,
       "page": 10,
       "category": "other",
-      "verbatim_quote": "To increase the Corporation's revenue, we will mobilize financial resources through asset monetization. We will lease vacant Corporation buildings, shops, and offices to private institutions."
+      "verbatim_quote": "To increase the Corporation's revenue, we will mobilize financial resources through asset monetization. We will lease vacant Corporation buildings, shops, and offices to private institutions.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "property-fencing-protection",
@@ -113,7 +131,9 @@
       "amount_lakhs": null,
       "page": 10,
       "category": "infrastructure",
-      "verbatim_quote": "We will also protect properties by installing fencing around them."
+      "verbatim_quote": "We will also protect properties by installing fencing around them.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "markets-redevelopment-campaign",
@@ -123,7 +143,9 @@
       "amount_lakhs": 2500.0,
       "page": 10,
       "category": "infrastructure",
-      "verbatim_quote": "We will revitalize historic areas such as K.R. Market, Russell Market, Johnson Market, and Kalasipalya Market – all located in the heart of Bengaluru – by preserving their local character while providing modern amenities."
+      "verbatim_quote": "We will revitalize historic areas such as K.R. Market, Russell Market, Johnson Market, and Kalasipalya Market – all located in the heart of Bengaluru – by preserving their local character while providing modern amenities.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "russell-market-redevelopment",
@@ -133,7 +155,9 @@
       "amount_lakhs": 7000.0,
       "page": 10,
       "category": "infrastructure",
-      "verbatim_quote": "we will spend ₹70 crores on the comprehensive redevelopment of Russell Market in Shivajinagar, ... a market with over a century of history. We will prioritize proper parking facilities and heritage structure preservation."
+      "verbatim_quote": "we will spend ₹70 crores on the comprehensive redevelopment of Russell Market in Shivajinagar, ... a market with over a century of history. We will prioritize proper parking facilities and heritage structure preservation.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ"
     },
     {
       "id": "other-markets-development",
@@ -143,7 +167,9 @@
       "amount_lakhs": 2000.0,
       "page": 11,
       "category": "infrastructure",
-      "verbatim_quote": "We will develop the remaining market areas at a cost of ₹20 crores."
+      "verbatim_quote": "We will develop the remaining market areas at a cost of ₹20 crores.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ"
     },
     {
       "id": "outsourced-staff-deployment",
@@ -153,7 +179,9 @@
       "amount_lakhs": null,
       "page": 11,
       "category": "other",
-      "verbatim_quote": "To further streamline the administrative system, we will deploy outsourced personnel as needed."
+      "verbatim_quote": "To further streamline the administrative system, we will deploy outsourced personnel as needed.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ"
     },
     {
       "id": "revenue-staff-gps-total-station-training",
@@ -163,7 +191,9 @@
       "amount_lakhs": null,
       "page": 11,
       "category": "other",
-      "verbatim_quote": "we will train Revenue Department staff on Total Station Survey and GPS Survey. We will organize training workshops on new technologies to enhance the skills of technical officers."
+      "verbatim_quote": "we will train Revenue Department staff on Total Station Survey and GPS Survey. We will organize training workshops on new technologies to enhance the skills of technical officers.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ"
     },
     {
       "id": "e-office-paperless-administration",
@@ -173,7 +203,9 @@
       "amount_lakhs": null,
       "page": 12,
       "category": "other",
-      "verbatim_quote": "We will strictly implement the e-Office system and digitization to bring transparency to administration and ensure that office work is completed quickly and in a completely paperless manner."
+      "verbatim_quote": "We will strictly implement the e-Office system and digitization to bring transparency to administration and ensure that office work is completed quickly and in a completely paperless manner.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ"
     },
     {
       "id": "official-website-and-social-media",
@@ -183,7 +215,9 @@
       "amount_lakhs": null,
       "page": 12,
       "category": "other",
-      "verbatim_quote": "To continuously create awareness among citizens about the Corporation's services, we are developing the Corporation's official website. Along with print and electronic media, we are effectively using the Corporation's official social media platforms."
+      "verbatim_quote": "To continuously create awareness among citizens about the Corporation's services, we are developing the Corporation's official website. Along with print and electronic media, we are effectively using the Corporation's official social media platforms.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ"
     },
     {
       "id": "e-information-dissemination-modernization",
@@ -193,7 +227,9 @@
       "amount_lakhs": null,
       "page": 12,
       "category": "other",
-      "verbatim_quote": "In 2026-27, the Corporation is prepared to further modernize the e-information dissemination system."
+      "verbatim_quote": "In 2026-27, the Corporation is prepared to further modernize the e-information dissemination system.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ"
     },
     {
       "id": "control-room-and-phone-in",
@@ -203,7 +239,9 @@
       "amount_lakhs": null,
       "page": 12,
       "category": "other",
-      "verbatim_quote": "The Control Room operates 24/7 to register complaints from the public and forward information to the concerned officers. In addition, we organize phone-in programs for direct communication with the public."
+      "verbatim_quote": "The Control Room operates 24/7 to register complaints from the public and forward information to the concerned officers. In addition, we organize phone-in programs for direct communication with the public.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ"
     },
     {
       "id": "outdoor-advertising-annual-ground-rent",
@@ -213,7 +251,9 @@
       "amount_lakhs": 5000.0,
       "page": 13,
       "category": "other",
-      "verbatim_quote": "We estimate revenue of ₹50.00 crores from permit and renewal fees for advertising agencies."
+      "verbatim_quote": "We estimate revenue of ₹50.00 crores from permit and renewal fees for advertising agencies.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು"
     },
     {
       "id": "led-digital-screen-tenders",
@@ -223,7 +263,9 @@
       "amount_lakhs": 14200.0,
       "page": 13,
       "category": "other",
-      "verbatim_quote": "In accordance with the new Greater Bengaluru Area Advertising Rules 2025, which came into effect on January 13, 2026, we have invited tenders to grant authorized advertising rights for LED and digital screens, bringing transparency to the system. Through this, we expect revenue of ₹142.00 crores."
+      "verbatim_quote": "In accordance with the new Greater Bengaluru Area Advertising Rules 2025, which came into effect on January 13, 2026, we have invited tenders to grant authorized advertising rights for LED and digital screens, bringing transparency to the system. Through this, we expect revenue of ₹142.00 crores.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು"
     },
     {
       "id": "kadiriyanapalya-land-acquisition-compensation",
@@ -233,7 +275,9 @@
       "amount_lakhs": 5000.0,
       "page": 13,
       "category": "infrastructure",
-      "verbatim_quote": "we have set aside ₹50 crores for the current year to provide swift compensation to owners of land acquired in Kadiriyanapalya, which falls under the C.V. Raman Nagar assembly constituency, as well as for other remaining land acquisition cases within the Corporation's jurisdiction."
+      "verbatim_quote": "we have set aside ₹50 crores for the current year to provide swift compensation to owners of land acquired in Kadiriyanapalya, which falls under the C.V. Raman Nagar assembly constituency, as well as for other remaining land acquisition cases within the Corporation's jurisdiction.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು"
     },
     {
       "id": "premium-far-policy-section-18b",
@@ -243,7 +287,9 @@
       "amount_lakhs": 35000.0,
       "page": 15,
       "category": "other",
-      "verbatim_quote": "We have implemented the Premium FAR policy by introducing an amendment under Section 18-B of the KTCP Act 1961. ... Through this, we expect to generate an additional revenue of ₹350 crores."
+      "verbatim_quote": "We have implemented the Premium FAR policy by introducing an amendment under Section 18-B of the KTCP Act 1961. ... Through this, we expect to generate an additional revenue of ₹350 crores.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "greater-bengaluru-master-plan-contribution",
@@ -253,7 +299,9 @@
       "amount_lakhs": 500.0,
       "page": 15,
       "category": "other",
-      "verbatim_quote": "We have set aside an allocation of ₹5 crores from the Corporation for this purpose."
+      "verbatim_quote": "We have set aside an allocation of ₹5 crores from the Corporation for this purpose.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "padarayanapura-main-road-widening",
@@ -263,7 +311,9 @@
       "amount_lakhs": null,
       "page": 15,
       "category": "roads",
-      "verbatim_quote": "we will also take up the widening of Padarayanapura Main Road in the Chamarajapete area from 9 meters to 24 meters."
+      "verbatim_quote": "we will also take up the widening of Padarayanapura Main Road in the Chamarajapete area from 9 meters to 24 meters.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "business-corridors-development",
@@ -273,7 +323,9 @@
       "amount_lakhs": null,
       "page": 16,
       "category": "infrastructure",
-      "verbatim_quote": "we will develop selected roads as Business Corridors. We will provide state-of-the-art infrastructure in these corridors and collect higher premium fees."
+      "verbatim_quote": "we will develop selected roads as Business Corridors. We will provide state-of-the-art infrastructure in these corridors and collect higher premium fees.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "nambike-nakshe-scheme",
@@ -283,7 +335,9 @@
       "amount_lakhs": null,
       "page": 16,
       "category": "other",
-      "verbatim_quote": "Under the Nambike Nakshe Scheme, for sites measuring up to 50x80, the construction of up to four residential units can be approved on a temporary basis through private architects or engineers."
+      "verbatim_quote": "Under the Nambike Nakshe Scheme, for sites measuring up to 50x80, the construction of up to four residential units can be approved on a temporary basis through private architects or engineers.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "oc-exemption-30x40",
@@ -293,7 +347,9 @@
       "amount_lakhs": null,
       "page": 16,
       "category": "other",
-      "verbatim_quote": "residential buildings constructed on sites measuring 30x40 (1200 square feet) with 'Ground + 2 floors' or 'Stilt (Parking) + 3 floors' have been granted exemption from the mandatory requirement of obtaining an Occupancy Certificate (OC)."
+      "verbatim_quote": "residential buildings constructed on sites measuring 30x40 (1200 square feet) with 'Ground + 2 floors' or 'Stilt (Parking) + 3 floors' have been granted exemption from the mandatory requirement of obtaining an Occupancy Certificate (OC).",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "setback-simplification",
@@ -303,7 +359,9 @@
       "amount_lakhs": null,
       "page": 17,
       "category": "other",
-      "verbatim_quote": "We have simplified building setbacks and relaxed the rules regarding the open spaces required around buildings, providing greater convenience to the public."
+      "verbatim_quote": "We have simplified building setbacks and relaxed the rules regarding the open spaces required around buildings, providing greater convenience to the public.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ"
     },
     {
       "id": "ifms-integrated-financial-management",
@@ -313,7 +371,9 @@
       "amount_lakhs": null,
       "page": 18,
       "category": "other",
-      "verbatim_quote": "the department manages all its payments through the Integrated Financial Management System (IFMS). Every financial transaction, including all receipts, payments, and inter-office fund transfers within the Corporation, will be systematically recorded in this system on a daily basis."
+      "verbatim_quote": "the department manages all its payments through the Integrated Financial Management System (IFMS). Every financial transaction, including all receipts, payments, and inter-office fund transfers within the Corporation, will be systematically recorded in this system on a daily basis.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ"
     },
     {
       "id": "dbt-welfare-delivery",
@@ -323,7 +383,9 @@
       "amount_lakhs": null,
       "page": 18,
       "category": "welfare",
-      "verbatim_quote": "We will deliver all welfare programs undertaken by the Bengaluru Central City Corporation directly to beneficiaries through the Direct Benefit Transfer (DBT) system under separate funding allocations."
+      "verbatim_quote": "We will deliver all welfare programs undertaken by the Bengaluru Central City Corporation directly to beneficiaries through the Direct Benefit Transfer (DBT) system under separate funding allocations.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ"
     },
     {
       "id": "audit-cell-bbmp-legacy-objections",
@@ -333,7 +395,9 @@
       "amount_lakhs": null,
       "page": 19,
       "category": "other",
-      "verbatim_quote": "We have established a dedicated Audit Cell with the aim of resolving pending audit paragraphs that have remained unsettled since the days of the Bruhat Bengaluru Mahanagara Palike."
+      "verbatim_quote": "We have established a dedicated Audit Cell with the aim of resolving pending audit paragraphs that have remained unsettled since the days of the Bruhat Bengaluru Mahanagara Palike.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ"
     },
     {
       "id": "public-works-total-budget",
@@ -343,7 +407,9 @@
       "amount_lakhs": 176000.0,
       "page": 20,
       "category": "infrastructure",
-      "verbatim_quote": "We have allocated a total of ₹1,760 crores for the Corporation's public works. This budget comprises grants from the Central and State Governments, alongside ₹200 crores raised successfully through municipal bonds."
+      "verbatim_quote": "We have allocated a total of ₹1,760 crores for the Corporation's public works. This budget comprises grants from the Central and State Governments, alongside ₹200 crores raised successfully through municipal bonds.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "arterial-roads-asphalting-sip",
@@ -353,7 +419,9 @@
       "amount_lakhs": 21750.0,
       "page": 21,
       "category": "roads",
-      "verbatim_quote": "Under the Special Infrastructure Capital Support Scheme, the State Government has provided a generous grant of ₹217.50 crores to develop arterial and sub-arterial roads. We will complete the asphalting of 145 kilometers of these roads by May 2026."
+      "verbatim_quote": "Under the Special Infrastructure Capital Support Scheme, the State Government has provided a generous grant of ₹217.50 crores to develop arterial and sub-arterial roads. We will complete the asphalting of 145 kilometers of these roads by May 2026.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "cmidp-ward-road-asphalting-community-buildings",
@@ -363,7 +431,9 @@
       "amount_lakhs": 20000.0,
       "page": 21,
       "category": "roads",
-      "verbatim_quote": "we have secured a grant of ₹200 crores under the Honorable Chief Minister's Infrastructure Development Scheme. In the upcoming financial year, we will utilize this to asphalt 115 kilometers of ward roads and construct 10 new community buildings."
+      "verbatim_quote": "we have secured a grant of ₹200 crores under the Honorable Chief Minister's Infrastructure Development Scheme. In the upcoming financial year, we will utilize this to asphalt 115 kilometers of ward roads and construct 10 new community buildings.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "cm-special-grant-assembly-constituencies",
@@ -373,7 +443,9 @@
       "amount_lakhs": 7500.0,
       "page": 21,
       "category": "infrastructure",
-      "verbatim_quote": "under the Chief Minister's Special Grant, we have received ₹75 crores, allocating ₹25 crores each to the Chamarajapete, Gandhinagar, and Shivajinagar assembly constituencies."
+      "verbatim_quote": "under the Chief Minister's Special Grant, we have received ₹75 crores, allocating ₹25 crores each to the Chamarajapete, Gandhinagar, and Shivajinagar assembly constituencies.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "stormwater-drains-major-10-96km",
@@ -383,7 +455,9 @@
       "amount_lakhs": 6900.0,
       "page": 21,
       "category": "water",
-      "verbatim_quote": "we are in the final stages of developing 10.96 kilometers of major stormwater drains at a cost of ₹69 crores, with 8.11 kilometers already completed."
+      "verbatim_quote": "we are in the final stages of developing 10.96 kilometers of major stormwater drains at a cost of ₹69 crores, with 8.11 kilometers already completed.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "world-bank-stormwater-upgrade",
@@ -393,7 +467,9 @@
       "amount_lakhs": null,
       "page": 22,
       "category": "water",
-      "verbatim_quote": "we have formulated a comprehensive program to upgrade our stormwater drains to global standards under the World Bank-assisted Water Security and Disaster Management Program."
+      "verbatim_quote": "we have formulated a comprehensive program to upgrade our stormwater drains to global standards under the World Bank-assisted Water Security and Disaster Management Program.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "ward-development-maintenance-fund",
@@ -403,7 +479,9 @@
       "amount_lakhs": 14175.0,
       "page": 22,
       "category": "infrastructure",
-      "verbatim_quote": "For the holistic development of our wards, we have set aside ₹141.75 crores, allocating ₹2.25 crores to each ward."
+      "verbatim_quote": "For the holistic development of our wards, we have set aside ₹141.75 crores, allocating ₹2.25 crores to each ward.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "brand-bengaluru-russell-market-decorative-electrification",
@@ -413,7 +491,9 @@
       "amount_lakhs": 8500.0,
       "page": 22,
       "category": "infrastructure",
-      "verbatim_quote": "Under the Brand Bengaluru – Vibrant Bengaluru initiative, we have dedicated ₹70 crores in the budget for the historic revitalization of Russell Market, and ₹15 crores to install decorative electrification along the Corporation's major roads."
+      "verbatim_quote": "Under the Brand Bengaluru – Vibrant Bengaluru initiative, we have dedicated ₹70 crores in the budget for the historic revitalization of Russell Market, and ₹15 crores to install decorative electrification along the Corporation's major roads.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "suraksha-junction-upgrade-12",
@@ -423,7 +503,9 @@
       "amount_lakhs": null,
       "page": 22,
       "category": "roads",
-      "verbatim_quote": "we will scientifically upgrade 12 major junctions under the 'Suraksha' scheme."
+      "verbatim_quote": "we will scientifically upgrade 12 major junctions under the 'Suraksha' scheme.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "hejje-hejjege-surakshe-footpaths",
@@ -433,7 +515,9 @@
       "amount_lakhs": 5000.0,
       "page": 23,
       "category": "roads",
-      "verbatim_quote": "we have launched an innovative scheme called 'Hejje Hejjege Surakshe' (Safety at Every Step). Under this, we will improve 50 kilometers of existing footpaths and construct 15 kilometers of new, modern footpaths."
+      "verbatim_quote": "we have launched an innovative scheme called 'Hejje Hejjege Surakshe' (Safety at Every Step). Under this, we will improve 50 kilometers of existing footpaths and construct 15 kilometers of new, modern footpaths.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "new-pedestrian-skywalks-9",
@@ -443,7 +527,9 @@
       "amount_lakhs": null,
       "page": 23,
       "category": "roads",
-      "verbatim_quote": "Currently, 24 pedestrian skywalks are operational. Responding to the traffic police's requests, we have invited tenders to construct 9 new skywalks."
+      "verbatim_quote": "Currently, 24 pedestrian skywalks are operational. Responding to the traffic police's requests, we have invited tenders to construct 9 new skywalks.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "ppp-bus-shelters-public-toilets",
@@ -453,7 +539,9 @@
       "amount_lakhs": null,
       "page": 23,
       "category": "infrastructure",
-      "verbatim_quote": "We will also build new bus shelters under the Public-Private Partnership (PPP) model. In 2026-27, we will leverage advertising rights to construct and meticulously maintain free public toilets in high-need areas across the city."
+      "verbatim_quote": "We will also build new bus shelters under the Public-Private Partnership (PPP) model. In 2026-27, we will leverage advertising rights to construct and meticulously maintain free public toilets in high-need areas across the city.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "microsurfacing-roads",
@@ -463,7 +551,9 @@
       "amount_lakhs": null,
       "page": 23,
       "category": "roads",
-      "verbatim_quote": "To strengthen our road surfaces, we launched a Microsurfacing scheme and have already completed 25 kilometers. We will finish the remaining 5.50 kilometers by April 2026."
+      "verbatim_quote": "To strengthen our road surfaces, we launched a Microsurfacing scheme and have already completed 25 kilometers. We will finish the remaining 5.50 kilometers by April 2026.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "white-topping-30km",
@@ -473,7 +563,9 @@
       "amount_lakhs": null,
       "page": 24,
       "category": "roads",
-      "verbatim_quote": "we have accelerated white-topping works, aiming to complete approximately 30 kilometers by the end of December 2026."
+      "verbatim_quote": "we have accelerated white-topping works, aiming to complete approximately 30 kilometers by the end of December 2026.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "jet-patcher-cold-asphalt",
@@ -483,7 +575,9 @@
       "amount_lakhs": null,
       "page": 24,
       "category": "roads",
-      "verbatim_quote": "we are deploying jet patcher machines and cold asphalt technology."
+      "verbatim_quote": "we are deploying jet patcher machines and cold asphalt technology.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "mechanical-sweeping-night-roads",
@@ -493,7 +587,9 @@
       "amount_lakhs": null,
       "page": 24,
       "category": "swm",
-      "verbatim_quote": "we have contracted 7 state-of-the-art mechanical sweeping machines for a 7-year period to clean busy roads at night."
+      "verbatim_quote": "we have contracted 7 state-of-the-art mechanical sweeping machines for a 7-year period to clean busy roads at night.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "major-building-construction-renovation",
@@ -503,7 +599,9 @@
       "amount_lakhs": 6000.0,
       "page": 24,
       "category": "infrastructure",
-      "verbatim_quote": "We have set aside ₹60 crores for major building construction and renovation projects to upgrade civic infrastructure."
+      "verbatim_quote": "We have set aside ₹60 crores for major building construction and renovation projects to upgrade civic infrastructure.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "gundu-rao-stadium-gandhinagar",
@@ -513,7 +611,9 @@
       "amount_lakhs": null,
       "page": 24,
       "category": "infrastructure",
-      "verbatim_quote": "In Gandhinagar, we will construct the Sri R. Gundu Rao Stadium, a kindergarten, and gymnasiums, alongside upgrading the Seshadripuram swimming pool."
+      "verbatim_quote": "In Gandhinagar, we will construct the Sri R. Gundu Rao Stadium, a kindergarten, and gymnasiums, alongside upgrading the Seshadripuram swimming pool.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "seshadripuram-swimming-pool-upgrade",
@@ -523,7 +623,9 @@
       "amount_lakhs": null,
       "page": 24,
       "category": "infrastructure",
-      "verbatim_quote": "In Gandhinagar, we will construct the Sri R. Gundu Rao Stadium, a kindergarten, and gymnasiums, alongside upgrading the Seshadripuram swimming pool."
+      "verbatim_quote": "In Gandhinagar, we will construct the Sri R. Gundu Rao Stadium, a kindergarten, and gymnasiums, alongside upgrading the Seshadripuram swimming pool.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "corporation-girls-high-school-rayapuram-phase-2",
@@ -533,7 +635,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "education",
-      "verbatim_quote": "In Chamarajapete and Chickpete, we will launch Phase 2 development of the Corporation Girls' High School in Rayapuram."
+      "verbatim_quote": "In Chamarajapete and Chickpete, we will launch Phase 2 development of the Corporation Girls' High School in Rayapuram.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "children-hospital-siddaiah-road",
@@ -543,7 +647,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "health",
-      "verbatim_quote": "construct a dialysis center, a multipurpose community hall, a children's hospital on Siddaiah Road"
+      "verbatim_quote": "construct a dialysis center, a multipurpose community hall, a children's hospital on Siddaiah Road",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "kanakanayaka-bhavana-jayanagar-2nd-block",
@@ -553,7 +659,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "infrastructure",
-      "verbatim_quote": "the Kanakanayaka Bhavana in Jayanagar 2nd Block"
+      "verbatim_quote": "the Kanakanayaka Bhavana in Jayanagar 2nd Block",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "chinnayyanapalya-market-building",
@@ -563,7 +671,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "infrastructure",
-      "verbatim_quote": "and a new market building in Chinnayyanapalya."
+      "verbatim_quote": "and a new market building in Chinnayyanapalya.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "flyover-underside-micro-parks",
@@ -573,7 +683,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "parks",
-      "verbatim_quote": "Through PPP and CSR collaborations, we will transform neglected spaces beneath flyovers into vibrant micro-parks, small business zones, and artistic public hubs."
+      "verbatim_quote": "Through PPP and CSR collaborations, we will transform neglected spaces beneath flyovers into vibrant micro-parks, small business zones, and artistic public hubs.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "carbon-credit-ev-charging-bicycle-tracks",
@@ -583,7 +695,9 @@
       "amount_lakhs": null,
       "page": 25,
       "category": "infrastructure",
-      "verbatim_quote": "Under the Carbon Credit scheme, our ultimate goal is a clean, green, and sustainable city. We will promote pay-and-use EV charging points, construct dedicated bicycle tracks, and develop pedestrian-friendly walkways."
+      "verbatim_quote": "Under the Carbon Credit scheme, our ultimate goal is a clean, green, and sustainable city. We will promote pay-and-use EV charging points, construct dedicated bicycle tracks, and develop pedestrian-friendly walkways.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "urban-design-cell",
@@ -593,7 +707,9 @@
       "amount_lakhs": null,
       "page": 26,
       "category": "other",
-      "verbatim_quote": "To revolutionize urban planning, we have established a dedicated Urban Design Cell for the first time, comprising an Urban Transport Expert, an Urban Designer, and an Urban Planner."
+      "verbatim_quote": "To revolutionize urban planning, we have established a dedicated Urban Design Cell for the first time, comprising an Urban Transport Expert, an Urban Designer, and an Urban Planner.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "energy-audit-solar-panels-buildings",
@@ -603,7 +719,9 @@
       "amount_lakhs": null,
       "page": 26,
       "category": "infrastructure",
-      "verbatim_quote": "we will conduct strict energy audits of Corporation buildings and install solar panels to achieve electricity self-reliance."
+      "verbatim_quote": "we will conduct strict energy audits of Corporation buildings and install solar panels to achieve electricity self-reliance.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "blue-green-corridors",
@@ -613,7 +731,9 @@
       "amount_lakhs": 1000.0,
       "page": 26,
       "category": "infrastructure",
-      "verbatim_quote": "we have allocated ₹10.00 crores to construct Blue-Green Corridors on selected roads, featuring bioswales and extensive tree planting."
+      "verbatim_quote": "we have allocated ₹10.00 crores to construct Blue-Green Corridors on selected roads, featuring bioswales and extensive tree planting.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "led-streetlights-ccms-67500",
@@ -623,7 +743,9 @@
       "amount_lakhs": null,
       "page": 26,
       "category": "lighting",
-      "verbatim_quote": "We are aggressively converting 67,500 traditional streetlights into energy-efficient LED lights, integrating them into a Centralized Control and Monitoring System (CCMS). We have already successfully converted 51,037 lights."
+      "verbatim_quote": "We are aggressively converting 67,500 traditional streetlights into energy-efficient LED lights, integrating them into a Centralized Control and Monitoring System (CCMS). We have already successfully converted 51,037 lights.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು"
     },
     {
       "id": "pourakarmika-regularization-health-insurance",
@@ -633,7 +755,9 @@
       "amount_lakhs": null,
       "page": 27,
       "category": "welfare",
-      "verbatim_quote": "We are actively regularizing eligible workers as per government rules. We have distributed facial and biometric attendance devices, and in the immediate next phase, we will issue official identity cards and provide comprehensive health insurance."
+      "verbatim_quote": "We are actively regularizing eligible workers as per government rules. We have distributed facial and biometric attendance devices, and in the immediate next phase, we will issue official identity cards and provide comprehensive health insurance.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ"
     },
     {
       "id": "litter-picker-mechanical-sweepers",
@@ -643,7 +767,9 @@
       "amount_lakhs": 1000.0,
       "page": 27,
       "category": "swm",
-      "verbatim_quote": "We have also allocated ₹10 crores to deploy heavy-duty mechanical sweeping machines on a contract basis."
+      "verbatim_quote": "We have also allocated ₹10 crores to deploy heavy-duty mechanical sweeping machines on a contract basis.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ"
     },
     {
       "id": "she-toilets-new-public-toilets",
@@ -653,7 +779,9 @@
       "amount_lakhs": null,
       "page": 27,
       "category": "health",
-      "verbatim_quote": "Prioritizing women's convenience, we will construct 20 dedicated SHE TOILETS and 60 new public toilets featuring separate facilities for men, women, and the disabled."
+      "verbatim_quote": "Prioritizing women's convenience, we will construct 20 dedicated SHE TOILETS and 60 new public toilets featuring separate facilities for men, women, and the disabled.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ"
     },
     {
       "id": "bswml-solid-waste-allocation",
@@ -663,7 +791,9 @@
       "amount_lakhs": 21500.0,
       "page": 28,
       "category": "swm",
-      "verbatim_quote": "We have allocated ₹215.00 crores to the Bengaluru Solid Waste Management Company to ensure seamless waste collection, scientific segregation, landfill development, and the robust operation of solid waste processing plants."
+      "verbatim_quote": "We have allocated ₹215.00 crores to the Bengaluru Solid Waste Management Company to ensure seamless waste collection, scientific segregation, landfill development, and the robust operation of solid waste processing plants.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ"
     },
     {
       "id": "mustering-suvidha-centres-wards",
@@ -673,7 +803,9 @@
       "amount_lakhs": null,
       "page": 28,
       "category": "welfare",
-      "verbatim_quote": "we will establish well-equipped Mustering Centers and Suvidha Centers in every ward, providing them with essential resting infrastructure and amenities."
+      "verbatim_quote": "we will establish well-equipped Mustering Centers and Suvidha Centers in every ward, providing them with essential resting infrastructure and amenities.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ"
     },
     {
       "id": "lakes-kaggadasapura-ulsoor-byrasandra-rejuvenation",
@@ -683,7 +815,9 @@
       "amount_lakhs": 4314.0,
       "page": 28,
       "category": "parks",
-      "verbatim_quote": "We are prioritizing the conservation of Kaggadasapura, Ulsoor, Kelagina Byrasandra, and Chickpete Byrasandra lakes. ... with ₹43.14 crores worth of development works already underway."
+      "verbatim_quote": "We are prioritizing the conservation of Kaggadasapura, Ulsoor, Kelagina Byrasandra, and Chickpete Byrasandra lakes. ... with ₹43.14 crores worth of development works already underway.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ"
     },
     {
       "id": "lake-water-purity-diversion-channels",
@@ -693,7 +827,9 @@
       "amount_lakhs": null,
       "page": 29,
       "category": "parks",
-      "verbatim_quote": "To maintain water purity, we are constructing diversion channels to block sewage entry, alongside extensive desilting and bund strengthening."
+      "verbatim_quote": "To maintain water purity, we are constructing diversion channels to block sewage entry, alongside extensive desilting and bund strengthening.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ"
     },
     {
       "id": "ulsoor-lake-comprehensive-development",
@@ -703,7 +839,9 @@
       "amount_lakhs": 2000.0,
       "page": 29,
       "category": "parks",
-      "verbatim_quote": "Specifically for the historic Ulsoor Lake, we have launched an ₹82 crore comprehensive development project in collaboration with the Brand Bengaluru scheme and the Minor Irrigation Department."
+      "verbatim_quote": "Specifically for the historic Ulsoor Lake, we have launched an ₹82 crore comprehensive development project in collaboration with the Brand Bengaluru scheme and the Minor Irrigation Department.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ"
     },
     {
       "id": "brand-bengaluru-healthy-maternity-hospitals-fru",
@@ -713,7 +851,9 @@
       "amount_lakhs": 4000.0,
       "page": 30,
       "category": "health",
-      "verbatim_quote": "Under the Brand Bengaluru – Healthy Bengaluru initiative, we have allocated ₹40 crores to upgrade 7 maternity hospitals into 30-bed FRU Community Health Centers, and one hospital into a 50-bed FRU UCHC center, fully compliant with IPHS standards."
+      "verbatim_quote": "Under the Brand Bengaluru – Healthy Bengaluru initiative, we have allocated ₹40 crores to upgrade 7 maternity hospitals into 30-bed FRU Community Health Centers, and one hospital into a 50-bed FRU UCHC center, fully compliant with IPHS standards.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "vatsalya-mane-pobbatti-hospital",
@@ -723,7 +863,9 @@
       "amount_lakhs": null,
       "page": 31,
       "category": "health",
-      "verbatim_quote": "we will launch Vatsalya Mane at Pobbatti Hospital—a specialized day-care center dedicated to the comprehensive rehabilitation and development of specially-abled children."
+      "verbatim_quote": "we will launch Vatsalya Mane at Pobbatti Hospital—a specialized day-care center dedicated to the comprehensive rehabilitation and development of specially-abled children.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "indira-canteens-bccc",
@@ -733,7 +875,9 @@
       "amount_lakhs": 500.0,
       "page": 31,
       "category": "welfare",
-      "verbatim_quote": "We have allocated ₹5.00 crores to ensure they continue providing a dignified life for all."
+      "verbatim_quote": "We have allocated ₹5.00 crores to ensure they continue providing a dignified life for all.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "bike-ambulance-first-responder",
@@ -743,7 +887,9 @@
       "amount_lakhs": null,
       "page": 32,
       "category": "health",
-      "verbatim_quote": "we proudly announce the Bike Ambulance – First Responder Unit scheme. Operating primarily through CSR funds, these nimble units will navigate traffic swiftly to provide immediate, cost-free medical stabilization and save lives during emergencies."
+      "verbatim_quote": "we proudly announce the Bike Ambulance – First Responder Unit scheme. Operating primarily through CSR funds, these nimble units will navigate traffic swiftly to provide immediate, cost-free medical stabilization and save lives during emergencies.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "arogya-mitra-smart-virtual-clinic",
@@ -753,7 +899,9 @@
       "amount_lakhs": 1900.0,
       "page": 32,
       "category": "health",
-      "verbatim_quote": "Under the Arogya Mitra initiative, we have allocated ₹19.00 crores to launch the Smart Virtual Clinic (SVC) scheme across 22 locations."
+      "verbatim_quote": "Under the Arogya Mitra initiative, we have allocated ₹19.00 crores to launch the Smart Virtual Clinic (SVC) scheme across 22 locations.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "kirumalige-shuddha-aahaara-food-safety",
@@ -763,7 +911,9 @@
       "amount_lakhs": 25.0,
       "page": 32,
       "category": "health",
-      "verbatim_quote": "we are launching a pilot scheme named Kirumalige – Shuddha Aahaara (Small Shop – Pure Food) with a ₹25 lakh budget."
+      "verbatim_quote": "we are launching a pilot scheme named Kirumalige – Shuddha Aahaara (Small Shop – Pure Food) with a ₹25 lakh budget.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ"
     },
     {
       "id": "animal-husbandry-total",
@@ -773,7 +923,9 @@
       "amount_lakhs": 500.0,
       "page": 33,
       "category": "welfare",
-      "verbatim_quote": "we have allocated ₹5.00 crores for revolutionary measures through our Animal Husbandry Department."
+      "verbatim_quote": "we have allocated ₹5.00 crores for revolutionary measures through our Animal Husbandry Department.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ"
     },
     {
       "id": "stray-dog-shelters-rescue-centres",
@@ -783,7 +935,9 @@
       "amount_lakhs": 200.0,
       "page": 33,
       "category": "welfare",
-      "verbatim_quote": "we will establish scientific shelters and specialized rescue centers for the rehabilitation of street dogs at a cost of ₹2.00 crores."
+      "verbatim_quote": "we will establish scientific shelters and specialized rescue centers for the rehabilitation of street dogs at a cost of ₹2.00 crores.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ"
     },
     {
       "id": "new-veterinary-hospitals",
@@ -793,7 +947,9 @@
       "amount_lakhs": 50.0,
       "page": 33,
       "category": "health",
-      "verbatim_quote": "We will open new veterinary hospitals at a cost of ₹50 lakhs to provide prompt, free treatment to community dogs and pets belonging to underprivileged families."
+      "verbatim_quote": "We will open new veterinary hospitals at a cost of ₹50 lakhs to provide prompt, free treatment to community dogs and pets belonging to underprivileged families.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ"
     },
     {
       "id": "electric-animal-crematorium",
@@ -803,7 +959,9 @@
       "amount_lakhs": 100.0,
       "page": 33,
       "category": "health",
-      "verbatim_quote": "we have allocated ₹1.00 crore to construct the Corporation's very own electric animal crematorium."
+      "verbatim_quote": "we have allocated ₹1.00 crore to construct the Corporation's very own electric animal crematorium.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ"
     },
     {
       "id": "abc-surgeries-vaccinations",
@@ -813,7 +971,9 @@
       "amount_lakhs": 343.38,
       "page": 34,
       "category": "welfare",
-      "verbatim_quote": "we will execute continuous Animal Birth Control (ABC) surgeries at a cost of ₹1.44 crores and mass disease-control vaccinations at a cost of ₹80.94 lakhs."
+      "verbatim_quote": "we will execute continuous Animal Birth Control (ABC) surgeries at a cost of ₹1.44 crores and mass disease-control vaccinations at a cost of ₹80.94 lakhs.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ"
     },
     {
       "id": "parks-215-maintenance-development-2026-27",
@@ -823,7 +983,9 @@
       "amount_lakhs": 3400.0,
       "page": 35,
       "category": "parks",
-      "verbatim_quote": "we have allocated ₹19 crores for park maintenance and ₹15 crores for comprehensive modernization and upgrades."
+      "verbatim_quote": "we have allocated ₹19 crores for park maintenance and ₹15 crores for comprehensive modernization and upgrades.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ"
     },
     {
       "id": "putani-park-childrens-park-csr",
@@ -833,7 +995,9 @@
       "amount_lakhs": null,
       "page": 35,
       "category": "parks",
-      "verbatim_quote": "Partnering with CSR initiatives, we will also build a dedicated Putani Park (Children's Park) designed specifically to foster the physical and intellectual growth of our youngest citizens."
+      "verbatim_quote": "Partnering with CSR initiatives, we will also build a dedicated Putani Park (Children's Park) designed specifically to foster the physical and intellectual growth of our youngest citizens.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ"
     },
     {
       "id": "flyover-beautification-tree-parks-bamboo",
@@ -843,7 +1007,9 @@
       "amount_lakhs": null,
       "page": 35,
       "category": "parks",
-      "verbatim_quote": "we are rolling out a master plan to beautify the spaces beneath our flyovers. We are strongly emphasizing eco-friendly landscapes by planting bamboo saplings around roads and lakes, and by establishing dedicated Tree Parks."
+      "verbatim_quote": "we are rolling out a master plan to beautify the spaces beneath our flyovers. We are strongly emphasizing eco-friendly landscapes by planting bamboo saplings around roads and lakes, and by establishing dedicated Tree Parks.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ"
     },
     {
       "id": "namma-bengaluru-namma-yojane",
@@ -853,7 +1019,9 @@
       "amount_lakhs": null,
       "page": 36,
       "category": "parks",
-      "verbatim_quote": "we are expanding the Namma Bengaluru – Namma Yojane (Our Bengaluru – Our Scheme) initiative."
+      "verbatim_quote": "we are expanding the Namma Bengaluru – Namma Yojane (Our Bengaluru – Our Scheme) initiative.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ"
     },
     {
       "id": "tree-canopy-50000-saplings-urban-forestry",
@@ -863,7 +1031,9 @@
       "amount_lakhs": 1938.0,
       "page": 37,
       "category": "parks",
-      "verbatim_quote": "we have allocated ₹11.50 crores for tree canopy development and ₹3.5 crores to plant 50,000 roadside saplings. ... We have set aside a total of ₹19.38 crores for these comprehensive initiatives."
+      "verbatim_quote": "we have allocated ₹11.50 crores for tree canopy development and ₹3.5 crores to plant 50,000 roadside saplings. ... We have set aside a total of ₹19.38 crores for these comprehensive initiatives.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "individual-housing-500-beneficiaries",
@@ -873,7 +1043,9 @@
       "amount_lakhs": 3570.0,
       "page": 37,
       "category": "welfare",
-      "verbatim_quote": "We will construct individual houses for 500 eligible beneficiaries at a total cost of ₹35.70 crores."
+      "verbatim_quote": "We will construct individual houses for 500 eligible beneficiaries at a total cost of ₹35.70 crores.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "sc-st-school-fee-reimbursement",
@@ -883,7 +1055,9 @@
       "amount_lakhs": 450.0,
       "page": 37,
       "category": "education",
-      "verbatim_quote": "we will reimburse school fees amounting to ₹4.50 crores for SC/ST students."
+      "verbatim_quote": "we will reimburse school fees amounting to ₹4.50 crores for SC/ST students.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "scholarships-sanitation-gangmen-horticulture-children",
@@ -893,7 +1067,9 @@
       "amount_lakhs": 300.0,
       "page": 38,
       "category": "education",
-      "verbatim_quote": "We will distribute ₹3.00 crores in scholarships to support the education of children of sanitation workers, gangmen, and horticulture staff."
+      "verbatim_quote": "We will distribute ₹3.00 crores in scholarships to support the education of children of sanitation workers, gangmen, and horticulture staff.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "free-laptops-degree-students",
@@ -903,7 +1079,9 @@
       "amount_lakhs": 400.0,
       "page": 38,
       "category": "education",
-      "verbatim_quote": "we will distribute free laptops to degree students at a cost of ₹4.00 crores."
+      "verbatim_quote": "we will distribute free laptops to degree students at a cost of ₹4.00 crores.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "economically-disadvantaged-welfare-allocation",
@@ -913,7 +1091,9 @@
       "amount_lakhs": 150.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "we have allocated ₹1.50 crores for the welfare of economically disadvantaged groups."
+      "verbatim_quote": "we have allocated ₹1.50 crores for the welfare of economically disadvantaged groups.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "senior-citizen-welfare-programmes",
@@ -923,7 +1103,9 @@
       "amount_lakhs": 90.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "₹90.00 lakhs specifically for senior citizen welfare programs."
+      "verbatim_quote": "₹90.00 lakhs specifically for senior citizen welfare programs.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "shelter-homes-upgrade-16",
@@ -933,7 +1115,9 @@
       "amount_lakhs": 180.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "we will also utilize ₹1.80 crores to upgrade 16 shelter homes within the Corporation's jurisdiction."
+      "verbatim_quote": "we will also utilize ₹1.80 crores to upgrade 16 shelter homes within the Corporation's jurisdiction.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "electric-two-wheelers-women-sanitation",
@@ -943,7 +1127,9 @@
       "amount_lakhs": 400.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "At a total cost of ₹4.00 crores, we will provide electric two-wheelers to women entrepreneurs from SC/ST communities as well as to sanitation workers, along with e-vending vehicles for street vendors."
+      "verbatim_quote": "At a total cost of ₹4.00 crores, we will provide electric two-wheelers to women entrepreneurs from SC/ST communities as well as to sanitation workers, along with e-vending vehicles for street vendors.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "sarathi-auto-rickshaw-scheme",
@@ -953,7 +1139,9 @@
       "amount_lakhs": 450.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "Under the 'Sarathi' scheme, we will provide financial assistance of ₹4.50 crores to 450 unemployed youth to purchase auto-rickshaws and cars."
+      "verbatim_quote": "Under the 'Sarathi' scheme, we will provide financial assistance of ₹4.50 crores to 450 unemployed youth to purchase auto-rickshaws and cars.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "retrofitted-wheelchairs-specially-abled",
@@ -963,7 +1151,9 @@
       "amount_lakhs": 350.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "We will distribute retro-fitted three-wheelers and electric wheelchairs to specially-abled persons at a cost of ₹3.50 crores."
+      "verbatim_quote": "We will distribute retro-fitted three-wheelers and electric wheelchairs to specially-abled persons at a cost of ₹3.50 crores.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "sewing-machines-skill-development",
@@ -973,7 +1163,9 @@
       "amount_lakhs": 180.0,
       "page": 38,
       "category": "welfare",
-      "verbatim_quote": "To drive women's empowerment, we have allocated ₹1.80 crores to provide sewing machines and organize skill development training."
+      "verbatim_quote": "To drive women's empowerment, we have allocated ₹1.80 crores to provide sewing machines and organize skill development training.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "musical-instruments-sanitation-children",
@@ -983,7 +1175,9 @@
       "amount_lakhs": 100.0,
       "page": 39,
       "category": "welfare",
-      "verbatim_quote": "we will distribute musical instruments at a cost of ₹1.00 crore."
+      "verbatim_quote": "we will distribute musical instruments at a cost of ₹1.00 crore.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "hiriyara-vadi-elders-abode",
@@ -993,7 +1187,9 @@
       "amount_lakhs": null,
       "page": 39,
       "category": "welfare",
-      "verbatim_quote": "we have formulated a noble new scheme called 'Hiriyara Vadi' (Elders' Abode). Under this, we will construct free, well-equipped residential complexes for senior citizens."
+      "verbatim_quote": "we have formulated a noble new scheme called 'Hiriyara Vadi' (Elders' Abode). Under this, we will construct free, well-equipped residential complexes for senior citizens.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ"
     },
     {
       "id": "public-education-total-allocation",
@@ -1003,7 +1199,9 @@
       "amount_lakhs": 685.0,
       "page": 40,
       "category": "education",
-      "verbatim_quote": "We have set aside ₹6.85 crores specifically for public education."
+      "verbatim_quote": "We have set aside ₹6.85 crores specifically for public education.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "free-textbooks-uniforms-students",
@@ -1013,7 +1211,9 @@
       "amount_lakhs": 450.0,
       "page": 40,
       "category": "education",
-      "verbatim_quote": "we have reserved ₹4.50 crores in the budget to provide free textbooks, notebooks, uniforms, bags, shoes, socks, and sweaters to students."
+      "verbatim_quote": "we have reserved ₹4.50 crores in the budget to provide free textbooks, notebooks, uniforms, bags, shoes, socks, and sweaters to students.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "sslc-puc-coaching-interactive-digital-boards",
@@ -1023,7 +1223,9 @@
       "amount_lakhs": null,
       "page": 40,
       "category": "education",
-      "verbatim_quote": "we are successfully conducting special morning and evening coaching classes, particularly for SSLC and PUC students. We have installed interactive digital boards in all schools and colleges."
+      "verbatim_quote": "we are successfully conducting special morning and evening coaching classes, particularly for SSLC and PUC students. We have installed interactive digital boards in all schools and colleges.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "career-guidance-competitive-exams",
@@ -1033,7 +1235,9 @@
       "amount_lakhs": null,
       "page": 40,
       "category": "education",
-      "verbatim_quote": "we will launch a dedicated career guidance program featuring special training from experts to help them excel in various competitive examinations."
+      "verbatim_quote": "we will launch a dedicated career guidance program featuring special training from experts to help them excel in various competitive examinations.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "sports-coaching-kits-free",
@@ -1043,7 +1247,9 @@
       "amount_lakhs": null,
       "page": 41,
       "category": "education",
-      "verbatim_quote": "We will provide professional coaching in sports such as badminton, karate, cricket, and swimming through reputed institutions. Furthermore, we will nurture talented athletes by distributing necessary sports kits completely free of cost."
+      "verbatim_quote": "We will provide professional coaching in sports such as badminton, karate, cricket, and swimming through reputed institutions. Furthermore, we will nurture talented athletes by distributing necessary sports kits completely free of cost.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "music-theatre-art-supplies",
@@ -1053,7 +1259,9 @@
       "amount_lakhs": null,
       "page": 41,
       "category": "education",
-      "verbatim_quote": "we will offer specialized training in music and theater, alongside distributing essential art supplies to creative students."
+      "verbatim_quote": "we will offer specialized training in music and theater, alongside distributing essential art supplies to creative students.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "school-libraries-upgrade-new-institutions",
@@ -1063,7 +1271,9 @@
       "amount_lakhs": null,
       "page": 41,
       "category": "education",
-      "verbatim_quote": "we will extensively upgrade the libraries in Corporation schools and colleges, and we intend to establish additional educational institutions in newly constructed civic buildings."
+      "verbatim_quote": "we will extensively upgrade the libraries in Corporation schools and colleges, and we intend to establish additional educational institutions in newly constructed civic buildings.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "physical-education-yoga-mental-wellness-pilot",
@@ -1073,7 +1283,9 @@
       "amount_lakhs": null,
       "page": 41,
       "category": "education",
-      "verbatim_quote": "We are launching an innovative, hybrid-model pilot program focusing on physical education, yoga, and mental wellness."
+      "verbatim_quote": "We are launching an innovative, hybrid-model pilot program focusing on physical education, yoga, and mental wellness.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
     },
     {
       "id": "ai-training-students-cyber-kavacha",
@@ -1083,7 +1295,123 @@
       "amount_lakhs": null,
       "page": 42,
       "category": "education",
-      "verbatim_quote": "we will introduce Artificial Intelligence (AI) training for our students. Furthermore, to protect our citizens in the digital age, we will launch the 'Cyber Kavacha' awareness campaign, organizing ward-level workshops."
+      "verbatim_quote": "we will introduce Artificial Intelligence (AI) training for our students. Furthermore, to protect our citizens in the digital age, we will launch the 'Cyber Kavacha' awareness campaign, organizing ward-level workshops.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ"
+    }
+  ],
+  "sections": [
+    {
+      "code": "revenue",
+      "title": "Revenue",
+      "title_local": "ಕಂದಾಯ",
+      "page_start": 4,
+      "page_end": 10
+    },
+    {
+      "code": "administration",
+      "title": "Administration",
+      "title_local": "ಆಡಳಿತ",
+      "page_start": 11,
+      "page_end": 11
+    },
+    {
+      "code": "public-relations",
+      "title": "Public Relations",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
+      "page_start": 12,
+      "page_end": 12
+    },
+    {
+      "code": "advertisement",
+      "title": "Advertisement",
+      "title_local": "ಜಾಹೀರಾತು",
+      "page_start": 13,
+      "page_end": 13
+    },
+    {
+      "code": "land-acquisition",
+      "title": "Land Acquisition",
+      "title_local": "ಭೂಸ್ವಾಧಿನ",
+      "page_start": 14,
+      "page_end": 14
+    },
+    {
+      "code": "urban-planning",
+      "title": "Urban Planning",
+      "title_local": "ನಗರ ಯೋಜನೆ",
+      "page_start": 15,
+      "page_end": 17
+    },
+    {
+      "code": "finance-and-accounts",
+      "title": "Finance and Accounts",
+      "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
+      "page_start": 18,
+      "page_end": 19
+    },
+    {
+      "code": "public-works",
+      "title": "Public Works",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
+      "page_start": 20,
+      "page_end": 26
+    },
+    {
+      "code": "sanitation",
+      "title": "Sanitation",
+      "title_local": "ಸ್ವಚ್ಛತೆ",
+      "page_start": 27,
+      "page_end": 27
+    },
+    {
+      "code": "lakes-division",
+      "title": "Lakes Division",
+      "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
+      "page_start": 28,
+      "page_end": 29
+    },
+    {
+      "code": "health",
+      "title": "Health",
+      "title_local": "ಆರೋಗ್ಯ",
+      "page_start": 30,
+      "page_end": 32
+    },
+    {
+      "code": "animal-husbandry",
+      "title": "Animal Husbandry",
+      "title_local": "ಪಶು ಸಂಗೋಪನೆ",
+      "page_start": 33,
+      "page_end": 34
+    },
+    {
+      "code": "horticulture",
+      "title": "Horticulture",
+      "title_local": "ತೋಟಗಾರಿಕೆ",
+      "page_start": 35,
+      "page_end": 35
+    },
+    {
+      "code": "forestry",
+      "title": "Urban Forestry",
+      "title_local": "ಅರಣ್ಯ",
+      "page_start": 36,
+      "page_end": 36
+    },
+    {
+      "code": "welfare",
+      "title": "Social Welfare",
+      "title_local": "ಕಲ್ಯಾಣ",
+      "page_start": 37,
+      "page_end": 39
+    },
+    {
+      "code": "education",
+      "title": "Public Education",
+      "title_local": "ಶಿಕ್ಷಣ",
+      "page_start": 40,
+      "page_end": 42
     }
   ]
 }

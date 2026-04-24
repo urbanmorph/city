@@ -24,6 +24,8 @@
       "page": 45,
       "category": "other",
       "verbatim_quote": "The Corporation has anticipated a revenue of Rs.1500 Crores during the year 2026-27. This goal will be accomplished by identifying the properties outside the tax net and bringing them into the tax bracket, with no additional tax imposition.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -37,6 +39,8 @@
       "page": 46,
       "category": "other",
       "verbatim_quote": "implementing a contactless, faceless e-khata system through digitization of all the khatas, i.e., about 4.50 lakh, from paper form to online. This is India's largest Digital-2 system... approximately 1.30 lakh e-khatas have been finalized and distributed... We are aiming at distributing the remaining 3.20 lakh draft e-khatas.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'e-khata'"
@@ -50,6 +54,8 @@
       "page": 46,
       "category": "other",
       "verbatim_quote": "All properties coming under the jurisdiction of the Corporation have been digitized, e-Aasthi has been implemented through geo-tag mapping.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -63,6 +69,8 @@
       "page": 46,
       "category": "other",
       "verbatim_quote": "Aadhar number has been linked to the e-khata system, which helps automated khata transfer (mutation)... This will be safe kept and decentralized through the use of block chain technology.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'e-khata'"
@@ -76,6 +84,8 @@
       "page": 47,
       "category": "other",
       "verbatim_quote": "linking the Geographic Information System (G.I.S)- based e-khata property tax system with Bengaluru Electricity Supply Company Limited, Bengaluru Water Supply and Sewerage Board and Kaveri Software. It is expected to generate an additional property tax revenue of about Rs. 150 crores per year.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -89,6 +99,8 @@
       "page": 47,
       "category": "other",
       "verbatim_quote": "It is planned to expand the tax jurisdiction through 3D modelling of commercial and high-rise buildings, and I.T-enabled integrated artificial intelligence(AI) systems.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'buildings'"
@@ -102,6 +114,8 @@
       "page": 48,
       "category": "other",
       "verbatim_quote": "An artificial intelligence (AI) technology- based system to identify the defaulters who have not paid the property tax will be introduced... an additional Rs.100 crores per annum from property tax.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -115,6 +129,8 @@
       "page": 48,
       "category": "other",
       "verbatim_quote": "the process for property-holders of 'B' Khata for conversion of their property to 'A' Khata by submitting applications as per the rules of the Corporation was initiated with effect from 01-11-2025... an additional Rs.225.00 crores per annum from property tax.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -128,6 +144,8 @@
       "page": 49,
       "category": "other",
       "verbatim_quote": "A period of 03 months has been provided for the conversion of Self Advertisements into Commercial Advertisement display under the new Advertisement Rules and Bengaluru East City Corporation will collect about Rs.20 crores through this provision.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement rules'"
@@ -141,6 +159,8 @@
       "page": 49,
       "category": "other",
       "verbatim_quote": "The applications for license are being received from advertising agencies, amounting to an estimated revenue of about Rs.2.75 crores.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -154,6 +174,8 @@
       "page": 49,
       "category": "other",
       "verbatim_quote": "Ground rent fee of approximately Rs. 10 crores are expected from skywalk advertisement agencies.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'skywalk'"
@@ -167,6 +189,8 @@
       "page": 50,
       "category": "infrastructure",
       "verbatim_quote": "Places for building new skywalks in the Bengaluru East City Corporation have been identified, which is expected to generate the ground rent and advertisement fee amounting to about Rs. 15 crores.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -180,6 +204,8 @@
       "page": 50,
       "category": "other",
       "verbatim_quote": "A ground rent of about Rs. 5 crores is expected from advertisements on bus shelter structures under the PPP model.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisements on'"
@@ -193,6 +219,8 @@
       "page": 50,
       "category": "other",
       "verbatim_quote": "The Bengaluru East City Corporation is estimated to collect Rs. 68 crores from legacy advertisements, LED skywalks, bus shelters, underpasses, etc.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'underpass'"
@@ -206,6 +234,8 @@
       "page": 50,
       "category": "roads",
       "verbatim_quote": "it has taken possession of the land of total 56722.6 square metres (14 acres) intended for the expansion of several arterial and sub-arterial roads. This land, as a public property is valued at approximately Rs.510 crore.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -219,6 +249,8 @@
       "page": 51,
       "category": "roads",
       "verbatim_quote": "To address this, Rs.70 crore has been earmarked in the 2026-27 budget for land acquisition compensation.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -232,6 +264,8 @@
       "page": 51,
       "category": "other",
       "verbatim_quote": "An income of approximately Rs. 982 crore is expected in the year 2026-27 from the town planning division of Bengaluru East City Corporation from fees related to building plan approval, plinth certificate, occupancy certificate, premium FAR fee, 5% of fee on park/open space in single site plan approval, and other sources.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'premium far'"
@@ -245,6 +279,8 @@
       "page": 51,
       "category": "other",
       "verbatim_quote": "the Auto DCR Software is developed to provide a simplified, transparent and hassle-free building plan approvals for all types of buildings via the Online Building Plan System (OBPS). Since 01-07-2020, all building plan approvals have been issued exclusively online.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'building plan'"
@@ -258,6 +294,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "Under the people-friendly Nambike Nakshe (Trusted Plan) scheme of the Corporation, building plan approvals for up to four housing units on sites within 375 square metres are sanctioned automatically through the software within 15 days.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'building plan'"
@@ -271,6 +309,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "For properties categorized as single sites (vacant plots) within the Corporation's jurisdiction, owners can now submit applications online through the Single Plot portal. This initiative aligns with the Corporation's efforts to generate an additional Rs. 139.00 crore in revenue.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -284,6 +324,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "A budget of Rs. 50 lakhs has been earmarked to establish an exclusive Urban Design Cell within the Corporation limits.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'urban design cell'"
@@ -297,6 +339,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "the \"BECC Public Dashboard\" will be launched. This initiative will provide detailed information on projects and expenditures at the ward, subdivision, and division levels.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -310,6 +354,8 @@
       "page": 53,
       "category": "infrastructure",
       "verbatim_quote": "an initial allocation of Rs.25 crore has been earmarked in the 2026-27 budget for the construction of its own corporation building.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -323,6 +369,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "The Cadre and Recruitment (C&R) proposal, detailing the officers and staff required based on the population within the Bengaluru East City Corporation limits, has been submitted to the government for approval.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -336,6 +384,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "A program has been chalked out to enhance the efficiency of officers/staff by organizing required training and workshops.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -349,6 +399,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "To ensure the punctuality of officers and staff during office hours, an AI-based attendance system will be implemented.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -362,6 +414,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "Rs. 6 crores have been earmarked in the budget for the adoption of necessary softwares.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -375,6 +429,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "A and B files, which require long-term retention, will be digitized by scanning and permanently archived.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -388,6 +444,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "a Legal Cell has been established. Accordingly, an allocation of Rs.4.50 crores has been earmarked in the 2026-27 budget for its management and operations.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -401,6 +459,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "Measures will be taken to move all files via e-Office software across all sections of the Corporation.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'e-office'"
@@ -414,6 +474,8 @@
       "page": 54,
       "category": "welfare",
       "verbatim_quote": "There is a total of 1,605 Pourakarmikas within the Corporation limits... Following the regularization drive during the year 2025... 1,330 Pourakarmikas have been regularized in Bengaluru East City Corporation.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -427,6 +489,8 @@
       "page": 55,
       "category": "welfare",
       "verbatim_quote": "a total grant of Rs.221.00 crore has been earmarked in the budget for the year 2026-27 for the Welfare Department of the corporation. These funds are dedicated to the social, economic, and educational empowerment of Scheduled Castes, Scheduled Tribes, Backward Classes, and Minorities, as well as Persons with Disabilities, Pourakarmikas, senior citizens, women, street vendors, and the transgender community.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -440,6 +504,8 @@
       "page": 56,
       "category": "welfare",
       "verbatim_quote": "Under the Onti Mane (Single House) Scheme and the Bengaluru Amruta Mahotsava Housing Scheme, a subsidy of Rs. 5.00 lakh will be provided to Pourakarmikas, Scheduled Castes and Scheduled Tribes, persons identified as Manual Scavengers... persons with disabilities, Backward Classes, Minorities, and economically weaker sections for building their own houses and for the purchase of 1BHK flats.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -453,6 +519,8 @@
       "page": 56,
       "category": "education",
       "verbatim_quote": "the Corporation will provide reimbursement of school and college fees, incentives for higher education, and financial assistance for overseas studies.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -466,6 +534,8 @@
       "page": 56,
       "category": "health",
       "verbatim_quote": "Under the Health Programme for the year 2026-27, medical expenses will be reimbursed to eligible beneficiaries of Scheduled Castes, Scheduled Tribes, and Backward Classes suffering from critical illnesses.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'sc/st'"
@@ -479,6 +549,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "the Corporation aims to empower women by providing electric two-wheelers to employed women and pourakarmikas at free of cost within its jurisdiction.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -492,6 +564,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "a program will be implemented to provide vocational sewing training and free sewing machines.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -505,6 +579,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "the Corporation is committed to the empowerment of persons with disabilities by distributing two-wheelers fitted with additional wheels and electric wheel chairs.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -518,6 +594,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "e-vending vehicles will be distributed and development programmes will be organised.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -531,6 +609,8 @@
       "page": 57,
       "category": "education",
       "verbatim_quote": "the Corporation aims to provide free laptops to the students of pourakarmikas and the students belonging to Scheduled Castes/Scheduled Tribes, backward classes and minority community who pursuing degree.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -544,6 +624,8 @@
       "page": 58,
       "category": "welfare",
       "verbatim_quote": "The Corporation aims to provide shelter for the homeless by upgrading six existing homeless centres and establishing two new centres.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -557,6 +639,8 @@
       "page": 58,
       "category": "education",
       "verbatim_quote": "A skill development program will be implemented to empower members of the Scheduled Caste, Scheduled Tribe, Backward Classes, and Minority communities, as well as the dependents of municipal workers, to lead self-reliant lives.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'sc/st'"
@@ -570,6 +654,8 @@
       "page": 58,
       "category": "welfare",
       "verbatim_quote": "To implement the Swavalambi Sarathi Scheme and empower economically backward classes... a subsidy of Rs. 80,000 will be provided for the purchase of an auto-rickshaw, and Rs. 1,50,000 for the purchase of a car under Sarathi Scheme.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -583,6 +669,8 @@
       "page": 59,
       "category": "swm",
       "verbatim_quote": "An amount of Rs.300.00 crores has been earmarked in the Budget for the year 2026–2027 by the Bengaluru East City Corporation to the Bengaluru Solid Waste Management Limited for collection and disposal of garbage, and development works.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -596,6 +684,8 @@
       "page": 59,
       "category": "health",
       "verbatim_quote": "An amount of Rs.1.50 crores has been earmarked in the Budget for the year 2026–2027 to provide the required hand gloves, masks, and gum boots in view of health and safety of Powrakarmikas working within the limits of the Bengaluru East City Corporation.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -609,6 +699,8 @@
       "page": 59,
       "category": "health",
       "verbatim_quote": "It is planned to conduct regular health check-ups at free of cost once in every three months through Urban Primary Health Centres to protect the health of Powrakarmikas, loaders, auto and tipper drivers, and other sanitation workers.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'uphc'"
@@ -622,6 +714,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "An amount of Rs.2.00 crores has been earmarked to set-up Suvidha Cabins at mustering centres for providing rest facilities to Powrakarmikas, loaders, auto and tipper drivers, and other sanitation workers.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'sanitation worker'"
@@ -635,6 +729,8 @@
       "page": 60,
       "category": "health",
       "verbatim_quote": "An amount of Rs.1.90 crores has been earmarked to create awareness among the public regarding health and hygiene through IEC activities.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -648,6 +744,8 @@
       "page": 60,
       "category": "other",
       "verbatim_quote": "It is planned to set up a digital-enabled Public Relations Centre to disseminate information/programmes, development works and welfare programmes of the Bengaluru East City Corporation to the public through various media.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -661,6 +759,8 @@
       "page": 61,
       "category": "other",
       "verbatim_quote": "steps are being taken in developing the IFMS Module to carry out all payments of the Corporation through the IFMS software.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'ifms'"
@@ -672,11 +772,13 @@
       "description": "Expected Rs.73 crore from State Finance Commission and Rs.114 crore under 15th/16th Finance Commissions of Government of India in 2026-27.",
       "amount_lakhs": 18700.0,
       "page": 61,
-      "category": "other",
+      "category": "infrastructure",
       "verbatim_quote": "it is expected to receive Rs.73 crores from the State Finance Commission and Rs.114 crores under the 15th and 16th Finance Commissions of the Government of India.",
-      "function_code": null,
-      "function_name": null,
-      "tag_reason": "no match"
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
+      "function_code": "05",
+      "function_name": "Public Works",
+      "tag_reason": "category: infrastructure"
     },
     {
       "id": "dbt-aadhaar-welfare-transfers",
@@ -687,6 +789,8 @@
       "page": 61,
       "category": "welfare",
       "verbatim_quote": "A separate DBT system has been implemented in the Bengaluru East City Corporation to directly transfer financial assistance to Aadhaar-linked bank accounts of beneficiaries for those affected by natural calamities and beneficiaries under the various welfare schemes.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -700,6 +804,8 @@
       "page": 62,
       "category": "roads",
       "verbatim_quote": "connectivity roads to metro stations within the corporation limits will be developed.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -713,6 +819,8 @@
       "page": 62,
       "category": "roads",
       "verbatim_quote": "the project of Panathur S-Cross Road, which had been stalled for a long time, has been widened and developed with white topping.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -726,6 +834,8 @@
       "page": 62,
       "category": "roads",
       "verbatim_quote": "The flood-affected Balagere Road has been developed with white topping, enabling smooth movement for the public.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -739,6 +849,8 @@
       "page": 62,
       "category": "roads",
       "verbatim_quote": "The service roads of the Outer Ring Road from K.R. Puram to Ibbalur Junction have been asphalted and developed.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -752,6 +864,8 @@
       "page": 63,
       "category": "roads",
       "verbatim_quote": "An amount of Rs.2.25 crore per ward, totalling Rs.112.50 crore, has been allocated for the comprehensive development and annual maintenance of all roads and drainage systems within the corporation limits.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -765,6 +879,8 @@
       "page": 63,
       "category": "infrastructure",
       "verbatim_quote": "A total of Rs.227.00 crores has been earmarked for undertaking capital works in the areas where the people belonging to Scheduled Castes, Scheduled Tribes, Backward Classes, and minority communities reside within the Corporation limits.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'sc/st'"
@@ -778,6 +894,8 @@
       "page": 63,
       "category": "roads",
       "verbatim_quote": "A project worth of Rs. 450.00 crores has been evolved by the Government of Karnataka in order to construct a durable Outer Ring Road from Silk Board Junction to K.R. Puram, and the work will be taken up during the current financial year.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -791,6 +909,8 @@
       "page": 64,
       "category": "infrastructure",
       "verbatim_quote": "an amount of Rs. 50.00 crores has been earmarked for redesign and comprehensive development of high-traffic junctions and build skywalks to make such junction as pedestrian-friendly within the Bengaluru East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'junction'"
@@ -804,6 +924,8 @@
       "page": 64,
       "category": "roads",
       "verbatim_quote": "The goal has been set to develop 100.00 km length of footpaths within the limits of the City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'footpath'"
@@ -817,6 +939,8 @@
       "page": 64,
       "category": "roads",
       "verbatim_quote": "A 9 km footpath along the Metro viaduct on the Outer Ring Road will be constructed at an estimated cost of Rs. 160.00 crores under the sponsorship of the Outer Ring Road Companies Association (ORRCA).",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -830,6 +954,8 @@
       "page": 64,
       "category": "roads",
       "verbatim_quote": "Under special infrastructure development projects, arterial and sub-arterial works have already been taken up in the following divisions under an outlay of Rs.298.10 crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'sip'"
@@ -843,6 +969,8 @@
       "page": 65,
       "category": "roads",
       "verbatim_quote": "Under the Hon'ble Chief Minister's Infrastructure Development Programme, ward road development works have already been taken up in the following divisions under an outlay of Rs. 50.00 crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -856,6 +984,8 @@
       "page": 65,
       "category": "infrastructure",
       "verbatim_quote": "It is proposed to construct a grade separator at an estimated cost of Rs. 50.00 crores on Alpine Eco Road of Outer Ring Road out of the amount collected through newly proposed Municipal bonds.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -869,6 +999,8 @@
       "page": 65,
       "category": "infrastructure",
       "verbatim_quote": "It is proposed to construct an elevated flyover from Varthur towards Gunjur for a stretch of about 2 kms at an estimated cost of about Rs. 150.00 crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'flyover'"
@@ -882,6 +1014,8 @@
       "page": 66,
       "category": "infrastructure",
       "verbatim_quote": "An amount of Rs. 20.00 crores has been earmarked during the year 2026-27 for the comprehensive development of the prominent public places within the Bengaluru East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -895,6 +1029,8 @@
       "page": 66,
       "category": "infrastructure",
       "verbatim_quote": "An amount of Rs. 25.00 crores has been earmarked during the year 2026-27 for the construction of railway over-bridge and under-bridge at the required places within the jurisdiction of the City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'bridge'"
@@ -908,6 +1044,8 @@
       "page": 66,
       "category": "infrastructure",
       "verbatim_quote": "Flyovers and underpass coming under Bengaluru East City Corporation it is proposed to beautify with the co-operation of Non-governmental organisations and associations coming under the limits of the corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'flyover'"
@@ -921,6 +1059,8 @@
       "page": 66,
       "category": "roads",
       "verbatim_quote": "Rs. 40.00 crores has been earmarked during the year 2026-27 for the comprehensive development of major roads and Road Widening of the below following Roads within the jurisdiction of Bengaluru East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -934,6 +1074,8 @@
       "page": 67,
       "category": "lighting",
       "verbatim_quote": "Rs.38.00 crores have been earmarked for replacing sodium vapor streetlights with LED streetlights in limits of Bangalore East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'led'"
@@ -947,6 +1089,8 @@
       "page": 67,
       "category": "lighting",
       "verbatim_quote": "Rs 17.00 crores has been earmarked for maintenance of roadside streetlights within the limits of Bangalore East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: lighting"
@@ -960,6 +1104,8 @@
       "page": 67,
       "category": "health",
       "verbatim_quote": "An amount of Rs. 5.00 crores have been earmarked to construct electric crematorium within the limits of Bangalore East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematorium'"
@@ -973,6 +1119,8 @@
       "page": 68,
       "category": "health",
       "verbatim_quote": "Rs. 1.00 crore has been earmarked for repair and maintenance of Panathur Electric crematorium within the limits of Bangalore East City Corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematorium'"
@@ -986,6 +1134,8 @@
       "page": 68,
       "category": "other",
       "verbatim_quote": "Rs. 1.00 crore has been earmarked during the year 2026-27 for the purchase of prahari vehicles for the operations carried out by the Revenue, Works, Solid Waste and Health Departments.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -999,6 +1149,8 @@
       "page": 68,
       "category": "infrastructure",
       "verbatim_quote": "an amount of Rs.89.00 crores is expected under the grant of 16th Finance Commission and action will be taken to undertake capital works within the limits of corporation.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1012,6 +1164,8 @@
       "page": 68,
       "category": "infrastructure",
       "verbatim_quote": "out of 150 km length of storm water drains, concrete retaining wall for 72 km length of storm water drain has already been constructed... out of the 75 km length of storm water drains in K.R.Puram zone, concrete retaining wall for 52 km stretch of storm water drain has been constructed.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'storm water'"
@@ -1025,6 +1179,8 @@
       "page": 69,
       "category": "infrastructure",
       "verbatim_quote": "58 flood-hit areas have been identified in the Bengaluru East City Corporation, out of which relief package has been provided in 38 flood-hit areas. The remaining 20 flood-hit areas will be developed and converted into flood-free areas at the earliest.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1038,6 +1194,8 @@
       "page": 69,
       "category": "infrastructure",
       "verbatim_quote": "the Panathur storm water drain work has been completed and made flood-free. It is decided to complete the Geddalahalli Railway Vent work expeditiously.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'storm water'"
@@ -1051,6 +1209,8 @@
       "page": 69,
       "category": "infrastructure",
       "verbatim_quote": "The works such as Siddapuralake weir Canal work, storm water drains near Spice Garden, Bili Shivalayastorm water drain, Balagere Rajakaluve... have been undertaken out of the grant of Rs. 25 crores under National Disaster Management Fund.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1064,6 +1224,8 @@
       "page": 69,
       "category": "infrastructure",
       "verbatim_quote": "Rs.629 crores have been provided out of the grant under World Bank assistance, out of which Rs.540.00 crores and Rs.89.00 crores have been provided to Mahadevapura assembly constituency and K.R.Puram assembly constituency respectively.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1077,6 +1239,8 @@
       "page": 72,
       "category": "parks",
       "verbatim_quote": "A total of 45 live- lakes are there in Bengaluru East City Corporation, out of which, 40 lakes have already been developed. Development work of 01 lake is under progress. Development work of the remaining 4 lakes will be undertaken in the current year.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1090,6 +1254,8 @@
       "page": 72,
       "category": "parks",
       "verbatim_quote": "An amount of Rs. 28.00 crore has been earmarked in the budget of the Corporation for the year 2026-27 for the annual maintenance of the lakes.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -1103,6 +1269,8 @@
       "page": 72,
       "category": "parks",
       "verbatim_quote": "A grant of Rs. 5.00 crores have been earmarked for erecting chain link fences along the boundaries of 10 lakes of the City Corporation.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1116,6 +1284,8 @@
       "page": 72,
       "category": "parks",
       "verbatim_quote": "It has been decided to undertake the development work of 4 lakes under the grant of Rs. 25.00 crores of the Corporation for the year 2026-27.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -1129,6 +1299,8 @@
       "page": 72,
       "category": "parks",
       "verbatim_quote": "The works such as installation of aerators and floating wetlands, use of biological enzymes and installation of digital equipment including rejuvenation and development of lakes to improve water quality.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1142,6 +1314,8 @@
       "page": 73,
       "category": "parks",
       "verbatim_quote": "\"Community Involvement for Lake Conservation Policy\"- 2024 has been evolved and thereby an action has been taken to provide various facilities at the lakes.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1155,6 +1329,8 @@
       "page": 73,
       "category": "parks",
       "verbatim_quote": "Home Guard personnel have been deployed to protect the lakes and ensure that the public who come for walk do not face any kind of trouble.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -1168,6 +1344,8 @@
       "page": 73,
       "category": "parks",
       "verbatim_quote": "An amount of Rs. 10.00 crore has been earmarked in the budget of the Corporation for the year 2026-27 for annual maintenance of the parks in the East City Corporation and for the construction of 35 soaking pits.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1181,6 +1359,8 @@
       "page": 73,
       "category": "parks",
       "verbatim_quote": "A grant of Rs. 7.50 crore has been earmarked to erect the chain link fences along the boundaries of the city corporation parks.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1194,6 +1374,8 @@
       "page": 74,
       "category": "parks",
       "verbatim_quote": "A grant of Rs. 17.50 crore has been earmarked for the development of parks/median/lake parks in the budget for the year 2026-27.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1207,6 +1389,8 @@
       "page": 74,
       "category": "parks",
       "verbatim_quote": "under the concept of \"Brand Bengaluru\" \"Green Bengaluru\", Rs. 10.00 crores have been earmarked in the budget for the year 2026-27 for making the city greener by setting up new nursery centres in parks.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1220,6 +1404,8 @@
       "page": 74,
       "category": "parks",
       "verbatim_quote": "It is aimed to increase resources by upgrading the parks in the limits of city corporation and making them available for filming and shooting of serials, short films, and photography.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'park'"
@@ -1233,6 +1419,8 @@
       "page": 74,
       "category": "health",
       "verbatim_quote": "It is proposed to set up new15 primary health centres and 10 Namma Clinics in the corporation limits... Rs. 35.00 crores have been earmarked during the year 2026-27.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'namma clinic'"
@@ -1246,6 +1434,8 @@
       "page": 74,
       "category": "health",
       "verbatim_quote": "Priority has been given to the development and extension of Primary Health Centres (PHCS) and Rs. 6.8 crores have been earmarked for purchasing required hospital equipment and strengthening of healthcare assets.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -1259,6 +1449,8 @@
       "page": 75,
       "category": "welfare",
       "verbatim_quote": "Rs. 5.00 crores have been earmarked in the budget for the year 2026-27 for the annual maintenance of Indira Canteens within the limits of Corporation.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -1272,6 +1464,8 @@
       "page": 75,
       "category": "health",
       "verbatim_quote": "Rs. 4.80 crores have been earmarked in the budget for public health programmes such as mosquito control, pulse polio vaccination, and public health awareness campaigns.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'mosquito'"
@@ -1285,6 +1479,8 @@
       "page": 75,
       "category": "welfare",
       "verbatim_quote": "a total of Rs. 12.00 crore has been earmarked during the year 2026-27 for the construction of a shelter with a capacity of 500 stray dogs, maintenance and feeding of the said dogs.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'dog shelter'"
@@ -1298,6 +1494,8 @@
       "page": 75,
       "category": "welfare",
       "verbatim_quote": "For the stray dogs control program in the corporation limits, two packages have been created with the aim of doubling the number of neutering surgeries, for which an estimated Rs. 6.00 crores have been earmarked.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'stray'"
@@ -1311,6 +1509,8 @@
       "page": 76,
       "category": "welfare",
       "verbatim_quote": "It is proposed to construct a state-of-the-art, well- equipped scientific Stray Dog Neutering Surgery Centre (ABC) in Mahadevapura zone of the Corporation, and an estimated amount of Rs. 4.00 crore has been earmarked.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'stray'"
@@ -1324,6 +1524,8 @@
       "page": 76,
       "category": "welfare",
       "verbatim_quote": "an estimated grant of Rs. 2.00 crore has been earmarked for the establishment and maintenance of two Corporation Veterinary Clinics in the first phase during the year 2026-27.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -1337,6 +1539,8 @@
       "page": 76,
       "category": "welfare",
       "verbatim_quote": "about Rs. 2.00 crores have been earmarked for setting up an electric animal crematorium for the scientific disposal of all types of dead animals within the limits of the Corporation.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematorium'"
@@ -1350,6 +1554,8 @@
       "page": 76,
       "category": "welfare",
       "verbatim_quote": "It is proposed to introduce a mobile veterinary vehicle for the first time by the Corporation to provide quick and quality treatment to the livestock at the field level. An estimated grant of Rs. 50.00 lakh has been earmarked.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -1363,6 +1569,8 @@
       "page": 77,
       "category": "other",
       "verbatim_quote": "the Corporation has emphasized on a forestation of the city, for which a grant of Rs. 3.50 crore shave been earmarked during this year.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'afforest'"
@@ -1376,6 +1584,8 @@
       "page": 77,
       "category": "other",
       "verbatim_quote": "It is proposed to build Miyawaki tree parks within the corporations limits.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1389,6 +1599,8 @@
       "page": 77,
       "category": "other",
       "verbatim_quote": "With the coordination of M/s BMRCL and M/s KRIDE corporation proposes to plant 25000 various seeds in public places within the corporation limits.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'saplings'"
@@ -1402,6 +1614,8 @@
       "page": 77,
       "category": "other",
       "verbatim_quote": "action will be taken for trimming of tree roots in public places in order to avoid unfortunate incidents.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": null,
       "function_name": null,
       "tag_reason": "no match"
@@ -1415,6 +1629,8 @@
       "page": 77,
       "category": "other",
       "verbatim_quote": "Separate team is formed in the corporation Forest department to catch snakes, monkeys and other animals from public places and shift them to safe places.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'wildlife'"
@@ -1426,11 +1642,127 @@
       "description": "BECC proposes issuance of Municipal Bonds of Rs.200 crore to fund specific capital works (per budget summary classification).",
       "amount_lakhs": 20000.0,
       "page": 79,
-      "category": "other",
+      "category": "infrastructure",
       "verbatim_quote": "Borrowing (Municipal bonds) 20000.00",
-      "function_code": null,
-      "function_name": null,
-      "tag_reason": "no match"
+      "section": "budget-summary",
+      "section_local": null,
+      "function_code": "05",
+      "function_name": "Public Works",
+      "tag_reason": "category: infrastructure"
+    }
+  ],
+  "sections": [
+    {
+      "code": "revenue",
+      "title": "Revenue",
+      "title_local": "ಕಂದಾಯ",
+      "page_start": 45,
+      "page_end": 48
+    },
+    {
+      "code": "advertisement",
+      "title": "Advertisement",
+      "title_local": "ಜಾಹೀರಾತು",
+      "page_start": 49,
+      "page_end": 49
+    },
+    {
+      "code": "land-acquisition",
+      "title": "Land Acquisition and e-DRC/e-TDR",
+      "title_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಇ-ಡಿಆರ್‌ಸಿ / ಇ-ಟಿಡಿಆರ್‌",
+      "page_start": 50,
+      "page_end": 50
+    },
+    {
+      "code": "urban-planning",
+      "title": "Town Planning",
+      "title_local": "ನಗರ ಯೋಜನೆ",
+      "page_start": 51,
+      "page_end": 51
+    },
+    {
+      "code": "administration",
+      "title": "Administration",
+      "title_local": "ಆಡಳಿತ",
+      "page_start": 52,
+      "page_end": 53
+    },
+    {
+      "code": "welfare",
+      "title": "Welfare",
+      "title_local": "ಕಲ್ಯಾಣ",
+      "page_start": 54,
+      "page_end": 57
+    },
+    {
+      "code": "sanitation",
+      "title": "Sanitation",
+      "title_local": "ಸ್ವಚ್ಛತೆ",
+      "page_start": 58,
+      "page_end": 59
+    },
+    {
+      "code": "public-relations",
+      "title": "Public Relations",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
+      "page_start": 60,
+      "page_end": 60
+    },
+    {
+      "code": "finance-and-accounts",
+      "title": "Finance and Account Section",
+      "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
+      "page_start": 61,
+      "page_end": 61
+    },
+    {
+      "code": "public-works",
+      "title": "Public Works",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
+      "page_start": 62,
+      "page_end": 70
+    },
+    {
+      "code": "lakes-division",
+      "title": "Lakes Division",
+      "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
+      "page_start": 71,
+      "page_end": 72
+    },
+    {
+      "code": "horticulture",
+      "title": "Horticulture",
+      "title_local": "ತೋಟಗಾರಿಕೆ",
+      "page_start": 73,
+      "page_end": 73
+    },
+    {
+      "code": "health",
+      "title": "Public Health",
+      "title_local": "ಆರೋಗ್ಯ",
+      "page_start": 74,
+      "page_end": 74
+    },
+    {
+      "code": "animal-husbandry",
+      "title": "Animal Husbandry",
+      "title_local": "ಪಶು ಸಂಗೋಪನೆ",
+      "page_start": 75,
+      "page_end": 75
+    },
+    {
+      "code": "forestry",
+      "title": "Forest",
+      "title_local": "ಅರಣ್ಯ",
+      "page_start": 76,
+      "page_end": 77
+    },
+    {
+      "code": "budget-summary",
+      "title": "Bird's Eye View of Budget",
+      "title_local": null,
+      "page_start": 78,
+      "page_end": 79
     }
   ],
   "functions_summary": [
@@ -1457,7 +1789,7 @@
     {
       "code": "05",
       "name": "Public Works",
-      "project_count": 31
+      "project_count": 33
     },
     {
       "code": "06",
@@ -1495,5 +1827,5 @@
       "project_count": 15
     }
   ],
-  "unmapped_count": 11
+  "unmapped_count": 9
 }

@@ -31,6 +31,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "The Bengaluru North City Corporation covers 7 assembly constituencies, and for the fiscal year 2026-27, property tax revenue of ₹826.25 crore is expected.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -44,6 +46,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "from currently active mutation applications, about 2% from Stamp Duty is expected to yield ₹40.00 crore, and higher revenue is expected from new account approval applications.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'stamp duty'"
@@ -57,6 +61,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "In the fiscal year 2026-27, a total of ₹97.15 crore is expected from PSUs and development charges under single plots.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'psu'"
@@ -70,6 +76,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "From the revision of property tax, ₹30.87 crore is expected. Including all the above factors, a total property tax/income target of approximately ₹128.02 crore has been set.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -83,6 +91,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "A Geographic Information System (GIS)-based e-account property tax system will be implemented.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -96,6 +106,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "The process of converting properties registered in B-Register into A-Khatha properties is underway, and for 2026-27, revenue of approximately ₹680 crore is expected.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'b-register'"
@@ -109,6 +121,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "Steps will be taken to digitize property records within the Bengaluru North City Corporation jurisdiction.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property records'"
@@ -122,6 +136,8 @@
       "page": 52,
       "category": "other",
       "verbatim_quote": "Additional revenue is expected from property tax revision of buildings in Bengaluru North City Corporation using GPS and drone imagery.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'property tax'"
@@ -135,6 +151,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "E-Khatha software has been developed to assist in automatic account transfers. This will enable citizens to access services online conveniently.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'e-khatha'"
@@ -148,6 +166,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "Following the example of the Dishank application of the Revenue Department, steps have been taken to provide Geographic Information System (GPS) access to citizens in North Bengaluru, helping them quickly identify their properties.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'dishank'"
@@ -161,6 +181,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "various receipts of the corporation have already been integrated with banks through host-to-host coordination, and receipts are being processed online with real-time recording of transactions.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'host-to-host'"
@@ -174,6 +196,8 @@
       "page": 53,
       "category": "welfare",
       "verbatim_quote": "Direct Benefit Transfers are planned for eligible beneficiaries of welfare schemes within Bengaluru North City Corporation.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -187,6 +211,8 @@
       "page": 53,
       "category": "other",
       "verbatim_quote": "An Audit Cell will be established to take prompt action regarding objections and recoveries from audit observations.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'audit cell'"
@@ -200,6 +226,8 @@
       "page": 53,
       "category": "infrastructure",
       "verbatim_quote": "Bengaluru North City Corporation expects grants of ₹25.00 crores from the 15th Finance Commission.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -213,6 +241,8 @@
       "page": 53,
       "category": "infrastructure",
       "verbatim_quote": "₹128.29 crore from the 16th Finance Commission",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -226,6 +256,8 @@
       "page": 53,
       "category": "infrastructure",
       "verbatim_quote": "and ₹429.27 crore from special basic infrastructure grants.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -239,6 +271,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "To ensure transparent and regulated installation of commercial and self-ads within the corporation limits, the Greater Bengaluru Area (Advertisement) Rules-2025 came into effect in 2025-26.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement) rules'"
@@ -252,6 +286,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "A new advertisement tender process is underway within Bengaluru North City Corporation, and it is expected to collect approximately ₹1.25 crore in license fees.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement tender'"
@@ -265,6 +301,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "To control unauthorized advertisements, the rules stipulate payment of a penalty of twice the tendered amount and allow for filing criminal cases.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement rules'"
@@ -278,6 +316,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "Bengaluru North City Corporation expects to collect approximately ₹108 crore in advertisement revenue in the fiscal year 2026-27.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement rules'"
@@ -291,6 +331,8 @@
       "page": 54,
       "category": "infrastructure",
       "verbatim_quote": "Rs. 17.00 crore has been allocated for land acquisition in this financial year.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -304,6 +346,8 @@
       "page": 54,
       "category": "other",
       "verbatim_quote": "Steps have been taken to digitize E-DRC/E-TDR to facilitate transparent distribution... enabling online sale and purchase of E-DRC/E-TDR.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'e-drc'"
@@ -317,6 +361,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "an estimated revenue of Rs. 817.37 crore is expected in 2026-27 from building plan approvals, plinth/initial certificates, occupancy certificates, premium F.A.R fees, 5% fees on parks/open spaces in single plot plan approvals, and other sources.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'premium far'"
@@ -330,6 +376,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "applications for vacant municipal properties within the corporation's jurisdiction will be accepted through single plots, with an expected revenue of Rs. 100.00 crore.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'vacant municipal'"
@@ -343,6 +391,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "The Urban Design Cell has created a city map for the corporation's jurisdiction, with Rs. 50.00 lakh allocated for maintenance.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'urban design cell'"
@@ -356,6 +406,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "For the preparation of this master plan, Rs. 5.00 crore has been allocated by the Bangalore North City Corporation.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "04",
       "function_name": "Town Planning and Regulation",
       "tag_reason": "keyword: 'master plan'"
@@ -369,6 +421,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "Auto DCR Software has been developed to provide approvals through the Online Building Plan System (OBPS), and currently, approvals are being issued entirely online.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'building plan'"
@@ -382,6 +436,8 @@
       "page": 55,
       "category": "other",
       "verbatim_quote": "It is intended to integrate the process of obtaining clearance letters from internal and external departments within the software.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'obps'"
@@ -395,6 +451,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "building plan approvals for four-unit residential buildings on plots up to 375 sq. m are being granted automatically within 15 days through the Nambike Nakshe software.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'building plan'"
@@ -408,6 +466,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "Following the High Court's order, permissions are being granted using TDR and Premium FAR with additional proportional area, and Premium FAR fees are calculated and collected in such cases.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'premium far'"
@@ -421,6 +481,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "a proposal has been submitted to the government to scientifically review and increase staff numbers and hire new personnel to ensure timely and satisfactory services to citizens.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -434,6 +496,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "E-Office is currently operational in the Bangalore North City Corporation and will be rapidly implemented across all offices.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'e-office'"
@@ -447,6 +511,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "Files and records within the Bangalore North City Corporation jurisdiction will be digitized.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'records digitisation'"
@@ -460,6 +526,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "Measures will be taken to provide technical and professional training to enhance the efficiency of corporation officers and staff.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -473,6 +541,8 @@
       "page": 56,
       "category": "other",
       "verbatim_quote": "A biometric attendance system will be implemented for the attendance of officers and staff.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -486,6 +556,8 @@
       "page": 57,
       "category": "infrastructure",
       "verbatim_quote": "Rs. 40.00 crore has been allocated for constructing a new central office building.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -499,6 +571,8 @@
       "page": 57,
       "category": "infrastructure",
       "verbatim_quote": "Rs. 10.00 crore has been allocated to construct the North City Corporation office complex on the 4th floor of the Yelahanka Mini Vidhana Soudha building.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -512,6 +586,8 @@
       "page": 57,
       "category": "other",
       "verbatim_quote": "Rs. 6.00 crore has been allocated to develop software that will facilitate the administration of Bangalore North City Corporation.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'administration software'"
@@ -525,6 +601,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "a total of 2,767 D.P.S municipal workers were regularized for worker welfare, and Rs. 150.00 crore has been allocated for the salaries of municipal workers in 2026-27.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -538,6 +616,8 @@
       "page": 57,
       "category": "education",
       "verbatim_quote": "In the 2026–27 budget, a total of ₹8.94 crore has been allocated for educational programs... reimburse tuition fees, registration fees, and examination fees paid by approximately 1,700 students.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'students'"
@@ -551,6 +631,8 @@
       "page": 57,
       "category": "welfare",
       "verbatim_quote": "Under the e-Sarathi scheme for the year 2026–27, ₹4.08 crore has been allocated... to around 350 eligible beneficiaries.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'sc/st'"
@@ -564,6 +646,8 @@
       "page": 58,
       "category": "welfare",
       "verbatim_quote": "For the housing scheme in the 2026–27 budget, ₹71.07 crore has been allocated.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -577,6 +661,8 @@
       "page": 58,
       "category": "health",
       "verbatim_quote": "Under the health programs for all sections in 2026–27, a total of ₹11.12 crore has been allocated.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -590,6 +676,8 @@
       "page": 58,
       "category": "welfare",
       "verbatim_quote": "Under the Brand Bengaluru concept, ₹1.00 crore has been reserved this year to distribute electric two-wheelers to eligible working women and civic workers.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -603,6 +691,8 @@
       "page": 58,
       "category": "welfare",
       "verbatim_quote": "₹10.00 crore has been allocated for the welfare of civic workers... distributing laptops to children... up to ₹2 lakh to reduce the burden of simple marriage expenses for daughters.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -616,6 +706,8 @@
       "page": 58,
       "category": "education",
       "verbatim_quote": "₹7.60 crore has been allocated to distribute free laptops to students from Scheduled Castes, Scheduled Tribes, backward and minority communities pursuing degree education.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'sc/st'"
@@ -629,6 +721,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹1.28 crore has been allocated for distributing tricycles to specially-abled persons.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -642,6 +736,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹1.58 crore has been earmarked for purchasing and distributing electric wheelchairs to about 110 beneficiaries.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -655,6 +751,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹73 lakh has been allocated for the welfare of the transgender community in 2026–27. The objective is to provide one-time financial assistance of up to ₹50,000.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -668,6 +766,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹1.27 crore has been allocated for women's welfare programs in 2026–27... 'Akka Cafe,' aimed at providing clean, tasty, and affordable local food.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -681,6 +781,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹1.47 crore has been allocated for senior citizen welfare programs.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -694,6 +796,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹60 lakh has been allocated in the 2026–27 budget to establish vending zones under the welfare program for street vendors.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -707,6 +811,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹7.10 crore has been allocated to provide e-vending vehicles to street vendors within the corporation limits.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -720,6 +826,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹1.10 crore has been allocated in the 2026–27 budget for the maintenance of night shelters for the homeless.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -733,6 +841,8 @@
       "page": 59,
       "category": "welfare",
       "verbatim_quote": "₹5.60 crore has been allocated for general category welfare programs.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -746,6 +856,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹11.00 crore has been allocated in the 2026–27 budget to provide grants to eligible voluntary organizations.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -759,6 +871,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹1 crore has been allocated to provide financial assistance to athletes participating in national and international sports.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -772,6 +886,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹50 lakh has been allocated under the Honorable Mayor's discretionary fund to provide medical relief facilities for journalists and media reporters.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -785,6 +901,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹22 lakh has been reserved for a group insurance scheme for small and medium journalists/reporters.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -798,6 +916,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹2 crore has been allocated under the Honorable Mayor's discretionary fund to provide medical relief facilities.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -811,6 +931,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "₹2 crore has been allocated under the discretionary fund of corporation members for providing medical relief facilities.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "01",
       "function_name": "Council",
       "tag_reason": "keyword: 'corporator'"
@@ -824,6 +946,8 @@
       "page": 60,
       "category": "welfare",
       "verbatim_quote": "For the development of slum areas within the corporation limits, cooperation will be extended to the Slum Clearance Board.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'scp'"
@@ -837,6 +961,8 @@
       "page": 61,
       "category": "other",
       "verbatim_quote": "A separate website will be developed for the Bangalore North City Corporation.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'website'"
@@ -850,6 +976,8 @@
       "page": 62,
       "category": "other",
       "verbatim_quote": "Facebook, Instagram, and YouTube social media accounts are being managed to provide information to the public about development activities.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'social media'"
@@ -863,6 +991,8 @@
       "page": 62,
       "category": "other",
       "verbatim_quote": "the corporation is implementing an innovative model of a phone-in 'solution on' program every Friday.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'phone-in'"
@@ -876,6 +1006,8 @@
       "page": 62,
       "category": "other",
       "verbatim_quote": "A 24/7 system is in place to record complaints from the public and forward them to the concerned officials, which will be further strengthened.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'complaint'"
@@ -889,6 +1021,8 @@
       "page": 62,
       "category": "swm",
       "verbatim_quote": "Daily sanitation of all wards roads in Bangalore North City Corporation is carried out by municipal workers, and door-to-door waste collection is done using auto tippers.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'compactor'"
@@ -902,6 +1036,8 @@
       "page": 62,
       "category": "swm",
       "verbatim_quote": "Under the title 'Mission Clean Airport Road,' a program has been conducted to clean around 34 kilometres of the Bellary Road leading to the international airport.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -915,6 +1051,8 @@
       "page": 62,
       "category": "swm",
       "verbatim_quote": "As an innovative effort from the Dasarahalli division of North City Corporation, 50 farmers have been identified, and approximately 600 tons of waste from their lands will be transported for processing.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -928,6 +1066,8 @@
       "page": 62,
       "category": "swm",
       "verbatim_quote": "In the Hebbal division of North City Corporation, green waste will be converted into compost, priced at Rs. 150 per kg.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -941,6 +1081,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "In the North City Corporation area, locations have been identified to install a total of 110 CCTVs to identify individuals dumping waste in black spot areas.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -954,6 +1096,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "From 01-09-2025 to 31-01-2026 in the North City Corporation area, fines of Rs. 28 lakhs will be collected for 3,019 cases of littering.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -967,6 +1111,8 @@
       "page": 63,
       "category": "welfare",
       "verbatim_quote": "a total of Rs. 19.12 crore has been allocated for festival advances, 21-day leave periods, 15-day earned leave, pending DA amounts.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -980,6 +1126,8 @@
       "page": 63,
       "category": "welfare",
       "verbatim_quote": "Rs. 13.00 crore has been allocated for the 2026-27 fiscal year.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -993,6 +1141,8 @@
       "page": 63,
       "category": "welfare",
       "verbatim_quote": "Measures have been taken to provide gloves, masks, and other equipment for the health check-up and safety of municipal workers.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -1006,6 +1156,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "for administrative expenses ₹13.38 crore, for solid waste collection–transport stations and other management ₹129.57 crore, and for capital works ₹157.05 crore have been allocated to Bengaluru Solid Waste Management Limited.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -1019,6 +1171,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "a total amount of ₹12.00 crore has been earmarked for the purchase of sweeping machines.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1032,6 +1186,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "₹5.00 crore has been allocated by the corporation for the purchase of human-assisted garbage collection machines / litter-picking machines.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'garbage'"
@@ -1045,6 +1201,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "For animal waste management in the Pulakeshinagar division, a total of Rs. 2.70 crore has been allocated.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -1058,6 +1216,8 @@
       "page": 63,
       "category": "swm",
       "verbatim_quote": "Rs. 10.00 lakh has been allocated for repair and maintenance of solid waste units and machinery, and Rs. 33.00 lakh for other maintenance.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -1071,6 +1231,8 @@
       "page": 64,
       "category": "swm",
       "verbatim_quote": "Rs. 94.50 lakh has been allocated for ward mastering in the 2026-27 fiscal year.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'swm'"
@@ -1084,6 +1246,8 @@
       "page": 64,
       "category": "swm",
       "verbatim_quote": "Rs. 98.50 lakh has been allocated for information, education, and communication for the 2026-27 fiscal year.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'swm'"
@@ -1097,6 +1261,8 @@
       "page": 64,
       "category": "swm",
       "verbatim_quote": "It is planned to construct Transfer Stations at eight locations for waste management in the Bangalore North City Corporation area.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "category: swm"
@@ -1110,6 +1276,8 @@
       "page": 64,
       "category": "welfare",
       "verbatim_quote": "Steps will be taken to provide training for women municipal workers to drive auto rickshaws.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -1123,6 +1291,8 @@
       "page": 64,
       "category": "parks",
       "verbatim_quote": "a total grant of ₹1051.00 lakh has been allocated under the slogan 'Green is Life' for the comprehensive management of trees, wildlife conservation, and forest activities.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'wildlife'"
@@ -1136,6 +1306,8 @@
       "page": 64,
       "category": "parks",
       "verbatim_quote": "a grant of ₹30.00 lakh has been allocated for this census work.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "category: parks"
@@ -1149,6 +1321,8 @@
       "page": 64,
       "category": "parks",
       "verbatim_quote": "a grant of ₹500.00 lakh has been allocated.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "category: parks"
@@ -1162,6 +1336,8 @@
       "page": 64,
       "category": "parks",
       "verbatim_quote": "a grant of ₹416.00 lakh has been allocated for planting and nurturing trees.",
+      "section": "forestry",
+      "section_local": "ಅರಣ್ಯ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'tree planting'"
@@ -1175,6 +1351,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "For wildlife protection, including capturing and conserving poisonous animals like snakes and relocating them to appropriate habitats, a grant of ₹15.00 lakh has been allocated.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'wildlife'"
@@ -1188,6 +1366,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "Through the Vanamahotsava program, a grant of ₹10.00 lakh has been allocated.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -1201,6 +1381,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "a grant of ₹80.00 lakh has been allocated for planting and nurturing trees in 2026-27.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "10",
       "function_name": "Urban Forestry",
       "tag_reason": "keyword: 'saplings'"
@@ -1214,6 +1396,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "In Bengaluru North City Corporation, there are over 336 parks and 38 road medians. For their proper maintenance, a grant of ₹37.00 crore has been allocated.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'park'"
@@ -1227,6 +1411,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "the 2026-27 initiative 'Green Parks, Healthy City' is being introduced. A grant of ₹25.00 crore has been allocated this year for park development and improvement.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1240,6 +1426,8 @@
       "page": 65,
       "category": "parks",
       "verbatim_quote": "it is planned to construct 200 rainwater harvesting pits in 2026-27.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1253,6 +1441,8 @@
       "page": 66,
       "category": "health",
       "verbatim_quote": "This year, it is planned to construct toilets in 50 more parks for greater public convenience.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'public toilet'"
@@ -1266,6 +1456,8 @@
       "page": 66,
       "category": "health",
       "verbatim_quote": "An amount of Rs. 8.86 crore has been allocated for rodent control activities in the year 2026-27.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -1279,6 +1471,8 @@
       "page": 67,
       "category": "health",
       "verbatim_quote": "A 100-bed capacity hospital buildings is being constructed in the jurisdiction of Sarvagnanagar and Byatarayanapura Assembly constituencies.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'buildings'"
@@ -1292,6 +1486,8 @@
       "page": 67,
       "category": "health",
       "verbatim_quote": "Free dialysis services are being provided at Ganganagar Heritage Hospital... An amount of Rs. 50.00 lakh has been allocated for the management of dialysis centers.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'dialysis'"
@@ -1305,6 +1501,8 @@
       "page": 67,
       "category": "health",
       "verbatim_quote": "with Rs. 35.00 crore allocated to upgrade the necessary building works and equip the primary health centers with instruments and equipment.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -1318,6 +1516,8 @@
       "page": 67,
       "category": "welfare",
       "verbatim_quote": "An amount of Rs. 11.15 crore has been allocated.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'students'"
@@ -1331,6 +1531,8 @@
       "page": 68,
       "category": "health",
       "verbatim_quote": "the maternity hospitals at M.R. Palya and D.J. Halli will be converted into Community Health Centres (CHCs) with a capacity of 30 beds each.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'maternity hospital'"
@@ -1344,6 +1546,8 @@
       "page": 68,
       "category": "health",
       "verbatim_quote": "These hospitals will provide services including general surgery, dental care, physician services, obstetrics and gynaecology, paediatrics, as well as emergency and ambulance services.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'well'"
@@ -1357,6 +1561,8 @@
       "page": 68,
       "category": "health",
       "verbatim_quote": "A total amount of ₹35.00 crore has been allocated to Bengaluru North City Corporation for the implementation of these works.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'uphc'"
@@ -1370,6 +1576,8 @@
       "page": 68,
       "category": "health",
       "verbatim_quote": "The construction of 100-bedded hospitals in Sarvagnanagar, Byatarayanapura, and Pulikeshi Nagar Assembly Constituencies has been completed.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -1383,6 +1591,8 @@
       "page": 69,
       "category": "other",
       "verbatim_quote": "To reduce delays in obtaining trade licenses and to improve the Ease of Doing Business, procedures have been simplified.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'trade license'"
@@ -1396,6 +1606,8 @@
       "page": 69,
       "category": "health",
       "verbatim_quote": "Steps are being taken for street dog control, rabies eradication, and raising public awareness about responsible pet ownership.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'animal welfare'"
@@ -1409,6 +1621,8 @@
       "page": 69,
       "category": "health",
       "verbatim_quote": "Establishing a modern slaughterhouse to ensure a healthy supply of meat products is a primary goal of this department. Rs. 14.00 crore has been allocated.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'animal welfare'"
@@ -1422,6 +1636,8 @@
       "page": 70,
       "category": "health",
       "verbatim_quote": "In 2026–27, a target has been set to perform ABC surgery on 12,000 street dogs. Rs. 3.00 crore has been allocated.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -1435,6 +1651,8 @@
       "page": 70,
       "category": "health",
       "verbatim_quote": "approximately 65,000 dogs are targeted to receive rabies and combined vaccines. Rs. 5.00 crore has been earmarked.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -1448,6 +1666,8 @@
       "page": 70,
       "category": "health",
       "verbatim_quote": "Rs. 50.00 lakh has been allocated to effectively implement these programs.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'animal welfare'"
@@ -1461,6 +1681,8 @@
       "page": 70,
       "category": "health",
       "verbatim_quote": "The estimated cost of this project... is Rs. 10.00 crore. The project will be implemented in phases.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -1474,6 +1696,8 @@
       "page": 70,
       "category": "welfare",
       "verbatim_quote": "Facilities for about 500 dogs, including shelter, treatment, surgical facilities, quarantine ward, food, and care, will be provided, with Rs. 3.80 crore allocated.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematorium'"
@@ -1487,6 +1711,8 @@
       "page": 70,
       "category": "welfare",
       "verbatim_quote": "with Rs. 1.50 crore allocated for this purpose.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -1500,6 +1726,8 @@
       "page": 71,
       "category": "other",
       "verbatim_quote": "income of Rs. 32.00 crore is expected from community hall rentals, building rentals, OFC, permits, road cutting, and other sources.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -1513,6 +1741,8 @@
       "page": 71,
       "category": "other",
       "verbatim_quote": "regarding vehicle parking, income of Rs. 6.00 crore is expected through on-street and off-street parking projects.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -1526,6 +1756,8 @@
       "page": 71,
       "category": "infrastructure",
       "verbatim_quote": "Special infrastructure projects from the Central Government, related to Honourable Chief Ministers' basic infrastructure development projects and other plans, have been allocated Rs. 935.56 crore.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1539,6 +1771,8 @@
       "page": 71,
       "category": "roads",
       "verbatim_quote": "Rs. 248 crores has been allocated for the development of 197.90 km of ward roads under the Honourable Chief Ministers' basic infrastructure development plan.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1552,6 +1786,8 @@
       "page": 71,
       "category": "roads",
       "verbatim_quote": "Rs. 248.71 crore under the Capital Support Plan for Special Basic Infrastructure to develop 187.03 km of main and sub-main roads.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1565,6 +1801,8 @@
       "page": 71,
       "category": "roads",
       "verbatim_quote": "Rs. 176.50 crore is allocated for developing 118.29 km of arterial and sub-arterial roads under re-ESROW Grants.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1578,6 +1816,8 @@
       "page": 72,
       "category": "roads",
       "verbatim_quote": "totaling ₹75 lakhs per ward. Additionally, ₹1.50 crores per ward have been earmarked for various development works including ward-level roads and major road repairs and maintenance, making a total allocation of ₹2.25 crores per ward.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1591,6 +1831,8 @@
       "page": 72,
       "category": "roads",
       "verbatim_quote": "A grant of Rs. 25 lakh per ward is allocated in the municipality area, totalling Rs. 18.00 crore, for pedestrian path repair and reconstruction.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'well'"
@@ -1604,6 +1846,8 @@
       "page": 72,
       "category": "infrastructure",
       "verbatim_quote": "Rs. 50.00 crore is allocated for the development of pedestrian path junctions, construction of skywalks, and related structures.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'junction'"
@@ -1617,6 +1861,8 @@
       "page": 72,
       "category": "infrastructure",
       "verbatim_quote": "Rs. 10.00 crore is allocated for the repair and maintenance of stormwater drains.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'stormwater'"
@@ -1630,6 +1876,8 @@
       "page": 72,
       "category": "infrastructure",
       "verbatim_quote": "the construction of 53.42 km of concrete retaining walls (box and U-shaped) for stormwater drains, undertaken in 2025-26 with World Bank and NDMF funding totalling Rs. 532.52 crore.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'stormwater'"
@@ -1643,6 +1891,8 @@
       "page": 72,
       "category": "lighting",
       "verbatim_quote": "Rs. 9.40 crore is allocated for the repair and maintenance of streetlights and related equipment.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -1656,6 +1906,8 @@
       "page": 73,
       "category": "lighting",
       "verbatim_quote": "The North City Municipality area has 124,142 streetlights, of which 49767 LED streetlights have already been installed, completing 76.93% of the work.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'led'"
@@ -1669,6 +1921,8 @@
       "page": 73,
       "category": "infrastructure",
       "verbatim_quote": "A grant of Rs. 120.00 crore is provided in 2026-27 for various development works in each legislative assembly constituency.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1682,6 +1936,8 @@
       "page": 73,
       "category": "roads",
       "verbatim_quote": "A budget allocation of ₹25.00 crores has been earmarked for the year 2026–27 for the new road widening works.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -1695,6 +1951,8 @@
       "page": 74,
       "category": "water",
       "verbatim_quote": "Under the 'Community Involvement for Lake Conservation Policy (CICL)-2024,' actions will be taken involving citizens and interested private organizations to provide various facilities in lakes.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1708,6 +1966,8 @@
       "page": 74,
       "category": "water",
       "verbatim_quote": "An allocation of ₹8.00 crores has been set aside for the annual maintenance of 30 developed lakes.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -1721,6 +1981,8 @@
       "page": 74,
       "category": "water",
       "verbatim_quote": "For the remaining lakes to be developed, ₹40.00 crores will be allocated in 2026-27.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1734,6 +1996,8 @@
       "page": 74,
       "category": "water",
       "verbatim_quote": "Comprehensive development of Singapore Lake in the Greater North Bangalore Municipal area, as well as the revival of non-functional lakes such as Banaswadi Lake, Lingarajapura Lake, Battaguntepalya Lake, and Ramachandrapura Lake.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1747,6 +2011,8 @@
       "page": 74,
       "category": "water",
       "verbatim_quote": "₹20.00 crores will be allocated for new works related to the climate action plan within the municipal area.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: water"
@@ -1760,6 +2026,8 @@
       "page": 75,
       "category": "water",
       "verbatim_quote": "Measures will be taken to implement boating facilities in the lakes under the municipal jurisdiction.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -1773,6 +2041,8 @@
       "page": 75,
       "category": "education",
       "verbatim_quote": "₹4 crores have been allocated to provide enrolled students in schools/colleges with free textbooks, notebooks, uniforms, bags, shoes and socks, and sweaters.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -1786,6 +2056,8 @@
       "page": 75,
       "category": "education",
       "verbatim_quote": "In Vinayakanagar, M.S. Palya... ₹2 crores allocated for necessary furniture and equipment.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -1799,6 +2071,8 @@
       "page": 75,
       "category": "education",
       "verbatim_quote": "₹50 lakhs have been allocated as incentive funds.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "category: education"
@@ -1812,6 +2086,8 @@
       "page": 75,
       "category": "education",
       "verbatim_quote": "₹47 lakhs have been allocated for holistic student development, including inter-school/college sports and cultural competitions.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -1825,6 +2101,8 @@
       "page": 76,
       "category": "education",
       "verbatim_quote": "Under the Smart Education Scheme, ₹100 lakhs have been allocated to install smart panels in municipal schools/colleges.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -1838,6 +2116,8 @@
       "page": 76,
       "category": "education",
       "verbatim_quote": "₹50 lakhs have been allocated for training students at all North Bangalore Municipal schools/colleges in extracurricular sports and arts.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -1851,6 +2131,8 @@
       "page": 76,
       "category": "education",
       "verbatim_quote": "₹50 lakhs have been allocated to start schools/colleges in newly constructed buildings.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -1864,6 +2146,8 @@
       "page": 76,
       "category": "education",
       "verbatim_quote": "₹50 lakhs have been allocated to upgrade school/college libraries.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -1877,9 +2161,118 @@
       "page": 76,
       "category": "education",
       "verbatim_quote": "A total of ₹23.00 crores has been allocated for education in the 2026-27 fiscal year.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "category: education"
+    }
+  ],
+  "sections": [
+    {
+      "code": "revenue",
+      "title": "Revenue",
+      "title_local": "ಕಂದಾಯ",
+      "page_start": 52,
+      "page_end": 52
+    },
+    {
+      "code": "finance-and-accounts",
+      "title": "Finance and Accounts",
+      "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
+      "page_start": 53,
+      "page_end": 53
+    },
+    {
+      "code": "advertisement",
+      "title": "Advertisement",
+      "title_local": "ಜಾಹೀರಾತು",
+      "page_start": 54,
+      "page_end": 54
+    },
+    {
+      "code": "urban-planning",
+      "title": "Town Planning",
+      "title_local": "ನಗರ ಯೋಜನೆ",
+      "page_start": 55,
+      "page_end": 55
+    },
+    {
+      "code": "administration",
+      "title": "Administration",
+      "title_local": "ಆಡಳಿತ",
+      "page_start": 56,
+      "page_end": 56
+    },
+    {
+      "code": "welfare",
+      "title": "Welfare",
+      "title_local": "ಕಲ್ಯಾಣ",
+      "page_start": 57,
+      "page_end": 60
+    },
+    {
+      "code": "public-relations",
+      "title": "Public Relation",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
+      "page_start": 61,
+      "page_end": 61
+    },
+    {
+      "code": "sanitation",
+      "title": "Sanitation",
+      "title_local": "ಸ್ವಚ್ಛತೆ",
+      "page_start": 62,
+      "page_end": 63
+    },
+    {
+      "code": "forestry",
+      "title": "Forest",
+      "title_local": "ಅರಣ್ಯ",
+      "page_start": 64,
+      "page_end": 64
+    },
+    {
+      "code": "horticulture",
+      "title": "Horticulture",
+      "title_local": "ತೋಟಗಾರಿಕೆ",
+      "page_start": 65,
+      "page_end": 65
+    },
+    {
+      "code": "health",
+      "title": "Health",
+      "title_local": "ಆರೋಗ್ಯ",
+      "page_start": 66,
+      "page_end": 68
+    },
+    {
+      "code": "animal-husbandry",
+      "title": "Animal Husbandry",
+      "title_local": "ಪಶು ಸಂಗೋಪನೆ",
+      "page_start": 69,
+      "page_end": 70
+    },
+    {
+      "code": "public-works",
+      "title": "Public Works",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
+      "page_start": 71,
+      "page_end": 73
+    },
+    {
+      "code": "lakes-division",
+      "title": "Lakes",
+      "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
+      "page_start": 74,
+      "page_end": 74
+    },
+    {
+      "code": "education",
+      "title": "Education",
+      "title_local": "ಶಿಕ್ಷಣ",
+      "page_start": 75,
+      "page_end": 76
     }
   ],
   "functions_summary": [

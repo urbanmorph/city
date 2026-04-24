@@ -23,6 +23,8 @@
       "page": 4,
       "category": "other",
       "verbatim_quote": "we expect total revenue of Rs. 1964.60 Crores. We will achieve this target by adopting standardized operating procedures, enhancing the capacity of officers and staff through multi-level training, and identifying properties outside the tax net to bring them under taxation.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -36,6 +38,8 @@
       "page": 5,
       "category": "other",
       "verbatim_quote": "the conversion of B-Khata to A-Khata not only benefits citizens but is also expected to generate approximately Rs. 563.00 Crores in revenue for the Corporation this year.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'b-khata'"
@@ -49,6 +53,8 @@
       "page": 5,
       "category": "other",
       "verbatim_quote": "To facilitate the distribution of electronic documents for public land properties within the Bengaluru West City Corporation limits, we have made a new provision to register new accounts... This is expected to generate revenue of approximately Rs. 18.00 Crores.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'e-khata'"
@@ -62,6 +68,8 @@
       "page": 5,
       "category": "other",
       "verbatim_quote": "we are developing a digital IT application for permissions related to community halls, renting corporation buildings, land leases, booking stadiums and film shooting locations, and other approval processes.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'buildings'"
@@ -75,6 +83,8 @@
       "page": 6,
       "category": "other",
       "verbatim_quote": "To enhance the performance of the Corporation's revenue inspectors and strengthen the e-Office system, we plan to purchase 122 computers and 83 printers through tender.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'e-office'"
@@ -88,6 +98,8 @@
       "page": 6,
       "category": "other",
       "verbatim_quote": "We will conduct a comprehensive survey of the Corporation's assets. All assets will be documented digitally and a tracking system will be established using GIS facilities, maps and precise IDs.",
+      "section": "revenue",
+      "section_local": "ಕಂದಾಯ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -101,6 +113,8 @@
       "page": 7,
       "category": "infrastructure",
       "verbatim_quote": "we have reserved Rs. 5.00 Crores for installing chain-link fencing for vacant plots. This includes properties transferred from the BDA (Bangalore Development Authority) to the corporation.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -114,6 +128,8 @@
       "page": 7,
       "category": "other",
       "verbatim_quote": "The Greater Bengaluru Area (Advertisement) Rules 2025 have come into effect. We are taking steps to permit private institutions to install commercial advertisements within the city corporation limits through tenders. This is expected to generate revenue of approximately Rs. 116.00 Crores.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisement tender'"
@@ -127,6 +143,8 @@
       "page": 7,
       "category": "infrastructure",
       "verbatim_quote": "We are formulating plans to construct skywalks at 50 locations where the public requires them. Allowing commercial advertisements on these skywalks is expected to generate an additional revenue of Rs. 2.00 Crores for the corporation.",
+      "section": "advertisement",
+      "section_local": "ಜಾಹೀರಾತು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'advertisements on'"
@@ -140,6 +158,8 @@
       "page": 8,
       "category": "other",
       "verbatim_quote": "We have established a TDR (Transferable Development Rights) cell under the competent commissioner in the corporation.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌",
       "function_code": "04",
       "function_name": "Town Planning and Regulation",
       "tag_reason": "keyword: 'tdr cell'"
@@ -153,6 +173,8 @@
       "page": 8,
       "category": "other",
       "verbatim_quote": "We will also establish a TDR Exchange Cell for the exchange of TDR.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌",
       "function_code": "04",
       "function_name": "Town Planning and Regulation",
       "tag_reason": "keyword: 'tdr exchange'"
@@ -166,6 +188,8 @@
       "page": 8,
       "category": "infrastructure",
       "verbatim_quote": "we have reserved Rs. 20.00 Crores for land acquisition in this financial year. This will facilitate road widening, development of circles, creation of commercial assets, and multi-level car parking systems.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -179,6 +203,8 @@
       "page": 8,
       "category": "other",
       "verbatim_quote": "We will digitize the identification of land for acquisition, notifications in Forms 1 and 3 regarding the purpose of acquisition, and provisional approval orders using information technology.",
+      "section": "land-acquisition",
+      "section_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌",
       "function_code": "04",
       "function_name": "Town Planning and Regulation",
       "tag_reason": "keyword: 'digitise the identification of land'"
@@ -192,6 +218,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Ittamadu Road (Widening from 10 m to 18 m, length 5 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -205,6 +233,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Kurubarahalli Main Road (Widening from 12 m to 24 m, length 1.4 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -218,6 +248,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Mahalakshmipura Access Road (Widening from 15 m to 24 m, length 3 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -231,6 +263,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Hanumanth Nagar Main Road (Widening from 12 m to 18 m, length 4.5 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -244,6 +278,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Herohalli Access Road (Widening from 9.50 m to 15 m, length 0.90 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -257,6 +293,8 @@
       "page": 10,
       "category": "roads",
       "verbatim_quote": "Thyagarajanagar Main Road (Widening from 12 m to 24 m, length 1.27 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -270,6 +308,8 @@
       "page": 11,
       "category": "roads",
       "verbatim_quote": "Road from Hosakerehalli Main Road to Outer Ring Road (Widening from 12 m to 24 m, length 1.9 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -283,6 +323,8 @@
       "page": 11,
       "category": "roads",
       "verbatim_quote": "Road from Katriguppe Main Road to 50 Feet Road Vidyapeeta Circle (Widening from 12 m to 24 m, length 0.780 km)",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -296,6 +338,8 @@
       "page": 11,
       "category": "other",
       "verbatim_quote": "we have undertaken a new initiative through the online e-Swathu application for the approval of single-site plans... The total estimated fees collected from all the above approvals during the financial year 2026-27, amounting to Rs. 254.20 Crores.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'b-khata'"
@@ -309,6 +353,8 @@
       "page": 11,
       "category": "other",
       "verbatim_quote": "under the new government policy (Premium FAR), we expect revenue of approximately Rs. 380.00 Crores in the financial year 2026-27.",
+      "section": "urban-planning",
+      "section_local": "ನಗರ ಯೋಜನೆ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'premium far'"
@@ -322,6 +368,8 @@
       "page": 12,
       "category": "other",
       "verbatim_quote": "To facilitate the public, we have provided an opportunity for Single Window Approval, from which we expect an estimated revenue of Rs. 200.00 Crores.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "04",
       "function_name": "Town Planning and Regulation",
       "tag_reason": "keyword: 'single window approval'"
@@ -335,6 +383,8 @@
       "page": 12,
       "category": "other",
       "verbatim_quote": "we have allocated a total of Rs. 5.50 Crores for establishing an Urban Design Cell and preparing a Master Plan.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'urban design cell'"
@@ -348,6 +398,8 @@
       "page": 12,
       "category": "other",
       "verbatim_quote": "We will take steps to expedite the finalization of the C & R (Cadre & Recruitment) process to provide timely and effective services to the public.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -361,6 +413,8 @@
       "page": 13,
       "category": "other",
       "verbatim_quote": "We are organizing timely training for staff from reputed training institutions to enhance administrative skills, capacity building, and personality development of the West City Corporation staff.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -374,6 +428,8 @@
       "page": 13,
       "category": "other",
       "verbatim_quote": "We will take steps to record attendance through an application for managing staff attendance.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'staff'"
@@ -387,6 +443,8 @@
       "page": 13,
       "category": "other",
       "verbatim_quote": "we have reserved an amount of Rs. 6.00 Crores in this year's budget for establishing an Information Technology Cell and an Integrated Command and Control Center.",
+      "section": "administration",
+      "section_local": "ಆಡಳಿತ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'information technology cell'"
@@ -400,6 +458,8 @@
       "page": 14,
       "category": "swm",
       "verbatim_quote": "we have already called tenders for the purchase of mechanical sweepers and for obtaining one mechanical sweeper per assembly constituency on a rental basis... We have reserved Rs. 25.00 Crores for this purpose.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -413,6 +473,8 @@
       "page": 14,
       "category": "swm",
       "verbatim_quote": "To improve waste collection, segregation, recycling and scientific disposal methods by introducing modern equipment, vehicles and technology, we have reserved a total of Rs. 300.00 Crores in this year's budget for the SWM (Solid Waste Management) organization.",
+      "section": "sanitation",
+      "section_local": "ಸ್ವಚ್ಛತೆ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -426,6 +488,8 @@
       "page": 15,
       "category": "swm",
       "verbatim_quote": "It is proposed to set up 10 transfer stations, one per assembly constituency, for the efficient and scientific collection and transportation of solid waste collected from households within the city corporation limits. This project will be formulated in coordination with BSWML.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "06",
       "function_name": "Solid Waste Management",
       "tag_reason": "keyword: 'solid waste'"
@@ -439,6 +503,8 @@
       "page": 15,
       "category": "welfare",
       "verbatim_quote": "For these welfare programs and for development works under basic infrastructure, we have reserved a total of Rs. 334.99 Crores in the budget for the year 2026-27.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'sanitation worker'"
@@ -452,6 +518,8 @@
       "page": 15,
       "category": "welfare",
       "verbatim_quote": "we will provide assistance of Rs. 5.00 Lakhs each. Additionally, under the Amrita Mahotsava scheme, we will provide assistance of Rs. 5.00 Lakhs each for purchasing units in housing complexes constructed by the government for landless individuals. We have reserved a total of Rs. 71.64 Crores for this.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -465,6 +533,8 @@
       "page": 16,
       "category": "welfare",
       "verbatim_quote": "We have reserved a total of Rs. 150.97 Crores for development works under basic infrastructure in areas where Scheduled Castes, Scheduled Tribes, Pourakarmikas (sanitation workers), backward classes, minorities and specially-abled persons reside within the corporation limits.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'sanitation worker'"
@@ -478,6 +548,8 @@
       "page": 16,
       "category": "welfare",
       "verbatim_quote": "We are implementing welfare programs such as distributing two-wheelers with additional wheels for specially-abled persons and electric wheelchairs; distributing autos and cars under the Sarathi scheme for all classes... For this purpose, we have reserved Rs. 23.34 Crores in the current financial year.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -491,6 +563,8 @@
       "page": 16,
       "category": "welfare",
       "verbatim_quote": "We have reserved a total of Rs. 47.17 Crores for programs including scholarships for intellectually disabled children, grants for small-scale entrepreneurs, health insurance, sports, medical expenses for prosthetic limbs, and grants for foreign education.",
+      "section": "welfare",
+      "section_local": "ಕಲ್ಯಾಣ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'pourakarmika'"
@@ -504,6 +578,8 @@
       "page": 17,
       "category": "welfare",
       "verbatim_quote": "We have launched an assistance program to provide high-quality e-vending vehicles to improve the lives of street vendors. We will identify and develop well-equipped vending zones... We have reserved Rs. 13.35 Crores for this purpose.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'traffic'"
@@ -517,6 +593,8 @@
       "page": 17,
       "category": "welfare",
       "verbatim_quote": "We have reserved a total of Rs. 10.50 Crores to provide financial assistance, including to the Kempegowda Study Centre and other grant-in-aid institutions.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -530,6 +608,8 @@
       "page": 17,
       "category": "other",
       "verbatim_quote": "we are managing Facebook and X (Twitter) social media accounts... the Public Relations Department will launch a separate e-newsletter regarding the development works being undertaken by the corporation.",
+      "section": "public-relations",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'social media'"
@@ -543,6 +623,8 @@
       "page": 18,
       "category": "other",
       "verbatim_quote": "We will publish digital news bulletins monthly regarding various development programs, projects, achievements, and public services of the corporation.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'news bulletin'"
@@ -556,6 +638,8 @@
       "page": 19,
       "category": "welfare",
       "verbatim_quote": "To effectively implement various welfare schemes, we will establish a Direct Benefit Transfer (DBT) system to ensure assistance reaches beneficiaries transparently and in a timely manner.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "category: welfare"
@@ -569,6 +653,8 @@
       "page": 19,
       "category": "other",
       "verbatim_quote": "we have allocated the necessary funds in the budget for establishing an Audit Cell. This unit will enable effective internal audits, comprehensive review of accounts, and monitoring of the financial management of projects.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'internal audit'"
@@ -582,6 +668,8 @@
       "page": 19,
       "category": "other",
       "verbatim_quote": "We are making payments of the Bengaluru West City Corporation online through host-to-host integration with the IFMS... This year, we intend to accept all receipts online by integrating them with bank payment gateways through an e-Receipt Portal.",
+      "section": "finance-and-accounts",
+      "section_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'ifms'"
@@ -595,6 +683,8 @@
       "page": 20,
       "category": "other",
       "verbatim_quote": "We will upgrade the existing IFMS software and develop a new e-Fund Transfer Portal and e-Register Portal.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'ifms'"
@@ -608,6 +698,8 @@
       "page": 20,
       "category": "parks",
       "verbatim_quote": "For the year 2026-27, we have reserved Rs. 47.45 Crores and Rs. 6.32 Crores respectively for these tasks.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'park'"
@@ -621,6 +713,8 @@
       "page": 20,
       "category": "parks",
       "verbatim_quote": "For the year 2026-27, we have reserved Rs. 47.45 Crores and Rs. 6.32 Crores respectively for these tasks.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'park'"
@@ -634,6 +728,8 @@
       "page": 20,
       "category": "parks",
       "verbatim_quote": "we have reserved Rs. 3.25 Crores for installing wire fencing for parks.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -647,6 +743,8 @@
       "page": 20,
       "category": "parks",
       "verbatim_quote": "we will formulate plans to establish 'Miyawaki forests' (Miyawaki Forests) in each constituency... We have reserved Rs. 1.00 Crore for this purpose.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -660,6 +758,8 @@
       "page": 21,
       "category": "parks",
       "verbatim_quote": "We will make plans to establish at least one specially-abled friendly park per divisions and pet parks (Domestic Animal Park). We will also make plans to establish libraries for senior citizens.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'libraries'"
@@ -673,6 +773,8 @@
       "page": 21,
       "category": "other",
       "verbatim_quote": "A plan will be formulated to install Pay & Use electric charging point stations in the offices, grounds and municipal properties of the West city Corporation.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "02",
       "function_name": "General Administration",
       "tag_reason": "keyword: 'ev charging'"
@@ -686,6 +788,8 @@
       "page": 21,
       "category": "water",
       "verbatim_quote": "we will undertake a project to install rainwater harvesting units in 20 parks. We will construct each unit at a cost of Rs. 10.00 Lakhs... We have reserved Rs. 2.00 Crores for this purpose in this year's budget.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -699,6 +803,8 @@
       "page": 21,
       "category": "infrastructure",
       "verbatim_quote": "we will make plans to construct cycle tracks in at least 5 locations per department and around Nayandahalli Lake in Govindarajanagar Assembly Constituency.",
+      "section": "horticulture",
+      "section_local": "ತೋಟಗಾರಿಕೆ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -712,6 +818,8 @@
       "page": 22,
       "category": "parks",
       "verbatim_quote": "For the comprehensive development of Anjaneya Temple Park, UAS Park, Kuvempu Park, and Kirloskar Colony Park in the Mahalakshmi Layout constituency, we have reserved Rs. 5.00 Crores in this year's budget.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'parks'"
@@ -725,6 +833,8 @@
       "page": 23,
       "category": "parks",
       "verbatim_quote": "In the budget for 2026-27, we have reserved a total of Rs. 10.75 Crores for lake development. This includes Rs. 10.00 Crores for annual lake maintenance and Rs. 6.25 Crores for constructing boundary wire fencing.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -738,6 +848,8 @@
       "page": 23,
       "category": "parks",
       "verbatim_quote": "This includes Rs. 10.00 Crores for annual lake maintenance and Rs. 6.25 Crores for constructing boundary wire fencing.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -751,6 +863,8 @@
       "page": 23,
       "category": "parks",
       "verbatim_quote": "This proposal includes works for lake rejuvenation and development, including installing aerators, using bio-enzymes, and establishing digital equipment to improve lake water quality, installing sluice gates, CCTVs, and creating public spaces.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -764,6 +878,8 @@
       "page": 23,
       "category": "parks",
       "verbatim_quote": "we have reserved Rs. 5.00 Crores in the current financial year for clearing encroachments around Yediyur Lake and Chikkallasandra Lake, desilting to increase their water storage capacity, and for the phased comprehensive development of these lakes.",
+      "section": "lakes-division",
+      "section_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lakes'"
@@ -777,6 +893,8 @@
       "page": 26,
       "category": "education",
       "verbatim_quote": "we will conduct a 3-day \"Karnataka Darshana\" educational tour for high school students, covering historical sites in Kituru Karnataka, Kalyan Karnataka, and Coastal Karnataka. We have reserved Rs. 2.00 Crores for this.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -790,6 +908,8 @@
       "page": 26,
       "category": "education",
       "verbatim_quote": "we will convert a total of 5 selected schools into 'Smart Schools'. We have reserved Rs. 1.00 Crore for this.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -803,6 +923,8 @@
       "page": 26,
       "category": "education",
       "verbatim_quote": "We will implement the 'Safe School' scheme in phases to promote student safety and quality digital education. Under this scheme, we will provide CCTV surveillance, security measures, cleanliness facilities, and safe infrastructure in the school environment.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -816,6 +938,8 @@
       "page": 26,
       "category": "education",
       "verbatim_quote": "We will establish environmentally friendly digital libraries (Digital Library) within each zone of the corporation to provide fast and comprehensive information on various facilities to students and the public.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'libraries'"
@@ -829,6 +953,8 @@
       "page": 26,
       "category": "welfare",
       "verbatim_quote": "we are distributing free sanitary pads to girl students studying from 5th standard in primary schools to post-graduate degree colleges within the West City Corporation. We also intend to install sanitary pad incinerators for the well-being of girl students.",
+      "section": "education",
+      "section_local": "ಶಿಕ್ಷಣ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -842,6 +968,8 @@
       "page": 27,
       "category": "education",
       "verbatim_quote": "We have reserved Rs. 2.00 Crores for providing an additional floor and necessary facilities to the corporation school building in Kempambudi Ward-101, Basavanagudi Assembly Constituency.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'school'"
@@ -855,6 +983,8 @@
       "page": 27,
       "category": "education",
       "verbatim_quote": "Overall, we have reserved Rs. 44.35 Crores for education in this year's budget.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "11",
       "function_name": "Public Education",
       "tag_reason": "keyword: 'schools'"
@@ -868,6 +998,8 @@
       "page": 28,
       "category": "health",
       "verbatim_quote": "we are upgrading the following 6 hospitals under the \"Brand Bengaluru Scheme\" at a cost of Rs.95.73 Crores... The corporation has reserved Rs. 95.73 Crores in this and the next two financial years' budgets.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -881,6 +1013,8 @@
       "page": 29,
       "category": "health",
       "verbatim_quote": "For the current year, under Brand Bengaluru - Healthy Bengaluru, we have reserved Rs. 35.00 Crores.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -894,6 +1028,8 @@
       "page": 30,
       "category": "health",
       "verbatim_quote": "We will extend this scheme to 20 more health centers in the West Corporation, for which we have reserved an additional estimated fund of Rs. 4.00 Crores.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -907,6 +1043,8 @@
       "page": 30,
       "category": "health",
       "verbatim_quote": "To control diseases spread by mosquitoes, we have deployed gang men and autos division-wise for spraying, fogging, and power spraying programs. We have reserved Rs. 9.00 Crores for this.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'vector control'"
@@ -920,6 +1058,8 @@
       "page": 30,
       "category": "health",
       "verbatim_quote": "For establishing a regional center of the Jayadeva Institute of Cardiology at the BBMP Multi-Specialty Hospital in Govindarajanagar... we have reserved the remaining amount of Rs. 10.00 Crores in this year's budget.",
+      "section": "health",
+      "section_local": "ಆರೋಗ್ಯ",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
@@ -933,6 +1073,8 @@
       "page": 31,
       "category": "welfare",
       "verbatim_quote": "We will continue ABC (Animal Birth Control - Anti Rabies) and AR (Anti Rabies) related programs in all wards of the corporation... We have reserved Rs. 1.12 Crores in the budget for this.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'stray'"
@@ -946,6 +1088,8 @@
       "page": 31,
       "category": "welfare",
       "verbatim_quote": "In the year 2026-27, we will designate at least one ward per assembly constituency as a model ward for the Animal Husbandry Department, totalling 20 wards in the corporation.",
+      "section": "animal-husbandry",
+      "section_local": "ಪಶು ಸಂಗೋಪನೆ",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'stray'"
@@ -959,6 +1103,8 @@
       "page": 32,
       "category": "welfare",
       "verbatim_quote": "We will construct and maintain a shelter with a capacity of 500 for stray dogs. We will establish an ABC (Animal Birth Control) center with a capacity of 200 surgeries. We have reserved Rs. 2.00 Crores in the budget for this purpose.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "12",
       "function_name": "Social Welfare",
       "tag_reason": "keyword: 'dog shelter'"
@@ -972,6 +1118,8 @@
       "page": 33,
       "category": "infrastructure",
       "verbatim_quote": "we have constructed a 215-feet tall flagpole at Chandra Layout Circle at a cost of Rs. 5.00 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -985,6 +1133,8 @@
       "page": 33,
       "category": "infrastructure",
       "verbatim_quote": "we have constructed an air-conditioned building with shops in the Vijayanagar Market area at a cost of Rs. 11.00 Crores to facilitate street vendors.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -998,6 +1148,8 @@
       "page": 33,
       "category": "infrastructure",
       "verbatim_quote": "we have commenced construction of a multi-purpose building with an allocation of Rs. 3.00 Crores. The specialty of this building is that it will have a function hall on the first floor for public events, a dining area on the ground floor, and a play area on the terrace for local children.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -1011,6 +1163,8 @@
       "page": 33,
       "category": "infrastructure",
       "verbatim_quote": "Adjacent to the Chennamanakere Layout playground, we have completed a sports building at a total cost of Rs. 11.30 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'playground'"
@@ -1024,6 +1178,8 @@
       "page": 34,
       "category": "infrastructure",
       "verbatim_quote": "the construction of the \"A.N.K. (Arakalagudu Narasingarao Krishna Rao) Community Hall\" opposite Yediyur Lake in Ward No. 167, Yediyur area, at a cost of Rs. 26.50 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'lake'"
@@ -1037,6 +1193,8 @@
       "page": 34,
       "category": "health",
       "verbatim_quote": "we have constructed a \"Maternity Hospital\" in Ward No. 166, Kari Sandra area, at a cost of Rs. 12.00 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "08",
       "function_name": "Public Health-Medical",
       "tag_reason": "keyword: 'maternity hospital'"
@@ -1050,6 +1208,8 @@
       "page": 34,
       "category": "infrastructure",
       "verbatim_quote": "the West City Corporation will issue municipal bonds worth Rs. 200.00 Crores. The Central Government provides an incentive of Rs. 13.00 Crores for every Rs. 100.00 Crores of municipal bonds, thus we expect an incentive of Rs. 26.00 Crores for the corporation. We will utilize the total amount of Rs. 226.00 Crores obtained from municipal bonds for capital works.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1063,6 +1223,8 @@
       "page": 35,
       "category": "water",
       "verbatim_quote": "Under the \"Karnataka Water Security and Resilience\" program (Jalasiri), which includes the Rajarajeshwari Nagar zone, Dasarahalli zone, and parts of the West City Corporation under the Koramangala Valley Project, we will implement externally aided projects (World Bank/ADB).",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'bridge'"
@@ -1076,6 +1238,8 @@
       "page": 35,
       "category": "roads",
       "verbatim_quote": "Under the Special Infrastructure Capital Support Scheme (ASICS), we intend to develop arterial and sub-arterial major roads and other basic infrastructure at a total cost of Rs. 667.74 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1089,6 +1253,8 @@
       "page": 35,
       "category": "roads",
       "verbatim_quote": "We have reserved Rs. 8.00 Crores for widening main and sub-main roads.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'road'"
@@ -1102,6 +1268,8 @@
       "page": 35,
       "category": "roads",
       "verbatim_quote": "Under the Honourable Chief Minister's Infrastructure Development Scheme (CMIDS), we intend to develop a total of 174.49 km of ward roads at a total cost of Rs. 317.25 Crores.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1115,6 +1283,8 @@
       "page": 36,
       "category": "infrastructure",
       "verbatim_quote": "for the beautification of 175 junctions, upgradation of 500 km of pedestrian paths, and construction of 100 skywalks over the next three years using the city corporations' own resources, we have reserved Rs. 50.00 Crores for this purpose in the corporation's budget for the current year.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'junction'"
@@ -1128,6 +1298,8 @@
       "page": 36,
       "category": "roads",
       "verbatim_quote": "we have reserved Rs. 1.50 Crores for capital works and Rs. 75.00 Lakhs for maintenance works per ward, totaling Rs. 168.00 Crores and Rs. 85.50 Crores respectively.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: roads"
@@ -1141,6 +1313,8 @@
       "page": 36,
       "category": "roads",
       "verbatim_quote": "we have reserved Rs. 1.50 Crores for capital works and Rs. 75.00 Lakhs for maintenance works per ward, totaling Rs. 168.00 Crores and Rs. 85.50 Crores respectively.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: roads"
@@ -1154,6 +1328,8 @@
       "page": 36,
       "category": "roads",
       "verbatim_quote": "we have reserved Rs. 2.00 Crores for developing pedestrian-friendly paths, feeder bus services, parking facilities around the Goraguntepalya Metro station, and for widening roads to facilitate smooth traffic for commuters.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -1167,6 +1343,8 @@
       "page": 37,
       "category": "roads",
       "verbatim_quote": "we have reserved Rs. 1.00 Crore in the current financial year to demolish this bridge and construct a new one.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'bridge'"
@@ -1180,6 +1358,8 @@
       "page": 37,
       "category": "other",
       "verbatim_quote": "to ease traffic, we have called for tender parking. We expect additional revenue for the corporation from EV (Electric Vehicle) and parking fees.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -1193,6 +1373,8 @@
       "page": 37,
       "category": "roads",
       "verbatim_quote": "we will take steps to obtain a total of 10 towing vehicles, one per assembly constituency on a contract basis. Through the traffic police, we will tow vehicles parked in no-parking zones or abandoned vehicles.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -1206,6 +1388,8 @@
       "page": 37,
       "category": "infrastructure",
       "verbatim_quote": "we will make plans to identify suitable locations and provide multi-level car parking systems.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "03",
       "function_name": "Revenue",
       "tag_reason": "keyword: 'parking'"
@@ -1219,6 +1403,8 @@
       "page": 37,
       "category": "infrastructure",
       "verbatim_quote": "For the construction of the Kempegowda Bhavan in Hampinagar Ward-133, Vijayanagar Assembly Constituency, we have reserved an amount of Rs. 25.00 Crores in the current financial year.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1232,6 +1418,8 @@
       "page": 38,
       "category": "infrastructure",
       "verbatim_quote": "We will take steps to install QR codes on nameplates on all roads in the West City Corporation to provide information about citizen services and the officers, employees, and staff related to the utility of daily services.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'roads'"
@@ -1245,6 +1433,8 @@
       "page": 38,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved an amount of Rs. 2.00 Crores in the budget to implement the solar project in phases for all corporation buildings in the Bengaluru West City Corporation to save electricity.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematoria'"
@@ -1258,6 +1448,8 @@
       "page": 38,
       "category": "lighting",
       "verbatim_quote": "The project to replace 1,12,119 sodium street lights with LED street lights within the Bengaluru West City Corporation limits is underway, under the initiative \"Foundation for a Green Future - Bengaluru West City Corporation\".",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'street light'"
@@ -1271,6 +1463,8 @@
       "page": 38,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved an additional Rs. 10.00 Crores in the current budget for the development of the Kumbalagodu electric crematorium in Yeshwanthpur Assembly Constituency.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "keyword: 'crematorium'"
@@ -1284,6 +1478,8 @@
       "page": 39,
       "category": "infrastructure",
       "verbatim_quote": "we will undertake the rejuvenation of Dr. Rajkumar Auditorium in a Public-Private Partnership (PPP) model. We will upgrade the infrastructure of available auditoriums in all assembly constituencies.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1297,6 +1493,8 @@
       "page": 39,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved an amount of Rs. 5.00 Crores in the current year's budget for the comprehensive development of the Malleshwaram Assembly Constituency.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1310,6 +1508,8 @@
       "page": 39,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved an amount of Rs. 5.00 Crores in the current year's budget for the comprehensive development of the Rajarajeshwari Nagar Assembly Constituency.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1323,6 +1523,8 @@
       "page": 39,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved an amount of Rs. 4.00 Crores in the current year's budget for the comprehensive development of the Dasarahalli Assembly Constituency.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1336,6 +1538,8 @@
       "page": 40,
       "category": "infrastructure",
       "verbatim_quote": "we will launch a pilot project at the Gyanasoudha Sports Activity Center and Auditorium in Nagarabhavi.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1349,6 +1553,8 @@
       "page": 41,
       "category": "parks",
       "verbatim_quote": "We have reserved Rs. 5.00 Crores in the current year's budget for this purpose.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'playground'"
@@ -1362,6 +1568,8 @@
       "page": 41,
       "category": "infrastructure",
       "verbatim_quote": "we have reserved an amount of Rs. 5.00 Crores in the current year's budget for the comprehensive development of the Dr. Rajkumar Kalakshetra.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "category: infrastructure"
@@ -1375,6 +1583,8 @@
       "page": 41,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved Rs. 3.00 Crores to complete the construction of this observation tower with necessary amenities and to develop the surrounding area.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "09",
       "function_name": "Horticulture",
       "tag_reason": "keyword: 'park'"
@@ -1388,6 +1598,8 @@
       "page": 41,
       "category": "infrastructure",
       "verbatim_quote": "We have reserved Rs. 1.00 Crore for this.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "05",
       "function_name": "Public Works",
       "tag_reason": "keyword: 'building'"
@@ -1401,9 +1613,118 @@
       "page": 41,
       "category": "health",
       "verbatim_quote": "We have formulated a plan to undertake the construction of a 50-bed maternity and children's hospital in Yeshwanthpur Assembly Constituency at a total cost of Rs. 20.00 Crores... We have reserved Rs. 10.00 Crores in this year's budget for the construction of this hospital.",
+      "section": "public-works",
+      "section_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
       "function_code": "07",
       "function_name": "Public Health-General",
       "tag_reason": "category: health"
+    }
+  ],
+  "sections": [
+    {
+      "code": "revenue",
+      "title": "Revenue",
+      "title_local": "ಕಂದಾಯ",
+      "page_start": 4,
+      "page_end": 6
+    },
+    {
+      "code": "advertisement",
+      "title": "Advertisement",
+      "title_local": "ಜಾಹೀರಾತು",
+      "page_start": 7,
+      "page_end": 7
+    },
+    {
+      "code": "land-acquisition",
+      "title": "Land Acquisition and TDR",
+      "title_local": "ಭೂಸ್ವಾಧಿನ ಮತ್ತು ಟಿಡಿಆರ್‌",
+      "page_start": 8,
+      "page_end": 8
+    },
+    {
+      "code": "urban-planning",
+      "title": "Urban Planning",
+      "title_local": "ನಗರ ಯೋಜನೆ",
+      "page_start": 9,
+      "page_end": 11
+    },
+    {
+      "code": "administration",
+      "title": "Administration",
+      "title_local": "ಆಡಳಿತ",
+      "page_start": 12,
+      "page_end": 13
+    },
+    {
+      "code": "sanitation",
+      "title": "Sanitation",
+      "title_local": "ಸ್ವಚ್ಛತೆ",
+      "page_start": 14,
+      "page_end": 14
+    },
+    {
+      "code": "welfare",
+      "title": "Welfare",
+      "title_local": "ಕಲ್ಯಾಣ",
+      "page_start": 15,
+      "page_end": 16
+    },
+    {
+      "code": "public-relations",
+      "title": "Public Relations",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಸಂಪರ್ಕ",
+      "page_start": 17,
+      "page_end": 17
+    },
+    {
+      "code": "finance-and-accounts",
+      "title": "Finance and Accounts Department",
+      "title_local": "ಹಣಕಾಸು ಮತ್ತು ಲೆಕ್ಕಪತ್ರ",
+      "page_start": 18,
+      "page_end": 19
+    },
+    {
+      "code": "horticulture",
+      "title": "Horticulture",
+      "title_local": "ತೋಟಗಾರಿಕೆ",
+      "page_start": 20,
+      "page_end": 21
+    },
+    {
+      "code": "lakes-division",
+      "title": "Lakes",
+      "title_local": "ಕೆರೆಗಳ ವಿಭಾಗ",
+      "page_start": 22,
+      "page_end": 23
+    },
+    {
+      "code": "education",
+      "title": "Education Department",
+      "title_local": "ಶಿಕ್ಷಣ",
+      "page_start": 24,
+      "page_end": 26
+    },
+    {
+      "code": "health",
+      "title": "Health",
+      "title_local": "ಆರೋಗ್ಯ",
+      "page_start": 27,
+      "page_end": 30
+    },
+    {
+      "code": "animal-husbandry",
+      "title": "Animal Husbandry",
+      "title_local": "ಪಶು ಸಂಗೋಪನೆ",
+      "page_start": 31,
+      "page_end": 31
+    },
+    {
+      "code": "public-works",
+      "title": "Public Works",
+      "title_local": "ಸಾರ್ವಜನಿಕ ಕಾಮಗಾರಿಗಳು",
+      "page_start": 32,
+      "page_end": 41
     }
   ],
   "functions_summary": [
