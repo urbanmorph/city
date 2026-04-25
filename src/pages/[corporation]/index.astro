@@ -19,6 +19,12 @@ function progressLabel(p: string): string {
   return "";
 }
 
+// Sort key: done first, then wip, then began, then unset.
+const PROGRESS_RANK: Record<string, number> = { done: 0, wip: 1, began: 2 };
+function progressRank(p: string | null | undefined): number {
+  return p ? (PROGRESS_RANK[p] ?? 4) : 3;
+}
+
 // Goals/Budget tabs are hidden this phase — bounce legacy query strings home.
 const view = Astro.url.searchParams.get("view");
 if (view === "goals" || view === "budget") {
@@ -57,7 +63,11 @@ const gridCards = categories
     const amount = catItems
       .filter((i) => i.amount_lakhs != null)
       .reduce((sum, i) => sum + (i.amount_lakhs ?? 0), 0);
-    const sorted = [...catItems].sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
+    const sorted = [...catItems].sort((a, b) => {
+      const dr = progressRank(a.progress) - progressRank(b.progress);
+      if (dr !== 0) return dr;
+      return (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0);
+    });
     return {
       code: cat.code,
       title: cat.title,
@@ -128,12 +138,9 @@ const gridCards = categories
         {c.highlights.length > 0 && (
           <ul class="cat-card__highlights">
             {c.highlights.map((h) => (
-              <li class="cat-card__hl">
+              <li class={`cat-card__hl${h.progress ? ` cat-card__hl--${h.progress}` : ""}`} title={h.progress ? progressLabel(h.progress) : undefined}>
                 <a href={`/${corporation.id}/category/${c.code}`} class="cat-card__hl-link" title={h.description || h.name}>
-                  <span class="cat-card__hl-name">
-                    {h.progress && <span class={`prog-pill prog-pill--${h.progress}`} title={progressLabel(h.progress)}></span>}
-                    {h.name}
-                  </span>
+                  <span class="cat-card__hl-name">{h.name}</span>
                   {h.amount_lakhs != null && (
                     <span class="cat-card__hl-amt">{formatINR(h.amount_lakhs)}</span>
                   )}
@@ -387,15 +394,13 @@ const gridCards = categories
     color: var(--c-ink-soft); font-variant-numeric: tabular-nums;
     flex-shrink: 0;
   }
-  .prog-pill {
-    display: inline-block; width: 8px; height: 8px;
-    border-radius: 50%; margin-right: 0.4rem;
-    vertical-align: middle;
-    border: 1px solid rgba(0,0,0,0.12);
-  }
-  .prog-pill--began { background: #dc2626; border-color: #b91c1c; }
-  .prog-pill--wip   { background: #f59e0b; border-color: #d97706; }
-  .prog-pill--done  { background: #16a34a; border-color: #15803d; }
+  /* Whole highlight row tinted by progress. Subtle bg + a colored left rail. */
+  .cat-card__hl--began { background: #fef2f2; box-shadow: inset 3px 0 0 #dc2626; }
+  .cat-card__hl--wip   { background: #fffbeb; box-shadow: inset 3px 0 0 #f59e0b; }
+  .cat-card__hl--done  { background: #f0fdf4; box-shadow: inset 3px 0 0 #16a34a; }
+  .cat-card__hl--began .cat-card__hl-link,
+  .cat-card__hl--wip   .cat-card__hl-link,
+  .cat-card__hl--done  .cat-card__hl-link { padding-left: 0.6rem; padding-right: 0.6rem; }
 
   .cat-card__foot { padding-top: 0.5rem; padding-bottom: 0.85rem; }
   .cat-card__more {

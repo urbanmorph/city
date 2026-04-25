@@ -17,6 +17,10 @@ function progressLabel(p: string): string {
   if (p === "done") return "Done";
   return "";
 }
+const PROGRESS_RANK: Record<string, number> = { done: 0, wip: 1, began: 2 };
+function progressRank(p: string | null | undefined): number {
+  return p ? (PROGRESS_RANK[p] ?? 4) : 3;
+}
 
 const categories = await loadAllCategories(CITY_ID, corporation.id);
 const category = categories.find((c) => c.code === catCode);
@@ -25,7 +29,11 @@ if (!category) return Astro.redirect(`/${corporation.id}`);
 const items = await loadMergedItems(CITY_ID, corporation.id);
 const catItems = items
   .filter((it) => it.effective_category === category.code)
-  .sort((a, b) => (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0));
+  .sort((a, b) => {
+    const dr = progressRank(a.progress) - progressRank(b.progress);
+    if (dr !== 0) return dr;
+    return (b.amount_lakhs ?? 0) - (a.amount_lakhs ?? 0);
+  });
 
 const totalAmount = catItems
   .filter((i) => i.amount_lakhs != null)
@@ -89,7 +97,7 @@ const siblingCats = categories
 
     <ul class="item-list">
       {catItems.map((it) => (
-        <li class={`it${it.source === "manual" ? " it--manual" : ""}`}>
+        <li class={`it${it.source === "manual" ? " it--manual" : ""}${it.progress ? ` it--${it.progress}` : ""}`}>
           <div class="it-main">
             <div class="it-head">
               {it.source === "manual" && <span class="manual-badge">manual</span>}
@@ -193,6 +201,9 @@ const siblingCats = categories
     border-radius: 4px;
     margin-bottom: 0.3rem;
   }
+  .it--began { background: #fef2f2; border-left: 3px solid #dc2626; padding-left: 0.9rem; padding-right: 0.9rem; border-radius: 4px; }
+  .it--wip   { background: #fffbeb; border-left: 3px solid #f59e0b; padding-left: 0.9rem; padding-right: 0.9rem; border-radius: 4px; }
+  .it--done  { background: #f0fdf4; border-left: 3px solid #16a34a; padding-left: 0.9rem; padding-right: 0.9rem; border-radius: 4px; }
 
   .it-main { flex: 1; }
   .it-head { display: flex; align-items: baseline; gap: 0.5rem; flex-wrap: wrap; }
