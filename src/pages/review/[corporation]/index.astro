@@ -12,28 +12,15 @@ const { corporation: corpId } = Astro.params;
 const VALID = new Set(["south", "central", "east", "west", "north"]);
 if (!corpId || !VALID.has(corpId)) return Astro.redirect("/404");
 
+// URL-only auth — token must be in the query string. No cookies.
+// Removing ?token= from the URL = instant public mode (the review page just 403s).
 const urlToken = Astro.url.searchParams.get("token");
-const cookieToken = Astro.cookies.get("review_token")?.value ?? null;
-
-// If the cookie holds a valid token but the URL doesn't, surface it in the
-// URL bar so the page is shareable / bookmarkable in editor mode.
-if (!urlToken && cookieToken && editorForToken(cookieToken)) {
-  return Astro.redirect(`/review/${corpId}?token=${encodeURIComponent(cookieToken)}`);
-}
-
-const token = urlToken ?? cookieToken;
-const editor = editorForToken(token);
-const activeToken = editorForToken(urlToken) ? urlToken : (editorForToken(cookieToken) ? cookieToken : null);
+const editor = editorForToken(urlToken);
+const activeToken = editor ? urlToken : null;
 
 if (!editor) {
   return new Response("Forbidden — valid ?token= required", {
     status: 403, headers: { "content-type": "text/plain" },
-  });
-}
-
-if (urlToken && urlToken !== cookieToken) {
-  Astro.cookies.set("review_token", urlToken, {
-    path: "/", httpOnly: false, sameSite: "lax", maxAge: 60 * 60 * 24 * 30,
   });
 }
 
@@ -286,7 +273,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
     }
   </style>
 </head>
-<body data-corp-id={corpId}>
+<body data-corp-id={corpId} data-token={activeToken}>
 
 <header class="masthead">
   <div class="container">
@@ -425,7 +412,12 @@ function fmtAmount(lakhs: number | null | undefined): string {
 
 <script define:vars={{ corpId }}>
   const CORP_ID = corpId;
+  const TOKEN = document.body.dataset.token || "";
   function byId(id) { return document.getElementById(id); }
+  function authedFetch(url, init = {}) {
+    const headers = Object.assign({ "x-edit-token": TOKEN }, init.headers || {});
+    return authedFetch(url, Object.assign({}, init, { headers }));
+  }
 
   function updateProgress() {
     const cells = document.querySelectorAll(".cat-select");
@@ -444,7 +436,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
     state.textContent = "saving…";
     state.className = "save-state";
     try {
-      const res = await fetch("/api/review/tag", {
+      const res = await authedFetch("/api/review/tag", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ corpId: CORP_ID, itemId, category }),
@@ -516,7 +508,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
       if (text.length < 2) { localInput.value = ""; return; }
       const seq = ++suggestSeq;
       try {
-        const res = await fetch("/api/review/translate", {
+        const res = await authedFetch("/api/review/translate", {
           method: "POST",
           headers: { "content-type": "application/json" },
           body: JSON.stringify({ text, target: "kn" }),
@@ -562,7 +554,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
       return;
     }
     try {
-      const res = await fetch("/api/review/category-new", {
+      const res = await authedFetch("/api/review/category-new", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({
@@ -607,7 +599,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
       page: byId("af-page").value ? parseInt(byId("af-page").value, 10) : null,
     };
     try {
-      const res = await fetch("/api/review/manual-item", {
+      const res = await authedFetch("/api/review/manual-item", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(payload),
@@ -622,7 +614,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
     if (!btn) return;
     if (!confirm("Delete this manual project?")) return;
     const itemId = btn.dataset.deleteManual;
-    const res = await fetch("/api/review/manual-item", {
+    const res = await authedFetch("/api/review/manual-item", {
       method: "DELETE", headers: { "content-type": "application/json" },
       body: JSON.stringify({ corpId: CORP_ID, itemId }),
     });

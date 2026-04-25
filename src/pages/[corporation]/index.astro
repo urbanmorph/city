@@ -25,27 +25,12 @@ const [categories, items, explicitOrder] = await Promise.all([
   loadCategoryOrder(corporation.id),
 ]);
 
-// If a valid review token is present (cookie or ?token=), this page becomes
-// editable: cards get drag handles. Public viewers without a token see the
-// normal read-only grid.
-const cookieToken = Astro.cookies.get("review_token")?.value ?? null;
+// URL-only auth: editor mode requires ?token=. No cookies.
+// Removing ?token= → public (read-only) instantly, same browser, no clearing needed.
 const urlToken = Astro.url.searchParams.get("token") ?? null;
-
-// If the cookie holds a valid token but the URL doesn't, surface it in the
-// URL bar so editors always see the shareable URL.
-if (!urlToken && cookieToken && editorForToken(cookieToken)) {
-  return Astro.redirect(`/${corporation.id}?token=${encodeURIComponent(cookieToken)}`);
-}
-
-const reviewerName = editorForToken(cookieToken) || editorForToken(urlToken);
+const reviewerName = editorForToken(urlToken);
 const isEditor = !!reviewerName;
-const activeToken = editorForToken(urlToken) ? urlToken : (editorForToken(cookieToken) ? cookieToken : null);
-
-if (urlToken && urlToken !== cookieToken && editorForToken(urlToken)) {
-  Astro.cookies.set("review_token", urlToken, {
-    path: "/", httpOnly: false, sameSite: "lax", maxAge: 60 * 60 * 24 * 30,
-  });
-}
+const activeToken = isEditor ? urlToken : null;
 
 const byCat = new Map<string, typeof items>();
 for (const it of items) {
@@ -168,7 +153,7 @@ const gridCards = categories
   </p>
 </BaseLayout>
 
-<div data-realtime-corp={corporation.id} data-is-editor={isEditor ? "1" : "0"} hidden></div>
+<div data-realtime-corp={corporation.id} data-is-editor={isEditor ? "1" : "0"} data-token={activeToken} hidden></div>
 <script>
   import { subscribeCorpRealtime } from "../../lib/realtime-client";
   const el = document.querySelector("[data-realtime-corp]");
@@ -222,13 +207,14 @@ const gridCards = categories
     grid?.addEventListener("drop", async (e) => {
       if (!active) return;
       e.preventDefault();
+      const token = el?.getAttribute("data-token") || "";
       const order = Array.from(grid.querySelectorAll<HTMLElement>(".cat-card"))
         .map((c) => c.dataset.catCode!)
         .filter(Boolean);
       try {
         const res = await fetch("/api/review/category-order", {
           method: "POST",
-          headers: { "content-type": "application/json" },
+          headers: { "content-type": "application/json", "x-edit-token": token },
           body: JSON.stringify({ corpId, order }),
         });
         if (!res.ok) throw new Error(await res.text());

@@ -6,11 +6,7 @@ export const prerender = false;
 const VALID_CORPS = new Set(["south", "central", "east", "west", "north"]);
 
 function getToken(request: Request): string | null {
-  const header = request.headers.get("x-edit-token");
-  if (header) return header;
-  const cookie = request.headers.get("cookie") ?? "";
-  const match = cookie.match(/(?:^|;\s*)review_token=([^;]+)/);
-  return match ? decodeURIComponent(match[1]) : null;
+  return request.headers.get("x-edit-token");
 }
 
 // POST { corpId, order: ["welfare", "public-works", ...] }
