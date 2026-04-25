@@ -394,13 +394,18 @@ const gridCards = categories
     color: var(--c-ink-soft); font-variant-numeric: tabular-nums;
     flex-shrink: 0;
   }
-  /* Whole highlight row tinted by progress. Subtle bg + a colored left rail. */
+  /* Whole highlight row tinted by progress. The row breaks out of the card's
+     1rem horizontal padding so the colored rail sits flush with the card edge,
+     while text inside stays aligned with un-colored siblings. */
+  .cat-card__hl--began,
+  .cat-card__hl--wip,
+  .cat-card__hl--done {
+    margin-left: -1rem; margin-right: -1rem;
+    padding-left: 1rem;  padding-right: 1rem;
+  }
   .cat-card__hl--began { background: #fef2f2; box-shadow: inset 3px 0 0 #dc2626; }
   .cat-card__hl--wip   { background: #fffbeb; box-shadow: inset 3px 0 0 #f59e0b; }
   .cat-card__hl--done  { background: #f0fdf4; box-shadow: inset 3px 0 0 #16a34a; }
-  .cat-card__hl--began .cat-card__hl-link,
-  .cat-card__hl--wip   .cat-card__hl-link,
-  .cat-card__hl--done  .cat-card__hl-link { padding-left: 0.6rem; padding-right: 0.6rem; }
 
   .cat-card__foot { padding-top: 0.5rem; padding-bottom: 0.85rem; }
   .cat-card__more {

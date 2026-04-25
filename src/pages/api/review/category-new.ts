@@ -19,6 +19,24 @@ function slugify(s: string): string {
     .slice(0, 48);
 }
 
+async function translateToKannada(text: string): Promise<string | null> {
+  try {
+    const url = `https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=kn&dt=t&q=${encodeURIComponent(text)}`;
+    const res = await fetch(url, { headers: { "user-agent": "Mozilla/5.0 city-latte/1.0" } });
+    if (!res.ok) return null;
+    const json = (await res.json()) as unknown;
+    let translated = "";
+    if (Array.isArray(json) && Array.isArray(json[0])) {
+      for (const seg of json[0] as unknown[]) {
+        if (Array.isArray(seg) && typeof seg[0] === "string") translated += seg[0];
+      }
+    }
+    return translated.trim() || null;
+  } catch {
+    return null;
+  }
+}
+
 export const POST: APIRoute = async ({ request }) => {
   const editor = editorForToken(getToken(request));
   if (!editor) return new Response("Forbidden", { status: 403 });
@@ -41,11 +59,21 @@ export const POST: APIRoute = async ({ request }) => {
     return new Response("Category code already exists", { status: 409 });
   }
 
+  // Resolve Kannada title: editor's input wins; otherwise translate as a server-side
+  // fallback so we don't lose to client-side debounce races. If translation fails,
+  // store null and the editor can fill it in later.
+  let resolvedLocal: string | null = null;
+  if (typeof title_local === "string" && title_local.trim()) {
+    resolvedLocal = title_local.trim();
+  } else {
+    resolvedLocal = await translateToKannada(cleanTitle);
+  }
+
   const { error } = await supabaseAdmin.from("city_custom_categories").insert({
     corp_id: corpId,
     code,
     title: cleanTitle,
-    title_local: typeof title_local === "string" && title_local.trim() ? title_local.trim() : null,
+    title_local: resolvedLocal,
     editor_name: editor,
   });
   if (error) return new Response(error.message, { status: 500 });
