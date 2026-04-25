@@ -28,10 +28,24 @@ const [categories, items, explicitOrder] = await Promise.all([
 // If a valid review token is present (cookie or ?token=), this page becomes
 // editable: cards get drag handles. Public viewers without a token see the
 // normal read-only grid.
-const reviewerName =
-  editorForToken(Astro.cookies.get("review_token")?.value ?? null) ||
-  editorForToken(Astro.url.searchParams.get("token") ?? null);
+const cookieToken = Astro.cookies.get("review_token")?.value ?? null;
+const urlToken = Astro.url.searchParams.get("token") ?? null;
+
+// If the cookie holds a valid token but the URL doesn't, surface it in the
+// URL bar so editors always see the shareable URL.
+if (!urlToken && cookieToken && editorForToken(cookieToken)) {
+  return Astro.redirect(`/${corporation.id}?token=${encodeURIComponent(cookieToken)}`);
+}
+
+const reviewerName = editorForToken(cookieToken) || editorForToken(urlToken);
 const isEditor = !!reviewerName;
+const activeToken = editorForToken(urlToken) ? urlToken : (editorForToken(cookieToken) ? cookieToken : null);
+
+if (urlToken && urlToken !== cookieToken && editorForToken(urlToken)) {
+  Astro.cookies.set("review_token", urlToken, {
+    path: "/", httpOnly: false, sameSite: "lax", maxAge: 60 * 60 * 24 * 30,
+  });
+}
 
 const byCat = new Map<string, typeof items>();
 for (const it of items) {
@@ -99,7 +113,7 @@ const gridCards = categories
       <button type="button" class="edit-bar__toggle" id="reorder-toggle">
         <i class="fa-solid fa-up-down-left-right"></i> Reorder cards
       </button>
-      <a href={`/review/${corporation.id}`} class="edit-bar__link">Review items →</a>
+      <a href={`/review/${corporation.id}${activeToken ? `?token=${activeToken}` : ""}`} class="edit-bar__link">Review items →</a>
     </div>
   )}
 

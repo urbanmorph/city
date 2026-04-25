@@ -14,8 +14,16 @@ if (!corpId || !VALID.has(corpId)) return Astro.redirect("/404");
 
 const urlToken = Astro.url.searchParams.get("token");
 const cookieToken = Astro.cookies.get("review_token")?.value ?? null;
+
+// If the cookie holds a valid token but the URL doesn't, surface it in the
+// URL bar so the page is shareable / bookmarkable in editor mode.
+if (!urlToken && cookieToken && editorForToken(cookieToken)) {
+  return Astro.redirect(`/review/${corpId}?token=${encodeURIComponent(cookieToken)}`);
+}
+
 const token = urlToken ?? cookieToken;
 const editor = editorForToken(token);
+const activeToken = editorForToken(urlToken) ? urlToken : (editorForToken(cookieToken) ? cookieToken : null);
 
 if (!editor) {
   return new Response("Forbidden — valid ?token= required", {
@@ -84,6 +92,18 @@ function fmtAmount(lakhs: number | null | undefined): string {
       color: var(--c-ink); background: var(--c-bg); line-height: 1.5;
     }
     .masthead { background: var(--c-primary); color: #fff; padding: 1.1rem 0; }
+
+    .edit-bar {
+      margin-top: 1rem;
+      display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+      background: #fffbeb; border: 1px solid #fcd34d;
+      border-radius: 5px; padding: 0.5rem 0.85rem;
+      font-size: 0.85rem; color: #78350f;
+    }
+    .edit-bar__label { font-weight: 600; }
+    .edit-bar__label i { margin-right: 0.3rem; }
+    .edit-bar__link { margin-left: auto; color: #78350f; font-weight: 600; text-decoration: none; }
+    .edit-bar__link:hover { text-decoration: underline; }
     .container { max-width: 1080px; margin: 0 auto; padding: 0 1rem; }
     .masthead h1 { font-size: 1.35rem; font-weight: 800; letter-spacing: -0.01em; }
     .masthead p { font-size: 0.84rem; color: rgba(255,255,255,0.78); margin-top: 0.15rem; }
@@ -274,6 +294,13 @@ function fmtAmount(lakhs: number | null | undefined): string {
   </div>
 </header>
 
+<div class="container">
+  <div class="edit-bar">
+    <span class="edit-bar__label"><i class="fa-solid fa-pen-to-square"></i> Editor mode · {editor}</span>
+    <a href={`/${corpId}${activeToken ? `?token=${activeToken}` : ""}`} class="edit-bar__link">← Live cards</a>
+  </div>
+</div>
+
 <div class="sub-bar">
   <div class="container">
     <div class="sub-row">
@@ -282,7 +309,6 @@ function fmtAmount(lakhs: number | null | undefined): string {
         <span class="bar"><span id="touched-bar" style={`width: ${totalCount ? Math.round(overrideCount * 100 / totalCount) : 0}%`}></span></span>
       </div>
       <input type="text" id="search" placeholder="Search name, description, verbatim…" />
-      <div class="editor-info">Signed in as <strong>{editor}</strong></div>
     </div>
   </div>
 </div>
