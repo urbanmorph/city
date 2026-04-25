@@ -505,6 +505,35 @@ function fmtAmount(lakhs: number | null | undefined): string {
     const localInput = byId("cd-local");
     titleInput.value = "";
     localInput.value = "";
+    let userEditedLocal = false;
+    let suggestSeq = 0;
+
+    const onLocalEdit = () => { userEditedLocal = true; };
+    const onTitleInput = async () => {
+      if (userEditedLocal) return;
+      const text = titleInput.value.trim();
+      if (text.length < 2) { localInput.value = ""; return; }
+      const seq = ++suggestSeq;
+      try {
+        const res = await fetch("/api/review/translate", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ text, target: "kn" }),
+        });
+        if (!res.ok) return;
+        const { translated } = await res.json();
+        if (seq !== suggestSeq || userEditedLocal) return;
+        localInput.value = translated || "";
+      } catch {}
+    };
+    let debounceT;
+    const onTitleDebounced = () => {
+      clearTimeout(debounceT);
+      debounceT = setTimeout(onTitleInput, 350);
+    };
+    titleInput.addEventListener("input", onTitleDebounced);
+    localInput.addEventListener("input", onLocalEdit);
+
     dialog.showModal();
     titleInput.focus();
 
@@ -518,6 +547,9 @@ function fmtAmount(lakhs: number | null | undefined): string {
       function cleanup() {
         byId("cat-dialog-form").removeEventListener("submit", onSubmit);
         byId("cd-cancel").removeEventListener("click", onCancel);
+        titleInput.removeEventListener("input", onTitleDebounced);
+        localInput.removeEventListener("input", onLocalEdit);
+        clearTimeout(debounceT);
         dialog.close();
       }
       byId("cat-dialog-form").addEventListener("submit", onSubmit);
