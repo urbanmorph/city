@@ -43,6 +43,11 @@ const orderedItems = [...items].sort((a, b) => {
   return a.id.localeCompare(b.id);
 });
 
+const itemCountByCat = new Map<string, number>();
+for (const it of items) {
+  itemCountByCat.set(it.effective_category, (itemCountByCat.get(it.effective_category) ?? 0) + 1);
+}
+
 const overrideCount = items.filter((it) => it.has_override).length;
 const totalCount = items.length;
 
@@ -146,6 +151,39 @@ function fmtAmount(lakhs: number | null | undefined): string {
       background: #fff; color: var(--c-ink-soft);
       border: 1px solid var(--c-rule); cursor: pointer;
     }
+
+    .cat-dialog {
+      border: 1px solid var(--c-rule); border-radius: 8px;
+      padding: 1.2rem 1.4rem; min-width: 320px;
+      box-shadow: 0 12px 32px rgba(15,23,42,0.18);
+    }
+    .cat-dialog::backdrop { background: rgba(15,23,42,0.35); }
+    .cat-dialog h3 { font-size: 1.05rem; font-weight: 700; margin: 0 0 0.85rem; }
+    .cat-dialog label {
+      display: block; font-size: 0.78rem; font-weight: 600;
+      color: var(--c-ink-soft); margin-bottom: 0.7rem;
+    }
+    .cat-dialog label .opt { color: var(--c-neutral); font-weight: 500; }
+    .cat-dialog input {
+      font: inherit; font-size: 0.92rem;
+      width: 100%; margin-top: 0.2rem;
+      padding: 0.4rem 0.6rem;
+      border: 1px solid var(--c-rule); border-radius: 4px;
+    }
+    .cat-dialog__actions {
+      display: flex; gap: 0.5rem; justify-content: flex-end;
+      margin-top: 0.4rem;
+    }
+    .cat-dialog__actions button {
+      font: inherit; font-size: 0.84rem; font-weight: 600;
+      padding: 0.4rem 0.85rem; border-radius: 5px; cursor: pointer;
+      background: #fff; color: var(--c-ink-soft);
+      border: 1px solid var(--c-rule);
+    }
+    .cat-dialog__actions .btn-primary {
+      background: var(--c-primary); color: #fff; border-color: var(--c-primary);
+    }
+    .cat-dialog__actions .btn-primary:hover { background: #2f4a60; }
 
     main { padding: 0.2rem 0 4rem; }
     .flat-list {
@@ -255,6 +293,24 @@ function fmtAmount(lakhs: number | null | undefined): string {
   <button class="btn-primary" type="button" id="toggle-add-form">+ Add project</button>
 </div>
 
+<dialog class="cat-dialog" id="cat-dialog">
+  <form id="cat-dialog-form" method="dialog">
+    <h3>Add new category</h3>
+    <label>
+      English name
+      <input type="text" id="cd-title" required minlength="2" placeholder='e.g. "Mobility"' />
+    </label>
+    <label>
+      Kannada name <span class="opt">(optional)</span>
+      <input type="text" id="cd-local" placeholder="ಚಲನಶೀಲತೆ" />
+    </label>
+    <div class="cat-dialog__actions">
+      <button type="button" id="cd-cancel">Cancel</button>
+      <button type="submit" class="btn-primary">Create</button>
+    </div>
+  </form>
+</dialog>
+
 <form class="add-form" id="add-form">
   <div>
     <label for="af-name">Project name</label>
@@ -268,7 +324,10 @@ function fmtAmount(lakhs: number | null | undefined): string {
     <div>
       <label for="af-category">Category</label>
       <select id="af-category" required>
-        {categories.map((c) => <option value={c.code}>{c.title}</option>)}
+        {categories.map((c) => {
+          const n = itemCountByCat.get(c.code) ?? 0;
+          return <option value={c.code}>{c.title}{n === 0 ? " · empty" : ""}</option>;
+        })}
         <option disabled>──────────</option>
         <option value="__new__">+ Add new category…</option>
       </select>
@@ -312,9 +371,15 @@ function fmtAmount(lakhs: number | null | undefined): string {
           data-touched={r.has_override ? "1" : "0"}
           data-cat={r.effective_category}
         >
-          {categories.map((c) => (
-            <option value={c.code} selected={c.code === r.effective_category}>{c.title}</option>
-          ))}
+          {categories.map((c) => {
+            const n = itemCountByCat.get(c.code) ?? 0;
+            const isEmpty = n === 0 && c.code !== r.effective_category;
+            return (
+              <option value={c.code} selected={c.code === r.effective_category}>
+                {c.title}{isEmpty ? " · empty" : ""}
+              </option>
+            );
+          })}
           <option disabled>──────────</option>
           <option value="__new__">+ Add new category…</option>
         </select>
@@ -358,10 +423,17 @@ function fmtAmount(lakhs: number | null | undefined): string {
         body: JSON.stringify({ corpId: CORP_ID, itemId, category }),
       });
       if (!res.ok) throw new Error(await res.text());
+      const data = await res.json();
       select.dataset.touched = "1";
       select.dataset.cat = category;
       const row = select.closest(".item");
       if (row) row.dataset.cat = category;
+      if (data.deleted_category) {
+        // The previous category was a custom one and is now empty — remove from all dropdowns.
+        document.querySelectorAll(".cat-select, #af-category").forEach((sel) => {
+          sel.querySelectorAll(`option[value="${data.deleted_category}"]`).forEach((o) => o.remove());
+        });
+      }
       hint.textContent = "reviewed";
       hint.className = "auto-hint touched";
       state.textContent = "saved";
@@ -398,12 +470,35 @@ function fmtAmount(lakhs: number | null | undefined): string {
   byId("toggle-add-form").addEventListener("click", () => byId("add-form").classList.toggle("open"));
   byId("af-cancel").addEventListener("click", () => byId("add-form").classList.remove("open"));
 
-  // "+ Add new category…" selected on any dropdown — prompt, create, append the
-  // new option to every dropdown, and make it the choice on the dropdown that
-  // triggered creation.
+  // "+ Add new category…" selected on any dropdown — open dialog, capture
+  // English + Kannada, create, append to every dropdown, and select on the
+  // dropdown that triggered creation.
   async function createCategoryFromPrompt(sourceSelect, previousValue) {
-    const title = prompt('Name for the new category? (e.g. "Mobility", "Climate Action")');
-    if (!title || title.trim().length < 2) {
+    const dialog = byId("cat-dialog");
+    const titleInput = byId("cd-title");
+    const localInput = byId("cd-local");
+    titleInput.value = "";
+    localInput.value = "";
+    dialog.showModal();
+    titleInput.focus();
+
+    const result = await new Promise((resolve) => {
+      const onSubmit = (e) => {
+        e.preventDefault();
+        cleanup();
+        resolve({ title: titleInput.value.trim(), local: localInput.value.trim() });
+      };
+      const onCancel = () => { cleanup(); resolve(null); };
+      function cleanup() {
+        byId("cat-dialog-form").removeEventListener("submit", onSubmit);
+        byId("cd-cancel").removeEventListener("click", onCancel);
+        dialog.close();
+      }
+      byId("cat-dialog-form").addEventListener("submit", onSubmit);
+      byId("cd-cancel").addEventListener("click", onCancel);
+    });
+
+    if (!result || result.title.length < 2) {
       sourceSelect.value = previousValue;
       return;
     }
@@ -411,12 +506,15 @@ function fmtAmount(lakhs: number | null | undefined): string {
       const res = await fetch("/api/review/category-new", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ corpId: CORP_ID, title: title.trim() }),
+        body: JSON.stringify({
+          corpId: CORP_ID,
+          title: result.title,
+          title_local: result.local || null,
+        }),
       });
       if (!res.ok) throw new Error(await res.text());
       const { code, title: newTitle } = await res.json();
 
-      // Append the new option to every dropdown, just before the separator.
       document.querySelectorAll(".cat-select, #af-category").forEach((sel) => {
         const sep = sel.querySelector("option[disabled]");
         const opt = document.createElement("option");
@@ -426,7 +524,6 @@ function fmtAmount(lakhs: number | null | undefined): string {
         else sel.appendChild(opt);
       });
 
-      // Select the new category on the dropdown that triggered creation.
       sourceSelect.value = code;
       if (sourceSelect.classList.contains("cat-select")) {
         saveCategory(sourceSelect);
