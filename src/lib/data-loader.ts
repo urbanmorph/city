@@ -82,6 +82,7 @@ const TITLE_OVERRIDES: Record<string, string> = {
   "animal-husbandry": "Animal Welfare",
   sanitation: "Waste Management",
   "land-acquisition": "Land, DRC and TDR",
+  "lakes-division": "Lakes",
 };
 
 function applyTitleOverride(code: string, title: string): string {
