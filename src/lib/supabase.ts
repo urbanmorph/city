@@ -71,3 +71,33 @@ export async function loadManualItems(corpId: string): Promise<ManualItem[]> {
   if (error || !data) return [];
   return data as ManualItem[];
 }
+
+export interface CustomCategoryRow {
+  code: string;
+  title: string;
+  title_local: string | null;
+}
+
+export async function loadCustomCategories(corpId: string): Promise<CustomCategoryRow[]> {
+  if (!supabaseAnon) return [];
+  const { data, error } = await supabaseAnon
+    .from("city_custom_categories")
+    .select("code,title,title_local")
+    .eq("corp_id", corpId);
+  if (error || !data) return [];
+  return data as CustomCategoryRow[];
+}
+
+export async function loadCategoryOrder(corpId: string): Promise<Map<string, number>> {
+  if (!supabaseAnon) return new Map();
+  const { data, error } = await supabaseAnon
+    .from("city_category_order")
+    .select("code,sort_order")
+    .eq("corp_id", corpId);
+  if (error || !data) return new Map();
+  const map = new Map<string, number>();
+  for (const r of data as { code: string; sort_order: number }[]) {
+    map.set(r.code, r.sort_order);
+  }
+  return map;
+}

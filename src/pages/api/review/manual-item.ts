@@ -1,6 +1,6 @@
 import type { APIRoute } from "astro";
 import { supabaseAdmin, editorForToken, invalidateItemCategories } from "../../../lib/supabase";
-import { loadCategories } from "../../../lib/data-loader";
+import { loadAllCategories } from "../../../lib/data-loader";
 
 export const prerender = false;
 
@@ -31,7 +31,8 @@ export const POST: APIRoute = async ({ request }) => {
   if (!name || typeof name !== "string" || name.trim().length < 3) return new Response("Name required (≥3 chars)", { status: 400 });
   if (!category || typeof category !== "string") return new Response("Category required", { status: 400 });
 
-  const validCats = new Set(loadCategories("bengaluru", corpId).map((c) => c.code));
+  const allCats = await loadAllCategories("bengaluru", corpId);
+  const validCats = new Set(allCats.map((c) => c.code));
   if (!validCats.has(category)) return new Response("Unknown category for this corp", { status: 400 });
 
   const item_id = `manual-${slugify(name)}-${Date.now().toString(36)}`;

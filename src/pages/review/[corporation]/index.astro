@@ -1,7 +1,7 @@
 ---
 import {
   loadCorporation,
-  loadCategories,
+  loadAllCategories,
   loadMergedItems,
 } from "../../../lib/data-loader";
 import { editorForToken } from "../../../lib/supabase";
@@ -32,7 +32,7 @@ if (urlToken && urlToken !== cookieToken) {
 const corp = loadCorporation("bengaluru", corpId);
 if (!corp) return Astro.redirect("/404");
 
-const categories = loadCategories("bengaluru", corpId);
+const categories = await loadAllCategories("bengaluru", corpId);
 const items = await loadMergedItems("bengaluru", corpId);
 
 // Flat list in speech order (by page, then id). No grouping — users reassign
@@ -269,6 +269,8 @@ function fmtAmount(lakhs: number | null | undefined): string {
       <label for="af-category">Category</label>
       <select id="af-category" required>
         {categories.map((c) => <option value={c.code}>{c.title}</option>)}
+        <option disabled>──────────</option>
+        <option value="__new__">+ Add new category…</option>
       </select>
     </div>
     <div>
@@ -313,6 +315,8 @@ function fmtAmount(lakhs: number | null | undefined): string {
           {categories.map((c) => (
             <option value={c.code} selected={c.code === r.effective_category}>{c.title}</option>
           ))}
+          <option disabled>──────────</option>
+          <option value="__new__">+ Add new category…</option>
         </select>
         <span class={`auto-hint${r.has_override ? " touched" : ""}`}>
           {r.has_override ? "reviewed" : "auto-tagged from speech"}
@@ -371,12 +375,69 @@ function fmtAmount(lakhs: number | null | undefined): string {
     }
   }
 
-  document.addEventListener("change", (e) => {
-    if (e.target.matches(".cat-select")) saveCategory(e.target);
+  document.addEventListener("change", async (e) => {
+    if (e.target.matches(".cat-select")) {
+      if (e.target.value === "__new__") {
+        const previous = e.target.dataset.cat || "";
+        await createCategoryFromPrompt(e.target, previous);
+        return;
+      }
+      saveCategory(e.target);
+      return;
+    }
+    if (e.target.id === "af-category") {
+      if (e.target.value === "__new__") {
+        const previous = e.target.dataset.previous || "";
+        await createCategoryFromPrompt(e.target, previous);
+        return;
+      }
+      e.target.dataset.previous = e.target.value;
+    }
   });
 
   byId("toggle-add-form").addEventListener("click", () => byId("add-form").classList.toggle("open"));
   byId("af-cancel").addEventListener("click", () => byId("add-form").classList.remove("open"));
+
+  // "+ Add new category…" selected on any dropdown — prompt, create, append the
+  // new option to every dropdown, and make it the choice on the dropdown that
+  // triggered creation.
+  async function createCategoryFromPrompt(sourceSelect, previousValue) {
+    const title = prompt('Name for the new category? (e.g. "Mobility", "Climate Action")');
+    if (!title || title.trim().length < 2) {
+      sourceSelect.value = previousValue;
+      return;
+    }
+    try {
+      const res = await fetch("/api/review/category-new", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ corpId: CORP_ID, title: title.trim() }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+      const { code, title: newTitle } = await res.json();
+
+      // Append the new option to every dropdown, just before the separator.
+      document.querySelectorAll(".cat-select, #af-category").forEach((sel) => {
+        const sep = sel.querySelector("option[disabled]");
+        const opt = document.createElement("option");
+        opt.value = code;
+        opt.textContent = newTitle;
+        if (sep) sel.insertBefore(opt, sep);
+        else sel.appendChild(opt);
+      });
+
+      // Select the new category on the dropdown that triggered creation.
+      sourceSelect.value = code;
+      if (sourceSelect.classList.contains("cat-select")) {
+        saveCategory(sourceSelect);
+      } else {
+        sourceSelect.dataset.previous = code;
+      }
+    } catch (err) {
+      alert("Could not create category: " + err.message);
+      sourceSelect.value = previousValue;
+    }
+  }
   byId("add-form").addEventListener("submit", async (e) => {
     e.preventDefault();
     const name = byId("af-name").value.trim();

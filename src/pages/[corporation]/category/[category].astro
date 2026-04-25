@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadCategories, loadMergedItems } from "../../../lib/data-loader";
+import { loadCity, loadCorporation, loadAllCategories, loadMergedItems } from "../../../lib/data-loader";
 import { formatINR } from "../../../lib/format";
 
 const CITY_ID = "bengaluru";
@@ -11,7 +11,7 @@ const city = loadCity(CITY_ID);
 const corporation = loadCorporation(CITY_ID, corpId!);
 if (!city || !corporation) return Astro.redirect("/404");
 
-const categories = loadCategories(CITY_ID, corporation.id);
+const categories = await loadAllCategories(CITY_ID, corporation.id);
 const category = categories.find((c) => c.code === catCode);
 if (!category) return Astro.redirect(`/${corporation.id}`);
 

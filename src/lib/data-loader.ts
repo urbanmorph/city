@@ -77,16 +77,47 @@ export interface CategoryDef {
   page_end?: number;
 }
 
+// Display-title overrides. Codes stay stable (DB rows, CSS palette), only labels change.
+const TITLE_OVERRIDES: Record<string, string> = {
+  "animal-husbandry": "Animal Welfare",
+  sanitation: "Waste Management",
+  "land-acquisition": "Land, DRC and TDR",
+};
+
+function applyTitleOverride(code: string, title: string): string {
+  return TITLE_OVERRIDES[code] ?? title;
+}
+
+// Synchronous, speech-only — used in API handlers for validation.
 export function loadCategories(cityId: string, corpId: string, year = "2026-27"): CategoryDef[] {
   const speech = loadSpeechProjects(cityId, corpId, year);
   const raw = (speech as any)?.sections ?? [];
   return raw.map((s: any) => ({
     code: s.code,
-    title: s.title,
+    title: applyTitleOverride(s.code, s.title),
     title_local: s.title_local ?? null,
     page_start: s.page_start,
     page_end: s.page_end,
   }));
+}
+
+// Async, merges in editor-added custom categories. Returns natural order:
+// speech sections first (extraction order), then custom (insertion order).
+// Callers apply their own sort using loadCategoryOrder + a fallback rule.
+export async function loadAllCategories(
+  cityId: string,
+  corpId: string,
+  year = "2026-27",
+): Promise<CategoryDef[]> {
+  const { loadCustomCategories } = await import("./supabase");
+  const custom = await loadCustomCategories(corpId);
+  const speech = loadCategories(cityId, corpId, year);
+  const customDefs: CategoryDef[] = custom.map((c) => ({
+    code: c.code,
+    title: c.title,
+    title_local: c.title_local,
+  }));
+  return [...speech, ...customDefs];
 }
 
 export interface MergedItem {

@@ -1,7 +1,8 @@
 ---
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumb from "../../components/Breadcrumb.astro";
-import { loadCity, loadCorporation, loadCategories, loadMergedItems } from "../../lib/data-loader";
+import { loadCity, loadCorporation, loadAllCategories, loadMergedItems } from "../../lib/data-loader";
+import { editorForToken } from "../../lib/supabase";
 import { formatINR } from "../../lib/format";
 
 const CITY_ID = "bengaluru";
@@ -17,8 +18,20 @@ if (view === "goals" || view === "budget") {
   return Astro.redirect(`/${corporation.id}`);
 }
 
-const categories = loadCategories(CITY_ID, corporation.id);
-const items = await loadMergedItems(CITY_ID, corporation.id);
+const { loadCategoryOrder } = await import("../../lib/supabase");
+const [categories, items, explicitOrder] = await Promise.all([
+  loadAllCategories(CITY_ID, corporation.id),
+  loadMergedItems(CITY_ID, corporation.id),
+  loadCategoryOrder(corporation.id),
+]);
+
+// If a valid review token is present (cookie or ?token=), this page becomes
+// editable: cards get drag handles. Public viewers without a token see the
+// normal read-only grid.
+const reviewerName =
+  editorForToken(Astro.cookies.get("review_token")?.value ?? null) ||
+  editorForToken(Astro.url.searchParams.get("token") ?? null);
+const isEditor = !!reviewerName;
 
 const byCat = new Map<string, typeof items>();
 for (const it of items) {
@@ -50,7 +63,14 @@ const gridCards = categories
     };
   })
   .filter((c) => c.itemCount > 0)
-  .sort((a, b) => b.amount - a.amount);
+  // Explicit order first (set by editor), fallback amount desc.
+  .sort((a, b) => {
+    const aH = explicitOrder.has(a.code), bH = explicitOrder.has(b.code);
+    if (aH && bH) return (explicitOrder.get(a.code) ?? 0) - (explicitOrder.get(b.code) ?? 0);
+    if (aH) return -1;
+    if (bH) return 1;
+    return b.amount - a.amount;
+  });
 ---
 
 <BaseLayout
@@ -73,9 +93,19 @@ const gridCards = categories
     ]}
   />
 
-  <section class="cat-grid">
+  {isEditor && (
+    <div class="edit-bar">
+      <span class="edit-bar__label"><i class="fa-solid fa-pen-to-square"></i> Editor mode · {reviewerName}</span>
+      <button type="button" class="edit-bar__toggle" id="reorder-toggle">
+        <i class="fa-solid fa-up-down-left-right"></i> Reorder cards
+      </button>
+      <a href={`/review/${corporation.id}`} class="edit-bar__link">Review items →</a>
+    </div>
+  )}
+
+  <section class="cat-grid" id="cat-grid">
     {gridCards.map((c) => (
-      <article class="cat-card" data-cat={c.code}>
+      <article class="cat-card" data-cat={c.code} data-cat-code={c.code}>
         <div class="cat-card__head">
           <h3 class="cat-card__name">{c.title}</h3>
           {c.titleLocal && <span class="cat-card__local">{c.titleLocal}</span>}
@@ -124,11 +154,75 @@ const gridCards = categories
   </p>
 </BaseLayout>
 
-<div data-realtime-corp={corporation.id} hidden></div>
+<div data-realtime-corp={corporation.id} data-is-editor={isEditor ? "1" : "0"} hidden></div>
 <script>
   import { subscribeCorpRealtime } from "../../lib/realtime-client";
   const el = document.querySelector("[data-realtime-corp]");
   if (el) subscribeCorpRealtime(el.getAttribute("data-realtime-corp"));
+
+  const isEditor = el?.getAttribute("data-is-editor") === "1";
+  const corpId = el?.getAttribute("data-realtime-corp");
+  if (isEditor && corpId) {
+    const grid = document.getElementById("cat-grid");
+    const toggle = document.getElementById("reorder-toggle");
+    let active = false;
+    let dragged: HTMLElement | null = null;
+
+    function setActive(on: boolean) {
+      active = on;
+      grid?.classList.toggle("reordering", on);
+      toggle?.classList.toggle("is-active", on);
+      grid?.querySelectorAll<HTMLElement>(".cat-card").forEach((c) => {
+        c.draggable = on;
+      });
+    }
+
+    toggle?.addEventListener("click", () => setActive(!active));
+
+    grid?.addEventListener("dragstart", (e) => {
+      const card = (e.target as HTMLElement).closest<HTMLElement>(".cat-card");
+      if (!card || !active) return;
+      dragged = card;
+      card.classList.add("dragging");
+      e.dataTransfer?.setData("text/plain", card.dataset.catCode || "");
+      if (e.dataTransfer) e.dataTransfer.effectAllowed = "move";
+    });
+
+    grid?.addEventListener("dragend", () => {
+      dragged?.classList.remove("dragging");
+      dragged = null;
+    });
+
+    grid?.addEventListener("dragover", (e) => {
+      if (!active || !dragged) return;
+      e.preventDefault();
+      const target = (e.target as HTMLElement).closest<HTMLElement>(".cat-card");
+      if (!target || target === dragged || !grid) return;
+      const cards = Array.from(grid.children) as HTMLElement[];
+      const draggedIdx = cards.indexOf(dragged);
+      const targetIdx = cards.indexOf(target);
+      if (draggedIdx < targetIdx) target.after(dragged);
+      else target.before(dragged);
+    });
+
+    grid?.addEventListener("drop", async (e) => {
+      if (!active) return;
+      e.preventDefault();
+      const order = Array.from(grid.querySelectorAll<HTMLElement>(".cat-card"))
+        .map((c) => c.dataset.catCode!)
+        .filter(Boolean);
+      try {
+        const res = await fetch("/api/review/category-order", {
+          method: "POST",
+          headers: { "content-type": "application/json" },
+          body: JSON.stringify({ corpId, order }),
+        });
+        if (!res.ok) throw new Error(await res.text());
+      } catch (err) {
+        console.error("Reorder save failed", err);
+      }
+    });
+  }
 </script>
 
 <style>
@@ -165,12 +259,47 @@ const gridCards = categories
   [data-cat="animal-husbandry"]           { --cat-c: #b91c1c; --cat-bg: #fee2e2; }
   [data-cat="welfare"]                    { --cat-c: #4338ca; --cat-bg: #e0e7ff; }
 
+  .edit-bar {
+    margin-top: 1.2rem;
+    display: flex; align-items: center; gap: 0.75rem; flex-wrap: wrap;
+    background: #fffbeb; border: 1px solid #fcd34d;
+    border-radius: 5px; padding: 0.5rem 0.85rem;
+    font-size: 0.85rem; color: #78350f;
+  }
+  .edit-bar__label { font-weight: 600; }
+  .edit-bar__label i { margin-right: 0.3rem; }
+  .edit-bar__toggle {
+    font: inherit; font-size: 0.82rem; font-weight: 600;
+    padding: 0.3rem 0.7rem; border-radius: 4px;
+    background: #fff; color: #78350f;
+    border: 1px solid #fcd34d; cursor: pointer;
+  }
+  .edit-bar__toggle:hover { background: #fef3c7; }
+  .edit-bar__toggle.is-active { background: #78350f; color: #fff; border-color: #78350f; }
+  .edit-bar__toggle i { margin-right: 0.25rem; }
+  .edit-bar__link { margin-left: auto; color: #78350f; font-weight: 600; text-decoration: none; }
+  .edit-bar__link:hover { text-decoration: underline; }
+
   .cat-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 0.9rem;
     margin-top: 1.5rem;
   }
+  .cat-grid.reordering .cat-card {
+    cursor: grab;
+    user-select: none;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+  }
+  .cat-grid.reordering .cat-card::after {
+    content: "↕"; position: absolute; top: 0.5rem; right: 0.6rem;
+    font-size: 0.85rem; color: var(--cat-c, #4a5568);
+    background: rgba(255,255,255,0.85);
+    width: 22px; height: 22px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .cat-card { position: relative; }
+  .cat-card.dragging { opacity: 0.5; cursor: grabbing; }
   @media (max-width: 1000px) {
     .cat-grid { grid-template-columns: repeat(3, 1fr); }
   }
