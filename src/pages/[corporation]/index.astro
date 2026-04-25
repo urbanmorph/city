@@ -12,6 +12,13 @@ const city = loadCity(CITY_ID);
 const corporation = loadCorporation(CITY_ID, corpId!);
 if (!city || !corporation) return Astro.redirect("/404");
 
+function progressLabel(p: string): string {
+  if (p === "began") return "Began";
+  if (p === "wip") return "Work in progress";
+  if (p === "done") return "Done";
+  return "";
+}
+
 // Goals/Budget tabs are hidden this phase — bounce legacy query strings home.
 const view = Astro.url.searchParams.get("view");
 if (view === "goals" || view === "budget") {
@@ -123,7 +130,10 @@ const gridCards = categories
             {c.highlights.map((h) => (
               <li class="cat-card__hl">
                 <a href={`/${corporation.id}/category/${c.code}`} class="cat-card__hl-link" title={h.description || h.name}>
-                  <span class="cat-card__hl-name">{h.name}</span>
+                  <span class="cat-card__hl-name">
+                    {h.progress && <span class={`prog-pill prog-pill--${h.progress}`} title={progressLabel(h.progress)}></span>}
+                    {h.name}
+                  </span>
                   {h.amount_lakhs != null && (
                     <span class="cat-card__hl-amt">{formatINR(h.amount_lakhs)}</span>
                   )}
@@ -377,6 +387,15 @@ const gridCards = categories
     color: var(--c-ink-soft); font-variant-numeric: tabular-nums;
     flex-shrink: 0;
   }
+  .prog-pill {
+    display: inline-block; width: 8px; height: 8px;
+    border-radius: 50%; margin-right: 0.4rem;
+    vertical-align: middle;
+    border: 1px solid rgba(0,0,0,0.12);
+  }
+  .prog-pill--began { background: #dc2626; border-color: #b91c1c; }
+  .prog-pill--wip   { background: #f59e0b; border-color: #d97706; }
+  .prog-pill--done  { background: #16a34a; border-color: #15803d; }
 
   .cat-card__foot { padding-top: 0.5rem; padding-bottom: 0.85rem; }
   .cat-card__more {

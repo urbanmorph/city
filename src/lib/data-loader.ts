@@ -132,6 +132,7 @@ export interface MergedItem {
   section_local: string | null;
   effective_category: string;           // override if present, else section, else 'uncategorised'
   has_override: boolean;
+  progress: "began" | "wip" | "done" | null;
   source: "speech" | "manual";
 }
 
@@ -140,11 +141,12 @@ export async function loadMergedItems(
   corpId: string,
   year = "2026-27"
 ): Promise<MergedItem[]> {
-  const { loadItemCategories, loadManualItems } = await import("./supabase");
+  const { loadItemCategories, loadManualItems, loadItemProgress } = await import("./supabase");
   const base = loadSpeechProjects(cityId, corpId, year);
-  const [overrides, manuals] = await Promise.all([
+  const [overrides, manuals, progress] = await Promise.all([
     loadItemCategories(corpId),
     loadManualItems(corpId),
+    loadItemProgress(corpId),
   ]);
 
   const out: MergedItem[] = [];
@@ -163,6 +165,7 @@ export async function loadMergedItems(
       section_local: (p as any).section_local ?? null,
       effective_category: override ?? section ?? "uncategorised",
       has_override: !!override,
+      progress: progress.get(p.id) ?? null,
       source: "speech",
     });
   }
@@ -181,6 +184,7 @@ export async function loadMergedItems(
       section_local: null,
       effective_category: override ?? section,
       has_override: !!override,
+      progress: progress.get(m.item_id) ?? null,
       source: "manual",
     });
   }

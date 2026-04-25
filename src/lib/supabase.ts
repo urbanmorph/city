@@ -88,6 +88,22 @@ export async function loadCustomCategories(corpId: string): Promise<CustomCatego
   return data as CustomCategoryRow[];
 }
 
+export type ProgressStatus = "began" | "wip" | "done";
+
+export async function loadItemProgress(corpId: string): Promise<Map<string, ProgressStatus>> {
+  if (!supabaseAnon) return new Map();
+  const { data, error } = await supabaseAnon
+    .from("city_item_progress")
+    .select("item_id, status")
+    .eq("corp_id", corpId);
+  if (error || !data) return new Map();
+  const map = new Map<string, ProgressStatus>();
+  for (const r of data as { item_id: string; status: ProgressStatus }[]) {
+    map.set(r.item_id, r.status);
+  }
+  return map;
+}
+
 export async function loadCategoryOrder(corpId: string): Promise<Map<string, number>> {
   if (!supabaseAnon) return new Map();
   const { data, error } = await supabaseAnon

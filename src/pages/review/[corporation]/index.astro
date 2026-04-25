@@ -230,6 +230,39 @@ function fmtAmount(lakhs: number | null | undefined): string {
     .verbatim { font-size: 0.8rem; color: var(--c-ink-soft); font-style: italic; line-height: 1.45; }
 
     .cat-cell { display: flex; flex-direction: column; gap: 0.28rem; align-items: flex-start; }
+
+    .progress-widget {
+      display: inline-flex; gap: 0.35rem; align-items: center;
+      padding: 0.22rem 0.5rem; border: 1px solid var(--c-rule);
+      border-radius: 999px; background: #fff;
+    }
+    .prog-dot {
+      width: 14px; height: 14px; border-radius: 50%;
+      border: 1px solid rgba(0,0,0,0.12);
+      cursor: pointer; padding: 0;
+      transition: transform 0.1s, box-shadow 0.1s;
+    }
+    .prog-dot:hover { transform: scale(1.2); }
+    .prog-none  { background: #fff; }
+    .prog-began { background: #dc2626; border-color: #b91c1c; }
+    .prog-wip   { background: #f59e0b; border-color: #d97706; }
+    .prog-done  { background: #16a34a; border-color: #15803d; }
+    /* Selected dot: thicker outline, two-tone ring (white pad + dark outer). */
+    .progress-widget[data-progress=""]      .prog-none  { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px var(--c-ink); }
+    .progress-widget[data-progress="began"] .prog-began { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #dc2626; transform: scale(1.1); }
+    .progress-widget[data-progress="wip"]   .prog-wip   { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #f59e0b; transform: scale(1.1); }
+    .progress-widget[data-progress="done"]  .prog-done  { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #16a34a; transform: scale(1.1); }
+
+    .prog-label {
+      font-size: 0.72rem; font-weight: 600;
+      padding: 0 0.35rem 0 0.15rem;
+      letter-spacing: 0.02em;
+      min-width: 50px;
+    }
+    .progress-widget[data-progress=""]      .prog-label { color: var(--c-neutral); font-weight: 500; font-style: italic; }
+    .progress-widget[data-progress="began"] .prog-label { color: #dc2626; }
+    .progress-widget[data-progress="wip"]   .prog-label { color: #d97706; }
+    .progress-widget[data-progress="done"]  .prog-label { color: #15803d; }
     .cat-select {
       font: inherit; font-size: 0.82rem;
       padding: 0.3rem 0.55rem; width: 100%;
@@ -379,6 +412,13 @@ function fmtAmount(lakhs: number | null | undefined): string {
         )}
       </div>
       <div class="cat-cell">
+        <div class="progress-widget" data-item-id={r.id} data-progress={r.progress ?? ""}>
+          <button type="button" class="prog-dot prog-none" data-set="" title="Clear progress"></button>
+          <button type="button" class="prog-dot prog-began" data-set="began" title="Began"></button>
+          <button type="button" class="prog-dot prog-wip" data-set="wip" title="Work in progress"></button>
+          <button type="button" class="prog-dot prog-done" data-set="done" title="Done"></button>
+          <span class="prog-label">{r.progress === "began" ? "Began" : r.progress === "wip" ? "WIP" : r.progress === "done" ? "Done" : "Not set"}</span>
+        </div>
         <select
           class="cat-select"
           data-item-id={r.id}
@@ -416,7 +456,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
   function byId(id) { return document.getElementById(id); }
   function authedFetch(url, init = {}) {
     const headers = Object.assign({ "x-edit-token": TOKEN }, init.headers || {});
-    return authedFetch(url, Object.assign({}, init, { headers }));
+    return window.fetch(url, Object.assign({}, init, { headers }));
   }
 
   function updateProgress() {
@@ -465,6 +505,35 @@ function fmtAmount(lakhs: number | null | undefined): string {
       console.error(e);
     }
   }
+
+  function labelFor(s) {
+    return s === "began" ? "Began" : s === "wip" ? "WIP" : s === "done" ? "Done" : "Not set";
+  }
+  document.addEventListener("click", async (e) => {
+    const dot = e.target.closest && e.target.closest(".prog-dot");
+    if (!dot) return;
+    const widget = dot.closest(".progress-widget");
+    if (!widget) return;
+    const itemId = widget.dataset.itemId;
+    const next = dot.dataset.set || ""; // "" or "began"|"wip"|"done"
+    const previous = widget.dataset.progress || "";
+    if (next === previous) return;
+    widget.dataset.progress = next;
+    const lbl = widget.querySelector(".prog-label");
+    if (lbl) lbl.textContent = labelFor(next);
+    try {
+      const res = await authedFetch("/api/review/progress", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ corpId: CORP_ID, itemId, status: next === "" ? null : next }),
+      });
+      if (!res.ok) throw new Error(await res.text());
+    } catch (err) {
+      widget.dataset.progress = previous;
+      if (lbl) lbl.textContent = labelFor(previous);
+      console.error("Progress save failed", err);
+    }
+  });
 
   document.addEventListener("change", async (e) => {
     if (e.target.matches(".cat-select")) {

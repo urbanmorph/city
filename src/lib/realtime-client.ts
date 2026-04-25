@@ -25,6 +25,21 @@ export function subscribeCorpRealtime(corpId: string | null): () => void {
       { event: "*", schema: "public", table: "city_manual_items", filter: `corp_id=eq.${corpId}` },
       onChange,
     )
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "city_item_progress", filter: `corp_id=eq.${corpId}` },
+      onChange,
+    )
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "city_custom_categories", filter: `corp_id=eq.${corpId}` },
+      onChange,
+    )
+    .on(
+      "postgres_changes",
+      { event: "*", schema: "public", table: "city_category_order", filter: `corp_id=eq.${corpId}` },
+      onChange,
+    )
     .subscribe();
 
   return () => {

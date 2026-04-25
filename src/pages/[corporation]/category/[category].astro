@@ -11,6 +11,13 @@ const city = loadCity(CITY_ID);
 const corporation = loadCorporation(CITY_ID, corpId!);
 if (!city || !corporation) return Astro.redirect("/404");
 
+function progressLabel(p: string): string {
+  if (p === "began") return "Began";
+  if (p === "wip") return "WIP";
+  if (p === "done") return "Done";
+  return "";
+}
+
 const categories = await loadAllCategories(CITY_ID, corporation.id);
 const category = categories.find((c) => c.code === catCode);
 if (!category) return Astro.redirect(`/${corporation.id}`);
@@ -86,6 +93,11 @@ const siblingCats = categories
           <div class="it-main">
             <div class="it-head">
               {it.source === "manual" && <span class="manual-badge">manual</span>}
+              {it.progress && (
+                <span class={`prog-badge prog-badge--${it.progress}`} title={progressLabel(it.progress)}>
+                  {progressLabel(it.progress)}
+                </span>
+              )}
               <span class="it-name">{it.name}</span>
               <span class="it-meta">
                 {it.page > 0 && <span class="page-pill">p.{it.page}</span>}
@@ -202,6 +214,15 @@ const siblingCats = categories
     padding: 0.05rem 0.4rem; border-radius: 3px; text-transform: uppercase;
     vertical-align: middle;
   }
+  .prog-badge {
+    display: inline-block; color: #fff;
+    font-size: 0.62rem; font-weight: 700; letter-spacing: 0.04em;
+    padding: 0.05rem 0.45rem; border-radius: 3px; text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .prog-badge--began { background: #dc2626; }
+  .prog-badge--wip   { background: #f59e0b; }
+  .prog-badge--done  { background: #16a34a; }
   .verbatim {
     font-size: 0.86rem; color: var(--c-ink-soft);
     font-style: italic; line-height: 1.5;
