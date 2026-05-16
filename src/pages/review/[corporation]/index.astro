@@ -244,12 +244,12 @@ function fmtAmount(lakhs: number | null | undefined): string {
     }
     .prog-dot:hover { transform: scale(1.2); }
     .prog-none  { background: #fff; }
-    .prog-began { background: #dc2626; border-color: #b91c1c; }
+    .prog-began { background: #6b7280; border-color: #4b5563; }
     .prog-wip   { background: #f59e0b; border-color: #d97706; }
     .prog-done  { background: #16a34a; border-color: #15803d; }
     /* Selected dot: thicker outline, two-tone ring (white pad + dark outer). */
     .progress-widget[data-progress=""]      .prog-none  { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px var(--c-ink); }
-    .progress-widget[data-progress="began"] .prog-began { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #dc2626; transform: scale(1.1); }
+    .progress-widget[data-progress="began"] .prog-began { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #6b7280; transform: scale(1.1); }
     .progress-widget[data-progress="wip"]   .prog-wip   { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #f59e0b; transform: scale(1.1); }
     .progress-widget[data-progress="done"]  .prog-done  { box-shadow: 0 0 0 1.5px #fff, 0 0 0 3px #16a34a; transform: scale(1.1); }
 
@@ -260,7 +260,7 @@ function fmtAmount(lakhs: number | null | undefined): string {
       min-width: 50px;
     }
     .progress-widget[data-progress=""]      .prog-label { color: var(--c-neutral); font-weight: 500; font-style: italic; }
-    .progress-widget[data-progress="began"] .prog-label { color: #dc2626; }
+    .progress-widget[data-progress="began"] .prog-label { color: #4b5563; }
     .progress-widget[data-progress="wip"]   .prog-label { color: #d97706; }
     .progress-widget[data-progress="done"]  .prog-label { color: #15803d; }
     .cat-select {
