@@ -1,6 +1,20 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumb from "../components/Breadcrumb.astro";
+import { loadCorporation } from "../lib/data-loader";
+
+const fromCorpId = Astro.url.searchParams.get("from");
+const fromCorp = fromCorpId ? loadCorporation("bengaluru", fromCorpId) : null;
+const breadcrumbItems = fromCorp
+  ? [
+      { label: "Home", href: "/" },
+      { label: fromCorp.name.replace(" City Corporation", ""), href: `/${fromCorp.id}` },
+      { label: "About" },
+    ]
+  : [
+      { label: "Home", href: "/" },
+      { label: "About" },
+    ];
 ---
 
 <BaseLayout
@@ -9,12 +23,16 @@ import Breadcrumb from "../components/Breadcrumb.astro";
   mastheadTitle="About"
   mastheadSubtitle="What this portal is and where the data comes from"
 >
+  {fromCorp && (
+    <Fragment slot="masthead-nav">
+      <a href={`/${fromCorp.id}`}>Summary</a>
+      <a href={`/about?from=${fromCorp.id}`} class="is-active">About</a>
+    </Fragment>
+  )}
+
   <Breadcrumb
     slot="breadcrumb"
-    items={[
-      { label: "Home", href: "/" },
-      { label: "About" },
-    ]}
+    items={breadcrumbItems}
   />
 
   <article class="prose">

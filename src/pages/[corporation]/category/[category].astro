@@ -57,7 +57,7 @@ const siblingCats = categories
 >
   <Fragment slot="masthead-nav">
     <a href={`/${corporation.id}`}>Summary</a>
-    <a href="/about">About</a>
+    <a href={`/about?from=${corporation.id}`}>About</a>
   </Fragment>
 
   <Breadcrumb
